@@ -1,6 +1,6 @@
 {
   "pass": true,
-  "overall_score": 9,
+  "overall_score": 8.5,
   "dimensions": {
     "syntax": {
       "score": 10,
@@ -8,9 +8,11 @@
       "issues": []
     },
     "layout": {
-      "score": 10,
+      "score": 9,
       "pass": true,
-      "issues": []
+      "issues": [
+        "对比度检测报告指出 3 处低对比度文本，但布局本身无越界、无重叠、无截断。"
+      ]
     },
     "content_accuracy": {
       "score": 10,
@@ -23,15 +25,19 @@
       "issues": []
     },
     "information_completeness": {
-      "score": 10,
+      "score": 9,
       "pass": true,
-      "issues": []
+      "issues": [
+        "已完整展示所有关键倍数关系和实体，并以注释说明基准。"
+      ]
     },
     "aesthetics": {
       "score": 7,
       "pass": true,
       "issues": [
-        "倍数标签文字（2× more, 10× more）和箭头颜色 #FF6B6B 在浅色背景上对比度仅为 2.78，远低于 WCAG AA 标准，影响可读性。"
+        "Kuaishou 条形旁的绿色文字 (#27AE60) 在白色背景上对比度仅 2.87，未通过 WCAG AA。",
+        "页脚文字 (#A0AAB5) 在白色背景上对比度仅 2.36，可读性差。",
+        "YouTube 条形上的白色文字理论上在渐变色上对比度足够，但程序检测将其视为白色背景，建议验证实际渲染效果。"
       ]
     }
   },
@@ -39,11 +45,23 @@
   "regeneration_focus": [],
   "specific_suggestions": [
     {
-      "target": "倍数标签文字和箭头颜色（#FF6B6B）",
-      "issue": "当前红色在浅色背景上对比度不足，阅读困难，不符合无障碍标准。",
-      "suggestion": "将文字和箭头填充色改为深红色，如 #CC3333 或 #C0392B，确保对比度达到 4.5:1 以上。",
-      "priority": "high"
+      "target": "Kuaishou 条形右侧的“1×”文本",
+      "issue": "文字颜色 #27AE60 在白色背景上对比度低，不易阅读。",
+      "suggestion": "将 fill 改为深绿色，如 #1E8C4C，或添加半透明深色背景。",
+      "priority": "medium"
+    },
+    {
+      "target": "页脚注释文字",
+      "issue": "文字颜色 #A0AAB5 过浅，与白色背景对比度不足。",
+      "suggestion": "将 fill 改为 #6B7B8D 或 #5A6878，以保证 WCAG AA 对比度。",
+      "priority": "medium"
+    },
+    {
+      "target": "YouTube 条形上的白色“20×”文本",
+      "issue": "程序检测认为白色文字在白色背景上，但实际条形渐变色较深，对比度通常足够；若有疑虑，可加强文字与背景的分离。",
+      "suggestion": "可选：为文字添加轻微投影或使用深色半透明背景，确保在任何渐变位置都清晰。",
+      "priority": "low"
     }
   ],
-  "summary": "图表整体准确表达了数据对比关系，布局合理。唯一需要修复的是红色标注文字和箭头的对比度问题，将其替换为更深的红色即可。"
+  "summary": "信息图准确且布局合理，主要提升点在于改善低对比度文本的配色：将快手标签的绿色和页脚浅灰色加深，确保文字在所有背景下均清晰可读。"
 }

@@ -2,8 +2,8 @@
   "intent": {
     "primary_type": "concept_explanation",
     "secondary_type": null,
-    "confidence": 0.9,
-    "reasoning": "用户明确要求解释大语言模型的基本原理，属于典型的概念解释类信息图。"
+    "confidence": 0.95,
+    "reasoning": "用户明确要求解释大语言模型的基本原理，属于概念解释类图表。"
   },
   "entities": [
     {
@@ -11,23 +11,17 @@
       "type": "term",
       "role": "subject",
       "importance": "primary"
-    },
-    {
-      "name": "基本原理",
-      "type": "term",
-      "role": "attribute",
-      "importance": "secondary"
     }
   ],
   "relations": [],
   "content_summary": {
-    "title": "大语言模型的基本原理",
+    "title": "大语言模型基本原理",
     "key_points": [
-      "大语言模型是基于Transformer架构的深度学习模型，通过自注意力机制捕捉文本中的长距离依赖关系。",
-      "模型将输入文本转化为词嵌入向量，经过多头注意力层和前馈网络，逐步理解语义。",
-      "训练阶段使用海量文本数据，通过预测下一个词的任务进行自监督学习，调整数十亿参数。",
-      "核心原理包括：词嵌入（Word Embedding）、多头自注意力（Multi-Head Self-Attention）、残差连接与层归一化。",
-      "预训练后可通过少量任务数据微调，适配翻译、问答、摘要等多种自然语言处理场景。"
+      "大语言模型基于Transformer架构，利用自注意力机制并行处理文本序列，捕获长距离依赖。",
+      "预训练阶段在海量无标注文本数据上进行自监督学习，通过预测下一个词习得语言的统计规律。",
+      "模型通过提示工程（Prompt Engineering）或指令微调适应下游任务，如文本生成、翻译、问答等。",
+      "生成文本时，模型每个步骤输出词表上的概率分布，并通过采样策略产生连贯的自然语言。",
+      "模型规模通常极大，参数可达数十亿至数万亿，表现出涌现能力和上下文学习能力。"
     ],
     "target_audience": "general",
     "language": "zh"
@@ -36,16 +30,29 @@
     "needs_external_knowledge": true,
     "search_queries": [
       "大语言模型基本原理",
-      "大语言模型工作原理简单解释",
-      "Transformer架构注意力机制介绍"
+      "LLM 原理 Transformer 架构"
     ],
-    "fallback_knowledge": "大语言模型（LLM）基于Transformer架构，核心是自注意力机制，允许模型在处理每个词时关注输入中的所有词。训练通过掩码语言模型或因果语言模型（预测下一个词）在海量语料上优化参数。模型包含嵌入层、多头注意力层、前馈网络、残差连接和层归一化，通过堆叠这些模块实现深层语义理解。"
+    "fallback_knowledge": "大语言模型使用Transformer解码器架构，通过预训练和微调范式实现通用语言理解与生成。"
   },
   "chart_type": {
     "recommended": "concept_map",
     "alternatives": [
-      "architecture_diagram"
+      "architecture_diagram",
+      "process_diagram"
     ],
-    "type_confidence": 0.85
-  }
+    "type_confidence": 0.9
+  },
+  "knowledge_supplement": "## 大语言模型核心概念\n\n### transformer_components:\n  - **Input Embedding**: 将输入token映射为稠密向量\n  - **Positional Encoding**: 为序列添加位置信息\n  - **Multi-Head Self-Attention**: 同时关注输入序列中不同位置的关系\n  - **Feed-Forward Network**: 对每个位置的表示进行非线性变换\n  - **Layer Normalization**: 稳定训练，加速收敛\n  - **Residual Connection**: 跳跃连接，缓解梯度消失\n### training_stages:\n  - **{'stage': '预训练 (Pre-training)', 'description': '在大规模语料上学习语言模式，预测下一个token'}**: 在大规模语料上学习语言模式，预测下一个token\n  - **{'stage': '监督微调 (SFT)', 'description': '在人工标注的指令数据上微调，学会遵循指令'}**: 在人工标注的指令数据上微调，学会遵循指令\n  - **{'stage': 'RLHF', 'description': '基于人类反馈的强化学习，对齐人类偏好'}**: 基于人类反馈的强化学习，对齐人类偏好\n### inference_flow: 输入文本 → Tokenization → Embedding → N层Transformer Block → 输出概率分布 → 采样/贪心解码 → 生成文本\n\n## 大语言模型核心概念\n\n### transformer_components:\n  - **Input Embedding**: 将输入token映射为稠密向量\n  - **Positional Encoding**: 为序列添加位置信息\n  - **Multi-Head Self-Attention**: 同时关注输入序列中不同位置的关系\n  - **Feed-Forward Network**: 对每个位置的表示进行非线性变换\n  - **Layer Normalization**: 稳定训练，加速收敛\n  - **Residual Connection**: 跳跃连接，缓解梯度消失\n### training_stages:\n  - **{'stage': '预训练 (Pre-training)', 'description': '在大规模语料上学习语言模式，预测下一个token'}**: 在大规模语料上学习语言模式，预测下一个token\n  - **{'stage': '监督微调 (SFT)', 'description': '在人工标注的指令数据上微调，学会遵循指令'}**: 在人工标注的指令数据上微调，学会遵循指令\n  - **{'stage': 'RLHF', 'description': '基于人类反馈的强化学习，对齐人类偏好'}**: 基于人类反馈的强化学习，对齐人类偏好\n### inference_flow: 输入文本 → Tokenization → Embedding → N层Transformer Block → 输出概率分布 → 采样/贪心解码 → 生成文本",
+  "knowledge_sources": [
+    {
+      "query": "大语言模型基本原理",
+      "source": "fallback_db",
+      "reliability": "high"
+    },
+    {
+      "query": "LLM 原理 Transformer 架构",
+      "source": "fallback_db",
+      "reliability": "high"
+    }
+  ]
 }

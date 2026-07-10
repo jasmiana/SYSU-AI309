@@ -1,6 +1,6 @@
 """Pipeline orchestrator — coordinates multi-agent execution.
 
-Phase 2: Agent 1 → Agent 2 → Agent 3 → Agent 4 (with feedback loop)
+Phase 3: Agent 1 → Knowledge Retrieval → Agent 2 → Agent 3 → Agent 4 (with feedback loop)
 """
 
 import time
@@ -11,6 +11,7 @@ from ..agents.content_analyzer import ContentAnalyzer
 from ..agents.layout_planner import LayoutPlanner
 from ..agents.svg_coder import SVGCoder
 from ..agents.quality_reviewer import QualityReviewer
+from ..knowledge.search import retrieve_knowledge
 from ..rendering.validator import run_all_checks
 from ..utils.logger import PipelineLogger
 from ..utils.file_manager import save_svg, save_ir, save_generation_metadata
@@ -90,6 +91,51 @@ class Pipeline:
         plog.log_agent_output("Agent1:ContentAnalyzer", content_ir, d1)
         save_ir(sample_name, content_ir, "01_content")
         plog.log_info(f"Content IR saved")
+
+        # ═══════════════════════════════════════════════════════════
+        # Knowledge Retrieval (Phase 3) — fill knowledge gaps
+        # ═══════════════════════════════════════════════════════════
+        knowledge_gap = content_ir.get("knowledge_gap", {})
+        if knowledge_gap.get("needs_external_knowledge"):
+            search_queries = knowledge_gap.get("search_queries", [])
+            plog.log_agent_start(
+                "KnowledgeRetriever",
+                {"queries": search_queries},
+            )
+            t_k = time.time()
+            try:
+                knowledge = retrieve_knowledge(search_queries)
+            except Exception as e:
+                plog.log_error("KnowledgeRetriever", str(e))
+                knowledge = {"compiled_knowledge": "", "knowledge_found": False}
+            d_k = (time.time() - t_k) * 1000
+            plog.log_agent_output(
+                "KnowledgeRetriever",
+                {
+                    "found": knowledge.get("knowledge_found"),
+                    "results": len(knowledge.get("search_results", [])),
+                },
+                d_k,
+            )
+
+            # Inject knowledge into Content IR for downstream agents
+            if knowledge.get("compiled_knowledge"):
+                content_ir["knowledge_supplement"] = knowledge["compiled_knowledge"]
+                content_ir["knowledge_sources"] = [
+                    {
+                        "query": r["query"],
+                        "source": r.get("source", "unknown"),
+                        "reliability": r.get("reliability", "low"),
+                    }
+                    for r in knowledge.get("search_results", [])
+                ]
+                save_ir(sample_name, content_ir, "01_content")
+                plog.log_info(
+                    f"Knowledge injected: "
+                    f"{len(knowledge.get('search_results', []))} sources"
+                )
+        else:
+            plog.log_info("No knowledge gap detected, skipping retrieval")
 
         # ═══════════════════════════════════════════════════════════
         # Step 2: Layout Planning

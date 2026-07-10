@@ -132,6 +132,13 @@ class SVGCoder(BaseAgent):
                 if e.get("importance") in ("primary", "secondary"):
                     parts.append(f"- {e['name']} ({e['type']})")
 
+        # Pass through knowledge supplement (Phase 3)
+        knowledge = content_ir.get("knowledge_supplement", "")
+        if knowledge:
+            parts.append(
+                f"\n## 外部知识补充（来自知识检索模块）\n\n{knowledge}"
+            )
+
         relations = content_ir.get("relations", [])
         if relations:
             parts.append("\n## 实体关系:")

@@ -67,6 +67,13 @@ class LayoutPlanner(BaseAgent):
         if not content_summary.get("key_points"):
             parts.append("(无关键信息点，请根据标题和意图自行规划)")
 
+        # Pass through knowledge supplement if available (Phase 3)
+        knowledge = content_ir.get("knowledge_supplement", "")
+        if knowledge:
+            parts.append(
+                f"\n## 外部知识补充（来自知识检索模块）\n\n{knowledge}"
+            )
+
         if entities:
             parts.append("\n### 核心实体:")
             for e in entities:

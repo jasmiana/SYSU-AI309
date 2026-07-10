@@ -1,5 +1,5 @@
 {
-  "chart_type": "bar_chart",
+  "chart_type": "horizontal_bar_chart",
   "canvas": {
     "width": 800,
     "height": 1000,
@@ -20,231 +20,284 @@
       "#F39C12",
       "#E74C3C"
     ],
-    "rationale": "三个平台的对比需要鲜明且区分度高的颜色，多色板能直观区分实体并保持科技感，同时蓝色代表YouTube的庞大，紫色代表TikTok的潮流，绿色代表快手的本土化。"
+    "rationale": "使用高区分度多色方案，蓝色（YouTube）强调绝对优势，紫色（TikTok）为中间量，绿色（快手）作为基准，符合科技平台对比的现代感。"
   },
   "typography": {
-    "title_size": 32,
+    "title_size": 30,
     "heading_size": 22,
     "body_size": 16,
     "label_size": 14,
-    "font_family": "system-ui, 'Microsoft YaHei', sans-serif"
+    "font_family": "system-ui, 'Microsoft YaHei', -apple-system, sans-serif"
   },
   "layout_grid": {
-    "columns": 3,
-    "rows": null,
-    "gutter": 30
+    "columns": 1,
+    "rows": 3,
+    "gutter": 20
   },
   "sections": [
     {
-      "id": "title-section",
+      "id": "title_section",
       "type": "title",
       "position": {
-        "x_pct": 5.0,
-        "y_pct": 2.0,
-        "width_pct": 90.0,
-        "height_pct": 10.0
+        "x_pct": 0,
+        "y_pct": 0,
+        "width_pct": 100,
+        "height_pct": 10
       },
       "visual_weight": "primary",
-      "purpose": "展示主标题，吸引注意力"
+      "purpose": "展示图表主标题，吸引读者注意"
     },
     {
-      "id": "chart-section",
+      "id": "chart_section",
       "type": "chart",
       "position": {
-        "x_pct": 10.0,
-        "y_pct": 14.0,
-        "width_pct": 80.0,
-        "height_pct": 52.0
+        "x_pct": 5,
+        "y_pct": 10,
+        "width_pct": 90,
+        "height_pct": 80
       },
       "visual_weight": "primary",
-      "purpose": "核心条形图，展示三个平台视频数量的对比关系"
+      "purpose": "核心数据对比区，水平条形图展示三平台视频数量倍数关系"
     },
     {
-      "id": "insight-section",
-      "type": "content_block",
-      "position": {
-        "x_pct": 10.0,
-        "y_pct": 70.0,
-        "width_pct": 80.0,
-        "height_pct": 22.0
-      },
-      "visual_weight": "secondary",
-      "purpose": "提炼关键数据洞察，辅助读者理解图表"
-    },
-    {
-      "id": "footer-section",
+      "id": "footer_section",
       "type": "footer",
       "position": {
-        "x_pct": 5.0,
-        "y_pct": 94.0,
-        "width_pct": 90.0,
-        "height_pct": 5.0
+        "x_pct": 5,
+        "y_pct": 90,
+        "width_pct": 90,
+        "height_pct": 10
       },
       "visual_weight": "tertiary",
-      "purpose": "显示数据来源或脚注"
+      "purpose": "数据来源与单位说明，基准注释"
     }
   ],
   "elements": [
     {
-      "id": "main-title",
+      "id": "main_title",
       "type": "text_block",
-      "label": "YouTube vs TikTok vs Kuaishou: Video Count Comparison",
-      "parent_section": "title-section",
+      "label": "YouTube、TikTok与快手视频数量对比",
+      "parent_section": "title_section",
       "color_key": "text_primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 600,
+        "min_width": 400,
         "min_height": 40,
         "aspect_ratio": null
       },
-      "content_hint": "展示完整主标题，两行英文，加粗居中"
+      "content_hint": "主标题，居中放置，使用 title_size (30px) Bold"
     },
     {
-      "id": "axis-x",
-      "type": "axis",
+      "id": "axis_y",
+      "type": "line",
       "label": "",
-      "parent_section": "chart-section",
-      "color_key": "text_secondary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 0,
-        "min_height": 30,
-        "aspect_ratio": null
-      },
-      "content_hint": "X轴，标注三个平台名称：Kuaishou, TikTok, YouTube"
-    },
-    {
-      "id": "axis-y",
-      "type": "axis",
-      "label": "Relative Video Count",
-      "parent_section": "chart-section",
-      "color_key": "text_secondary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 50,
-        "min_height": 0,
-        "aspect_ratio": null
-      },
-      "content_hint": "Y轴，使用简化的单位或不显示具体数值，仅展现比例关系"
-    },
-    {
-      "id": "bar-youtube",
-      "type": "rect",
-      "label": "YouTube",
-      "parent_section": "chart-section",
-      "color_key": "primary",
-      "importance": "primary",
-      "size_hint": {
-        "min_width": 80,
-        "min_height": 400,
-        "aspect_ratio": null
-      },
-      "content_hint": "柱子高度对应YouTube视频数量，为TikTok的10倍，需要标注数值或倍数"
-    },
-    {
-      "id": "bar-tiktok",
-      "type": "rect",
-      "label": "TikTok",
-      "parent_section": "chart-section",
-      "color_key": "secondary",
-      "importance": "primary",
-      "size_hint": {
-        "min_width": 80,
-        "min_height": 40,
-        "aspect_ratio": null
-      },
-      "content_hint": "柱子高度对应TikTok视频数量，为快手的2倍"
-    },
-    {
-      "id": "bar-kuaishou",
-      "type": "rect",
-      "label": "Kuaishou",
-      "parent_section": "chart-section",
-      "color_key": "accent",
-      "importance": "primary",
-      "size_hint": {
-        "min_width": 80,
-        "min_height": 20,
-        "aspect_ratio": null
-      },
-      "content_hint": "柱子高度对应快手视频数量，数值最小"
-    },
-    {
-      "id": "label-youtube",
-      "type": "text_block",
-      "label": "10× more\nthan TikTok",
-      "parent_section": "chart-section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 100,
-        "min_height": 30,
-        "aspect_ratio": null
-      },
-      "content_hint": "放置在YouTube柱子附近，强调倍数关系"
-    },
-    {
-      "id": "label-tiktok",
-      "type": "text_block",
-      "label": "2× more\nthan Kuaishou",
-      "parent_section": "chart-section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 100,
-        "min_height": 30,
-        "aspect_ratio": null
-      },
-      "content_hint": "放置在TikTok柱子附近"
-    },
-    {
-      "id": "insight-text",
-      "type": "text_block",
-      "label": "• YouTube dominates with 10× the video library of TikTok\n• TikTok still holds 2× the content volume of Kuaishou\n• The supply gap reveals YouTube’s long-tail content advantage",
-      "parent_section": "insight-section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 500,
-        "min_height": 80,
-        "aspect_ratio": null
-      },
-      "content_hint": "展示三个核心洞察要点，使用项目符号列表"
-    },
-    {
-      "id": "footer-note",
-      "type": "text_block",
-      "label": "Data based on public estimates, 2025",
-      "parent_section": "footer-section",
+      "parent_section": "chart_section",
       "color_key": "text_secondary",
       "importance": "tertiary",
       "size_hint": {
-        "min_width": 200,
-        "min_height": 15,
+        "min_width": 2,
+        "min_height": 300,
         "aspect_ratio": null
       },
-      "content_hint": "脚注，展示数据来源和年份"
+      "content_hint": "类别轴（Y轴），位于图表左侧，标注平台名称"
+    },
+    {
+      "id": "axis_x",
+      "type": "line",
+      "label": "",
+      "parent_section": "chart_section",
+      "color_key": "text_secondary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 400,
+        "min_height": 2,
+        "aspect_ratio": null
+      },
+      "content_hint": "数值轴（X轴），位于图表底部，刻度从0到25（以快手=1）"
+    },
+    {
+      "id": "bar_youtube",
+      "type": "rect",
+      "label": "YouTube (20x)",
+      "parent_section": "chart_section",
+      "color_key": "primary",
+      "importance": "primary",
+      "size_hint": {
+        "min_width": 300,
+        "min_height": 30,
+        "aspect_ratio": null
+      },
+      "content_hint": "YouTube条形，宽度按比例占据X轴20单位长度（占总条宽80%），颜色 primary #4A90D9，高度30px，左侧对齐Y轴标签"
+    },
+    {
+      "id": "bar_tiktok",
+      "type": "rect",
+      "label": "TikTok (2x)",
+      "parent_section": "chart_section",
+      "color_key": "secondary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 40,
+        "min_height": 30,
+        "aspect_ratio": null
+      },
+      "content_hint": "TikTok条形，宽度2单位（占总条宽8%），颜色 secondary #7B68EE"
+    },
+    {
+      "id": "bar_kuaishou",
+      "type": "rect",
+      "label": "快手 (1x)",
+      "parent_section": "chart_section",
+      "color_key": "accent",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 20,
+        "min_height": 30,
+        "aspect_ratio": null
+      },
+      "content_hint": "快手基准条形，宽度1单位（占总条宽4%），颜色 accent #27AE60"
+    },
+    {
+      "id": "label_youtube",
+      "type": "text_block",
+      "label": "20×",
+      "parent_section": "chart_section",
+      "color_key": "text_primary",
+      "importance": "primary",
+      "size_hint": {
+        "min_width": 50,
+        "min_height": 20,
+        "aspect_ratio": null
+      },
+      "content_hint": "YouTube条形末端标签，标注20倍，使用 label_size Medium"
+    },
+    {
+      "id": "label_tiktok",
+      "type": "text_block",
+      "label": "2×",
+      "parent_section": "chart_section",
+      "color_key": "text_primary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 30,
+        "min_height": 20,
+        "aspect_ratio": null
+      },
+      "content_hint": "TikTok条形末端标签，标注2倍"
+    },
+    {
+      "id": "label_kuaishou",
+      "type": "text_block",
+      "label": "1× (基准)",
+      "parent_section": "chart_section",
+      "color_key": "text_primary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 50,
+        "min_height": 20,
+        "aspect_ratio": null
+      },
+      "content_hint": "快手条形末端标签，标注1倍基准"
+    },
+    {
+      "id": "comparison_arrow_10x",
+      "type": "line",
+      "label": "10倍",
+      "parent_section": "chart_section",
+      "color_key": "accent",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 100,
+        "min_height": 1,
+        "aspect_ratio": null
+      },
+      "content_hint": "从TikTok条形末端（2单位处）延伸到YouTube条形的比较线，虚线，带箭头，上方标注'10倍'"
+    },
+    {
+      "id": "comparison_arrow_2x",
+      "type": "line",
+      "label": "2倍",
+      "parent_section": "chart_section",
+      "color_key": "accent",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 40,
+        "min_height": 1,
+        "aspect_ratio": null
+      },
+      "content_hint": "从快手条形末端（1单位处）到TikTok条形的比较线，虚线箭头，标注'2倍'"
+    },
+    {
+      "id": "comparison_arrow_20x",
+      "type": "line",
+      "label": "20倍（推断）",
+      "parent_section": "chart_section",
+      "color_key": "accent",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 140,
+        "min_height": 1,
+        "aspect_ratio": null
+      },
+      "content_hint": "从快手末端到YouTube条形的跨线比较，用不同样式的虚线或括号，标注'20倍（推断）'"
+    },
+    {
+      "id": "legend",
+      "type": "rect",
+      "label": "",
+      "parent_section": "chart_section",
+      "color_key": "background",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 150,
+        "min_height": 60,
+        "aspect_ratio": null
+      },
+      "content_hint": "图例区域，包含三个色块和平台名称：蓝色YouTube、紫色TikTok、绿色快手"
+    },
+    {
+      "id": "footer_text",
+      "type": "text_block",
+      "label": "* 以快手视频数量为基准（1x），数据基于用户提供倍数关系推算",
+      "parent_section": "footer_section",
+      "color_key": "text_secondary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 400,
+        "min_height": 20,
+        "aspect_ratio": null
+      },
+      "content_hint": "脚注说明文字，使用 label_size，颜色 text_secondary"
     }
   ],
   "connections": [
     {
-      "id": "conn-yt-tt",
-      "type": "curve",
-      "from_element": "bar-tiktok",
-      "to_element": "bar-youtube",
+      "id": "conn_10x",
+      "type": "dashed",
+      "from_element": "bar_tiktok",
+      "to_element": "bar_youtube",
       "direction": "left-to-right",
-      "label": "10× more",
+      "label": "10倍",
       "line_style": "dashed"
     },
     {
-      "id": "conn-tt-ks",
-      "type": "curve",
-      "from_element": "bar-kuaishou",
-      "to_element": "bar-tiktok",
+      "id": "conn_2x",
+      "type": "dashed",
+      "from_element": "bar_kuaishou",
+      "to_element": "bar_tiktok",
       "direction": "left-to-right",
-      "label": "2× more",
+      "label": "2倍",
       "line_style": "dashed"
+    },
+    {
+      "id": "conn_20x",
+      "type": "dashed",
+      "from_element": "bar_kuaishou",
+      "to_element": "bar_youtube",
+      "direction": "left-to-right",
+      "label": "20倍 (推断)",
+      "line_style": "dotted"
     }
   ],
-  "design_notes": "采用简洁现代的扁平化风格，背景为浅蓝灰色，标题居中加粗。条形图区三个柱子从左到右依次为Kuaishou、TikTok、YouTube，高度表达相对规模（YouTube: 400px, TikTok: 40px, Kuaishou: 20px）。Y轴隐藏或淡化刻度，突出高度差异。两条虚线曲线连接柱顶，直接标注倍数关系，视觉上将对比逻辑具象化。左侧添加清晰的平台logo占位或首字母图标辅助识别。洞察文本置于图表下方，使用圆点列表，字体略小于标题。整体颜色柔和但柱子颜色鲜明，确保10倍差距一目了然。留白充裕，元素间不少于20px间距，所有文本使用系统无衬线字体以保证多语言可读性。"
+  "design_notes": "整体采用干净的数据看板风格，浅蓝白背景。主标题醒目置于顶部居中。水平条形图纵轴依次排列快手、TikTok、YouTube，横轴为相对视频数量。条形宽度严格按比例（1:2:20），并用品牌色彩区分。条形末端直接标注倍数，避免猜测。在条形之间使用虚线箭头连接，清晰展示10倍和2倍的直接对比，并加一条从快手指向YouTube的虚线点线表示推断的20倍关系，使倍数逻辑一目了然。图例放置在右上角或下方，保持视觉平衡。所有文字使用系统无衬线字体，保证跨平台清晰度。留白充裕，使比较关系突出，无压抑感。"
 }

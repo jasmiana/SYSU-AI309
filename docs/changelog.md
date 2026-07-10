@@ -4,6 +4,50 @@
 
 ---
 
+---
+
+## Phase 3: 知识增强与高级特性 — 2026-07-10
+
+**目标**: 集成知识检索、fallback 知识库、few-shot 可视化范式、PPT 导出。
+
+### 任务 3.1-3.2: 知识检索 + Fallback 知识库
+
+**知识检索模块** (src/knowledge/search.py):
+- Wikipedia API 封装 (wikipedia 包, 自动中英文切换)
+- 本地 fallback 数据库: 3 个预设主题
+  - 中山大学发展历程 (12 个关键时间节点 + 百年叙事)
+  - 词向量可视化范式 (2D投影/类比展示/语义空间 + few-shot示例)
+  - 大语言模型核心概念 (Transformer组件/训练阶段/推理流程)
+- 关键词映射表: 中文/英文/缩写匹配
+- retrieve_knowledge() 统一入口: Fallback DB -> Wikipedia -> 无结果
+- 知识格式化: 时间线/范式/概念三种格式自动适配
+
+**流水线集成** (orchestrator.py):
+- Agent 1 后新增 Knowledge Retrieval 步骤
+- 仅当 knowledge_gap.needs_external_knowledge==true 时触发
+- 知识注入到 content_ir.knowledge_supplement
+- Agent 2 和 Agent 3 的 build_user_prompt 均传递知识补充
+
+**端到端验证** (sample3 SYSU):
+- Knowledge Retriever: 5ms (fallback DB匹配), 3 sources injected
+- Sample3 passed round 1, score 9.2
+
+### 任务 3.3: Few-shot 优化
+
+**svg_guidelines.txt 增强**:
+- 柱状图坐标计算铁律 (baseline/height公式/间距/标签颜色)
+- 散点图/语义空间图布局规范 (circle+text/聚类区域/颜色编码)
+
+### 任务 3.5: PPT 输出
+
+**PPT 导出** (src/knowledge/ppt_exporter.py):
+- python-pptx 生成 16:9 宽屏演示文稿
+- 每样例一页幻灯片: 标题 + prompt + NLP指标 + SVG渲染PNG
+- 汇总页: 所有样例评分概览
+- CLI: python main.py --ppt [path]
+- SVG -> PNG 通过 cairosvg 实时转换
+
+
 ## Phase 2: 质量提升 — 2026-07-10
 
 **目标**: 完整的 4 Agent 流水线 + 渲染验证闭环 + 迭代精炼反馈循环。

@@ -134,7 +134,15 @@ def run_single_sample(sample_id: str, model: str | None = None) -> None:
 
 def main():
     parser = argparse.ArgumentParser(
-        description="Multi-Agent SVG Generation System (Phase 2)",
+        description="Multi-Agent SVG Generation System (Phase 3)",
+    )
+    parser.add_argument(
+        "--ppt",
+        type=str,
+        nargs="?",
+        const="outputs/presentation.pptx",
+        default=None,
+        help="Export results to PPTX file (optional: specify path)",
     )
     parser.add_argument(
         "--sample",
@@ -162,12 +170,21 @@ def main():
             print(f"  {sid}: {info['description']}")
         return
 
+    # -- PPT export mode (no generation needed) -----------------
+    if args.ppt:
+        from src.knowledge.ppt_exporter import export_ppt
+
+        print(f"Exporting PPT to: {args.ppt}")
+        path = export_ppt(args.ppt)
+        print(f"PPT exported: {path}")
+        return
+
     # Validate API configuration
     try:
         config.validate()
     except ValueError as e:
         print(f"Configuration error: {e}")
-        print("Please create a .env file with your ANTHROPIC_API_KEY.")
+        print("Please create a .env file with your DEEPSEEK_API_KEY.")
         print("See .env.example for reference.")
         sys.exit(1)
 

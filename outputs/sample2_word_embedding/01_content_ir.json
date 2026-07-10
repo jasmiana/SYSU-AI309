@@ -1,9 +1,9 @@
 {
   "intent": {
-    "primary_type": "concept_explanation",
-    "secondary_type": "科普",
-    "confidence": 0.95,
-    "reasoning": "明确要求解释概念且强调通俗易懂，属于概念解释与科普的结合。"
+    "primary_type": "科普",
+    "secondary_type": "concept_explanation",
+    "confidence": 0.9,
+    "reasoning": "用户明确要求'通俗易懂地解释词向量（Word Embedding）的基本概念'，这属于面向大众的科普教学，兼具概念解释性质。"
   },
   "entities": [
     {
@@ -11,17 +11,23 @@
       "type": "term",
       "role": "subject",
       "importance": "primary"
+    },
+    {
+      "name": "自然语言处理",
+      "type": "term",
+      "role": "context",
+      "importance": "context"
     }
   ],
   "relations": [],
   "content_summary": {
-    "title": "词向量：让计算机理解词语的意义",
+    "title": "词向量（Word Embedding）的基本概念",
     "key_points": [
-      "词向量是将自然语言中的词语映射为固定长度的实数向量，每个维度代表某种潜在语义特征。",
-      "通过训练，语义相近的词在向量空间中距离较近，比如“猫”和“狗”的向量比“猫”和“汽车”更相似。",
-      "经典方法如Word2Vec利用上下文预测，GloVe基于全局词共现矩阵，能捕获复杂的语法和语义规律。",
-      "词向量可以实现算术运算，例如“国王 - 男人 + 女人 ≈ 王后”，反映词语类比关系。",
-      "这一技术广泛应用于机器翻译、情感分析、问答系统等自然语言处理任务中。"
+      "词向量是将自然语言中的词映射为固定长度的实数向量，完成从离散符号到连续数值的转换。",
+      "向量空间中的距离反映了词语的语义相似度，语义相近的词（如“猫”与“狗”）向量距离更近。",
+      "典型模型包括Word2Vec（通过预测上下文训练）和GloVe（利用全局共现矩阵），均基于大规模文本语料。",
+      "词向量支持有意义的向量运算，例如“国王 - 男人 + 女人 ≈ 王后”，揭示了词语间的类比关系。",
+      "作为NLP的基石技术，词向量广泛应用于文本分类、情感分析、问答系统和机器翻译等任务。"
     ],
     "target_audience": "general",
     "language": "zh"
@@ -29,18 +35,29 @@
   "knowledge_gap": {
     "needs_external_knowledge": true,
     "search_queries": [
-      "词向量 通俗解释",
-      "word embedding 基本概念 科普",
-      "什么是词向量 简单介绍"
+      "词向量 基本概念 通俗解释",
+      "word embedding explained simply"
     ],
-    "fallback_knowledge": "词向量是自然语言处理中的一项核心技术，它将词语表示为稠密、低维、实值的向量，使得语义相似的词语在向量空间中距离接近。典型算法包括Word2Vec、GloVe和FastText，能够学习到分布式表示，支持词语类比和相似度计算。"
+    "fallback_knowledge": "词向量（Word Embedding）是词的分布式表示，将词表示为稠密、低维的实数向量，通过神经网络在大规模语料上训练得到。它能够捕捉语义和语法规律，语义相近的词在向量空间中接近。"
   },
   "chart_type": {
     "recommended": "concept_map",
     "alternatives": [
-      "architecture_diagram",
-      "flowchart"
+      "architecture_diagram"
     ],
-    "type_confidence": 0.9
-  }
+    "type_confidence": 0.85
+  },
+  "knowledge_supplement": "## 词向量可视化设计范式\n\n### 2d_projection: 将高维词向量通过t-SNE或PCA降维至2D平面，语义相似的词在空间中靠近\n视觉元素:\n  - 坐标轴（x/y表示降维后的两个主成分维度）\n  - 彩色散点（每个点代表一个词，颜色按语义类别编码）\n  - 词标签（点在散点旁标注对应词语）\n  - 聚类区域（虚线或半透明色块标注语义类别）\n### analogy_demo: 展示 king - man + woman ≈ queen 的经典词向量类比\n视觉元素:\n  - 左侧：king 和 man 的词向量（箭头从 man 指向 king，标注 '+royal'）\n  - 右侧：woman 和 queen 的词向量（箭头从 woman 指向 queen）\n  - 中间：两个箭头平行，展示语义关系的可迁移性\n  - 底部：公式 king - man + woman = queen\n### semantic_space: 2D坐标平面展示词的语义空间，相似词聚在一起\n\n推荐布局:\n在SVG中采用三区域垂直布局：上部=什么是词向量（文字+数字向量示意图[0.2, 0.8, -0.3, ...]），中部=语义空间散点图（2D坐标平面，彩色词点+聚类色块），下部=类比展示（king-man+woman=queen 矢量图）。配色使用柔和蓝紫渐变，目标受众为不了解NLP的大众。\n\n## 词向量可视化设计范式\n\n### 2d_projection: 将高维词向量通过t-SNE或PCA降维至2D平面，语义相似的词在空间中靠近\n视觉元素:\n  - 坐标轴（x/y表示降维后的两个主成分维度）\n  - 彩色散点（每个点代表一个词，颜色按语义类别编码）\n  - 词标签（点在散点旁标注对应词语）\n  - 聚类区域（虚线或半透明色块标注语义类别）\n### analogy_demo: 展示 king - man + woman ≈ queen 的经典词向量类比\n视觉元素:\n  - 左侧：king 和 man 的词向量（箭头从 man 指向 king，标注 '+royal'）\n  - 右侧：woman 和 queen 的词向量（箭头从 woman 指向 queen）\n  - 中间：两个箭头平行，展示语义关系的可迁移性\n  - 底部：公式 king - man + woman = queen\n### semantic_space: 2D坐标平面展示词的语义空间，相似词聚在一起\n\n推荐布局:\n在SVG中采用三区域垂直布局：上部=什么是词向量（文字+数字向量示意图[0.2, 0.8, -0.3, ...]），中部=语义空间散点图（2D坐标平面，彩色词点+聚类色块），下部=类比展示（king-man+woman=queen 矢量图）。配色使用柔和蓝紫渐变，目标受众为不了解NLP的大众。",
+  "knowledge_sources": [
+    {
+      "query": "词向量 基本概念 通俗解释",
+      "source": "fallback_db",
+      "reliability": "high"
+    },
+    {
+      "query": "word embedding explained simply",
+      "source": "fallback_db",
+      "reliability": "high"
+    }
+  ]
 }

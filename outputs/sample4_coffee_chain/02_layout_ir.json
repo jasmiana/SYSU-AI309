@@ -2,219 +2,316 @@
   "chart_type": "process_diagram",
   "canvas": {
     "width": 800,
-    "height": 1300,
-    "background": "#FAFFFE"
+    "height": 1200,
+    "background": "#FFF8F0"
   },
   "color_scheme": {
-    "name": "自然清新",
-    "primary": "#27AE60",
-    "secondary": "#3498DB",
-    "accent": "#F39C12",
-    "background": "#FAFFFE",
-    "text_primary": "#2C3E50",
-    "text_secondary": "#7F8C8D",
+    "name": "咖啡醇香",
+    "primary": "#8B5A2B",
+    "secondary": "#D2B48C",
+    "accent": "#A0522D",
+    "background": "#FFF8F0",
+    "text_primary": "#4A3622",
+    "text_secondary": "#8B7355",
     "palette": [
-      "#27AE60",
-      "#3498DB",
-      "#F39C12",
-      "#E74C3C",
-      "#2C3E50"
+      "#8B5A2B",
+      "#D2B48C",
+      "#A0522D",
+      "#FFF8F0",
+      "#4A3622",
+      "#8B7355"
     ],
-    "rationale": "咖啡生产是自然到成品的转化过程，选择自然清新的绿色主调象征植物生长，蓝色辅助代表水与科技，橙色点缀体现烘焙的温暖与活力。"
+    "rationale": "采用咖啡主题的暖棕色系，从浅奶白背景到深烘焙棕，突出醇厚、自然的生产流程，与咖啡文化紧密契合。"
   },
   "typography": {
-    "title_size": 32,
-    "heading_size": 22,
-    "body_size": 15,
+    "title_size": 36,
+    "heading_size": 20,
+    "body_size": 16,
     "label_size": 14,
     "font_family": "system-ui, 'Microsoft YaHei', sans-serif"
   },
   "layout_grid": {
-    "columns": 1,
-    "rows": 6,
-    "gutter": 30
+    "columns": 12,
+    "rows": 12,
+    "gutter": 20
   },
   "sections": [
     {
-      "id": "header",
+      "id": "title_section",
       "type": "title",
       "position": {
-        "x_pct": 5,
-        "y_pct": 2,
-        "width_pct": 90,
-        "height_pct": 8
+        "x_pct": 10,
+        "y_pct": 0,
+        "width_pct": 80,
+        "height_pct": 10
       },
       "visual_weight": "primary",
-      "purpose": "展示主标题：从咖啡豆到一杯咖啡的完整生产链"
+      "purpose": "展示流程图主标题，吸引注意力"
     },
     {
-      "id": "flow_area",
+      "id": "process_section",
       "type": "diagram",
       "position": {
         "x_pct": 10,
         "y_pct": 12,
         "width_pct": 80,
-        "height_pct": 85
+        "height_pct": 78
       },
       "visual_weight": "primary",
-      "purpose": "包含7个流程节点（起始、5个步骤、结束）以及连接它们的箭头"
+      "purpose": "包含从咖啡豆到一杯咖啡的完整流程节点和箭头连接"
+    },
+    {
+      "id": "footer_section",
+      "type": "footer",
+      "position": {
+        "x_pct": 0,
+        "y_pct": 92,
+        "width_pct": 100,
+        "height_pct": 8
+      },
+      "visual_weight": "tertiary",
+      "purpose": "放置版权、说明等辅助信息"
     }
   ],
   "elements": [
     {
-      "id": "start",
-      "type": "ellipse",
+      "id": "main_title",
+      "type": "text_block",
+      "label": "从咖啡豆到一杯咖啡的生产链",
+      "parent_section": "title_section",
+      "color_key": "text_primary",
+      "importance": "primary",
+      "size_hint": {
+        "min_width": 400,
+        "min_height": 60,
+        "aspect_ratio": null
+      },
+      "content_hint": "显示为居中的大号标题，使用主标题字号，可搭配咖啡豆装饰图形"
+    },
+    {
+      "id": "start_node",
+      "type": "rounded_rect",
       "label": "咖啡豆",
-      "parent_section": "flow_area",
+      "parent_section": "process_section",
       "color_key": "accent",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 120,
-        "min_height": 50,
+        "min_width": 160,
+        "min_height": 60,
         "aspect_ratio": null
       },
-      "content_hint": "流程起始：生豆原料"
+      "content_hint": "流程起点，圆角矩形，内部显示文字，可添加咖啡豆图标"
     },
     {
-      "id": "planting",
+      "id": "step_1",
       "type": "rounded_rect",
       "label": "种植",
-      "parent_section": "flow_area",
+      "parent_section": "process_section",
       "color_key": "primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 200,
-        "min_height": 60,
+        "min_width": 180,
+        "min_height": 70,
         "aspect_ratio": null
       },
-      "content_hint": "咖啡农培育咖啡树，待咖啡果成熟后进入采摘环节。"
+      "content_hint": "第一步节点，展示步骤名称，可包含种植场景的小图标或说明文字"
     },
     {
-      "id": "harvesting",
+      "id": "step_2",
       "type": "rounded_rect",
       "label": "采摘",
-      "parent_section": "flow_area",
+      "parent_section": "process_section",
       "color_key": "primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 200,
-        "min_height": 60,
+        "min_width": 180,
+        "min_height": 70,
         "aspect_ratio": null
       },
-      "content_hint": "通过手工或机械方式收获成熟的咖啡果实，并进行初步处理以获取生豆。"
+      "content_hint": "第二步节点，展示步骤名称，可附采摘工具或手法示意"
     },
     {
-      "id": "roasting",
+      "id": "step_3",
       "type": "rounded_rect",
       "label": "烘焙",
-      "parent_section": "flow_area",
+      "parent_section": "process_section",
       "color_key": "primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 200,
-        "min_height": 60,
+        "min_width": 180,
+        "min_height": 70,
         "aspect_ratio": null
       },
-      "content_hint": "将生豆放入烘焙机高温加热，使其发生物理化学变化，形成咖啡特有的风味。"
+      "content_hint": "第三步节点，展示步骤名称，可添加烘焙机或火焰元素"
     },
     {
-      "id": "grinding",
+      "id": "step_4",
       "type": "rounded_rect",
       "label": "研磨",
-      "parent_section": "flow_area",
+      "parent_section": "process_section",
       "color_key": "primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 200,
-        "min_height": 60,
+        "min_width": 180,
+        "min_height": 70,
         "aspect_ratio": null
       },
-      "content_hint": "将烘焙好的咖啡豆研磨成粗细适中的咖啡粉。"
+      "content_hint": "第四步节点，展示步骤名称，可附研磨设备或粉末效果"
     },
     {
-      "id": "brewing",
+      "id": "step_5",
       "type": "rounded_rect",
       "label": "冲煮",
-      "parent_section": "flow_area",
+      "parent_section": "process_section",
       "color_key": "primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 200,
-        "min_height": 60,
+        "min_width": 180,
+        "min_height": 70,
         "aspect_ratio": null
       },
-      "content_hint": "通过热水萃取咖啡粉，得到最终的咖啡饮品。"
+      "content_hint": "第五步节点，展示步骤名称，可添加入热水滴滤图标"
     },
     {
-      "id": "end",
-      "type": "ellipse",
+      "id": "end_node",
+      "type": "rounded_rect",
       "label": "一杯咖啡",
-      "parent_section": "flow_area",
+      "parent_section": "process_section",
       "color_key": "accent",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 120,
-        "min_height": 50,
+        "min_width": 160,
+        "min_height": 60,
         "aspect_ratio": null
       },
-      "content_hint": "最终成品：一杯香浓咖啡"
+      "content_hint": "流程终点，圆角矩形，内部显示文字，可放置咖啡杯图形"
+    },
+    {
+      "id": "step_number_1",
+      "type": "circle",
+      "label": "1",
+      "parent_section": "process_section",
+      "color_key": "secondary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 30,
+        "min_height": 30,
+        "aspect_ratio": 1
+      },
+      "content_hint": "步骤序号圆形标记，置于step_1节点左上角或连接线上方"
+    },
+    {
+      "id": "step_number_2",
+      "type": "circle",
+      "label": "2",
+      "parent_section": "process_section",
+      "color_key": "secondary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 30,
+        "min_height": 30,
+        "aspect_ratio": 1
+      },
+      "content_hint": "步骤序号圆形标记，置于step_2节点左上角"
+    },
+    {
+      "id": "step_number_3",
+      "type": "circle",
+      "label": "3",
+      "parent_section": "process_section",
+      "color_key": "secondary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 30,
+        "min_height": 30,
+        "aspect_ratio": 1
+      },
+      "content_hint": "步骤序号圆形标记，置于step_3节点左上角"
+    },
+    {
+      "id": "step_number_4",
+      "type": "circle",
+      "label": "4",
+      "parent_section": "process_section",
+      "color_key": "secondary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 30,
+        "min_height": 30,
+        "aspect_ratio": 1
+      },
+      "content_hint": "步骤序号圆形标记，置于step_4节点左上角"
+    },
+    {
+      "id": "step_number_5",
+      "type": "circle",
+      "label": "5",
+      "parent_section": "process_section",
+      "color_key": "secondary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 30,
+        "min_height": 30,
+        "aspect_ratio": 1
+      },
+      "content_hint": "步骤序号圆形标记，置于step_5节点左上角"
     }
   ],
   "connections": [
     {
-      "id": "conn1",
+      "id": "conn_start_step1",
       "type": "arrow",
-      "from_element": "start",
-      "to_element": "planting",
+      "from_element": "start_node",
+      "to_element": "step_1",
       "direction": "top-to-bottom",
       "label": null,
       "line_style": "solid"
     },
     {
-      "id": "conn2",
+      "id": "conn_step1_step2",
       "type": "arrow",
-      "from_element": "planting",
-      "to_element": "harvesting",
+      "from_element": "step_1",
+      "to_element": "step_2",
       "direction": "top-to-bottom",
       "label": null,
       "line_style": "solid"
     },
     {
-      "id": "conn3",
+      "id": "conn_step2_step3",
       "type": "arrow",
-      "from_element": "harvesting",
-      "to_element": "roasting",
+      "from_element": "step_2",
+      "to_element": "step_3",
       "direction": "top-to-bottom",
       "label": null,
       "line_style": "solid"
     },
     {
-      "id": "conn4",
+      "id": "conn_step3_step4",
       "type": "arrow",
-      "from_element": "roasting",
-      "to_element": "grinding",
+      "from_element": "step_3",
+      "to_element": "step_4",
       "direction": "top-to-bottom",
       "label": null,
       "line_style": "solid"
     },
     {
-      "id": "conn5",
+      "id": "conn_step4_step5",
       "type": "arrow",
-      "from_element": "grinding",
-      "to_element": "brewing",
+      "from_element": "step_4",
+      "to_element": "step_5",
       "direction": "top-to-bottom",
       "label": null,
       "line_style": "solid"
     },
     {
-      "id": "conn6",
+      "id": "conn_step5_end",
       "type": "arrow",
-      "from_element": "brewing",
-      "to_element": "end",
+      "from_element": "step_5",
+      "to_element": "end_node",
       "direction": "top-to-bottom",
       "label": null,
       "line_style": "solid"
     }
   ],
-  "design_notes": "整体采用现代简约风格，垂直流程清晰易读。节点使用圆角矩形（过程）和椭圆（起止）区分，搭配柔和阴影和渐变，箭头光滑连接。配色选用自然清新的绿色主调，象征植物生长，点缀橙色突出起点与终点。可在背景或角落添加半透明的咖啡豆、叶片等装饰元素，增强主题氛围。文字排版主次分明，标题醒目，描述清晰，确保从‘咖啡豆’到‘一杯咖啡’的完整旅程流畅且富有美感。节点内可放置简短图标，如叶片、咖啡豆、烘焙火焰、研磨器、咖啡杯等，增强视觉识别。"
+  "design_notes": "请采用自上而下的垂直流程图，以暖棕色系为主调。主标题居中放置在顶部，下方为咖啡豆起点图标，然后通过五个圆角矩形步骤节点依次展示种植、采摘、烘焙、研磨、冲煮，最后导向一杯咖啡终点。每个步骤节点左上角用圆形序号标记，节点间用粗实线箭头连接，箭头颜色与主色调协调。节点内部使用图标+文字的组合，背景色块区分层级：起点和终点使用强调色，步骤节点使用主色。整体风格温馨、专业，适当留白，确保阅读流畅。"
 }
