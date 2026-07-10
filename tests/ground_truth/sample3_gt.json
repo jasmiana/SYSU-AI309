@@ -1,0 +1,32 @@
+{
+  "sample_id": "sample3",
+  "prompt": "绘制白色背景的SVG信息图，展示中山大学的发展历程",
+  "annotation_notes": "提示词仅给出'中山大学的发展历程'作为主题。ground truth标注了提示词字面包含的实体（中山大学）以及经过外部知识检索后一个合格的系统应当掌握的SYSU关键历史节点和相关信息。标注聚焦于时间线可视化中必然出现的核心人物、关键年份、重要地点和标志性事件相关术语。",
+  "ground_truth_entities": [
+    {"name": "中山大学", "type": "organization", "role": "subject", "importance": "primary"},
+    {"name": "孙中山", "type": "person", "role": "subject", "importance": "primary"},
+    {"name": "1924年", "type": "date", "role": "attribute", "importance": "secondary"},
+    {"name": "1926年", "type": "date", "role": "attribute", "importance": "secondary"},
+    {"name": "1952年", "type": "date", "role": "attribute", "importance": "secondary"},
+    {"name": "2000年", "type": "date", "role": "attribute", "importance": "secondary"},
+    {"name": "2001年", "type": "date", "role": "attribute", "importance": "secondary"},
+    {"name": "2017年", "type": "date", "role": "attribute", "importance": "secondary"},
+    {"name": "2024年", "type": "date", "role": "attribute", "importance": "secondary"},
+    {"name": "中山医科大学", "type": "organization", "role": "object", "importance": "secondary"},
+    {"name": "双一流", "type": "term", "role": "attribute", "importance": "secondary"},
+    {"name": "广州", "type": "location", "role": "attribute", "importance": "context"},
+    {"name": "珠海", "type": "location", "role": "attribute", "importance": "context"},
+    {"name": "深圳", "type": "location", "role": "attribute", "importance": "context"}
+  ],
+  "ground_truth_relations": [
+    {"type": "temporal", "source": "1924年", "target": "1926年", "quantifier": null},
+    {"type": "temporal", "source": "1926年", "target": "1952年", "quantifier": null},
+    {"type": "temporal", "source": "1952年", "target": "2000年", "quantifier": null},
+    {"type": "temporal", "source": "2000年", "target": "2001年", "quantifier": null},
+    {"type": "temporal", "source": "2001年", "target": "2017年", "quantifier": null},
+    {"type": "temporal", "source": "2017年", "target": "2024年", "quantifier": null},
+    {"type": "hierarchy", "source": "孙中山", "target": "中山大学", "quantifier": null},
+    {"type": "hierarchy", "source": "中山大学", "target": "中山医科大学", "quantifier": null},
+    {"type": "hierarchy", "source": "中山大学", "target": "双一流", "quantifier": null}
+  ]
+}

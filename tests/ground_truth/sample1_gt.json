@@ -1,0 +1,32 @@
+{
+  "sample_id": "sample1",
+  "prompt": "绘制白色背景的SVG信息图解释大语言模型的基本原理",
+  "annotation_notes": "提示词仅给出主题'大语言模型基本原理'10个字。ground truth扩展到该主题下合格的Agent 1应当分析出的核心概念——即解释LLM原理时必然涉及的关键组件和训练阶段。标注范围包括Transformer架构的核心组件和LLM的训练范式。",
+  "ground_truth_entities": [
+    {"name": "大语言模型", "type": "term", "role": "subject", "importance": "primary"},
+    {"name": "Transformer", "type": "term", "role": "subject", "importance": "primary"},
+    {"name": "自注意力机制", "type": "term", "role": "subject", "importance": "secondary"},
+    {"name": "多头注意力", "type": "term", "role": "subject", "importance": "secondary"},
+    {"name": "前馈神经网络", "type": "term", "role": "subject", "importance": "secondary"},
+    {"name": "位置编码", "type": "term", "role": "subject", "importance": "secondary"},
+    {"name": "词嵌入", "type": "term", "role": "subject", "importance": "secondary"},
+    {"name": "残差连接", "type": "term", "role": "attribute", "importance": "secondary"},
+    {"name": "层归一化", "type": "term", "role": "attribute", "importance": "secondary"},
+    {"name": "预训练", "type": "term", "role": "attribute", "importance": "secondary"},
+    {"name": "监督微调", "type": "term", "role": "attribute", "importance": "secondary"},
+    {"name": "RLHF", "type": "term", "role": "attribute", "importance": "secondary"}
+  ],
+  "ground_truth_relations": [
+    {"type": "hierarchy", "source": "大语言模型", "target": "Transformer", "quantifier": null},
+    {"type": "hierarchy", "source": "Transformer", "target": "自注意力机制", "quantifier": null},
+    {"type": "hierarchy", "source": "自注意力机制", "target": "多头注意力", "quantifier": null},
+    {"type": "hierarchy", "source": "Transformer", "target": "前馈神经网络", "quantifier": null},
+    {"type": "hierarchy", "source": "Transformer", "target": "位置编码", "quantifier": null},
+    {"type": "hierarchy", "source": "Transformer", "target": "词嵌入", "quantifier": null},
+    {"type": "hierarchy", "source": "Transformer", "target": "残差连接", "quantifier": null},
+    {"type": "hierarchy", "source": "Transformer", "target": "层归一化", "quantifier": null},
+    {"type": "sequence", "source": "词嵌入", "target": "位置编码", "quantifier": null},
+    {"type": "sequence", "source": "预训练", "target": "监督微调", "quantifier": null},
+    {"type": "sequence", "source": "监督微调", "target": "RLHF", "quantifier": null}
+  ]
+}

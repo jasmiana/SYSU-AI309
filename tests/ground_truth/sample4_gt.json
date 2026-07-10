@@ -1,0 +1,23 @@
+{
+  "sample_id": "sample4",
+  "prompt": "绘制 SVG 流程图，展示从一颗咖啡豆到一杯咖啡的完整生产链（种植、采摘、烘焙、研磨、冲煮）",
+  "annotation_notes": "提示词给出了完整的流程步骤（种植→采摘→烘焙→研磨→冲煮），信息充分，无需外部知识检索。ground truth标注了流程的起始物料（咖啡豆）、终点产物（咖啡）、以及全部5个步骤节点。这是5个样例中信息最明确的，标注的模糊性最低。",
+  "ground_truth_entities": [
+    {"name": "咖啡豆", "type": "term", "role": "subject", "importance": "primary"},
+    {"name": "咖啡", "type": "term", "role": "object", "importance": "primary"},
+    {"name": "种植", "type": "term", "role": "attribute", "importance": "primary"},
+    {"name": "采摘", "type": "term", "role": "attribute", "importance": "primary"},
+    {"name": "烘焙", "type": "term", "role": "attribute", "importance": "primary"},
+    {"name": "研磨", "type": "term", "role": "attribute", "importance": "primary"},
+    {"name": "冲煮", "type": "term", "role": "attribute", "importance": "primary"},
+    {"name": "生产链", "type": "term", "role": "attribute", "importance": "secondary"}
+  ],
+  "ground_truth_relations": [
+    {"type": "sequence", "source": "咖啡豆", "target": "种植", "quantifier": null},
+    {"type": "sequence", "source": "种植", "target": "采摘", "quantifier": null},
+    {"type": "sequence", "source": "采摘", "target": "烘焙", "quantifier": null},
+    {"type": "sequence", "source": "烘焙", "target": "研磨", "quantifier": null},
+    {"type": "sequence", "source": "研磨", "target": "冲煮", "quantifier": null},
+    {"type": "sequence", "source": "冲煮", "target": "咖啡", "quantifier": null}
+  ]
+}

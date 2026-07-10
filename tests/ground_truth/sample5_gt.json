@@ -1,0 +1,19 @@
+{
+  "sample_id": "sample5",
+  "prompt": "绘制白色背景的SVG信息图，对比以下数据：YouTube has 10 times more videos than TikTok, TikTok has 2 times more than Kuaishou",
+  "annotation_notes": "提示词明确给出了三个平台及两组倍数关系。ground truth标注了三个视频平台实体、倍数值实体（含隐含的基准值1x）、以及它们之间的比较关系。隐含的YouTube→Kuaishou 20倍关系也作为可推导关系标注（由10×2=20得出）。TikTok→Kuaishou的2倍关系推广到Kuaishou→TikTok的1/2关系也标注了反向比较。",
+  "ground_truth_entities": [
+    {"name": "YouTube", "type": "organization", "role": "subject", "importance": "primary"},
+    {"name": "TikTok", "type": "organization", "role": "object", "importance": "primary"},
+    {"name": "Kuaishou", "type": "organization", "role": "object", "importance": "primary"},
+    {"name": "10", "type": "number", "role": "attribute", "importance": "primary"},
+    {"name": "2", "type": "number", "role": "attribute", "importance": "primary"},
+    {"name": "1", "type": "number", "role": "attribute", "importance": "secondary"},
+    {"name": "videos", "type": "term", "role": "attribute", "importance": "secondary"}
+  ],
+  "ground_truth_relations": [
+    {"type": "comparison", "source": "YouTube", "target": "TikTok", "quantifier": "10 times more"},
+    {"type": "comparison", "source": "TikTok", "target": "Kuaishou", "quantifier": "2 times more"},
+    {"type": "comparison", "source": "YouTube", "target": "Kuaishou", "quantifier": "20 times more"}
+  ]
+}

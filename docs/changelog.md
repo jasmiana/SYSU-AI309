@@ -47,6 +47,51 @@
 - CLI: python main.py --ppt [path]
 - SVG -> PNG 通过 cairosvg 实时转换
 
+### 任务 3.6: NER/RE 标注与评估 — 2026-07-10
+
+**目标**: 按 optimization_analysis.md §4 方案，创建 5 个 ground truth 标注文件 + 评估脚本，为报告的 NLP 知识运用分析提供定量数据支撑。
+
+**Ground Truth 标注** (tests/ground_truth/sample{1-5}_gt.json):
+- 对 5 个必选样例的提示词分别标注人工 ground truth
+- 标注原则:
+  - 实体类型: person / organization / location / term / number / date
+  - 关系类型: comparison / hierarchy / sequence / causality / temporal
+  - sample1-3 的标注扩展到"一个合格的 Agent 1 应该从该提示词中分析出的隐含信息"范围
+  - 名称匹配: 大小写不敏感、trim 空格；关系匹配: (source, target, type) 三元组精确匹配
+- 标注量:
+
+| 样例 | 实体数 | 关系数 | 标注策略 |
+|------|:-----:|:-----:|----------|
+| sample1 (LLM原理) | 12 | 11 | 扩展到 Transformer 组件 + 训练三阶段 |
+| sample2 (词向量) | 11 | 8 | 扩展到核心模型/方法 + 语义空间概念 |
+| sample3 (SYSU) | 14 | 9 | 扩展到关键人物/年月/地点/术语 |
+| sample4 (咖啡链) | 8 | 6 | 直接标注提示词中明确的步骤 |
+| sample5 (数据对比) | 7 | 3 | 标注平台 + 倍数值 + 隐含基准值 1x |
+
+**评估脚本** (tests/evaluate_ner_re.py):
+- 读取 ground truth 和 Agent 1 的 `entities[]` / `relations[]` 结构化字段
+- 实体级评估: 名称完全匹配 (case-insensitive, whitespace-trimmed)
+- 关系级评估: (source, target, type) 三元组匹配 (quantifier 不参与匹配)
+- 三级汇总: Per-sample + Micro Avg + Macro Avg
+- 支持 --verbose (显示 TP/FP/FN 详情) 和 --json (导出完整结果)
+- 支持 --sample 单样例评估
+
+**基线评估结果** (当前 Agent 1 prompt):
+
+| 样例 | NER F1 | RE F1 | 关键发现 |
+|------|:------:|:-----:|----------|
+| sample1 (LLM) | 0.154 | 0.000 | 仅抽 1/12 实体 (大语言模型), 0 关系 |
+| sample2 (词向量) | 0.308 | 0.000 | 仅抽 2/11 实体, 0 关系 |
+| sample3 (SYSU) | 0.133 | 0.000 | 仅抽 1/14 实体, 1 FP 关系 (target 非实体名) |
+| sample4 (咖啡) | 0.800 | 0.909 | 提示词信息充分, 表现最好 |
+| sample5 (数据) | 0.615 | 1.000 | RE 完美, NER 实体名匹配偏差 (数字格式) |
+| **Micro Avg** | **0.406** | **0.348** | — |
+| **Macro Avg** | **0.402** | **0.382** | — |
+
+**根因分析**: Agent 1 在 key_points 自由文本中提到了大量实体名词（Transformer、自注意力、预训练等），但未能将其提取到结构化 `entities[]` 数组中。评估脚本仅读取 `entities[]` 字段——这暴露了 Agent 1 的 NER 结构化输出短板（"知道但没抽出来"），而非脚本缺陷。这是后续 prompt 优化的靶点。
+
+**评估脚本关键设计决策**: 仅评估 `entities[]` 和 `relations[]` 结构化字段，不扫描 key_points/knowledge_supplement 等自由文本字段。评估的是 Agent 1 的 **结构化 NER/RE 输出质量**，而非其"是否在分析文本中提到过这些词"。
+
 
 ## Phase 2: 质量提升 — 2026-07-10
 

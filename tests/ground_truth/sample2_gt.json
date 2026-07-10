@@ -1,0 +1,28 @@
+{
+  "sample_id": "sample2",
+  "prompt": "绘制白色背景的SVG信息图，通俗易懂地解释词向量（Word Embedding）的基本概念",
+  "annotation_notes": "提示词给出了明确的主题'词向量基本概念'且要求'通俗易懂'。ground truth标注了词向量科普中最核心的概念：核心术语、关键模型/方法、以及词向量标志性的特性（语义相似性、向量运算/类比）。标注聚焦于'通俗解释'场景下应当出现的概念，避免过于学术化的子概念（如具体的损失函数、梯度计算等）。",
+  "ground_truth_entities": [
+    {"name": "词向量", "type": "term", "role": "subject", "importance": "primary"},
+    {"name": "Word Embedding", "type": "term", "role": "subject", "importance": "primary"},
+    {"name": "Word2Vec", "type": "term", "role": "subject", "importance": "secondary"},
+    {"name": "GloVe", "type": "term", "role": "subject", "importance": "secondary"},
+    {"name": "分布式表示", "type": "term", "role": "subject", "importance": "secondary"},
+    {"name": "语义空间", "type": "term", "role": "subject", "importance": "secondary"},
+    {"name": "语义相似性", "type": "term", "role": "attribute", "importance": "secondary"},
+    {"name": "向量运算", "type": "term", "role": "attribute", "importance": "secondary"},
+    {"name": "one-hot编码", "type": "term", "role": "attribute", "importance": "secondary"},
+    {"name": "降维", "type": "term", "role": "attribute", "importance": "context"},
+    {"name": "自然语言处理", "type": "term", "role": "context", "importance": "context"}
+  ],
+  "ground_truth_relations": [
+    {"type": "hierarchy", "source": "词向量", "target": "分布式表示", "quantifier": null},
+    {"type": "hierarchy", "source": "词向量", "target": "Word2Vec", "quantifier": null},
+    {"type": "hierarchy", "source": "词向量", "target": "GloVe", "quantifier": null},
+    {"type": "hierarchy", "source": "词向量", "target": "语义空间", "quantifier": null},
+    {"type": "comparison", "source": "分布式表示", "target": "one-hot编码", "quantifier": null},
+    {"type": "hierarchy", "source": "语义空间", "target": "语义相似性", "quantifier": null},
+    {"type": "hierarchy", "source": "语义空间", "target": "向量运算", "quantifier": null},
+    {"type": "hierarchy", "source": "自然语言处理", "target": "词向量", "quantifier": null}
+  ]
+}
