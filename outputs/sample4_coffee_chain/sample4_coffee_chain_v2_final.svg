@@ -1,0 +1,168 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" width="800" height="1200">
+    <defs>
+        <!-- 滤镜 -->
+        <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
+            <feDropShadow dx="2" dy="5" stdDeviation="5" flood-color="#000000" flood-opacity="0.08"/>
+        </filter>
+        <filter id="titleShadow" x="-5%" y="-5%" width="110%" height="110%">
+            <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.15"/>
+        </filter>
+        
+        <!-- 渐变 -->
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+            <stop offset="0%" stop-color="#FFFFFF"/>
+            <stop offset="100%" stop-color="#FAFFFE"/>
+        </linearGradient>
+        <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+            <stop offset="0%" stop-color="#27AE60"/>
+            <stop offset="50%" stop-color="#2ECC71"/>
+            <stop offset="100%" stop-color="#F39C12"/>
+        </linearGradient>
+
+        <!-- 箭头 -->
+        <marker id="arrowGreen" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+            <polygon points="0 0, 8 4, 0 8" fill="#27AE60" />
+        </marker>
+        <marker id="arrowGold" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+            <polygon points="0 0, 8 4, 0 8" fill="#F39C12" />
+        </marker>
+    </defs>
+
+    <!-- 背景 -->
+    <rect width="800" height="1200" fill="url(#bgGrad)"/>
+
+    <!-- 标题区域 -->
+    <g id="title-section">
+        <rect x="0" y="0" width="800" height="100" fill="url(#titleGrad)" filter="url(#titleShadow)"/>
+        <rect x="0" y="95" width="800" height="5" fill="#FFFFFF" fill-opacity="0.3"/>
+        <text x="400" y="45" text-anchor="middle" fill="#FFFFFF" fill-opacity="0.85" font-size="14" font-weight="bold" letter-spacing="4" font-family="'Microsoft YaHei', sans-serif">FROM BEAN TO CUP</text>
+        <text x="400" y="78" text-anchor="middle" fill="#FFFFFF" font-size="34" font-weight="bold" font-family="'Microsoft YaHei', sans-serif">从咖啡豆到一杯咖啡的生产链</text>
+    </g>
+
+    <!-- 流程主干道 -->
+    <!-- 起点节点 -->
+    <g id="start-node">
+        <ellipse cx="400" cy="170" rx="80" ry="35" fill="#27AE60" filter="url(#cardShadow)"/>
+        <ellipse cx="400" cy="170" rx="75" ry="30" fill="none" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="2"/>
+        <text x="400" y="178" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="'Microsoft YaHei', sans-serif">一颗咖啡豆</text>
+    </g>
+
+    <!-- 连接线 起点 -> 步骤 1 -->
+    <g id="conn-start-step1">
+        <line x1="400" y1="205" x2="400" y2="225" stroke="#27AE60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+        <text x="425" y="218" fill="#A0AEC0" font-size="10" font-weight="bold" font-family="Arial, sans-serif">SEQUENCE</text>
+    </g>
+
+    <!-- 步骤 1: 种植 -->
+    <g id="step1-card">
+        <rect x="140" y="230" width="520" height="120" rx="12" fill="#FFFFFF" filter="url(#cardShadow)" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="140" y="230" width="8" height="120" rx="4" fill="#27AE60"/>
+        <circle cx="200" cy="290" r="32" fill="#27AE60"/>
+        <text x="200" y="298" text-anchor="middle" fill="#FFFFFF" font-size="22" font-weight="bold" font-family="Arial, sans-serif">1</text>
+        <text x="250" y="275" fill="#2C3E50" font-size="20" font-weight="bold" font-family="'Microsoft YaHei', sans-serif">种植</text>
+        <text x="250" y="305" fill="#4A5568" font-size="14" font-family="'Microsoft YaHei', sans-serif">
+            <tspan x="250" dy="0">选择优质种子，在适宜气候和海拔的</tspan>
+            <tspan x="250" dy="22">土壤中播种，咖啡树需3-4年才能</tspan>
+            <tspan x="250" dy="22">结果。</tspan>
+        </text>
+    </g>
+
+    <!-- 连接线 步骤 1 -> 步骤 2 -->
+    <g id="conn-step1-step2">
+        <line x1="400" y1="355" x2="400" y2="365" stroke="#27AE60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+        <text x="425" y="363" fill="#A0AEC0" font-size="10" font-weight="bold" font-family="Arial, sans-serif">SEQUENCE</text>
+    </g>
+
+    <!-- 步骤 2: 采摘 -->
+    <g id="step2-card">
+        <rect x="140" y="370" width="520" height="120" rx="12" fill="#FFFFFF" filter="url(#cardShadow)" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="140" y="370" width="8" height="120" rx="4" fill="#3498DB"/>
+        <circle cx="200" cy="430" r="32" fill="#3498DB"/>
+        <text x="200" y="438" text-anchor="middle" fill="#FFFFFF" font-size="22" font-weight="bold" font-family="Arial, sans-serif">2</text>
+        <text x="250" y="415" fill="#2C3E50" font-size="20" font-weight="bold" font-family="'Microsoft YaHei', sans-serif">采摘</text>
+        <text x="250" y="445" fill="#4A5568" font-size="14" font-family="'Microsoft YaHei', sans-serif">
+            <tspan x="250" dy="0">当咖啡果实成熟变为红色时，通过</tspan>
+            <tspan x="250" dy="22">手工或机器采摘，确保只摘取成熟</tspan>
+            <tspan x="250" dy="22">果实以保证品质。</tspan>
+        </text>
+    </g>
+
+    <!-- 连接线 步骤 2 -> 步骤 3 -->
+    <g id="conn-step2-step3">
+        <line x1="400" y1="495" x2="400" y2="505" stroke="#27AE60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+        <text x="425" y="503" fill="#A0AEC0" font-size="10" font-weight="bold" font-family="Arial, sans-serif">SEQUENCE</text>
+    </g>
+
+    <!-- 步骤 3: 烘焙 -->
+    <g id="step3-card">
+        <rect x="140" y="510" width="520" height="120" rx="12" fill="#FFFFFF" filter="url(#cardShadow)" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="140" y="510" width="8" height="120" rx="4" fill="#F39C12"/>
+        <circle cx="200" cy="570" r="32" fill="#F39C12"/>
+        <text x="200" y="578" text-anchor="middle" fill="#FFFFFF" font-size="22" font-weight="bold" font-family="Arial, sans-serif">3</text>
+        <text x="250" y="555" fill="#2C3E50" font-size="20" font-weight="bold" font-family="'Microsoft YaHei', sans-serif">烘焙</text>
+        <text x="250" y="585" fill="#4A5568" font-size="14" font-family="'Microsoft YaHei', sans-serif">
+            <tspan x="250" dy="0">将咖啡生豆在高温下烘焙，发生美</tspan>
+            <tspan x="250" dy="22">拉德反应和焦糖化，发展出独特的</tspan>
+            <tspan x="250" dy="22">风味和香气。</tspan>
+        </text>
+    </g>
+
+    <!-- 连接线 步骤 3 -> 步骤 4 -->
+    <g id="conn-step3-step4">
+        <line x1="400" y1="635" x2="400" y2="645" stroke="#27AE60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+        <text x="425" y="643" fill="#A0AEC0" font-size="10" font-weight="bold" font-family="Arial, sans-serif">SEQUENCE</text>
+    </g>
+
+    <!-- 步骤 4: 研磨 -->
+    <g id="step4-card">
+        <rect x="140" y="650" width="520" height="120" rx="12" fill="#FFFFFF" filter="url(#cardShadow)" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="140" y="650" width="8" height="120" rx="4" fill="#E67E22"/>
+        <circle cx="200" cy="710" r="32" fill="#E67E22"/>
+        <text x="200" y="718" text-anchor="middle" fill="#FFFFFF" font-size="22" font-weight="bold" font-family="Arial, sans-serif">4</text>
+        <text x="250" y="695" fill="#2C3E50" font-size="20" font-weight="bold" font-family="'Microsoft YaHei', sans-serif">研磨</text>
+        <text x="250" y="725" fill="#4A5568" font-size="14" font-family="'Microsoft YaHei', sans-serif">
+            <tspan x="250" dy="0">烘焙后的咖啡豆冷却后，根据冲煮</tspan>
+            <tspan x="250" dy="22">方式（如手冲、意式浓缩）研磨成</tspan>
+            <tspan x="250" dy="22">不同粗细的粉末。</tspan>
+        </text>
+    </g>
+
+    <!-- 连接线 步骤 4 -> 步骤 5 -->
+    <g id="conn-step4-step5">
+        <line x1="400" y1="775" x2="400" y2="785" stroke="#27AE60" stroke-width="3" marker-end="url(#arrowGreen)"/>
+        <text x="425" y="783" fill="#A0AEC0" font-size="10" font-weight="bold" font-family="Arial, sans-serif">SEQUENCE</text>
+    </g>
+
+    <!-- 步骤 5: 冲煮 -->
+    <g id="step5-card">
+        <rect x="140" y="790" width="520" height="120" rx="12" fill="#FFFFFF" filter="url(#cardShadow)" stroke="#E2E8F0" stroke-width="1"/>
+        <rect x="140" y="790" width="8" height="120" rx="4" fill="#9B59B6"/>
+        <circle cx="200" cy="850" r="32" fill="#9B59B6"/>
+        <text x="200" y="858" text-anchor="middle" fill="#FFFFFF" font-size="22" font-weight="bold" font-family="Arial, sans-serif">5</text>
+        <text x="250" y="835" fill="#2C3E50" font-size="20" font-weight="bold" font-family="'Microsoft YaHei', sans-serif">冲煮</text>
+        <text x="250" y="865" fill="#4A5568" font-size="14" font-family="'Microsoft YaHei', sans-serif">
+            <tspan x="250" dy="0">使用88-96°C热水以滴滤、浸泡或</tspan>
+            <tspan x="250" dy="22">加压方式冲泡咖啡粉，提取风味物</tspan>
+            <tspan x="250" dy="22">质，得到一杯香醇咖啡。</tspan>
+        </text>
+    </g>
+
+    <!-- 连接线 步骤 5 -> 终点 -->
+    <g id="conn-step5-end">
+        <line x1="400" y1="915" x2="400" y2="890" stroke="#F39C12" stroke-width="3" marker-end="url(#arrowGold)"/>
+        <text x="425" y="905" fill="#A0AEC0" font-size="10" font-weight="bold" font-family="Arial, sans-serif">SEQUENCE</text>
+    </g>
+
+    <!-- 终点节点 -->
+    <g id="end-node">
+        <ellipse cx="400" cy="930" rx="80" ry="35" fill="#F39C12" filter="url(#cardShadow)"/>
+        <ellipse cx="400" cy="930" rx="75" ry="30" fill="none" stroke="#FFFFFF" stroke-opacity="0.3" stroke-width="2"/>
+        <text x="400" y="938" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="'Microsoft YaHei', sans-serif">一杯咖啡</text>
+    </g>
+
+    <!-- 页脚区域 -->
+    <g id="footer-section">
+        <line x1="200" y1="1030" x2="600" y2="1030" stroke="#E2E8F0" stroke-width="1" stroke-dasharray="4,4"/>
+        <text x="400" y="1060" text-anchor="middle" fill="#718096" font-size="14" font-family="'Microsoft YaHei', sans-serif">注：咖啡生产流程根据行业通用实践整理。</text>
+    </g>
+</svg>

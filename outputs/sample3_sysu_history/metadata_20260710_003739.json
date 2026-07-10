@@ -1,0 +1,16 @@
+{
+  "sample_name": "sample3_sysu_history",
+  "user_prompt": "绘制白色背景的SVG信息图，展示中山大学的发展历程",
+  "total_duration_s": 126.96,
+  "agent1_duration_ms": 11052.2,
+  "agent3_duration_ms": 115908.4,
+  "svg_size_chars": 7326,
+  "content_ir_summary": {
+    "intent": "timeline",
+    "confidence": 0.95,
+    "chart_type": "timeline",
+    "entities_count": 1,
+    "relations_count": 0
+  },
+  "generated_at": "2026-07-10T00:37:39.865682"
+}

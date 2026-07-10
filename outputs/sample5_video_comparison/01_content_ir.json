@@ -1,0 +1,78 @@
+{
+  "intent": {
+    "primary_type": "data_comparison",
+    "secondary_type": null,
+    "confidence": 0.95,
+    "reasoning": "提示词明确要求对比数据，且给出了具体数量倍数关系，符合数据对比意图。"
+  },
+  "entities": [
+    {
+      "name": "YouTube",
+      "type": "organization",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "TikTok",
+      "type": "organization",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "Kuaishou",
+      "type": "organization",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "10 times",
+      "type": "number",
+      "role": "attribute",
+      "importance": "primary"
+    },
+    {
+      "name": "2 times",
+      "type": "number",
+      "role": "attribute",
+      "importance": "primary"
+    }
+  ],
+  "relations": [
+    {
+      "type": "comparison",
+      "source": "YouTube",
+      "target": "TikTok",
+      "description": "YouTube has 10 times more videos than TikTok",
+      "quantifier": "10 times more than"
+    },
+    {
+      "type": "comparison",
+      "source": "TikTok",
+      "target": "Kuaishou",
+      "description": "TikTok has 2 times more videos than Kuaishou",
+      "quantifier": "2 times more than"
+    }
+  ],
+  "content_summary": {
+    "title": "Video Quantity Comparison: YouTube vs TikTok vs Kuaishou",
+    "key_points": [
+      "YouTube has 10 times more videos than TikTok.",
+      "TikTok has 2 times more videos than Kuaishou.",
+      "Thus, YouTube has approximately 20 times more videos than Kuaishou."
+    ],
+    "target_audience": "general",
+    "language": "en"
+  },
+  "knowledge_gap": {
+    "needs_external_knowledge": false,
+    "search_queries": [],
+    "fallback_knowledge": null
+  },
+  "chart_type": {
+    "recommended": "comparison_chart",
+    "alternatives": [
+      "bar_chart"
+    ],
+    "type_confidence": 0.95
+  }
+}

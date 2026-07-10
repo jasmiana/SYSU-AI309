@@ -1,0 +1,16 @@
+{
+  "sample_name": "sample5_video_comparison",
+  "user_prompt": "绘制白色背景的SVG信息图，对比以下数据：YouTube has 10 times more videos than TikTok, TikTok has 2 times more than Kuaishou",
+  "total_duration_s": 128.03,
+  "agent1_duration_ms": 10999.4,
+  "agent3_duration_ms": 117024.8,
+  "svg_size_chars": 5416,
+  "content_ir_summary": {
+    "intent": "data_comparison",
+    "confidence": 0.95,
+    "chart_type": "comparison_chart",
+    "entities_count": 6,
+    "relations_count": 2
+  },
+  "generated_at": "2026-07-10T00:43:23.193179"
+}

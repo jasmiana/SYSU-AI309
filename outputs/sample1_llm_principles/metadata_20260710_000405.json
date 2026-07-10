@@ -1,0 +1,16 @@
+{
+  "sample_name": "sample1_llm_principles",
+  "user_prompt": "绘制白色背景的SVG信息图解释大语言模型的基本原理",
+  "total_duration_s": 28.58,
+  "agent1_duration_ms": 6053.8,
+  "agent3_duration_ms": 22518.6,
+  "svg_size_chars": 9448,
+  "content_ir_summary": {
+    "intent": "concept_explanation",
+    "confidence": 0.95,
+    "chart_type": "architecture_diagram",
+    "entities_count": 4,
+    "relations_count": 1
+  },
+  "generated_at": "2026-07-10T00:04:05.033535"
+}

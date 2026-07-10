@@ -1,0 +1,146 @@
+# SVG 设计规范与编码指南
+
+## 1. XML 编码规范
+
+### 根元素
+```svg
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" width="800" height="1200">
+```
+
+### 基本规则
+- 所有标签必须正确闭合：`<rect ... />` 或 `<text>...</text>`
+- 所有属性值必须用引号包围：`fill="#4A90D9"`
+- 使用 `<defs>` 定义可复用的渐变、滤镜、标记
+- 使用 `<g>` 分组相关元素，添加 class 属性
+
+### 颜色使用
+- 使用十六进制颜色值（如 `#4A90D9`），不使用命名颜色（如 "blue"）
+- 在 `<style>` 标签中定义 CSS 类，避免大量内联样式
+
+### 文本处理
+- 使用 `<text>` 元素，设置 `text-anchor` 和 `dominant-baseline`
+- 中文文本使用 `font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif"`
+- 英文文本使用 `font-family="system-ui, -apple-system, 'Segoe UI', sans-serif"`
+
+## 2. 设计规范
+
+### 画布与留白
+- 默认画布：800 × 1200（可根据内容调整高度）
+- 边距：左右各 40-60px，上下各 40-60px
+- 元素最小间距：20px
+- 文本内边距：最小 10px
+
+### 圆角矩形
+- 小型元素（标签、按钮）：rx=4, ry=4
+- 中型元素（信息卡片、节点）：rx=8, ry=8
+- 大型元素（内容区域）：rx=12, ry=12
+
+### 箭头与连接线
+```svg
+<defs>
+  <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+    <polygon points="0 0, 10 3.5, 0 7" fill="#666666"/>
+  </marker>
+</defs>
+```
+- 默认箭头颜色：`#666666`
+- 线条宽度：`stroke-width="2"`（普通）或 `stroke-width="3"`（强调）
+- 虚线：`stroke-dasharray="6,4"`
+
+### 渐变
+```svg
+<linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+  <stop offset="0%" stop-color="#4A90D9"/>
+  <stop offset="100%" stop-color="#7B68EE"/>
+</linearGradient>
+```
+
+### 阴影
+```svg
+<filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
+  <feDropShadow dx="2" dy="3" stdDeviation="4" flood-color="#000000" flood-opacity="0.1"/>
+</filter>
+```
+- 主要卡片/容器使用阴影增强层次感
+- 小图标、标签不使用阴影（保持清爽）
+
+## 3. 配色方案建议
+
+### 现代科技感（适合技术概念、架构图）
+- 主色：#4A90D9（蓝）
+- 辅色：#7B68EE（紫）
+- 强调色：#FF6B6B（红/粉）
+- 背景：#FFFFFF
+- 主文字：#2C3E50（深灰蓝）
+- 副文字：#7F8C8D（灰）
+
+### 自然清新感（适合流程、科普）
+- 主色：#27AE60（绿）
+- 辅色：#3498DB（蓝）
+- 强调色：#F39C12（橙）
+- 背景：#FAFFFE
+- 主文字：#2C3E50
+- 副文字：#7F8C8D
+
+### 学术稳重感（适合历史、学术）
+- 主色：#8E44AD（紫）
+- 辅色：#2C3E50（深蓝）
+- 强调色：#E74C3C（红）
+- 背景：#FDFEFE
+- 主文字：#1a1a2e
+- 副文字：#636e72
+
+### 数据可视化（适合对比图、柱状图）
+- 多色板：["#4A90D9", "#7B68EE", "#27AE60", "#F39C12", "#E74C3C"]
+- 足够的颜色对比度区分不同数据系列
+
+## 4. 排版规范
+
+| 元素 | 中文字号 | 英文字号 | 字重 |
+|------|----------|----------|------|
+| 主标题 | 28-36px | 24-32px | Bold (700) |
+| 小节标题 | 20-24px | 18-22px | SemiBold (600) |
+| 正文 | 14-16px | 13-15px | Regular (400) |
+| 节点标签 | 14-16px | 12-14px | Medium (500) |
+| 数据标注 | 12-14px | 11-13px | Regular (400) |
+| 脚注 | 11-12px | 10-11px | Regular (400) |
+
+## 5. 文本凝练规则
+
+- 主标题：不超过 20 个中文字或 12 个英文单词
+- 节点/卡片标签：不超过 8 个中文字或 5 个英文单词
+- 说明文本：每行不超过 30 个中文字，总行数不超过 4 行
+- 数据标签：数值 + 单位，无需完整句子
+
+## 6. 常见设计模式
+
+### 标题栏
+```svg
+<rect x="0" y="0" width="800" height="80" fill="url(#headerGrad)"/>
+<text x="400" y="50" text-anchor="middle" fill="#FFFFFF" font-size="28" font-weight="bold">标题</text>
+```
+
+### 信息卡片
+```svg
+<rect x="50" y="200" width="700" height="120" rx="8" fill="#FFFFFF" stroke="#E0E0E0" stroke-width="1" filter="url(#cardShadow)"/>
+<text x="70" y="230" fill="#2C3E50" font-size="18" font-weight="bold">卡片标题</text>
+<text x="70" y="260" fill="#7F8C8D" font-size="14">卡片内容描述文本...</text>
+```
+
+### 流程节点（垂直流程）
+```svg
+<!-- 节点 -->
+<rect x="300" y="100" width="200" height="60" rx="8" fill="#4A90D9" filter="url(#cardShadow)"/>
+<text x="400" y="135" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="medium">步骤 1</text>
+<!-- 箭头连接 -->
+<line x1="400" y1="160" x2="400" y2="200" stroke="#666666" stroke-width="2" marker-end="url(#arrowhead)"/>
+```
+
+### 数据柱状图
+```svg
+<!-- Y轴 -->
+<line x1="80" y1="50" x2="80" y2="400" stroke="#333" stroke-width="2"/>
+<!-- 柱子 -->
+<rect x="150" y="200" width="80" height="200" rx="4" fill="#4A90D9"/>
+<text x="190" y="190" text-anchor="middle" fill="#333" font-size="13">数值</text>
+```

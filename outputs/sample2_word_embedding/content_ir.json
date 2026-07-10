@@ -1,0 +1,45 @@
+{
+  "intent": {
+    "primary_type": "concept_explanation",
+    "secondary_type": null,
+    "confidence": 0.95,
+    "reasoning": "用户要求解释词向量的基本概念，属于概念解释类"
+  },
+  "entities": [
+    {
+      "name": "词向量（Word Embedding）",
+      "type": "term",
+      "role": "subject",
+      "importance": "primary"
+    }
+  ],
+  "relations": [],
+  "content_summary": {
+    "title": "词向量（Word Embedding）基本概念",
+    "key_points": [
+      "将词语转化为数值向量表示",
+      "捕捉词语的语义和语法相似性",
+      "是自然语言处理的核心技术",
+      "常见方法：Word2Vec、GloVe等",
+      "使得机器能理解词语关系"
+    ],
+    "target_audience": "general",
+    "language": "zh"
+  },
+  "knowledge_gap": {
+    "needs_external_knowledge": true,
+    "search_queries": [
+      "词向量 基本概念 通俗解释",
+      "word embedding explained simply"
+    ],
+    "fallback_knowledge": "词向量是将单词映射到高维实数向量的技术，向量空间中的距离反映语义相似度，是NLP任务的基石。"
+  },
+  "chart_type": {
+    "recommended": "concept_map",
+    "alternatives": [
+      "architecture_diagram",
+      "process_diagram"
+    ],
+    "type_confidence": 0.9
+  }
+}

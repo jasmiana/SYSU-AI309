@@ -1,0 +1,45 @@
+{
+  "intent": {
+    "primary_type": "timeline",
+    "secondary_type": null,
+    "confidence": 0.95,
+    "reasoning": "用户明确要求展示'发展历程'，典型的时间线/历史叙述类可视化需求。"
+  },
+  "entities": [
+    {
+      "name": "中山大学",
+      "type": "organization",
+      "role": "subject",
+      "importance": "primary"
+    }
+  ],
+  "relations": [],
+  "content_summary": {
+    "title": "中山大学发展历程",
+    "key_points": [
+      "1924年，孙中山先生创立国立广东大学，后更名为国立中山大学。",
+      "抗战期间，学校先后迁至云南澄江、粤北坪石等地坚持办学。",
+      "1952年全国院系调整，中山大学成为一所以文理科为主的综合性大学。",
+      "2001年，中山大学与中山医科大学合并，形成了新的综合性学科格局。",
+      "如今，中山大学是国家'双一流''985工程''211工程'重点建设大学。"
+    ],
+    "target_audience": "general",
+    "language": "zh"
+  },
+  "knowledge_gap": {
+    "needs_external_knowledge": true,
+    "search_queries": [
+      "中山大学发展历程 重要事件 年份",
+      "中山大学历史沿革 大事记"
+    ],
+    "fallback_knowledge": "中山大学由孙中山先生于1924年创立，初名国立广东大学，1926年更名；历经抗战迁校、院系调整等阶段，2001年与中山医科大学合并，现已发展为综合性研究型大学。"
+  },
+  "chart_type": {
+    "recommended": "timeline",
+    "alternatives": [
+      "process_diagram",
+      "concept_map"
+    ],
+    "type_confidence": 0.95
+  }
+}

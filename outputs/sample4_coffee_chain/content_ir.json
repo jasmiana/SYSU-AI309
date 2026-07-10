@@ -1,0 +1,118 @@
+{
+  "intent": {
+    "primary_type": "process_flow",
+    "secondary_type": null,
+    "confidence": 0.95,
+    "reasoning": "提示词明确要求绘制流程图，展示从咖啡豆到一杯咖啡的生产链步骤。"
+  },
+  "entities": [
+    {
+      "name": "咖啡豆",
+      "type": "term",
+      "role": "object",
+      "importance": "primary"
+    },
+    {
+      "name": "一杯咖啡",
+      "type": "term",
+      "role": "object",
+      "importance": "primary"
+    },
+    {
+      "name": "种植",
+      "type": "term",
+      "role": "object",
+      "importance": "primary"
+    },
+    {
+      "name": "采摘",
+      "type": "term",
+      "role": "object",
+      "importance": "primary"
+    },
+    {
+      "name": "烘焙",
+      "type": "term",
+      "role": "object",
+      "importance": "primary"
+    },
+    {
+      "name": "研磨",
+      "type": "term",
+      "role": "object",
+      "importance": "primary"
+    },
+    {
+      "name": "冲煮",
+      "type": "term",
+      "role": "object",
+      "importance": "primary"
+    }
+  ],
+  "relations": [
+    {
+      "type": "sequence",
+      "source": "咖啡豆",
+      "target": "种植",
+      "description": "咖啡豆的生长起点是种植",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "种植",
+      "target": "采摘",
+      "description": "种植后进入采摘环节",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "采摘",
+      "target": "烘焙",
+      "description": "采摘后的咖啡豆进行烘焙处理",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "烘焙",
+      "target": "研磨",
+      "description": "烘焙后的咖啡豆被研磨成粉",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "研磨",
+      "target": "冲煮",
+      "description": "研磨好的咖啡粉用于冲煮咖啡",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "冲煮",
+      "target": "一杯咖啡",
+      "description": "冲煮完成后得到一杯咖啡",
+      "quantifier": null
+    }
+  ],
+  "content_summary": {
+    "title": "从咖啡豆到一杯咖啡的生产链",
+    "key_points": [
+      "咖啡豆经过种植→采摘→烘焙→研磨→冲煮五个主要步骤",
+      "每个步骤对最终咖啡风味都至关重要",
+      "整个流程展示了从原料到成品的过程"
+    ],
+    "target_audience": "general",
+    "language": "zh"
+  },
+  "knowledge_gap": {
+    "needs_external_knowledge": false,
+    "search_queries": [],
+    "fallback_knowledge": null
+  },
+  "chart_type": {
+    "recommended": "process_diagram",
+    "alternatives": [
+      "flowchart"
+    ],
+    "type_confidence": 0.9
+  }
+}

@@ -1,0 +1,317 @@
+{
+  "chart_type": "concept_map",
+  "canvas": {
+    "width": 800,
+    "height": 1100,
+    "background": "#F8F9FF"
+  },
+  "color_scheme": {
+    "name": "科技蓝紫",
+    "primary": "#4A90D9",
+    "secondary": "#7B68EE",
+    "accent": "#FF6B6B",
+    "background": "#F8F9FF",
+    "text_primary": "#2C3E50",
+    "text_secondary": "#7F8C8D",
+    "palette": [
+      "#4A90D9",
+      "#7B68EE",
+      "#5DADE2",
+      "#8E44AD"
+    ],
+    "rationale": "技术概念图适合使用冷静专业的蓝紫色系，传递科技与智能感，背景浅色确保可读性。"
+  },
+  "typography": {
+    "title_size": 30,
+    "heading_size": 20,
+    "body_size": 15,
+    "label_size": 14,
+    "font_family": "system-ui, 'Microsoft YaHei', sans-serif"
+  },
+  "layout_grid": {
+    "columns": 12,
+    "rows": 12,
+    "gutter": 20
+  },
+  "sections": [
+    {
+      "id": "title_section",
+      "type": "title",
+      "position": {
+        "x_pct": 0,
+        "y_pct": 0,
+        "width_pct": 100,
+        "height_pct": 8
+      },
+      "visual_weight": "primary",
+      "purpose": "显示主标题，让读者一眼了解主题"
+    },
+    {
+      "id": "diagram_section",
+      "type": "diagram",
+      "position": {
+        "x_pct": 0,
+        "y_pct": 8,
+        "width_pct": 100,
+        "height_pct": 40
+      },
+      "visual_weight": "primary",
+      "purpose": "核心概念图区域，展示词向量及其关键特性"
+    },
+    {
+      "id": "info_1",
+      "type": "content_block",
+      "position": {
+        "x_pct": 2,
+        "y_pct": 50,
+        "width_pct": 47,
+        "height_pct": 13
+      },
+      "visual_weight": "secondary",
+      "purpose": "解释词向量的稠密表示特性"
+    },
+    {
+      "id": "info_2",
+      "type": "content_block",
+      "position": {
+        "x_pct": 51,
+        "y_pct": 50,
+        "width_pct": 47,
+        "height_pct": 13
+      },
+      "visual_weight": "secondary",
+      "purpose": "解释语义相似性"
+    },
+    {
+      "id": "info_3",
+      "type": "content_block",
+      "position": {
+        "x_pct": 2,
+        "y_pct": 65,
+        "width_pct": 47,
+        "height_pct": 13
+      },
+      "visual_weight": "secondary",
+      "purpose": "解释类比推理能力"
+    },
+    {
+      "id": "info_4",
+      "type": "content_block",
+      "position": {
+        "x_pct": 51,
+        "y_pct": 65,
+        "width_pct": 47,
+        "height_pct": 13
+      },
+      "visual_weight": "secondary",
+      "purpose": "解释NLP应用"
+    },
+    {
+      "id": "footer_section",
+      "type": "footer",
+      "position": {
+        "x_pct": 0,
+        "y_pct": 80,
+        "width_pct": 100,
+        "height_pct": 8
+      },
+      "visual_weight": "tertiary",
+      "purpose": "底部注释或来源"
+    }
+  ],
+  "elements": [
+    {
+      "id": "main_title",
+      "type": "text_block",
+      "label": "词向量（Word Embedding）的基本概念",
+      "parent_section": "title_section",
+      "color_key": "text_primary",
+      "importance": "primary",
+      "size_hint": {
+        "min_width": 400,
+        "min_height": 50,
+        "aspect_ratio": null
+      },
+      "content_hint": "显示主标题，居中，大号加粗"
+    },
+    {
+      "id": "center_node",
+      "type": "rounded_rect",
+      "label": "词向量 (Word Embedding)",
+      "parent_section": "diagram_section",
+      "color_key": "primary",
+      "importance": "primary",
+      "size_hint": {
+        "min_width": 180,
+        "min_height": 60,
+        "aspect_ratio": null
+      },
+      "content_hint": "中心概念节点，颜色突出"
+    },
+    {
+      "id": "node_dense",
+      "type": "rounded_rect",
+      "label": "稠密低维向量",
+      "parent_section": "diagram_section",
+      "color_key": "secondary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 130,
+        "min_height": 40,
+        "aspect_ratio": null
+      },
+      "content_hint": "子节点，与 info_1 呼应"
+    },
+    {
+      "id": "node_semantic",
+      "type": "rounded_rect",
+      "label": "语义相似性",
+      "parent_section": "diagram_section",
+      "color_key": "secondary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 130,
+        "min_height": 40,
+        "aspect_ratio": null
+      },
+      "content_hint": "子节点，与 info_2 呼应"
+    },
+    {
+      "id": "node_analogy",
+      "type": "rounded_rect",
+      "label": "类比推理",
+      "parent_section": "diagram_section",
+      "color_key": "secondary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 130,
+        "min_height": 40,
+        "aspect_ratio": null
+      },
+      "content_hint": "子节点，与 info_3 呼应"
+    },
+    {
+      "id": "node_application",
+      "type": "rounded_rect",
+      "label": "NLP应用",
+      "parent_section": "diagram_section",
+      "color_key": "secondary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 130,
+        "min_height": 40,
+        "aspect_ratio": null
+      },
+      "content_hint": "子节点，与 info_4 呼应"
+    },
+    {
+      "id": "text_info_1",
+      "type": "text_block",
+      "label": "什么是词向量？",
+      "parent_section": "info_1",
+      "color_key": "text_primary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 300,
+        "min_height": 100,
+        "aspect_ratio": null
+      },
+      "content_hint": "详细解释：词向量是将词语表示为连续、低维、稠密的实数向量，解决了独热编码维度过高且无语义的问题。"
+    },
+    {
+      "id": "text_info_2",
+      "type": "text_block",
+      "label": "语义相似性",
+      "parent_section": "info_2",
+      "color_key": "text_primary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 300,
+        "min_height": 100,
+        "aspect_ratio": null
+      },
+      "content_hint": "详细解释：通过训练神经网络语言模型（如Word2Vec、GloVe）获得，使得语义相似的词在向量空间中距离更近。"
+    },
+    {
+      "id": "text_info_3",
+      "type": "text_block",
+      "label": "类比推理能力",
+      "parent_section": "info_3",
+      "color_key": "text_primary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 300,
+        "min_height": 100,
+        "aspect_ratio": null
+      },
+      "content_hint": "详细解释：词向量运算能捕捉语义关系，例如：国王 - 男人 + 女人 ≈ 王后，体现了类比推理特性。"
+    },
+    {
+      "id": "text_info_4",
+      "type": "text_block",
+      "label": "应用领域",
+      "parent_section": "info_4",
+      "color_key": "text_primary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 300,
+        "min_height": 100,
+        "aspect_ratio": null
+      },
+      "content_hint": "详细解释：作为NLP基础，广泛应用于文本分类、机器翻译、情感分析等任务，让计算机更好地理解语言。"
+    },
+    {
+      "id": "footer_text",
+      "type": "text_block",
+      "label": "来源：词向量技术科普",
+      "parent_section": "footer_section",
+      "color_key": "text_secondary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 200,
+        "min_height": 30,
+        "aspect_ratio": null
+      },
+      "content_hint": "显示脚注或参考信息，小号灰色字"
+    }
+  ],
+  "connections": [
+    {
+      "id": "conn_1",
+      "type": "curve",
+      "from_element": "center_node",
+      "to_element": "node_dense",
+      "direction": "top-to-bottom",
+      "label": null,
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_2",
+      "type": "curve",
+      "from_element": "center_node",
+      "to_element": "node_semantic",
+      "direction": "top-to-bottom",
+      "label": null,
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_3",
+      "type": "curve",
+      "from_element": "center_node",
+      "to_element": "node_analogy",
+      "direction": "top-to-bottom",
+      "label": null,
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_4",
+      "type": "curve",
+      "from_element": "center_node",
+      "to_element": "node_application",
+      "direction": "top-to-bottom",
+      "label": null,
+      "line_style": "solid"
+    }
+  ],
+  "design_notes": "采用现代科技风格的概念图布局。标题居中放置于顶部。概念图区域以中心的‘词向量’节点为根，通过曲线箭头向下连接到四个水平排列的子节点。子节点背景色统一使用 secondary 紫色，形成清晰的视觉层级。下方的四个解释区块按2x2网格排列，分别对应上方的四个子节点，使用浅色卡片背景和编号引导对应关系。整体配色清新专业，留白充足，文字层级分明，易于阅读。"
+}

@@ -1,0 +1,137 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1400">
+  <defs>
+    <!-- 页眉渐变 -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E3A8A" />
+      <stop offset="100%" stop-color="#5B21B6" />
+    </linearGradient>
+    
+    <!-- 卡片投影 -->
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="2" dy="5" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.08" />
+    </filter>
+
+    <!-- 高亮节点发光效果 -->
+    <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="4" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    .text-title { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 36px; font-weight: bold; fill: #FFFFFF; }
+    .text-subtitle { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 20px; fill: #CBD5E1; }
+    .text-year { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 16px; font-weight: bold; fill: #B91C1C; }
+    .text-desc { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 15px; fill: #1E293B; }
+    .text-year-tag { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 15px; font-weight: bold; fill: #1E3A8A; }
+    .text-footer { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 14px; fill: #94A3B8; }
+  </style>
+
+  <!-- 背景 -->
+  <rect x="0" y="0" width="800" height="1400" fill="#F8FAFC" />
+
+  <!-- 页眉区域 -->
+  <g id="header">
+    <rect x="0" y="0" width="800" height="140" fill="url(#headerGrad)" />
+    <text x="400" y="70" text-anchor="middle" class="text-title">中山大学发展历程</text>
+    <text x="400" y="115" text-anchor="middle" class="text-subtitle">世纪中大，山高水长</text>
+  </g>
+
+  <!-- 时间轴主线 -->
+  <g id="timeline">
+    <!-- 主线 -->
+    <line x1="400" y1="180" x2="400" y2="1250" stroke="#1E3A8A" stroke-width="6" stroke-linecap="round" />
+    <!-- 起点装饰 -->
+    <circle cx="400" cy="180" r="8" fill="#5B21B6" />
+    <!-- 终点装饰 -->
+    <circle cx="400" cy="1250" r="8" fill="#1E3A8A" />
+  </g>
+
+  <!-- 事件节点 -->
+  <g id="nodes">
+    
+    <!-- 节点 1: 1924年 (左侧) -->
+    <g id="node-1924">
+      <!-- 虚线连接 -->
+      <line x1="345" y1="260" x2="400" y2="260" stroke="#5B21B6" stroke-width="2.5" stroke-dasharray="4,4" />
+      <!-- 时间锚点 -->
+      <circle cx="400" cy="260" r="12" fill="#1E3A8A" />
+      <text x="422" y="265" text-anchor="start" class="text-year-tag">1924年</text>
+      <!-- 信息卡片 -->
+      <rect x="100" y="220" width="240" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)" />
+      <text x="120" y="245" class="text-year">1924年</text>
+      <text x="120" y="265" class="text-desc">孙中山先生创立国立广东大学，</text>
+      <text x="120" y="285" class="text-desc">后更名为国立中山大学。</text>
+    </g>
+
+    <!-- 节点 2: 1937-1945年 (右侧) -->
+    <g id="node-1937">
+      <!-- 虚线连接 -->
+      <line x1="400" y1="480" x2="455" y2="480" stroke="#5B21B6" stroke-width="2.5" stroke-dasharray="4,4" />
+      <!-- 时间锚点 -->
+      <circle cx="400" cy="480" r="12" fill="#1E3A8A" />
+      <text x="378" y="485" text-anchor="end" class="text-year-tag">1937-1945年</text>
+      <!-- 信息卡片 -->
+      <rect x="460" y="440" width="240" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)" />
+      <text x="480" y="465" class="text-year">1937-1945年</text>
+      <text x="480" y="485" class="text-desc">抗战期间，学校先后迁至</text>
+      <text x="480" y="505" class="text-desc">云南澄江、粤北坪石等地坚持办学。</text>
+    </g>
+
+    <!-- 节点 3: 1952年 (左侧) -->
+    <g id="node-1952">
+      <!-- 虚线连接 -->
+      <line x1="345" y1="700" x2="400" y2="700" stroke="#5B21B6" stroke-width="2.5" stroke-dasharray="4,4" />
+      <!-- 时间锚点 -->
+      <circle cx="400" cy="700" r="12" fill="#1E3A8A" />
+      <text x="422" y="705" text-anchor="start" class="text-year-tag">1952年</text>
+      <!-- 信息卡片 -->
+      <rect x="100" y="660" width="240" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)" />
+      <text x="120" y="685" class="text-year">1952年</text>
+      <text x="120" y="705" class="text-desc">全国院系调整，中山大学成为</text>
+      <text x="120" y="725" class="text-desc">一所以文理科为主的综合性大学。</text>
+    </g>
+
+    <!-- 节点 4: 2001年 (右侧) -->
+    <g id="node-2001">
+      <!-- 虚线连接 -->
+      <line x1="400" y1="920" x2="455" y2="920" stroke="#5B21B6" stroke-width="2.5" stroke-dasharray="4,4" />
+      <!-- 时间锚点 -->
+      <circle cx="400" cy="920" r="12" fill="#1E3A8A" />
+      <text x="378" y="925" text-anchor="end" class="text-year-tag">2001年</text>
+      <!-- 信息卡片 -->
+      <rect x="460" y="880" width="240" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)" />
+      <text x="480" y="905" class="text-year">2001年</text>
+      <text x="480" y="925" class="text-desc">中山大学与中山医科大学合并，</text>
+      <text x="480" y="945" class="text-desc">形成了新的综合性学科格局。</text>
+    </g>
+
+    <!-- 节点 5: 至今 (左侧，特殊处理) -->
+    <g id="node-now">
+      <!-- 虚线连接 -->
+      <line x1="345" y1="1140" x2="400" y2="1140" stroke="#5B21B6" stroke-width="2.5" stroke-dasharray="4,4" />
+      <!-- 特殊高亮时间锚点 -->
+      <circle cx="400" cy="1140" r="16" fill="#1E3A8A" stroke="#D4AF37" stroke-width="4" filter="url(#glow)" />
+      <text x="428" y="1146" text-anchor="start" class="text-year-tag" fill="#B91C1C">至今</text>
+      <!-- 特殊信息卡片 (金色描边) -->
+      <rect x="80" y="1100" width="320" height="100" rx="8" fill="#FFFFFF" filter="url(#cardShadow)" stroke="#D4AF37" stroke-width="3" />
+      <text x="240" y="1128" text-anchor="middle" class="text-year" font-size="18">至今</text>
+      <text x="240" y="1152" text-anchor="middle" class="text-desc">国家"双一流""985工程""211工程"</text>
+      <text x="240" y="1172" text-anchor="middle" class="text-desc">重点建设大学。</text>
+    </g>
+
+  </g>
+
+  <!-- 页脚区域 -->
+  <g id="footer">
+    <rect x="0" y="1300" width="800" height="100" fill="#1E293B" />
+    <text x="400" y="1340" text-anchor="middle" class="text-footer">中山大学校史时间线 | 学术稳重风格 | 数据来源：中山大学官方网站</text>
+    <text x="400" y="1365" text-anchor="middle" class="text-footer" font-size="13">© 2024 信息图设计 | 如需引用请核对原始资料</text>
+    <!-- 装饰线 -->
+    <line x1="200" y1="1330" x2="600" y2="1330" stroke="#475569" stroke-width="1" />
+  </g>
+
+</svg>

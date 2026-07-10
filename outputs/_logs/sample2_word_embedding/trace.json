@@ -1,0 +1,278 @@
+{
+  "sample": "sample2_word_embedding",
+  "start_time": "2026-07-10T11:02:23.137166",
+  "end_time": "2026-07-10T11:07:30.784721",
+  "total_duration_s": 307.647555,
+  "events": [
+    {
+      "timestamp": "2026-07-10T11:02:23.137166",
+      "event": "agent_start",
+      "agent": "Agent1:ContentAnalyzer",
+      "input_summary": {
+        "prompt": "绘制白色背景的SVG信息图，通俗易懂地解释词向量（Word Embedding）的基本概念"
+      }
+    },
+    {
+      "timestamp": "2026-07-10T11:02:37.870235",
+      "event": "agent_output",
+      "agent": "Agent1:ContentAnalyzer",
+      "duration_ms": 14733.1,
+      "output_summary": {
+        "intent": {
+          "primary_type": "concept_expl...",
+          "secondary_type": "科普",
+          "confidence": 0.95,
+          "reasoning": "用户明确要求'通俗易懂地..."
+        },
+        "entities": [
+          {
+            "name": "词向量...",
+            "type": "ter...",
+            "role": "sub...",
+            "importance": "pri..."
+          }
+        ],
+        "relations": [],
+        "content_summary": {
+          "title": "词向量（Word Emb...",
+          "key_points": [
+            "词向量...",
+            "词向量...",
+            "典型的...",
+            "..."
+          ],
+          "target_audience": "general",
+          "language": "zh"
+        },
+        "knowledge_gap": {
+          "needs_external_knowledge": true,
+          "search_queries": [
+            "词向量...",
+            "Wor...",
+            "词向量..."
+          ],
+          "fallback_knowledge": "词向量（Word Emb..."
+        },
+        "chart_type": {
+          "recommended": "concept_map",
+          "alternatives": [
+            "arc...",
+            "pro..."
+          ],
+          "type_confidence": 0.9
+        }
+      }
+    },
+    {
+      "timestamp": "2026-07-10T11:02:37.875437",
+      "event": "agent_start",
+      "agent": "Agent2:LayoutPlanner",
+      "input_summary": {}
+    },
+    {
+      "timestamp": "2026-07-10T11:04:34.023369",
+      "event": "agent_output",
+      "agent": "Agent2:LayoutPlanner",
+      "duration_ms": 116147.9,
+      "output_summary": {
+        "chart_type": "concept_map",
+        "canvas": {
+          "width": 800,
+          "height": 1100,
+          "background": "#F8F9FF"
+        },
+        "color_scheme": {
+          "name": "科技蓝紫",
+          "primary": "#4A90D9",
+          "secondary": "#7B68EE",
+          "accent": "#FF6B6B",
+          "background": "#F8F9FF",
+          "text_primary": "#2C3E50",
+          "text_secondary": "#7F8C8D",
+          "palette": [
+            "#4A...",
+            "#7B...",
+            "#5D...",
+            "..."
+          ],
+          "rationale": "技术概念图适合使用冷静专..."
+        },
+        "typography": {
+          "title_size": 30,
+          "heading_size": 20,
+          "body_size": 15,
+          "label_size": 14,
+          "font_family": "system-ui, '..."
+        },
+        "layout_grid": {
+          "columns": 12,
+          "rows": 12,
+          "gutter": 20
+        },
+        "sections": [
+          {
+            "id": "tit...",
+            "type": "tit...",
+            "position": {
+              "x_pct": 0,
+              "y_pct": 0,
+              "width_pct": 100,
+              "height_pct": 8
+            },
+            "visual_weight": "pri...",
+            "purpose": "显示主..."
+          },
+          {
+            "id": "dia...",
+            "type": "dia...",
+            "position": {
+              "x_pct": 0,
+              "y_pct": 8,
+              "width_pct": 100,
+              "height_pct": 40
+            },
+            "visual_weight": "pri...",
+            "purpose": "核心概..."
+          },
+          {
+            "id": "inf...",
+            "type": "con...",
+            "position": {
+              "x_pct": 2,
+              "y_pct": 50,
+              "width_pct": 47,
+              "height_pct": 13
+            },
+            "visual_weight": "sec...",
+            "purpose": "解释词..."
+          },
+          "..."
+        ],
+        "elements": [
+          {
+            "id": "mai...",
+            "type": "tex...",
+            "label": "词向量...",
+            "parent_section": "tit...",
+            "color_key": "tex...",
+            "importance": "pri...",
+            "size_hint": {
+              "min_width": 400,
+              "min_height": 50,
+              "aspect_ratio": null
+            },
+            "content_hint": "显示主..."
+          },
+          {
+            "id": "cen...",
+            "type": "rou...",
+            "label": "词向量...",
+            "parent_section": "dia...",
+            "color_key": "pri...",
+            "importance": "pri...",
+            "size_hint": {
+              "min_width": 180,
+              "min_height": 60,
+              "aspect_ratio": null
+            },
+            "content_hint": "中心概..."
+          },
+          {
+            "id": "nod...",
+            "type": "rou...",
+            "label": "稠密低...",
+            "parent_section": "dia...",
+            "color_key": "sec...",
+            "importance": "sec...",
+            "size_hint": {
+              "min_width": 130,
+              "min_height": 40,
+              "aspect_ratio": null
+            },
+            "content_hint": "子节点..."
+          },
+          "..."
+        ],
+        "connections": [
+          {
+            "id": "con...",
+            "type": "cur...",
+            "from_element": "cen...",
+            "to_element": "nod...",
+            "direction": "top...",
+            "label": null,
+            "line_style": "sol..."
+          },
+          {
+            "id": "con...",
+            "type": "cur...",
+            "from_element": "cen...",
+            "to_element": "nod...",
+            "direction": "top...",
+            "label": null,
+            "line_style": "sol..."
+          },
+          {
+            "id": "con...",
+            "type": "cur...",
+            "from_element": "cen...",
+            "to_element": "nod...",
+            "direction": "top...",
+            "label": null,
+            "line_style": "sol..."
+          },
+          "..."
+        ],
+        "design_notes": "采用现代科技风格的概念图布局。标题居中放置于顶部。概念图区域以中心的‘词向量’节点为根，通过曲线箭头..."
+      }
+    },
+    {
+      "timestamp": "2026-07-10T11:04:34.024379",
+      "event": "agent_start",
+      "agent": "Agent3:SVGCoder (round 1)",
+      "input_summary": {}
+    },
+    {
+      "timestamp": "2026-07-10T11:06:46.988045",
+      "event": "agent_output",
+      "agent": "Agent3:SVGCoder",
+      "duration_ms": 132963.7,
+      "output_summary": {
+        "svg_length": 7877
+      }
+    },
+    {
+      "timestamp": "2026-07-10T11:06:46.988045",
+      "event": "agent_start",
+      "agent": "RenderingValidator",
+      "input_summary": {}
+    },
+    {
+      "timestamp": "2026-07-10T11:06:46.992557",
+      "event": "agent_output",
+      "agent": "RenderingValidator",
+      "duration_ms": 4.5,
+      "output_summary": {
+        "xml_valid": true,
+        "all_pass": false
+      }
+    },
+    {
+      "timestamp": "2026-07-10T11:06:46.992557",
+      "event": "agent_start",
+      "agent": "Agent4:QualityReviewer (round 1)",
+      "input_summary": {}
+    },
+    {
+      "timestamp": "2026-07-10T11:07:30.783290",
+      "event": "agent_output",
+      "agent": "Agent4:QualityReviewer",
+      "duration_ms": 43790.7,
+      "output_summary": {
+        "pass": true,
+        "score": 8.5,
+        "needs_regen": false
+      }
+    }
+  ]
+}

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1050" width="100%" height="100%">
+  <defs>
+    <!-- 页头渐变 -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4A90D9"/>
+      <stop offset="100%" stop-color="#7B68EE"/>
+    </linearGradient>
+    
+    <!-- 卡片投影阴影 -->
+    <filter id="cardShadow" x="-5%" y="-5%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="6" stdDeviation="10" flood-color="#4A5568" flood-opacity="0.08"/>
+    </filter>
+
+    <!-- 连接箭头标记 -->
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#CBD5E1"/>
+    </marker>
+  </defs>
+
+  <style>
+    .header-title {
+      font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif;
+      font-size: 34px;
+      font-weight: bold;
+      fill: #FFFFFF;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .header-subtitle {
+      font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif;
+      font-size: 16px;
+      fill: rgba(255, 255, 255, 0.85);
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .card-title {
+      font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+      dominant-baseline: central;
+    }
+    .card-desc {
+      font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif;
+      font-size: 16px;
+      fill: #475569;
+      dominant-baseline: central;
+    }
+    .step-circle {
+      fill: none;
+      stroke-width: 4;
+    }
+    .step-num {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 22px;
+      font-weight: bold;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+    .big-num {
+      font-family: system-ui, -apple-system, sans-serif;
+      font-size: 72px;
+      font-weight: 900;
+      text-anchor: end;
+      dominant-baseline: central;
+      fill: #F1F5F9;
+    }
+    .footer-text {
+      font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif;
+      font-size: 14px;
+      fill: #94A3B8;
+      text-anchor: middle;
+      dominant-baseline: central;
+    }
+  </style>
+
+  <!-- 背景 -->
+  <rect width="800" height="1050" fill="#F8FAFC"/>
+  
+  <!-- 背景装饰图案 -->
+  <circle cx="100" cy="400" r="250" fill="#F1F5F9"/>
+  <circle cx="750" cy="800" r="350" fill="#F1F5F9"/>
+
+  <!-- 页头区域 -->
+  <rect x="0" y="0" width="800" height="130" fill="url(#headerGrad)"/>
+  <text x="400" y="68" class="header-title">大语言模型基本原理</text>
+  <text x="400" y="110" class="header-subtitle">基于Transformer架构的深度学习模型发展解析</text>
+
+  <!-- 卡片 1：自注意力机制 -->
+  <g transform="translate(0, 160)">
+    <rect x="80" y="0" width="640" height="160" rx="12" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <circle cx="125" cy="80" r="24" class="step-circle" stroke="#4A90D9"/>
+    <text x="125" y="80" class="step-num" fill="#4A90D9">1</text>
+    <text x="170" y="55" class="card-title" fill="#4A90D9">自注意力机制</text>
+    <text x="170" y="90" class="card-desc">高效捕捉长距离依赖关系，</text>
+    <text x="170" y="115" class="card-desc">并行处理整个文本序列，远超传统RNN。</text>
+    <text x="665" y="80" class="big-num">01</text>
+  </g>
+
+  <!-- 连接箭头 1 -->
+  <line x1="400" y1="320" x2="400" y2="345" stroke="#CBD5E1" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- 卡片 2：大规模预训练 -->
+  <g transform="translate(0, 350)">
+    <rect x="80" y="0" width="640" height="160" rx="12" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <circle cx="125" cy="80" r="24" class="step-circle" stroke="#27AE60"/>
+    <text x="125" y="80" class="step-num" fill="#27AE60">2</text>
+    <text x="170" y="55" class="card-title" fill="#27AE60">大规模预训练</text>
+    <text x="170" y="90" class="card-desc">在海量文本数据上学习，</text>
+    <text x="170" y="115" class="card-desc">掌握语法、语义及丰富的世界常识。</text>
+    <text x="665" y="80" class="big-num">02</text>
+  </g>
+
+  <!-- 连接箭头 2 -->
+  <line x1="400" y1="510" x2="400" y2="535" stroke="#CBD5E1" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- 卡片 3：预测下一个词 -->
+  <g transform="translate(0, 540)">
+    <rect x="80" y="0" width="640" height="160" rx="12" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <circle cx="125" cy="80" r="24" class="step-circle" stroke="#F39C12"/>
+    <text x="125" y="80" class="step-num" fill="#F39C12">3</text>
+    <text x="170" y="55" class="card-title" fill="#F39C12">核心任务：预测下一个词</text>
+    <text x="170" y="90" class="card-desc">采用自回归语言模型，</text>
+    <text x="170" y="115" class="card-desc">根据前文预测后文，习得强大生成能力。</text>
+    <text x="665" y="80" class="big-num">03</text>
+  </g>
+
+  <!-- 连接箭头 3 -->
+  <line x1="400" y1="700" x2="400" y2="725" stroke="#CBD5E1" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- 卡片 4：微调与提示工程 -->
+  <g transform="translate(0, 730)">
+    <rect x="80" y="0" width="640" height="160" rx="12" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <circle cx="125" cy="80" r="24" class="step-circle" stroke="#E74C3C"/>
+    <text x="125" y="80" class="step-num" fill="#E74C3C">4</text>
+    <text x="170" y="55" class="card-title" fill="#E74C3C">微调与提示工程</text>
+    <text x="170" y="90" class="card-desc">无需重新预训练，通过少量参数更新</text>
+    <text x="170" y="115" class="card-desc">或设计精巧提示，快速适配翻译、问答等下游任务。</text>
+    <text x="665" y="80" class="big-num">04</text>
+  </g>
+
+  <!-- 页脚 -->
+  <text x="400" y="960" class="footer-text">从通用预训练到专业应用 — 大语言模型原理全解析</text>
+  
+</svg>

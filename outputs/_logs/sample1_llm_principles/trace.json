@@ -1,0 +1,137 @@
+{
+  "sample": "sample1_llm_principles",
+  "start_time": "2026-07-10T10:28:49.899086",
+  "end_time": "2026-07-10T10:32:50.209693",
+  "total_duration_s": 240.310607,
+  "events": [
+    {
+      "timestamp": "2026-07-10T10:28:49.899086",
+      "event": "agent_start",
+      "agent": "Agent1:ContentAnalyzer",
+      "input_summary": {
+        "prompt": "绘制白色背景的SVG信息图解释大语言模型的基本原理"
+      }
+    },
+    {
+      "timestamp": "2026-07-10T10:29:06.698762",
+      "event": "agent_output",
+      "agent": "Agent1:ContentAnalyzer",
+      "duration_ms": 16799.7,
+      "output_summary": {
+        "intent": {
+          "primary_type": "concept_expl...",
+          "secondary_type": "科普",
+          "confidence": 0.95,
+          "reasoning": "用户明确要求解释大语言模..."
+        },
+        "entities": [
+          {
+            "name": "大语言...",
+            "type": "ter...",
+            "role": "sub...",
+            "importance": "pri..."
+          },
+          {
+            "name": "基本原...",
+            "type": "ter...",
+            "role": "att...",
+            "importance": "pri..."
+          }
+        ],
+        "relations": [],
+        "content_summary": {
+          "title": "大语言模型基本原理",
+          "key_points": [
+            "大语言...",
+            "LLM...",
+            "模型在...",
+            "..."
+          ],
+          "target_audience": "general",
+          "language": "zh"
+        },
+        "knowledge_gap": {
+          "needs_external_knowledge": true,
+          "search_queries": [
+            "大语言...",
+            "LLM...",
+            "Tra..."
+          ],
+          "fallback_knowledge": "Large langua..."
+        },
+        "chart_type": {
+          "recommended": "concept_map",
+          "alternatives": [
+            "arc...",
+            "pro..."
+          ],
+          "type_confidence": 0.95
+        }
+      }
+    },
+    {
+      "timestamp": "2026-07-10T10:29:06.698762",
+      "event": "agent_start",
+      "agent": "Agent2:LayoutPlanner",
+      "input_summary": {}
+    },
+    {
+      "timestamp": "2026-07-10T10:30:46.348416",
+      "event": "agent_output",
+      "agent": "Agent2:LayoutPlanner",
+      "duration_ms": 99649.7,
+      "output_summary": {
+        "parse_error": "Could not extract valid JSON from LLM response:\n{\n...",
+        "raw_response": "{\n  \"chart_type\": \"concept_map\",\n  \"canvas\": {\n   ..."
+      }
+    },
+    {
+      "timestamp": "2026-07-10T10:30:46.348416",
+      "event": "agent_start",
+      "agent": "Agent3:SVGCoder (round 1)",
+      "input_summary": {}
+    },
+    {
+      "timestamp": "2026-07-10T10:32:09.670134",
+      "event": "agent_output",
+      "agent": "Agent3:SVGCoder",
+      "duration_ms": 83321.7,
+      "output_summary": {
+        "svg_length": 5372
+      }
+    },
+    {
+      "timestamp": "2026-07-10T10:32:09.670134",
+      "event": "agent_start",
+      "agent": "RenderingValidator",
+      "input_summary": {}
+    },
+    {
+      "timestamp": "2026-07-10T10:32:09.670134",
+      "event": "agent_output",
+      "agent": "RenderingValidator",
+      "duration_ms": 0.0,
+      "output_summary": {
+        "xml_valid": true,
+        "all_pass": false
+      }
+    },
+    {
+      "timestamp": "2026-07-10T10:32:09.670134",
+      "event": "agent_start",
+      "agent": "Agent4:QualityReviewer (round 1)",
+      "input_summary": {}
+    },
+    {
+      "timestamp": "2026-07-10T10:32:50.208183",
+      "event": "agent_output",
+      "agent": "Agent4:QualityReviewer",
+      "duration_ms": 40538.0,
+      "output_summary": {
+        "pass": true,
+        "score": 8,
+        "needs_regen": false
+      }
+    }
+  ]
+}

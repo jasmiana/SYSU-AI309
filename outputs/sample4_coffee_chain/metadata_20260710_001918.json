@@ -1,0 +1,16 @@
+{
+  "sample_name": "sample4_coffee_chain",
+  "user_prompt": "绘制 SVG 流程图，展示从一颗咖啡豆到一杯咖啡的完整生产链（种植、采摘、烘焙、研磨、冲煮）",
+  "total_duration_s": 138.72,
+  "agent1_duration_ms": 18628.2,
+  "agent3_duration_ms": 120086.6,
+  "svg_size_chars": 5919,
+  "content_ir_summary": {
+    "intent": "process_flow",
+    "confidence": 0.99,
+    "chart_type": "flowchart",
+    "entities_count": 8,
+    "relations_count": 6
+  },
+  "generated_at": "2026-07-10T00:19:18.110629"
+}

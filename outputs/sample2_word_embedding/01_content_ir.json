@@ -1,0 +1,45 @@
+{
+  "intent": {
+    "primary_type": "concept_explanation",
+    "secondary_type": "科普",
+    "confidence": 0.95,
+    "reasoning": "用户明确要求'通俗易懂地解释词向量的基本概念'，属于概念解释与科普教学类意图。"
+  },
+  "entities": [
+    {
+      "name": "词向量（Word Embedding）",
+      "type": "term",
+      "role": "subject",
+      "importance": "primary"
+    }
+  ],
+  "relations": [],
+  "content_summary": {
+    "title": "词向量（Word Embedding）的基本概念",
+    "key_points": [
+      "词向量是一种将词语表示为连续、低维、稠密的实数向量的技术，解决传统独热编码维度过高且无语义的问题。",
+      "词向量通过训练神经网络语言模型（如Word2Vec、GloVe）获得，使得语义相似的词在向量空间中距离更近。",
+      "典型的词向量运算能捕捉语义关系，例如：国王 - 男人 + 女人 ≈ 王后，体现了词向量的类比推理能力。",
+      "词向量是自然语言处理的基础，广泛应用于文本分类、机器翻译、情感分析等任务，让计算机更好地理解语言。"
+    ],
+    "target_audience": "general",
+    "language": "zh"
+  },
+  "knowledge_gap": {
+    "needs_external_knowledge": true,
+    "search_queries": [
+      "词向量 基本概念",
+      "Word Embedding 通俗解释",
+      "词向量 工作原理 类比"
+    ],
+    "fallback_knowledge": "词向量（Word Embedding）是将词汇映射到实数向量空间的技术，使得语义相似的词在向量空间中距离相近。它是自然语言处理的关键基础，常用于下游任务。"
+  },
+  "chart_type": {
+    "recommended": "concept_map",
+    "alternatives": [
+      "architecture_diagram",
+      "process_diagram"
+    ],
+    "type_confidence": 0.9
+  }
+}

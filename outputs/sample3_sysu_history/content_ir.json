@@ -1,0 +1,45 @@
+{
+  "intent": {
+    "primary_type": "timeline",
+    "secondary_type": null,
+    "confidence": 0.95,
+    "reasoning": "用户明确要求展示中山大学的发展历程，这属于时间线/历史叙述类可视化。"
+  },
+  "entities": [
+    {
+      "name": "中山大学",
+      "type": "organization",
+      "role": "subject",
+      "importance": "primary"
+    }
+  ],
+  "relations": [],
+  "content_summary": {
+    "title": "中山大学发展历程",
+    "key_points": [
+      "中山大学创办于1924年",
+      "历经多次院系调整与合并",
+      "广州、珠海、深圳三校区五校园格局",
+      "入选国家双一流建设高校"
+    ],
+    "target_audience": "general",
+    "language": "zh"
+  },
+  "knowledge_gap": {
+    "needs_external_knowledge": true,
+    "search_queries": [
+      "中山大学 发展历程",
+      "中山大学 历史 重要事件",
+      "Sun Yat-sen University history"
+    ],
+    "fallback_knowledge": null
+  },
+  "chart_type": {
+    "recommended": "timeline",
+    "alternatives": [
+      "milestone_chart",
+      "process_diagram"
+    ],
+    "type_confidence": 0.95
+  }
+}

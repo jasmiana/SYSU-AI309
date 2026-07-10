@@ -1,0 +1,179 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 950" width="800" height="950">
+  <defs>
+    <!-- 标题渐变 -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2C3E50" />
+      <stop offset="100%" stop-color="#1A1A2E" />
+    </linearGradient>
+
+    <!-- 卡片阴影 -->
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="12" flood-color="#000000" flood-opacity="0.06" />
+    </filter>
+
+    <!-- 箭头标记 -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="10" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 Z" fill="#9CA3AF" />
+    </marker>
+
+    <!-- 咖啡豆装饰图案 -->
+    <linearGradient id="beanGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4A90D9" />
+      <stop offset="100%" stop-color="#7B68EE" />
+    </linearGradient>
+  </defs>
+
+  <style>
+    text {
+      font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif;
+    }
+    .title {
+      font-size: 30px;
+      font-weight: 700;
+      fill: #FFFFFF;
+    }
+    .subtitle {
+      font-size: 14px;
+      font-weight: 400;
+      fill: rgba(255, 255, 255, 0.8);
+    }
+    .step-title {
+      font-size: 20px;
+      font-weight: 700;
+      fill: #1F2937;
+    }
+    .step-desc {
+      font-size: 14px;
+      font-weight: 400;
+      fill: #4B5563;
+    }
+    .step-tag {
+      font-size: 12px;
+      font-weight: 500;
+      fill: #6B7280;
+    }
+    .step-num {
+      font-size: 16px;
+      font-weight: 700;
+      fill: #FFFFFF;
+    }
+    .cup-label {
+      font-size: 20px;
+      font-weight: 700;
+      fill: #1F2937;
+      text-anchor: middle;
+    }
+  </style>
+
+  <!-- 背景 -->
+  <rect x="0" y="0" width="800" height="950" fill="#F9FAFB" />
+
+  <!-- 标题栏 -->
+  <g id="header">
+    <rect x="0" y="0" width="800" height="80" fill="url(#headerGrad)" />
+    <text x="400" y="42" text-anchor="middle" class="title">从咖啡豆到一杯咖啡的生产链</text>
+    <text x="400" y="64" text-anchor="middle" class="subtitle">五大关键步骤，从原料到成品</text>
+  </g>
+
+  <!-- 步骤 1: 种植 -->
+  <g id="step1" transform="translate(100, 120)">
+    <!-- 左侧强调条 -->
+    <rect x="0" y="0" width="8" height="100" rx="4" fill="#4A90D9" />
+    <!-- 卡片主体 -->
+    <rect x="8" y="0" width="592" height="100" rx="0 8 8 0" fill="#FFFFFF" filter="url(#cardShadow)" />
+    <!-- 步骤圆圈 -->
+    <circle cx="62" cy="50" r="26" fill="#4A90D9" />
+    <text x="62" y="55" text-anchor="middle" class="step-num">01</text>
+    <!-- 文本 -->
+    <text x="110" y="42" class="step-title">种植</text>
+    <text x="110" y="66" class="step-desc">咖啡豆的生长起点是种植</text>
+    <text x="110" y="84" class="step-tag">🌱 原料</text>
+  </g>
+
+  <!-- 箭头 1 -->
+  <line x1="400" y1="220" x2="400" y2="250" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- 步骤 2: 采摘 -->
+  <g id="step2" transform="translate(100, 250)">
+    <rect x="0" y="0" width="8" height="100" rx="4" fill="#7B68EE" />
+    <rect x="8" y="0" width="592" height="100" rx="0 8 8 0" fill="#FFFFFF" filter="url(#cardShadow)" />
+    <circle cx="62" cy="50" r="26" fill="#7B68EE" />
+    <text x="62" y="55" text-anchor="middle" class="step-num">02</text>
+    <text x="110" y="42" class="step-title">采摘</text>
+    <text x="110" y="66" class="step-desc">种植后进入采摘环节</text>
+    <text x="110" y="84" class="step-tag">✋ 采收</text>
+  </g>
+
+  <!-- 箭头 2 -->
+  <line x1="400" y1="350" x2="400" y2="380" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- 步骤 3: 烘焙 -->
+  <g id="step3" transform="translate(100, 380)">
+    <rect x="0" y="0" width="8" height="100" rx="4" fill="#F39C12" />
+    <rect x="8" y="0" width="592" height="100" rx="0 8 8 0" fill="#FFFFFF" filter="url(#cardShadow)" />
+    <circle cx="62" cy="50" r="26" fill="#F39C12" />
+    <text x="62" y="55" text-anchor="middle" class="step-num">03</text>
+    <text x="110" y="42" class="step-title">烘焙</text>
+    <text x="110" y="66" class="step-desc">采摘后的咖啡豆进行烘焙处理</text>
+    <text x="110" y="84" class="step-tag">🔥 加热</text>
+  </g>
+
+  <!-- 箭头 3 -->
+  <line x1="400" y1="480" x2="400" y2="510" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- 步骤 4: 研磨 -->
+  <g id="step4" transform="translate(100, 510)">
+    <rect x="0" y="0" width="8" height="100" rx="4" fill="#27AE60" />
+    <rect x="8" y="0" width="592" height="100" rx="0 8 8 0" fill="#FFFFFF" filter="url(#cardShadow)" />
+    <circle cx="62" cy="50" r="26" fill="#27AE60" />
+    <text x="62" y="55" text-anchor="middle" class="step-num">04</text>
+    <text x="110" y="42" class="step-title">研磨</text>
+    <text x="110" y="66" class="step-desc">烘焙后的咖啡豆被研磨成粉</text>
+    <text x="110" y="84" class="step-tag">💨 粉碎</text>
+  </g>
+
+  <!-- 箭头 4 -->
+  <line x1="400" y1="610" x2="400" y2="640" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- 步骤 5: 冲煮 -->
+  <g id="step5" transform="translate(100, 640)">
+    <rect x="0" y="0" width="8" height="100" rx="4" fill="#E74C3C" />
+    <rect x="8" y="0" width="592" height="100" rx="0 8 8 0" fill="#FFFFFF" filter="url(#cardShadow)" />
+    <circle cx="62" cy="50" r="26" fill="#E74C3C" />
+    <text x="62" y="55" text-anchor="middle" class="step-num">05</text>
+    <text x="110" y="42" class="step-title">冲煮</text>
+    <text x="110" y="66" class="step-desc">研磨好的咖啡粉用于冲煮咖啡</text>
+    <text x="110" y="84" class="step-tag">💧 萃取</text>
+  </g>
+
+  <!-- 箭头 5 -->
+  <line x1="400" y1="740" x2="400" y2="790" stroke="#9CA3AF" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- 最终结果: 一杯咖啡 -->
+  <g id="final-cup" transform="translate(0, 0)">
+    <!-- 托盘 -->
+    <ellipse cx="400" cy="875" rx="65" ry="12" fill="#E5E7EB" />
+    <!-- 把手 -->
+    <path d="M 455 835 C 480 835, 480 855, 455 855" fill="none" stroke="#7B68EE" stroke-width="10" stroke-linecap="round" />
+    <!-- 杯身 -->
+    <path d="M 345 820 L 455 820 L 443 870 C 443 876, 438 882, 432 882 L 368 882 C 362 882, 357 876, 357 870 Z" fill="#7B68EE" filter="url(#cardShadow)" />
+    <!-- 咖啡液 -->
+    <ellipse cx="400" cy="820" rx="55" ry="8" fill="#3E2723" />
+    <!-- 热气 -->
+    <path d="M 380 795 Q 385 780 390 795" fill="none" stroke="#D1D5DB" stroke-width="3" stroke-linecap="round" />
+    <path d="M 410 790 Q 415 770 420 790" fill="none" stroke="#D1D5DB" stroke-width="3" stroke-linecap="round" />
+    <!-- 标签 -->
+    <text x="400" y="915" class="cup-label">一杯咖啡</text>
+  </g>
+
+  <!-- 底部装饰性咖啡豆 -->
+  <g id="decoration" opacity="0.04">
+    <ellipse cx="120" cy="130" rx="8" ry="12" fill="#4A90D9" />
+    <ellipse cx="680" cy="260" rx="6" ry="10" fill="#7B68EE" />
+    <ellipse cx="150" cy="500" rx="7" ry="11" fill="#F39C12" />
+    <ellipse cx="650" cy="650" rx="9" ry="13" fill="#27AE60" />
+    <ellipse cx="160" cy="780" rx="6" ry="9" fill="#E74C3C" />
+    <ellipse cx="660" cy="130" rx="5" ry="8" fill="#2C3E50" />
+  </g>
+
+</svg>

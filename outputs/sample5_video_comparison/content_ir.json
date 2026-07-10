@@ -1,0 +1,84 @@
+{
+  "intent": {
+    "primary_type": "data_comparison",
+    "secondary_type": null,
+    "confidence": 0.95,
+    "reasoning": "用户明确要求绘制对比数据的SVG信息图，直接对应数据对比类型。"
+  },
+  "entities": [
+    {
+      "name": "YouTube",
+      "type": "organization",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "TikTok",
+      "type": "organization",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "Kuaishou",
+      "type": "organization",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "videos",
+      "type": "term",
+      "role": "attribute",
+      "importance": "context"
+    },
+    {
+      "name": "10",
+      "type": "number",
+      "role": "relation",
+      "importance": "secondary"
+    },
+    {
+      "name": "2",
+      "type": "number",
+      "role": "relation",
+      "importance": "secondary"
+    }
+  ],
+  "relations": [
+    {
+      "type": "comparison",
+      "source": "YouTube",
+      "target": "TikTok",
+      "description": "YouTube视频数量是TikTok的10倍",
+      "quantifier": "10 times more"
+    },
+    {
+      "type": "comparison",
+      "source": "TikTok",
+      "target": "Kuaishou",
+      "description": "TikTok视频数量是快手的2倍",
+      "quantifier": "2 times more"
+    }
+  ],
+  "content_summary": {
+    "title": "视频数量对比：YouTube vs TikTok vs 快手",
+    "key_points": [
+      "YouTube 视频量是 TikTok 的 10 倍",
+      "TikTok 视频量是快手（Kuaishou）的 2 倍",
+      "呈现三个平台的视频数量相对规模"
+    ],
+    "target_audience": "general",
+    "language": "mixed"
+  },
+  "knowledge_gap": {
+    "needs_external_knowledge": false,
+    "search_queries": [],
+    "fallback_knowledge": null
+  },
+  "chart_type": {
+    "recommended": "comparison_chart",
+    "alternatives": [
+      "bar_chart"
+    ],
+    "type_confidence": 0.9
+  }
+}

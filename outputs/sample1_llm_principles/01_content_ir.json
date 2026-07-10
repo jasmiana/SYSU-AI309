@@ -1,0 +1,52 @@
+{
+  "intent": {
+    "primary_type": "concept_explanation",
+    "secondary_type": "科普",
+    "confidence": 0.95,
+    "reasoning": "用户明确要求解释大语言模型的基本原理，属于概念解释及科普说明。"
+  },
+  "entities": [
+    {
+      "name": "大语言模型",
+      "type": "term",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "基本原理",
+      "type": "term",
+      "role": "attribute",
+      "importance": "primary"
+    }
+  ],
+  "relations": [],
+  "content_summary": {
+    "title": "大语言模型基本原理",
+    "key_points": [
+      "大语言模型（LLM）是一种基于Transformer架构的深度学习模型。",
+      "LLM通过自注意力机制捕捉长距离依赖关系，高效处理文本序列。",
+      "模型在大规模文本数据上进行预训练，学习语言的统计规律和世界知识。",
+      "预训练通常采用预测下一个词的任务，使模型掌握语言生成能力。",
+      "LLM可通过微调或提示工程适应特定任务，如翻译、问答等。"
+    ],
+    "target_audience": "general",
+    "language": "zh"
+  },
+  "knowledge_gap": {
+    "needs_external_knowledge": true,
+    "search_queries": [
+      "大语言模型基本原理",
+      "LLM工作原理",
+      "Transformer架构自注意力机制"
+    ],
+    "fallback_knowledge": "Large language models are based on Transformer architecture, using self-attention to process sequences, pre-trained on massive text with next-token prediction, and fine-tuned for tasks."
+  },
+  "chart_type": {
+    "recommended": "concept_map",
+    "alternatives": [
+      "architecture_diagram",
+      "process_diagram"
+    ],
+    "type_confidence": 0.95
+  }
+}

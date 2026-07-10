@@ -1,0 +1,198 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100" width="800" height="1100">
+  <defs>
+    <!-- 标题渐变 -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4A90D9"/>
+      <stop offset="100%" stop-color="#7B68EE"/>
+    </linearGradient>
+    
+    <!-- 卡片阴影 -->
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#4A90D9" flood-opacity="0.06"/>
+    </filter>
+
+    <!-- 按钮/模块阴影 -->
+    <filter id="modelShadow" x="-10%" y="-10%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.15"/>
+    </filter>
+
+    <!-- 网格图案 -->
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
+      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="#E2E8F0" stroke-width="0.5"/>
+    </pattern>
+  </defs>
+
+  <!-- 全局背景 -->
+  <rect x="0" y="0" width="800" height="1100" fill="#F8F9FF"/>
+
+  <!-- ================= 1. 标题区 (y: 0 - 88) ================= -->
+  <g id="title_section">
+    <rect x="0" y="0" width="800" height="88" fill="url(#headerGrad)"/>
+    <!-- 装饰性圆圈 -->
+    <circle cx="40" cy="44" r="30" fill="#FFFFFF" fill-opacity="0.08"/>
+    <circle cx="760" cy="44" r="40" fill="#FFFFFF" fill-opacity="0.08"/>
+    <circle cx="700" cy="20" r="15" fill="#FFFFFF" fill-opacity="0.15"/>
+    <text x="400" y="54" text-anchor="middle" fill="#FFFFFF" font-size="32" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" letter-spacing="2">什么是词向量？</text>
+  </g>
+
+  <!-- ================= 2. 核心定义区 (y: 88 - 308) ================= -->
+  <g id="definition_section">
+    <!-- 卡片背景 -->
+    <rect x="40" y="108" width="720" height="180" rx="12" fill="#FFFFFF" stroke="#E8ECF4" stroke-width="1" filter="url(#cardShadow)"/>
+    <!-- 顶部装饰条 -->
+    <rect x="40" y="108" width="720" height="6" fill="url(#headerGrad)" rx="3"/>
+    
+    <!-- 图标与标题 -->
+    <circle cx="70" cy="155" r="16" fill="#EBF4FF"/>
+    <text x="70" y="161" text-anchor="middle" fill="#4A90D9" font-size="16">📖</text>
+    <text x="95" y="161" fill="#4A90D9" font-size="22" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">核心定义</text>
+    
+    <!-- 正文内容 -->
+    <text x="75" y="205" fill="#2C3E50" font-size="15" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">
+      <tspan x="75" dy="0">词向量（Word Embedding）是一种将词语转换为固定长度数值向量的技术。</tspan>
+      <tspan x="75" dy="26">通过这种方式，计算机能够高效地理解和处理自然语言，</tspan>
+      <tspan x="75" dy="26">是自然语言处理（NLP）领域的核心基础。</tspan>
+    </text>
+  </g>
+
+  <!-- ================= 3. 语义空间可视化区 (y: 308 - 616) ================= -->
+  <g id="vector_space_section">
+    <!-- 卡片背景 -->
+    <rect x="40" y="328" width="720" height="268" rx="12" fill="#FFFFFF" stroke="#E8ECF4" stroke-width="1" filter="url(#cardShadow)"/>
+    
+    <!-- 标题 -->
+    <circle cx="70" cy="370" r="16" fill="#EBF4FF"/>
+    <text x="70" y="376" text-anchor="middle" fill="#4A90D9" font-size="16">🌐</text>
+    <text x="95" y="376" fill="#4A90D9" font-size="22" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">语义空间可视化</text>
+
+    <!-- 网格背景 -->
+    <rect x="120" y="410" width="560" height="140" fill="url(#grid)"/>
+    
+    <!-- 坐标轴 -->
+    <line x1="120" y1="540" x2="680" y2="540" stroke="#CBD5E1" stroke-width="2"/>
+    <line x1="120" y1="410" x2="120" y2="550" stroke="#CBD5E1" stroke-width="2"/>
+    
+    <!-- 坐标轴箭头 -->
+    <polygon points="680,540 670,535 670,545" fill="#CBD5E1"/>
+    <polygon points="120,410 115,420 125,420" fill="#CBD5E1"/>
+
+    <!-- 轴标签 -->
+    <text x="400" y="570" text-anchor="middle" fill="#6B7280" font-size="13" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">维度 1</text>
+    <text x="110" y="480" text-anchor="end" fill="#6B7280" font-size="13" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" transform="rotate(-90 110 480)">维度 2</text>
+
+    <!-- 连接线（语义无关） -->
+    <line x1="250" y1="490" x2="550" y2="520" stroke="#CBD5E1" stroke-width="2" stroke-dasharray="6,4"/>
+    <text x="400" y="535" text-anchor="middle" fill="#6B7280" font-size="12" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">距离远（语义无关）</text>
+
+    <!-- 连接线（语义相近） -->
+    <line x1="250" y1="490" x2="350" y2="460" stroke="#4A90D9" stroke-width="2.5"/>
+    <text x="280" y="445" text-anchor="middle" fill="#4A90D9" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">距离近（语义相近）</text>
+
+    <!-- 节点：猫 -->
+    <circle cx="250" cy="490" r="18" fill="#4A90D9" filter="url(#modelShadow)"/>
+    <text x="250" y="496" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">猫</text>
+    <text x="250" y="520" text-anchor="middle" fill="#2C3E50" font-size="13" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">猫</text>
+
+    <!-- 节点：狗 -->
+    <circle cx="350" cy="460" r="18" fill="#4A90D9" filter="url(#modelShadow)"/>
+    <text x="350" y="466" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">狗</text>
+    <text x="350" y="490" text-anchor="middle" fill="#2C3E50" font-size="13" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">狗</text>
+
+    <!-- 节点：汽车 -->
+    <circle cx="550" cy="520" r="18" fill="#7B68EE" filter="url(#modelShadow)"/>
+    <text x="550" y="526" text-anchor="middle" fill="#FFFFFF" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">车</text>
+    <text x="550" y="552" text-anchor="middle" fill="#2C3E50" font-size="13" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">汽车</text>
+  </g>
+
+  <!-- ================= 4. 经典模型区 (y: 616 - 814) ================= -->
+  <g id="models_section">
+    <!-- 卡片背景 -->
+    <rect x="40" y="636" width="720" height="158" rx="12" fill="#FFFFFF" stroke="#E8ECF4" stroke-width="1" filter="url(#cardShadow)"/>
+    
+    <!-- 标题 -->
+    <circle cx="70" cy="678" r="16" fill="#EBF4FF"/>
+    <text x="70" y="684" text-anchor="middle" fill="#4A90D9" font-size="16">🧠</text>
+    <text x="95" y="684" fill="#4A90D9" font-size="22" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">经典词向量模型</text>
+
+    <!-- Word2Vec 模块 -->
+    <g transform="translate(70, 700)">
+      <rect x="0" y="0" width="180" height="58" rx="8" fill="#4A90D9" filter="url(#modelShadow)"/>
+      <text x="90" y="35" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">Word2Vec</text>
+    </g>
+
+    <!-- GloVe 模块 -->
+    <g transform="translate(310, 700)">
+      <rect x="0" y="0" width="180" height="58" rx="8" fill="#7B68EE" filter="url(#modelShadow)"/>
+      <text x="90" y="35" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">GloVe</text>
+    </g>
+
+    <!-- FastText 模块 -->
+    <g transform="translate(550, 700)">
+      <rect x="0" y="0" width="180" height="58" rx="8" fill="#D63031" filter="url(#modelShadow)"/>
+      <text x="90" y="35" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">FastText</text>
+    </g>
+
+    <!-- 说明文字 -->
+    <text x="400" y="780" text-anchor="middle" fill="#6B7280" font-size="13" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">通过大规模文本语料训练，学习词语的分布式表示</text>
+  </g>
+
+  <!-- ================= 5. 类比推理区 (y: 814 - 1034) ================= -->
+  <g id="analogy_section">
+    <!-- 卡片背景 -->
+    <rect x="40" y="834" width="720" height="180" rx="12" fill="#FFFFFF" stroke="#E8ECF4" stroke-width="1" filter="url(#cardShadow)"/>
+    
+    <!-- 标题 -->
+    <circle cx="70" cy="875" r="16" fill="#EBF4FF"/>
+    <text x="70" y="881" text-anchor="middle" fill="#4A90D9" font-size="16">💡</text>
+    <text x="95" y="881" fill="#4A90D9" font-size="22" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">类比推理（Analogy）</text>
+
+    <!-- 公式可视化布局 -->
+    <!-- 1. 国王 -->
+    <g transform="translate(80, 910)">
+      <rect x="0" y="0" width="80" height="44" rx="6" fill="#4A90D9" filter="url(#modelShadow)"/>
+      <text x="40" y="28" text-anchor="middle" fill="#FFFFFF" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">国王</text>
+      <text x="40" y="58" text-anchor="middle" fill="#2C3E50" font-size="11" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">King</text>
+    </g>
+
+    <!-- 2. 减号 -->
+    <text x="178" y="937" text-anchor="middle" fill="#2C3E50" font-size="22" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">-</text>
+
+    <!-- 3. 男人 -->
+    <g transform="translate(200, 910)">
+      <rect x="0" y="0" width="80" height="44" rx="6" fill="#2C3E50" filter="url(#modelShadow)"/>
+      <text x="40" y="28" text-anchor="middle" fill="#FFFFFF" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">男人</text>
+      <text x="40" y="58" text-anchor="middle" fill="#2C3E50" font-size="11" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">Man</text>
+    </g>
+
+    <!-- 4. 加号 -->
+    <text x="298" y="937" text-anchor="middle" fill="#2C3E50" font-size="22" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">+</text>
+
+    <!-- 5. 女人 -->
+    <g transform="translate(320, 910)">
+      <rect x="0" y="0" width="80" height="44" rx="6" fill="#2C3E50" filter="url(#modelShadow)"/>
+      <text x="40" y="28" text-anchor="middle" fill="#FFFFFF" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">女人</text>
+      <text x="40" y="58" text-anchor="middle" fill="#2C3E50" font-size="11" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">Woman</text>
+    </g>
+
+    <!-- 6. 约等于号 -->
+    <text x="418" y="937" text-anchor="middle" fill="#2C3E50" font-size="22" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">≈</text>
+
+    <!-- 7. 王后 -->
+    <g transform="translate(440, 910)">
+      <rect x="0" y="0" width="80" height="44" rx="6" fill="#D63031" filter="url(#modelShadow)"/>
+      <text x="40" y="28" text-anchor="middle" fill="#FFFFFF" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">王后</text>
+      <text x="40" y="58" text-anchor="middle" fill="#2C3E50" font-size="11" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">Queen</text>
+    </g>
+
+    <!-- 描述文本 -->
+    <text x="400" y="1000" text-anchor="middle" fill="#6B7280" font-size="13" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">词向量能够捕捉语义关系，支持向量运算：King - Man + Woman = Queen</text>
+  </g>
+
+  <!-- ================= 6. 页脚区 (y: 1034 - 1100) ================= -->
+  <g id="footer_section">
+    <rect x="0" y="1034" width="800" height="66" fill="#F1F5F9"/>
+    <line x1="40" y1="1034" x2="760" y2="1034" stroke="#CBD5E1" stroke-width="1"/>
+    <text x="400" y="1068" text-anchor="middle" fill="#6B7280" font-size="12" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">来源：词向量（Word Embedding）技术简介 | 制作：AI 信息图生成器</text>
+  </g>
+
+</svg>

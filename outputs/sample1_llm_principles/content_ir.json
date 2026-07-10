@@ -1,0 +1,65 @@
+{
+  "intent": {
+    "primary_type": "concept_explanation",
+    "secondary_type": "科普",
+    "confidence": 0.95,
+    "reasoning": "用户明确要求“解释大语言模型的基本原理”，属于典型的概念解释需求，面向大众科普性质。"
+  },
+  "entities": [
+    {
+      "name": "大语言模型",
+      "type": "term",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "基本原理",
+      "type": "term",
+      "role": "object",
+      "importance": "primary"
+    },
+    {
+      "name": "SVG信息图",
+      "type": "term",
+      "role": "attribute",
+      "importance": "context"
+    },
+    {
+      "name": "白色背景",
+      "type": "term",
+      "role": "attribute",
+      "importance": "context"
+    }
+  ],
+  "relations": [
+    {
+      "type": "hierarchy",
+      "source": "大语言模型",
+      "target": "基本原理",
+      "description": "大语言模型所包含的基本工作原理",
+      "quantifier": null
+    }
+  ],
+  "content_summary": {
+    "title": "大语言模型基本原理",
+    "key_points": [],
+    "target_audience": "general",
+    "language": "zh"
+  },
+  "knowledge_gap": {
+    "needs_external_knowledge": true,
+    "search_queries": [
+      "大语言模型基本原理",
+      "Transformer架构 自注意力机制",
+      "LLM预训练与微调流程"
+    ],
+    "fallback_knowledge": "大语言模型基于Transformer架构，核心机制为自注意力，通过海量文本预训练学习语言模式，后经指令微调适应具体任务。"
+  },
+  "chart_type": {
+    "recommended": "concept_map",
+    "alternatives": [
+      "architecture_diagram"
+    ],
+    "type_confidence": 0.9
+  }
+}

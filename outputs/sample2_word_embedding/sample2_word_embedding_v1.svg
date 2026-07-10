@@ -1,0 +1,157 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1020" width="800" height="1020">
+  <defs>
+    <!-- 背景渐变 -->
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#F8FAFC" />
+      <stop offset="100%" stop-color="#F1F5F9" />
+    </linearGradient>
+    
+    <!-- 标题渐变 -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1E293B" />
+      <stop offset="100%" stop-color="#0F172A" />
+    </linearGradient>
+    
+    <!-- 标题底部装饰线渐变 -->
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="33%" stop-color="#10B981" />
+      <stop offset="66%" stop-color="#F59E0B" />
+      <stop offset="100%" stop-color="#8B5CF6" />
+    </linearGradient>
+
+    <!-- 卡片阴影 -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#0F172A" flood-opacity="0.06" />
+    </filter>
+    
+    <!-- 箭头标记 -->
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#CBD5E1" />
+    </marker>
+
+    <!-- 背景点阵图案 -->
+    <pattern id="dotPattern" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#CBD5E1" opacity="0.6" />
+    </pattern>
+  </defs>
+
+  <!-- 背景层 -->
+  <rect x="0" y="0" width="800" height="1020" fill="url(#bgGrad)" />
+  <rect x="0" y="0" width="800" height="1020" fill="url(#dotPattern)" />
+
+  <!-- 装饰性背景元素（概念图氛围） -->
+  <g opacity="0.4">
+    <circle cx="100" cy="300" r="4" fill="#CBD5E1" />
+    <circle cx="720" cy="500" r="6" fill="#CBD5E1" />
+    <circle cx="680" cy="800" r="5" fill="#CBD5E1" />
+    <circle cx="150" cy="700" r="3" fill="#CBD5E1" />
+    <circle cx="760" cy="200" r="4" fill="#CBD5E1" />
+    <line x1="100" y1="300" x2="150" y2="700" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="6 4" />
+    <line x1="720" y1="500" x2="680" y2="800" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="6 4" />
+    <line x1="760" y1="200" x2="720" y2="500" stroke="#E2E8F0" stroke-width="1.5" stroke-dasharray="6 4" />
+  </g>
+
+  <!-- 顶部标题栏 -->
+  <g transform="translate(0, 0)">
+    <rect x="0" y="0" width="800" height="120" fill="url(#headerGrad)" />
+    
+    <!-- 标题装饰形态 -->
+    <path d="M 650 30 L 680 15 L 710 30 L 710 60 L 680 75 L 650 60 Z" fill="none" stroke="#475569" stroke-width="1.5" opacity="0.6" />
+    <path d="M 660 40 L 680 30 L 700 40 L 700 60 L 680 70 L 660 60 Z" fill="none" stroke="#475569" stroke-width="1.5" opacity="0.3" />
+    <circle cx="620" cy="80" r="6" fill="#4F46E5" opacity="0.5" />
+    <circle cx="730" cy="50" r="8" fill="#10B981" opacity="0.5" />
+    <circle cx="760" cy="90" r="4" fill="#F59E0B" opacity="0.5" />
+    <circle cx="60" cy="30" r="12" fill="#8B5CF6" opacity="0.1" />
+    
+    <!-- 标题文本 -->
+    <text x="400" y="55" text-anchor="middle" font-size="34" font-weight="bold" fill="#F8FAFC" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">词向量（Word Embedding）基本概念</text>
+    <text x="400" y="90" text-anchor="middle" font-size="16" fill="#94A3B8" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">核心技术解析 · 自然语言处理 · 语义理解</text>
+    
+    <!-- 底部彩色装饰线 -->
+    <rect x="0" y="116" width="800" height="4" fill="url(#lineGrad)" />
+  </g>
+
+  <!-- 卡片1：核心机制与数值表示 -->
+  <g transform="translate(60, 160)">
+    <rect x="0" y="0" width="680" height="130" rx="12" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2" filter="url(#shadow)" />
+    <rect x="0" y="0" width="8" height="130" fill="#4F46E5" rx="4" />
+    <circle cx="36" cy="65" r="20" fill="#4F46E5" />
+    <text x="36" y="72" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">1</text>
+    <text x="70" y="48" font-size="20" font-weight="bold" fill="#1E293B" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">核心机制：数值向量表示</text>
+    <text x="70" y="78" font-size="15" fill="#475569" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">将自然语言中的词语转化为机器能处理的数值向量，蕴含丰富语义。</text>
+    
+    <!-- 标签 -->
+    <rect x="560" y="15" width="105" height="24" rx="12" fill="#EFF6FF" />
+    <text x="612" y="31" text-anchor="middle" font-size="12" font-weight="bold" fill="#4F46E5" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">核心定义</text>
+  </g>
+
+  <!-- 箭头 1 -->
+  <line x1="400" y1="290" x2="400" y2="320" stroke="#CBD5E1" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- 卡片2：捕捉语义与语法 -->
+  <g transform="translate(60, 330)">
+    <rect x="0" y="0" width="680" height="130" rx="12" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2" filter="url(#shadow)" />
+    <rect x="0" y="0" width="8" height="130" fill="#10B981" rx="4" />
+    <circle cx="36" cy="65" r="20" fill="#10B981" />
+    <text x="36" y="72" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">2</text>
+    <text x="70" y="48" font-size="20" font-weight="bold" fill="#1E293B" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">关键能力：捕捉语义与语法</text>
+    <text x="70" y="78" font-size="15" fill="#475569" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">通过向量空间距离，有效衡量词语的语义相似性和语法结构。</text>
+    
+    <!-- 标签 -->
+    <rect x="560" y="15" width="105" height="24" rx="12" fill="#ECFDF5" />
+    <text x="612" y="31" text-anchor="middle" font-size="12" font-weight="bold" fill="#10B981" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">核心能力</text>
+  </g>
+
+  <!-- 箭头 2 -->
+  <line x1="400" y1="460" x2="400" y2="490" stroke="#CBD5E1" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- 卡片3：NLP核心技术地位 -->
+  <g transform="translate(60, 500)">
+    <rect x="0" y="0" width="680" height="130" rx="12" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2" filter="url(#shadow)" />
+    <rect x="0" y="0" width="8" height="130" fill="#F59E0B" rx="4" />
+    <circle cx="36" cy="65" r="20" fill="#F59E0B" />
+    <text x="36" y="72" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">3</text>
+    <text x="70" y="48" font-size="20" font-weight="bold" fill="#1E293B" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">行业地位：NLP 核心技术</text>
+    <text x="70" y="78" font-size="15" fill="#475569" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">作为自然语言处理领域的基石性技术，为下游任务提供核心驱动力。</text>
+    
+    <!-- 标签 -->
+    <rect x="560" y="15" width="105" height="24" rx="12" fill="#FFFBEB" />
+    <text x="612" y="31" text-anchor="middle" font-size="12" font-weight="bold" fill="#F59E0B" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">行业地位</text>
+  </g>
+
+  <!-- 箭头 3 -->
+  <line x1="400" y1="630" x2="400" y2="660" stroke="#CBD5E1" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- 卡片4：常见方法与经典模型 -->
+  <g transform="translate(60, 670)">
+    <rect x="0" y="0" width="680" height="130" rx="12" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2" filter="url(#shadow)" />
+    <rect x="0" y="0" width="8" height="130" fill="#EF4444" rx="4" />
+    <circle cx="36" cy="65" r="20" fill="#EF4444" />
+    <text x="36" y="72" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">4</text>
+    <text x="70" y="48" font-size="20" font-weight="bold" fill="#1E293B" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">常见方法：Word2Vec 与 GloVe</text>
+    <text x="70" y="75" font-size="15" fill="#475569" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">经典模型 Word2Vec（Mikolov, 2013）和 GloVe（Pennington et al., 2014）</text>
+    <text x="70" y="97" font-size="15" fill="#475569" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">是两种最经典、最具代表性的词向量生成方法，各有优势。</text>
+    
+    <!-- 标签 -->
+    <rect x="560" y="15" width="105" height="24" rx="12" fill="#FEF2F2" />
+    <text x="612" y="31" text-anchor="middle" font-size="12" font-weight="bold" fill="#EF4444" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">常见方法</text>
+  </g>
+
+  <!-- 箭头 4 -->
+  <line x1="400" y1="800" x2="400" y2="830" stroke="#CBD5E1" stroke-width="2" marker-end="url(#arrow)" />
+
+  <!-- 卡片5：终极价值与机器理解 -->
+  <g transform="translate(60, 840)">
+    <rect x="0" y="0" width="680" height="130" rx="12" fill="#FFFFFF" stroke="#F1F5F9" stroke-width="2" filter="url(#shadow)" />
+    <rect x="0" y="0" width="8" height="130" fill="#8B5CF6" rx="4" />
+    <circle cx="36" cy="65" r="20" fill="#8B5CF6" />
+    <text x="36" y="72" text-anchor="middle" font-size="15" font-weight="bold" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">5</text>
+    <text x="70" y="48" font-size="20" font-weight="bold" fill="#1E293B" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">终极价值：让机器理解关系</text>
+    <text x="70" y="78" font-size="15" fill="#475569" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">使得机器能够“理解”词语之间的复杂关联，实现类比推理和语义聚类。</text>
+    
+    <!-- 标签 -->
+    <rect x="560" y="15" width="105" height="24" rx="12" fill="#F5F3FF" />
+    <text x="612" y="31" text-anchor="middle" font-size="12" font-weight="bold" fill="#8B5CF6" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">终极价值</text>
+  </g>
+</svg>

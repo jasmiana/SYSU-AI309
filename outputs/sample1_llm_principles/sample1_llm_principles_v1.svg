@@ -1,0 +1,138 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100" width="800" height="1100">
+  <defs>
+    <!-- 卡片阴影 -->
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#0F172A" flood-opacity="0.06" />
+    </filter>
+    
+    <!-- 中心卡片阴影 -->
+    <filter id="shadow-lg" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#4F46E5" flood-opacity="0.1" />
+    </filter>
+
+    <!-- 标题栏渐变 -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+
+    <!-- 边框渐变 -->
+    <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#4F46E5" />
+      <stop offset="100%" stop-color="#7C3AED" />
+    </linearGradient>
+
+    <!-- 背景点状图案 -->
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#CBD5E1" />
+    </pattern>
+  </defs>
+
+  <style>
+    .title { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-weight: bold; }
+    .subtitle { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; }
+    .card-title { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-weight: bold; font-size: 18px; fill: #1F2937; }
+    .card-text { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 14px; fill: #475569; }
+    .number { font-family: 'Arial', sans-serif; font-weight: bold; font-size: 16px; fill: #FFFFFF; }
+    .footer-text { font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif; font-size: 12px; fill: #94A3B8; }
+  </style>
+
+  <!-- 背景 -->
+  <rect width="800" height="1100" fill="#F8FAFC" />
+  <rect width="800" height="1100" fill="url(#dots)" opacity="0.5" />
+
+  <!-- 标题栏 -->
+  <rect width="800" height="80" fill="url(#headerGrad)" />
+  <!-- 装饰性抽象形状 -->
+  <circle cx="720" cy="30" r="40" fill="#FFFFFF" opacity="0.1" />
+  <circle cx="760" cy="70" r="25" fill="#FFFFFF" opacity="0.1" />
+  <path d="M 600 0 L 640 0 L 620 80 Z" fill="#FFFFFF" opacity="0.05" />
+  
+  <text x="400" y="42" class="title" font-size="28" fill="#FFFFFF" text-anchor="middle" letter-spacing="2">大语言模型基本原理</text>
+  <text x="400" y="66" class="subtitle" font-size="14" fill="#C7D2FE" text-anchor="middle">深入浅出，一文读懂 LLM 的核心技术栈</text>
+
+  <!-- 中心概念卡片 -->
+  <rect x="150" y="120" width="500" height="70" rx="16" fill="#FFFFFF" filter="url(#shadow-lg)" stroke="url(#borderGrad)" stroke-width="2" />
+  <text x="400" y="148" class="card-title" font-size="20" fill="#1F2937" text-anchor="middle">什么是大语言模型 (LLM)？</text>
+  <text x="400" y="172" class="card-text" font-size="15" fill="#64748B" text-anchor="middle">基于海量文本数据训练的超大规模人工智能模型</text>
+
+  <!-- 连接箭头 -->
+  <path d="M 390 195 L 410 195 L 400 208 Z" fill="#CBD5E1" />
+  
+  <!-- 原理 1 -->
+  <g transform="translate(0, 0)">
+    <rect x="50" y="230" width="700" height="120" rx="8" fill="#FFFFFF" filter="url(#shadow)" />
+    <!-- 左侧强调色条 -->
+    <path d="M 50 238 Q 50 230 60 230 L 60 350 L 50 350 Z" fill="#3B82F6" />
+    <!-- 图标 -->
+    <circle cx="75" cy="290" r="18" fill="#3B82F6" />
+    <text x="75" y="296" class="number" text-anchor="middle">1</text>
+    <!-- 内容 -->
+    <text x="105" y="262" class="card-title">海量数据预训练</text>
+    <text x="105" y="288" class="card-text">• 从互联网、书籍、论文等来源收集数 TB 的文本数据。</text>
+    <text x="105" y="310" class="card-text">• 采用“下一个词预测”作为自监督学习目标，让模型学习</text>
+    <text x="121" y="332" class="card-text">语言的通用模式、知识、语法和上下文。</text>
+  </g>
+
+  <path d="M 390 355 L 410 355 L 400 368 Z" fill="#CBD5E1" />
+
+  <!-- 原理 2 -->
+  <g transform="translate(0, 0)">
+    <rect x="50" y="390" width="700" height="120" rx="8" fill="#FFFFFF" filter="url(#shadow)" />
+    <path d="M 50 398 Q 50 390 60 390 L 60 510 L 50 510 Z" fill="#10B981" />
+    <circle cx="75" cy="450" r="18" fill="#10B981" />
+    <text x="75" y="456" class="number" text-anchor="middle">2</text>
+    <text x="105" y="422" class="card-title">Transformer 神经网络架构</text>
+    <text x="105" y="448" class="card-text">• 处理序列数据的核心架构，采用自注意力机制。</text>
+    <text x="105" y="470" class="card-text">• 让模型能动态理解词与词之间的关系，不受距离限制。</text>
+    <text x="105" y="492" class="card-text">• 具备强大的并行计算能力，支持超大规模模型训练。</text>
+  </g>
+
+  <path d="M 390 515 L 410 515 L 400 528 Z" fill="#CBD5E1" />
+
+  <!-- 原理 3 -->
+  <g transform="translate(0, 0)">
+    <rect x="50" y="550" width="700" height="120" rx="8" fill="#FFFFFF" filter="url(#shadow)" />
+    <path d="M 50 558 Q 50 550 60 550 L 60 670 L 50 670 Z" fill="#F59E0B" />
+    <circle cx="75" cy="610" r="18" fill="#F59E0B" />
+    <text x="75" y="616" class="number" text-anchor="middle">3</text>
+    <text x="105" y="582" class="card-title">指令微调与人类对齐</text>
+    <text x="105" y="608" class="card-text">• SFT（监督微调）：使用高质量问答对训练模型理解指令。</text>
+    <text x="105" y="630" class="card-text">• RLHF（基于人类反馈的强化学习）：让人工标注员对答案排序，</text>
+    <text x="121" y="652" class="card-text">训练模型输出更符合人类偏好和安全要求的回答。</text>
+  </g>
+
+  <path d="M 390 675 L 410 675 L 400 688 Z" fill="#CBD5E1" />
+
+  <!-- 原理 4 -->
+  <g transform="translate(0, 0)">
+    <rect x="50" y="710" width="700" height="140" rx="8" fill="#FFFFFF" filter="url(#shadow)" />
+    <path d="M 50 718 Q 50 710 60 710 L 60 850 L 50 850 Z" fill="#EF4444" />
+    <circle cx="75" cy="780" r="18" fill="#EF4444" />
+    <text x="75" y="786" class="number" text-anchor="middle">4</text>
+    <text x="105" y="742" class="card-title">自回归生成与推理</text>
+    <text x="105" y="768" class="card-text">• 生成过程：逐个预测下一个词，前一个词会制约后续选择。</text>
+    <text x="105" y="790" class="card-text">• 推理时使用采样策略（如 top-p, top-k）来控制多样性和随机性。</text>
+    <text x="105" y="812" class="card-text">• 思维链（Chain-of-Thought）提示：通过展示推理步骤来激发</text>
+    <text x="121" y="834" class="card-text">出模型更强的逻辑能力。</text>
+  </g>
+
+  <path d="M 390 855 L 410 855 L 400 868 Z" fill="#CBD5E1" />
+
+  <!-- 原理 5 -->
+  <g transform="translate(0, 0)">
+    <rect x="50" y="890" width="700" height="140" rx="8" fill="#FFFFFF" filter="url(#shadow)" />
+    <path d="M 50 898 Q 50 890 60 890 L 60 1030 L 50 1030 Z" fill="#8B5CF6" />
+    <circle cx="75" cy="960" r="18" fill="#8B5CF6" />
+    <text x="75" y="966" class="number" text-anchor="middle">5</text>
+    <text x="105" y="922" class="card-title">涌现与规模法则</text>
+    <text x="105" y="948" class="card-text">• 当模型参数量和数据量突破某个阈值时，会突然“涌现”出</text>
+    <text x="121" y="970" class="card-text">小模型不具备的复杂能力。</text>
+    <text x="105" y="992" class="card-text">• 规模法则（Scaling Law）：模型性能随着参数、数据量和计算</text>
+    <text x="121" y="1014" class="card-text">量的增加而平滑提升，遵循幂律分布。</text>
+  </g>
+
+  <!-- 页脚 -->
+  <text x="400" y="1070" class="footer-text" text-anchor="middle">© 2024 大语言模型科普 | 期待与你一起探索 AI 的奇妙世界</text>
+
+</svg>

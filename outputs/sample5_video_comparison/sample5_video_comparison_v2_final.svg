@@ -1,0 +1,140 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" width="800" height="900">
+  <defs>
+    <!-- Background Gradient for Header -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#4A90D9"/>
+      <stop offset="100%" stop-color="#7B68EE"/>
+    </linearGradient>
+
+    <!-- Drop Shadow for Chart Area -->
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="8" stdDeviation="15" flood-color="#4A90D9" flood-opacity="0.08"/>
+    </filter>
+
+    <!-- Gradients for Bars -->
+    <linearGradient id="grad-yt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#5DA3E8"/>
+      <stop offset="100%" stop-color="#4A90D9"/>
+    </linearGradient>
+    <linearGradient id="grad-tt" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#9D91F2"/>
+      <stop offset="100%" stop-color="#7B68EE"/>
+    </linearGradient>
+    <linearGradient id="grad-ks" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#3DDC84"/>
+      <stop offset="100%" stop-color="#27AE60"/>
+    </linearGradient>
+
+    <!-- Arrowheads -->
+    <marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#7B68EE"/>
+    </marker>
+    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#27AE60"/>
+    </marker>
+    <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
+      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#FF6B6B"/>
+    </marker>
+  </defs>
+
+  <style>
+    .title-main { font-family: system-ui, -apple-system, sans-serif; font-size: 30px; font-weight: 800; fill: #FFFFFF; }
+    .title-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 22px; font-weight: 600; fill: #E8F0FE; }
+    .chart-title { font-family: system-ui, -apple-system, sans-serif; font-size: 18px; font-weight: 700; fill: #2C3E50; }
+    .axis-text { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 500; fill: #7F8C8D; }
+    .bar-value { font-family: system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 800; }
+    .bar-label { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 600; fill: #34495E; }
+    .arrow-text { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; }
+    .legend-text { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; fill: #7F8C8D; }
+  </style>
+
+  <!-- Global Background -->
+  <rect width="800" height="900" fill="#F8F9FF"/>
+
+  <!-- Header Section -->
+  <g id="title-section">
+    <rect x="0" y="0" width="800" height="110" fill="url(#headerGrad)"/>
+    <text x="400" y="50" text-anchor="middle" class="title-main">Video Quantity Comparison</text>
+    <text x="400" y="80" text-anchor="middle" class="title-sub">YouTube vs TikTok vs Kuaishou</text>
+  </g>
+
+  <!-- Chart Area Background -->
+  <g id="chart-section">
+    <rect x="60" y="140" width="680" height="620" rx="16" fill="#FFFFFF" filter="url(#cardShadow)"/>
+    <text x="400" y="175" text-anchor="middle" class="chart-title">Relative Number of Videos (Kuaishou = 1 unit)</text>
+
+    <!-- Y-Axis Labels & Grid Lines -->
+    <g id="grid-lines">
+      <!-- 20x -->
+      <line x1="120" y1="700" x2="680" y2="700" stroke="#F0F0F0" stroke-width="2" stroke-dasharray="6,6"/> <!-- Base 0 -->
+      <line x1="120" y1="180" x2="680" y2="180" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="110" y="185" text-anchor="end" class="axis-text">20x</text>
+      
+      <!-- 10x -->
+      <line x1="120" y1="440" x2="680" y2="440" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="110" y="445" text-anchor="end" class="axis-text">10x</text>
+      
+      <!-- 2x -->
+      <line x1="120" y1="648" x2="680" y2="648" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="110" y="653" text-anchor="end" class="axis-text">2x</text>
+      
+      <!-- 1x -->
+      <line x1="120" y1="674" x2="680" y2="674" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
+      <text x="110" y="679" text-anchor="end" class="axis-text">1x</text>
+
+      <!-- X-Axis Base -->
+      <line x1="120" y1="700" x2="680" y2="700" stroke="#BDC3C7" stroke-width="2"/>
+    </g>
+
+    <!-- Bar Graphs -->
+    <g id="bars">
+      <!-- Kuaishou Bar (1x) -->
+      <rect x="190" y="674" width="100" height="26" rx="6" fill="url(#grad-ks)"/>
+      <text x="240" y="664" text-anchor="middle" class="bar-value" fill="#27AE60">1x</text>
+      <text x="240" y="730" text-anchor="middle" class="bar-label">Kuaishou</text>
+
+      <!-- TikTok Bar (2x) -->
+      <rect x="350" y="648" width="100" height="52" rx="6" fill="url(#grad-tt)"/>
+      <text x="400" y="638" text-anchor="middle" class="bar-value" fill="#7B68EE">2x</text>
+      <text x="400" y="730" text-anchor="middle" class="bar-label">TikTok</text>
+
+      <!-- YouTube Bar (20x) -->
+      <rect x="510" y="180" width="100" height="520" rx="6" fill="url(#grad-yt)"/>
+      <text x="560" y="165" text-anchor="middle" class="bar-value" fill="#4A90D9">20x</text>
+      <text x="560" y="730" text-anchor="middle" class="bar-label">YouTube</text>
+    </g>
+
+    <!-- Connecting Arrows & Multipliers -->
+    <g id="connections">
+      <!-- Arrow 1: TikTok (2x) to YouTube (10x) -->
+      <path d="M 455 648 L 475 648 L 475 440 L 505 440" fill="none" stroke="#7B68EE" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arrow-purple)"/>
+      <rect x="448" y="530" width="54" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.9"/>
+      <text x="475" y="546" text-anchor="middle" class="arrow-text" fill="#7B68EE">10x</text>
+
+      <!-- Arrow 2: Kuaishou (1x) to TikTok (2x) -->
+      <path d="M 295 674 L 320 674 L 320 648 L 345 648" fill="none" stroke="#27AE60" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arrow-green)"/>
+      <rect x="295" y="662" width="46" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.9"/>
+      <text x="318" y="678" text-anchor="middle" class="arrow-text" fill="#27AE60">2x</text>
+
+      <!-- Arrow 3: Kuaishou (1x) to YouTube (20x) -->
+      <path d="M 295 674 L 390 674 L 390 300 L 505 300" fill="none" stroke="#FF6B6B" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arrow-red)"/>
+      <rect x="365" y="490" width="50" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.9"/>
+      <text x="390" y="506" text-anchor="middle" class="arrow-text" fill="#FF6B6B">20x</text>
+    </g>
+  </g>
+
+  <!-- Footer Section -->
+  <g id="footer-section">
+    <text x="400" y="810" text-anchor="middle" class="legend-text">
+      * Comparison based on relative multiplier values (Kuaishou = 1 unit). YouTube has 20 times more videos than Kuaishou.
+    </text>
+    <circle cx="580" cy="806" r="3" fill="#4A90D9"/>
+    <text x="590" y="810" class="legend-text" fill="#4A90D9">YouTube</text>
+    
+    <circle cx="650" cy="806" r="3" fill="#7B68EE"/>
+    <text x="660" y="810" class="legend-text" fill="#7B68EE">TikTok</text>
+    
+    <circle cx="720" cy="806" r="3" fill="#27AE60"/>
+    <text x="730" y="810" class="legend-text" fill="#27AE60">Kuaishou</text>
+  </g>
+</svg>
