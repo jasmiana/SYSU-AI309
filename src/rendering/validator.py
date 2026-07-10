@@ -1,13 +1,39 @@
 """SVG rendering validation — deterministic checks on generated SVG.
 
 Provides structured check reports for Agent 4's review process.
-Checks: XML syntax, coordinate bounds, element overlap, color contrast.
+Checks: cairosvg render, XML syntax, coordinate bounds, element overlap, color contrast.
 """
 
+import io
 import re
 import logging
 import xml.etree.ElementTree as ET
 from typing import Any
+
+try:
+    import ctypes as _ctypes
+    import os as _os
+    import sys as _sys
+
+    if _sys.platform == "win32":
+        # GTK3 installs cairo DLLs outside standard search paths.
+        # Pre-load via ctypes before cairocffi tries to find them.
+        _gtk_bin = r"C:\Program Files\GTK3-Runtime Win64\bin"
+        if _os.path.isdir(_gtk_bin):
+            _os.environ["PATH"] = _gtk_bin + ";" + _os.environ.get("PATH", "")
+            _cairo_dll = _os.path.join(_gtk_bin, "libcairo-2.dll")
+            _ctypes.CDLL(_cairo_dll)
+
+    import cairosvg  # noqa: F401
+
+    # Verify actually works
+    cairosvg.svg2png(
+        bytestring=b'<svg xmlns="http://www.w3.org/2000/svg" '
+        b'width="1" height="1" viewBox="0 0 1 1"/>'
+    )
+    _CAIROSVG_AVAILABLE = True
+except Exception:
+    _CAIROSVG_AVAILABLE = False
 
 logger = logging.getLogger(__name__)
 
@@ -219,19 +245,15 @@ def _contrast_ratio(c1: str, c2: str) -> float | None:
 def check_contrast(svg_code: str) -> dict[str, Any]:
     """Check text-background color contrast against WCAG AA.
 
-    Extracts fill colors from <text> elements and compares with
-    the SVG background or surrounding rect fills.
+    Only checks fill colors from <text> elements (not rect/circle fills).
+    Compares against white background (#FFFFFF) which is the default.
 
     Returns:
         {"ok": bool, "low_contrast": [{"text": str, "ratio": float}]}
     """
-    # Common text colors found in the SVG
+    # Extract fill colors from TEXT elements only (not rect/circle/path fills)
     text_color_pattern = re.findall(
-        r'<text[^>]*fill="([^"]+)"[^>]*>', svg_code
-    )
-    # Background colors
-    bg_color_pattern = re.findall(
-        r'fill="(#[0-9A-Fa-f]{6})"', svg_code
+        r'<text[^>]*fill="(#[0-9A-Fa-f]{6})"[^>]*>', svg_code
     )
 
     low_contrast: list[dict] = []
@@ -257,6 +279,26 @@ def check_contrast(svg_code: str) -> dict[str, Any]:
     }
 
 
+def check_render(svg_code: str) -> dict[str, Any]:
+    """Try to render SVG to PNG using cairosvg.
+
+    Catches rendering errors that XML parsing alone misses
+    (e.g., invalid path data, missing gradient references).
+
+    Returns:
+        {"render_ok": bool, "render_error": str | None}
+    """
+    if not _CAIROSVG_AVAILABLE:
+        return {"render_ok": True, "render_error": None, "cairosvg_available": False}
+
+    try:
+        cairosvg.svg2png(bytestring=svg_code.encode("utf-8"))
+        return {"render_ok": True, "render_error": None, "cairosvg_available": True}
+    except Exception as e:
+        logger.warning(f"cairosvg render failed: {e}")
+        return {"render_ok": False, "render_error": str(e)[:200], "cairosvg_available": True}
+
+
 def run_all_checks(svg_code: str) -> dict[str, Any]:
     """Run all deterministic validation checks on SVG code.
 
@@ -272,6 +314,9 @@ def run_all_checks(svg_code: str) -> dict[str, Any]:
     logger.info("Running structured validation checks...")
 
     syntax = validate_svg_syntax(svg_code)
+    render = check_render(svg_code) if syntax["xml_valid"] else {
+        "render_ok": False, "render_error": "Skipped: XML parse error"
+    }
     bounds = check_bounds(svg_code) if syntax["xml_valid"] else {
         "bounds_check_ok": False, "error": "Skipped due to XML parse error"
     }
@@ -284,11 +329,13 @@ def run_all_checks(svg_code: str) -> dict[str, Any]:
 
     report = {
         **syntax,
+        **render,
         **bounds,
         **overlaps,
         **contrast,
         "all_checks_pass": (
             syntax["xml_valid"]
+            and render.get("render_ok", True)
             and bounds.get("bounds_check_ok", False)
             and overlaps.get("overlap_check_ok", False)
             and contrast.get("contrast_check_ok", False)
@@ -297,6 +344,7 @@ def run_all_checks(svg_code: str) -> dict[str, Any]:
 
     logger.info(
         f"Validation: xml={syntax['xml_valid']}, "
+        f"render={render.get('render_ok', 'N/A')}, "
         f"bounds={bounds.get('bounds_check_ok')}, "
         f"overlaps={overlaps.get('overlap_check_ok')}, "
         f"contrast={contrast.get('contrast_check_ok')}"

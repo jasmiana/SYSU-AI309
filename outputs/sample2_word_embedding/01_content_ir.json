@@ -3,11 +3,11 @@
     "primary_type": "concept_explanation",
     "secondary_type": "科普",
     "confidence": 0.95,
-    "reasoning": "用户明确要求'通俗易懂地解释词向量的基本概念'，属于概念解释与科普教学类意图。"
+    "reasoning": "明确要求解释概念且强调通俗易懂，属于概念解释与科普的结合。"
   },
   "entities": [
     {
-      "name": "词向量（Word Embedding）",
+      "name": "词向量",
       "type": "term",
       "role": "subject",
       "importance": "primary"
@@ -15,12 +15,13 @@
   ],
   "relations": [],
   "content_summary": {
-    "title": "词向量（Word Embedding）的基本概念",
+    "title": "词向量：让计算机理解词语的意义",
     "key_points": [
-      "词向量是一种将词语表示为连续、低维、稠密的实数向量的技术，解决传统独热编码维度过高且无语义的问题。",
-      "词向量通过训练神经网络语言模型（如Word2Vec、GloVe）获得，使得语义相似的词在向量空间中距离更近。",
-      "典型的词向量运算能捕捉语义关系，例如：国王 - 男人 + 女人 ≈ 王后，体现了词向量的类比推理能力。",
-      "词向量是自然语言处理的基础，广泛应用于文本分类、机器翻译、情感分析等任务，让计算机更好地理解语言。"
+      "词向量是将自然语言中的词语映射为固定长度的实数向量，每个维度代表某种潜在语义特征。",
+      "通过训练，语义相近的词在向量空间中距离较近，比如“猫”和“狗”的向量比“猫”和“汽车”更相似。",
+      "经典方法如Word2Vec利用上下文预测，GloVe基于全局词共现矩阵，能捕获复杂的语法和语义规律。",
+      "词向量可以实现算术运算，例如“国王 - 男人 + 女人 ≈ 王后”，反映词语类比关系。",
+      "这一技术广泛应用于机器翻译、情感分析、问答系统等自然语言处理任务中。"
     ],
     "target_audience": "general",
     "language": "zh"
@@ -28,17 +29,17 @@
   "knowledge_gap": {
     "needs_external_knowledge": true,
     "search_queries": [
-      "词向量 基本概念",
-      "Word Embedding 通俗解释",
-      "词向量 工作原理 类比"
+      "词向量 通俗解释",
+      "word embedding 基本概念 科普",
+      "什么是词向量 简单介绍"
     ],
-    "fallback_knowledge": "词向量（Word Embedding）是将词汇映射到实数向量空间的技术，使得语义相似的词在向量空间中距离相近。它是自然语言处理的关键基础，常用于下游任务。"
+    "fallback_knowledge": "词向量是自然语言处理中的一项核心技术，它将词语表示为稠密、低维、实值的向量，使得语义相似的词语在向量空间中距离接近。典型算法包括Word2Vec、GloVe和FastText，能够学习到分布式表示，支持词语类比和相似度计算。"
   },
   "chart_type": {
     "recommended": "concept_map",
     "alternatives": [
       "architecture_diagram",
-      "process_diagram"
+      "flowchart"
     ],
     "type_confidence": 0.9
   }

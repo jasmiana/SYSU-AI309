@@ -74,9 +74,56 @@ def extract_json_from_response(text: str) -> dict[str, Any]:
         except json.JSONDecodeError:
             pass
 
+        # Desperate: try to fix truncated JSON by closing unclosed strings/brackets
+        try:
+            fixed = _fix_truncated_json(text[first_brace:last_brace + 1])
+            if fixed:
+                fixed = re.sub(r",\s*([}\]])", r"\1", fixed)
+                return json.loads(fixed)
+        except json.JSONDecodeError:
+            pass
+
     raise ValueError(
         f"Could not extract valid JSON from LLM response:\n{text[:500]}..."
     )
+
+
+def _fix_truncated_json(text: str) -> str | None:
+    """Attempt to fix JSON truncated by token limits.
+
+    Tries: closing unclosed strings, adding missing closing braces.
+    """
+    # If the last non-whitespace character before end is a letter/digit/comma,
+    # the JSON was likely truncated mid-string or mid-value.
+    # Try closing any open string and adding missing }] pairs.
+    result = text.rstrip()
+
+    # Count unclosed braces/brackets
+    open_braces = result.count("{") - result.count("}")
+    open_brackets = result.count("[") - result.count("]")
+    in_string = False
+    escape_next = False
+    for ch in result:
+        if escape_next:
+            escape_next = False
+            continue
+        if ch == "\\":
+            escape_next = True
+            continue
+        if ch == '"':
+            in_string = not in_string
+
+    # Close unclosed string
+    if in_string:
+        result += '"'
+
+    # Close unclosed braces/brackets
+    result += "]" * open_brackets
+    result += "}" * open_braces
+
+    if result != text.rstrip():
+        return result
+    return None
 
 
 def _extract_balanced_json(text: str, start: int) -> str | None:
@@ -259,6 +306,9 @@ class BaseAgent(ABC):
     def run(self, input_data: dict[str, Any]) -> dict[str, Any]:
         """Execute the agent: call LLM and parse structured output.
 
+        If JSON parsing fails, retries once with a stronger instruction
+        to output complete, valid JSON (no truncation).
+
         Args:
             input_data: Agent-specific input data.
 
@@ -277,11 +327,34 @@ class BaseAgent(ABC):
         try:
             return extract_json_from_response(raw_response)
         except ValueError as e:
-            logger.error(f"[{self.name}] JSON parsing failed: {e}")
-            return {
-                "parse_error": str(e),
-                "raw_response": raw_response,
-            }
+            logger.warning(
+                f"[{self.name}] JSON parsing failed (attempt 1): {e}. "
+                f"Retrying with stricter JSON instruction..."
+            )
+
+            # Retry: add explicit anti-truncation instruction
+            retry_system = system_prompt + (
+                "\n\nCRITICAL: Your previous output was not valid JSON. "
+                "The JSON was likely truncated (cut off before closing). "
+                "Output COMPLETE, well-formed JSON with all braces and "
+                "quotes properly closed. Double-check the final } is present. "
+                "Keep design_notes under 200 characters to avoid truncation."
+            )
+            try:
+                raw_response2 = self.call_llm(
+                    user_message=user_message,
+                    system_prompt=retry_system,
+                    expect_json=True,
+                )
+                return extract_json_from_response(raw_response2)
+            except ValueError as e2:
+                logger.error(
+                    f"[{self.name}] JSON parsing failed after retry: {e2}"
+                )
+                return {
+                    "parse_error": str(e2),
+                    "raw_response": raw_response2,
+                }
 
     def run_raw(self, input_data: dict[str, Any]) -> str:
         """Execute the agent and return raw text (no JSON parsing).

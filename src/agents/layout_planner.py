@@ -32,7 +32,7 @@ class LayoutPlanner(BaseAgent):
             name="LayoutPlanner",
             model=model,
             temperature=0.3,  # Lower temp for deterministic layout planning
-            max_tokens=16384,  # Layout IR can be very long (sections + elements + connections)
+            max_tokens=32768,  # Layout IR is very long + thinking tokens consume budget
         )
 
     def get_system_prompt(self) -> str:

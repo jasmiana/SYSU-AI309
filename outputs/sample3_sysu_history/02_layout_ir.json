@@ -3,95 +3,95 @@
   "canvas": {
     "width": 800,
     "height": 1200,
-    "background": "#F8FAFC"
+    "background": "#FDFEFE"
   },
   "color_scheme": {
     "name": "学术稳重",
-    "primary": "#1E3A8A",
-    "secondary": "#5B21B6",
-    "accent": "#B91C1C",
-    "background": "#F8FAFC",
-    "text_primary": "#1E293B",
-    "text_secondary": "#64748B",
+    "primary": "#8E44AD",
+    "secondary": "#2C3E50",
+    "accent": "#E74C3C",
+    "background": "#FDFEFE",
+    "text_primary": "#1a1a2e",
+    "text_secondary": "#636e72",
     "palette": [
-      "#1E3A8A",
-      "#5B21B6",
-      "#B91C1C",
-      "#0EA5E9",
-      "#10B981"
+      "#8E44AD",
+      "#2C3E50",
+      "#E74C3C",
+      "#3498DB",
+      "#F39C12"
     ],
-    "rationale": "以深蓝(#1E3A8A)和深红(#B91C1C)为核心的学术稳重配色。深蓝代表历史沉淀与学术严谨，呼应中山大学的学术权威感；深红作为强调色，呼应中大标志性色彩，同时用于高亮关键时间节点，引导视觉沿时间轴前行。背景采用极浅蓝灰(#F8FAFC)营造清爽、专注的阅读体验，文本采用深灰蓝(#1E293B)确保高可读性。"
+    "rationale": "内容为大学发展历程，属于历史教育主题，采用学术稳重配色突出庄重、学术氛围，紫色主色调象征底蕴与积淀。"
   },
   "typography": {
     "title_size": 32,
     "heading_size": 22,
-    "body_size": 16,
+    "body_size": 15,
     "label_size": 14,
     "font_family": "system-ui, 'Microsoft YaHei', sans-serif"
   },
   "layout_grid": {
-    "columns": 5,
-    "rows": 10,
+    "columns": 12,
+    "rows": 20,
     "gutter": 20
   },
   "sections": [
     {
-      "id": "header",
+      "id": "title_section",
       "type": "title",
       "position": {
-        "x_pct": 0,
-        "y_pct": 0,
-        "width_pct": 100,
-        "height_pct": 12
+        "x_pct": 10,
+        "y_pct": 3,
+        "width_pct": 80,
+        "height_pct": 10
       },
       "visual_weight": "primary",
-      "purpose": "展示主标题与副标题，奠定历史感基调"
+      "purpose": "展示主标题与副标题，建立视觉焦点"
     },
     {
-      "id": "main-timeline",
-      "type": "diagram",
+      "id": "timeline_main",
+      "type": "timeline",
       "position": {
-        "x_pct": 0,
-        "y_pct": 12,
-        "width_pct": 100,
-        "height_pct": 74
+        "x_pct": 15,
+        "y_pct": 16,
+        "width_pct": 70,
+        "height_pct": 72
       },
       "visual_weight": "primary",
-      "purpose": "时间线核心区域，以垂直蛇形布局展示5个关键历史节点"
+      "purpose": "垂直时间轴，展示五个关键历史节点"
     },
     {
-      "id": "footer",
+      "id": "footer_section",
       "type": "footer",
       "position": {
-        "x_pct": 0,
-        "y_pct": 88,
-        "width_pct": 100,
-        "height_pct": 8
+        "x_pct": 10,
+        "y_pct": 91,
+        "width_pct": 80,
+        "height_pct": 6
       },
       "visual_weight": "tertiary",
-      "purpose": "展示校训或结语"
+      "purpose": "附加说明、校训或数据来源"
     }
   ],
   "elements": [
     {
-      "id": "title-text",
+      "id": "main_title",
       "type": "text_block",
       "label": "中山大学发展历程",
-      "parent_section": "header",
+      "parent_section": "title_section",
       "color_key": "text_primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 400,
+        "min_width": 300,
         "min_height": 50,
         "aspect_ratio": null
       },
-      "content_hint": "主标题，放大并居中显示于页眉区域的上半部分"
+      "content_hint": "主标题，居中对齐，使用最大字号"
     },
     {
-      "id": "subtitle-text",
+      "id": "subtitle",
       "type": "text_block",
-      "label": "世纪中大，山高水长",
-      "parent_section": "header",
+      "label": "继承伟人志业，谱写时代新篇",
+      "parent_section": "title_section",
       "color_key": "text_secondary",
       "importance": "secondary",
       "size_hint": {
@@ -99,336 +99,214 @@
         "min_height": 30,
         "aspect_ratio": null
       },
-      "content_hint": "副标题，位于主标题下方，字体略小，营造层次感"
+      "content_hint": "副标题，位于主标题下方，字号较小，增加层次感"
     },
     {
-      "id": "line-main",
+      "id": "axis_line",
       "type": "line",
-      "label": null,
-      "parent_section": "main-timeline",
-      "color_key": "primary",
-      "importance": "tertiary",
+      "label": "",
+      "parent_section": "timeline_main",
+      "color_key": "secondary",
+      "importance": "secondary",
       "size_hint": {
-        "min_width": 4,
-        "min_height": 600,
+        "min_width": 2,
+        "min_height": 500,
         "aspect_ratio": null
       },
-      "content_hint": "中央垂直时间轴，贯穿整个时间线区域，作为视觉主干"
+      "content_hint": "垂直轴线，贯穿整个时间线区域，从上至下"
     },
     {
-      "id": "node1-dot",
+      "id": "node_1924",
       "type": "circle",
       "label": "1924",
-      "parent_section": "main-timeline",
-      "color_key": "accent",
+      "parent_section": "timeline_main",
+      "color_key": "primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 20,
-        "min_height": 20,
+        "min_width": 60,
+        "min_height": 60,
         "aspect_ratio": 1
       },
-      "content_hint": "时间点1的标记圆点，位于中央轴线顶部附近"
+      "content_hint": "时间节点，年份标注于圆内或紧邻"
     },
     {
-      "id": "node1-year",
-      "type": "text_block",
-      "label": "1924年",
-      "parent_section": "main-timeline",
-      "color_key": "text_primary",
+      "id": "event_1924",
+      "type": "rounded_rect",
+      "label": "孙中山先生创办国立广东大学\n1926年更名为国立中山大学",
+      "parent_section": "timeline_main",
+      "color_key": "background",
       "importance": "primary",
       "size_hint": {
-        "min_width": 80,
-        "min_height": 30,
-        "aspect_ratio": null
-      },
-      "content_hint": "节点1的年份标签，紧邻节点1圆点居中显示"
-    },
-    {
-      "id": "node1-desc",
-      "type": "rounded_rect",
-      "label": "孙中山先生创立国立广东大学，后更名为国立中山大学。",
-      "parent_section": "main-timeline",
-      "color_key": "background",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 280,
+        "min_width": 250,
         "min_height": 80,
         "aspect_ratio": null
       },
-      "content_hint": "左侧描述卡片，详细展示第1个历史事件，搭配简洁图标"
+      "content_hint": "事件卡片，位于节点右侧，包含事件描述，使用背景色块"
     },
     {
-      "id": "node1-conn",
-      "type": "line",
-      "label": null,
-      "parent_section": "main-timeline",
-      "color_key": "secondary",
-      "importance": "tertiary",
-      "size_hint": {
-        "min_width": 40,
-        "min_height": 2,
-        "aspect_ratio": null
-      },
-      "content_hint": "连接中央轴线与左侧卡片的装饰性水平虚线"
-    },
-    {
-      "id": "node2-dot",
-      "type": "circle",
-      "label": "1937",
-      "parent_section": "main-timeline",
-      "color_key": "accent",
-      "importance": "primary",
-      "size_hint": {
-        "min_width": 20,
-        "min_height": 20,
-        "aspect_ratio": 1
-      },
-      "content_hint": "时间点2的标记圆点，位于中央轴线偏上方"
-    },
-    {
-      "id": "node2-year",
-      "type": "text_block",
-      "label": "1937-1945年",
-      "parent_section": "main-timeline",
-      "color_key": "text_primary",
-      "importance": "primary",
-      "size_hint": {
-        "min_width": 100,
-        "min_height": 30,
-        "aspect_ratio": null
-      },
-      "content_hint": "节点2的年份标签，紧邻节点2圆点居中显示"
-    },
-    {
-      "id": "node2-desc",
-      "type": "rounded_rect",
-      "label": "抗战期间，学校先后迁至云南澄江、粤北坪石等地坚持办学。",
-      "parent_section": "main-timeline",
-      "color_key": "background",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 280,
-        "min_height": 80,
-        "aspect_ratio": null
-      },
-      "content_hint": "右侧描述卡片，详细展示第2个历史事件，搭配简洁图标"
-    },
-    {
-      "id": "node2-conn",
-      "type": "line",
-      "label": null,
-      "parent_section": "main-timeline",
-      "color_key": "secondary",
-      "importance": "tertiary",
-      "size_hint": {
-        "min_width": 40,
-        "min_height": 2,
-        "aspect_ratio": null
-      },
-      "content_hint": "连接中央轴线与右侧卡片的装饰性水平虚线"
-    },
-    {
-      "id": "node3-dot",
+      "id": "node_1952",
       "type": "circle",
       "label": "1952",
-      "parent_section": "main-timeline",
-      "color_key": "accent",
+      "parent_section": "timeline_main",
+      "color_key": "primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 20,
-        "min_height": 20,
+        "min_width": 60,
+        "min_height": 60,
         "aspect_ratio": 1
       },
-      "content_hint": "时间点3的标记圆点，位于中央轴线中间"
+      "content_hint": "时间节点"
     },
     {
-      "id": "node3-year",
-      "type": "text_block",
-      "label": "1952年",
-      "parent_section": "main-timeline",
-      "color_key": "text_primary",
+      "id": "event_1952",
+      "type": "rounded_rect",
+      "label": "全国院系调整，原中山大学与岭南大学文理院系合并",
+      "parent_section": "timeline_main",
+      "color_key": "background",
       "importance": "primary",
       "size_hint": {
-        "min_width": 80,
-        "min_height": 30,
-        "aspect_ratio": null
-      },
-      "content_hint": "节点3的年份标签，紧邻节点3圆点居中显示"
-    },
-    {
-      "id": "node3-desc",
-      "type": "rounded_rect",
-      "label": "全国院系调整，中山大学成为一所以文理科为主的综合性大学。",
-      "parent_section": "main-timeline",
-      "color_key": "background",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 280,
+        "min_width": 250,
         "min_height": 80,
         "aspect_ratio": null
       },
-      "content_hint": "左侧描述卡片，详细展示第3个历史事件，搭配简洁图标"
+      "content_hint": "事件卡片，位于节点右侧"
     },
     {
-      "id": "node3-conn",
-      "type": "line",
-      "label": null,
-      "parent_section": "main-timeline",
-      "color_key": "secondary",
-      "importance": "tertiary",
-      "size_hint": {
-        "min_width": 40,
-        "min_height": 2,
-        "aspect_ratio": null
-      },
-      "content_hint": "连接中央轴线与左侧卡片的装饰性水平虚线"
-    },
-    {
-      "id": "node4-dot",
+      "id": "node_2000",
       "type": "circle",
-      "label": "2001",
-      "parent_section": "main-timeline",
-      "color_key": "accent",
+      "label": "2000",
+      "parent_section": "timeline_main",
+      "color_key": "primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 20,
-        "min_height": 20,
+        "min_width": 60,
+        "min_height": 60,
         "aspect_ratio": 1
       },
-      "content_hint": "时间点4的标记圆点，位于中央轴线偏下方"
+      "content_hint": "时间节点"
     },
     {
-      "id": "node4-year",
-      "type": "text_block",
-      "label": "2001年",
-      "parent_section": "main-timeline",
-      "color_key": "text_primary",
+      "id": "event_2000",
+      "type": "rounded_rect",
+      "label": "与中山医科大学合并，医理融合，组建新的中山大学",
+      "parent_section": "timeline_main",
+      "color_key": "background",
       "importance": "primary",
       "size_hint": {
-        "min_width": 80,
-        "min_height": 30,
-        "aspect_ratio": null
-      },
-      "content_hint": "节点4的年份标签，紧邻节点4圆点居中显示"
-    },
-    {
-      "id": "node4-desc",
-      "type": "rounded_rect",
-      "label": "中山大学与中山医科大学合并，形成了新的综合性学科格局。",
-      "parent_section": "main-timeline",
-      "color_key": "background",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 280,
+        "min_width": 260,
         "min_height": 80,
         "aspect_ratio": null
       },
-      "content_hint": "右侧描述卡片，详细展示第4个历史事件，搭配简洁图标"
+      "content_hint": "事件卡片，置于节点右侧"
     },
     {
-      "id": "node4-conn",
-      "type": "line",
-      "label": null,
-      "parent_section": "main-timeline",
-      "color_key": "secondary",
-      "importance": "tertiary",
-      "size_hint": {
-        "min_width": 40,
-        "min_height": 2,
-        "aspect_ratio": null
-      },
-      "content_hint": "连接中央轴线与右侧卡片的装饰性水平虚线"
-    },
-    {
-      "id": "node5-dot",
+      "id": "node_campus",
       "type": "circle",
-      "label": "至今",
-      "parent_section": "main-timeline",
+      "label": "今",
+      "parent_section": "timeline_main",
       "color_key": "accent",
       "importance": "primary",
       "size_hint": {
-        "min_width": 24,
-        "min_height": 24,
+        "min_width": 60,
+        "min_height": 60,
         "aspect_ratio": 1
       },
-      "content_hint": "时间点5（现在）的标记圆点，位于中央轴线底部，尺寸略大以突出“当下”"
+      "content_hint": "当前成就节点，用强调色区分"
     },
     {
-      "id": "node5-year",
-      "type": "text_block",
-      "label": "至今",
-      "parent_section": "main-timeline",
-      "color_key": "text_primary",
-      "importance": "primary",
-      "size_hint": {
-        "min_width": 80,
-        "min_height": 30,
-        "aspect_ratio": null
-      },
-      "content_hint": "节点5的年份标签，紧邻节点5圆点居中显示，字重加粗"
-    },
-    {
-      "id": "node5-desc",
+      "id": "event_campus",
       "type": "rounded_rect",
-      "label": "中山大学是国家'双一流''985工程''211工程'重点建设大学。",
-      "parent_section": "main-timeline",
+      "label": "形成三校区五校园办学格局\n广州、珠海、深圳",
+      "parent_section": "timeline_main",
       "color_key": "background",
       "importance": "primary",
       "size_hint": {
-        "min_width": 300,
-        "min_height": 100,
+        "min_width": 250,
+        "min_height": 80,
         "aspect_ratio": null
       },
-      "content_hint": "左侧突出描述卡片，用醒目边框或高亮背景展示当前成就"
+      "content_hint": "事件卡片，置于节点右侧"
     },
     {
-      "id": "node5-conn",
-      "type": "line",
-      "label": null,
-      "parent_section": "main-timeline",
-      "color_key": "secondary",
-      "importance": "tertiary",
+      "id": "node_titles",
+      "type": "circle",
+      "label": "荣誉",
+      "parent_section": "timeline_main",
+      "color_key": "accent",
+      "importance": "secondary",
       "size_hint": {
-        "min_width": 40,
-        "min_height": 2,
-        "aspect_ratio": null
+        "min_width": 60,
+        "min_height": 60,
+        "aspect_ratio": 1
       },
-      "content_hint": "连接中央轴线与左侧突出卡片的装饰性水平虚线"
+      "content_hint": "成就节点，标注荣誉"
     },
     {
-      "id": "footer-text",
+      "id": "event_titles",
+      "type": "rounded_rect",
+      "label": "国家“双一流”建设高校\n“985工程”“211工程”重点建设高校",
+      "parent_section": "timeline_main",
+      "color_key": "background",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 250,
+        "min_height": 80,
+        "aspect_ratio": null
+      },
+      "content_hint": "荣誉卡片，置于节点右侧"
+    },
+    {
+      "id": "footer_text",
       "type": "text_block",
-      "label": "博学 审问 慎思 明辨 笃行",
-      "parent_section": "footer",
+      "label": "中山大学 · 博学 审问 慎思 明辨 笃行",
+      "parent_section": "footer_section",
       "color_key": "text_secondary",
       "importance": "tertiary",
       "size_hint": {
-        "min_width": 300,
-        "min_height": 30,
+        "min_width": 200,
+        "min_height": 20,
         "aspect_ratio": null
       },
-      "content_hint": "校训结语，居中放置于页脚区域"
+      "content_hint": "页脚信息，字号最小，居中"
     }
   ],
   "connections": [
     {
-      "id": "conn-flow-main",
-      "type": "arrow",
-      "from_element": "node1-dot",
-      "to_element": "line-main",
+      "id": "conn_1924_1952",
+      "type": "line",
+      "from_element": "node_1924",
+      "to_element": "node_1952",
       "direction": "top-to-bottom",
       "label": null,
       "line_style": "solid"
     },
     {
-      "id": "conn-flow-end",
-      "type": "arrow",
-      "from_element": "line-main",
-      "to_element": "node5-dot",
+      "id": "conn_1952_2000",
+      "type": "line",
+      "from_element": "node_1952",
+      "to_element": "node_2000",
+      "direction": "top-to-bottom",
+      "label": null,
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_2000_campus",
+      "type": "line",
+      "from_element": "node_2000",
+      "to_element": "node_campus",
+      "direction": "top-to-bottom",
+      "label": null,
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_campus_titles",
+      "type": "line",
+      "from_element": "node_campus",
+      "to_element": "node_titles",
       "direction": "top-to-bottom",
       "label": null,
       "line_style": "solid"
     }
   ],
-  "design_notes": "采用垂直蛇形（左右交替）的时间线布局，形成阅读节奏感。以实心圆形标记时间节点，年份标签悬停于圆点一侧。使用深蓝(#1E3A8A)的中央垂直长线连接所有节点，作为视觉主干，营造时光流动感。历史事件描述采用圆角矩形卡片，左右错落排布，并统一使用纯白(#FFFFFF)背景与细微阴影，以区别于浅蓝灰(#F8FAFC)的画布背景，增强层次感。连接节点与卡片的横线使用次要色(#5B21B6)并作虚线处理，以示轻盈。最终节点（至今）应使用特殊效果（如投影放大、增加星形标记或金色描边）突出其作为当下最高成就的地位。整体设计需保持学术、庄重且清晰的视觉风格。"
+  "design_notes": "整体采用垂直时间轴布局，左侧为轴线与时间节点圆点，右侧为事件卡片。轴线使用次要色深灰，节点圆点使用主题紫色，当前与荣誉节点使用强调红橙色以突出。事件卡片为浅灰底圆角矩形，标题与正文分层。年份标注于圆点内部或紧邻，正文置于卡片内。背景纯白，营造清晰学术感。连接线为实线，连接各节点。字体使用系统无衬线，标题加粗，正文常规。整个画布尺寸800x1200，留白充足，确保阅读流畅。"
 }

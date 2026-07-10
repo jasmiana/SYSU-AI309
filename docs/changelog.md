@@ -32,6 +32,26 @@ Phase 2: key_points = [5条详细信息] (每条为完整中文陈述句)
 
 
 
+
+### 补充修复: cairosvg 渲染验证 + Layout IR JSON 重试 (2026-07-10)
+
+**cairosvg 集成**:
+- Windows: GTK3 Runtime 安装后, 通过 ctypes.CDLL 预加载 libcairo-2.dll
+  (路径: C:/Program Files/GTK3-Runtime Win64/bin/)
+- validator.py 启动时自动检测 DLL, 可用则 render_ok=true, 否则优雅降级
+- 已验证 sample5 SVG 渲染: render_ok=true
+
+**Layout IR JSON 解析修复** (sample1 根因):
+- 根因: Agent 2 输出 8805 chars JSON, design_notes 中文长文本导致
+  max_tokens 截断, JSON 字符串未闭合
+- 修复 1: Agent 2 max_tokens 16384 -> 32768 (预防截断)
+- 修复 2: BaseAgent.run() JSON 解析失败后自动重试一次,
+  带 keep design_notes under 200 chars 指令
+- 修复 3: 新增 _fix_truncated_json() 尝试闭合截断的字符串和括号
+
+**对比度检查精准化**:
+- 仅检查 <text> 元素的 fill 颜色 (之前错误地将 rect 填充色也纳入检查)
+
 ### Phase 2.6: Agent 4 误判修复 (2026-07-10)
 
 **问题发现**: sample5 (数据对比柱状图) 的 SVG 实际质量良好（柱状图坐标精确、无重叠），

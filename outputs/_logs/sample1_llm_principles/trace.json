@@ -1,11 +1,11 @@
 {
   "sample": "sample1_llm_principles",
-  "start_time": "2026-07-10T10:28:49.899086",
-  "end_time": "2026-07-10T10:32:50.209693",
-  "total_duration_s": 240.310607,
+  "start_time": "2026-07-10T13:21:35.322510",
+  "end_time": "2026-07-10T13:27:02.671618",
+  "total_duration_s": 327.349108,
   "events": [
     {
-      "timestamp": "2026-07-10T10:28:49.899086",
+      "timestamp": "2026-07-10T13:21:35.322510",
       "event": "agent_start",
       "agent": "Agent1:ContentAnalyzer",
       "input_summary": {
@@ -13,15 +13,15 @@
       }
     },
     {
-      "timestamp": "2026-07-10T10:29:06.698762",
+      "timestamp": "2026-07-10T13:21:55.375457",
       "event": "agent_output",
       "agent": "Agent1:ContentAnalyzer",
-      "duration_ms": 16799.7,
+      "duration_ms": 20052.9,
       "output_summary": {
         "intent": {
           "primary_type": "concept_expl...",
-          "secondary_type": "科普",
-          "confidence": 0.95,
+          "secondary_type": null,
+          "confidence": 0.9,
           "reasoning": "用户明确要求解释大语言模..."
         },
         "entities": [
@@ -35,16 +35,16 @@
             "name": "基本原...",
             "type": "ter...",
             "role": "att...",
-            "importance": "pri..."
+            "importance": "sec..."
           }
         ],
         "relations": [],
         "content_summary": {
-          "title": "大语言模型基本原理",
+          "title": "大语言模型的基本原理",
           "key_points": [
             "大语言...",
-            "LLM...",
-            "模型在...",
+            "模型将...",
+            "训练阶...",
             "..."
           ],
           "target_audience": "general",
@@ -54,82 +54,224 @@
           "needs_external_knowledge": true,
           "search_queries": [
             "大语言...",
-            "LLM...",
+            "大语言...",
             "Tra..."
           ],
-          "fallback_knowledge": "Large langua..."
+          "fallback_knowledge": "大语言模型（LLM）基于..."
         },
         "chart_type": {
           "recommended": "concept_map",
           "alternatives": [
-            "arc...",
-            "pro..."
+            "arc..."
           ],
-          "type_confidence": 0.95
+          "type_confidence": 0.85
         }
       }
     },
     {
-      "timestamp": "2026-07-10T10:29:06.698762",
+      "timestamp": "2026-07-10T13:21:55.376142",
       "event": "agent_start",
       "agent": "Agent2:LayoutPlanner",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-10T10:30:46.348416",
+      "timestamp": "2026-07-10T13:24:02.553014",
       "event": "agent_output",
       "agent": "Agent2:LayoutPlanner",
-      "duration_ms": 99649.7,
+      "duration_ms": 127176.9,
       "output_summary": {
-        "parse_error": "Could not extract valid JSON from LLM response:\n{\n...",
-        "raw_response": "{\n  \"chart_type\": \"concept_map\",\n  \"canvas\": {\n   ..."
+        "chart_type": "concept_map",
+        "canvas": {
+          "width": 800,
+          "height": 1100,
+          "background": "#F8F9FF"
+        },
+        "color_scheme": {
+          "name": "科技蓝紫",
+          "primary": "#4A90D9",
+          "secondary": "#7B68EE",
+          "accent": "#FF6B6B",
+          "background": "#F8F9FF",
+          "text_primary": "#2C3E50",
+          "text_secondary": "#7F8C8D",
+          "palette": [
+            "#4A...",
+            "#7B...",
+            "#27...",
+            "..."
+          ],
+          "rationale": "该主题为技术概念解释，科..."
+        },
+        "typography": {
+          "title_size": 36,
+          "heading_size": 24,
+          "body_size": 14,
+          "label_size": 14,
+          "font_family": "system-ui, '..."
+        },
+        "layout_grid": {
+          "columns": 8,
+          "rows": 5,
+          "gutter": 16
+        },
+        "sections": [
+          {
+            "id": "tit...",
+            "type": "tit...",
+            "position": {
+              "x_pct": 10,
+              "y_pct": 2,
+              "width_pct": 80,
+              "height_pct": 10
+            },
+            "visual_weight": "pri...",
+            "purpose": "展示主..."
+          },
+          {
+            "id": "def...",
+            "type": "con...",
+            "position": {
+              "x_pct": 10,
+              "y_pct": 14,
+              "width_pct": 80,
+              "height_pct": 9
+            },
+            "visual_weight": "sec...",
+            "purpose": "简要定..."
+          },
+          {
+            "id": "pri...",
+            "type": "dia...",
+            "position": {
+              "x_pct": 5,
+              "y_pct": 25,
+              "width_pct": 90,
+              "height_pct": 42
+            },
+            "visual_weight": "pri...",
+            "purpose": "以2x..."
+          },
+          "..."
+        ],
+        "elements": [
+          {
+            "id": "tit...",
+            "type": "tex...",
+            "label": "大语言...",
+            "parent_section": "tit...",
+            "color_key": "tex...",
+            "importance": "pri...",
+            "size_hint": {
+              "min_width": 400,
+              "min_height": 50,
+              "aspect_ratio": null
+            },
+            "content_hint": "主标题..."
+          },
+          {
+            "id": "def...",
+            "type": "tex...",
+            "label": "大语言...",
+            "parent_section": "def...",
+            "color_key": "tex...",
+            "importance": "sec...",
+            "size_hint": {
+              "min_width": 500,
+              "min_height": 60,
+              "aspect_ratio": null
+            },
+            "content_hint": "简介段..."
+          },
+          {
+            "id": "car...",
+            "type": "rou...",
+            "label": "词嵌入",
+            "parent_section": "pri...",
+            "color_key": "pri...",
+            "importance": "pri...",
+            "size_hint": {
+              "min_width": 300,
+              "min_height": 180,
+              "aspect_ratio": null
+            },
+            "position": {
+              "x_pct": 7,
+              "y_pct": 27,
+              "width_pct": 42,
+              "height_pct": 18
+            },
+            "content_hint": "卡片内..."
+          },
+          "..."
+        ],
+        "connections": [
+          {
+            "id": "con...",
+            "type": "arr...",
+            "from_element": "flo...",
+            "to_element": "flo...",
+            "direction": "lef...",
+            "label": null,
+            "line_style": "sol..."
+          },
+          {
+            "id": "con...",
+            "type": "arr...",
+            "from_element": "flo...",
+            "to_element": "flo...",
+            "direction": "lef...",
+            "label": null,
+            "line_style": "sol..."
+          }
+        ],
+        "design_notes": "整体采用科技蓝紫配色，画布背景淡蓝白，营造冷静专业的技术氛围。标题区域用主色强调，可添加细微渐变或阴..."
       }
     },
     {
-      "timestamp": "2026-07-10T10:30:46.348416",
+      "timestamp": "2026-07-10T13:24:02.553014",
       "event": "agent_start",
       "agent": "Agent3:SVGCoder (round 1)",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-10T10:32:09.670134",
+      "timestamp": "2026-07-10T13:25:58.969918",
       "event": "agent_output",
       "agent": "Agent3:SVGCoder",
-      "duration_ms": 83321.7,
+      "duration_ms": 116416.9,
       "output_summary": {
-        "svg_length": 5372
+        "svg_length": 10299
       }
     },
     {
-      "timestamp": "2026-07-10T10:32:09.670134",
+      "timestamp": "2026-07-10T13:25:58.972090",
       "event": "agent_start",
       "agent": "RenderingValidator",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-10T10:32:09.670134",
+      "timestamp": "2026-07-10T13:25:59.439294",
       "event": "agent_output",
       "agent": "RenderingValidator",
-      "duration_ms": 0.0,
+      "duration_ms": 467.2,
       "output_summary": {
         "xml_valid": true,
         "all_pass": false
       }
     },
     {
-      "timestamp": "2026-07-10T10:32:09.670134",
+      "timestamp": "2026-07-10T13:25:59.439294",
       "event": "agent_start",
       "agent": "Agent4:QualityReviewer (round 1)",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-10T10:32:50.208183",
+      "timestamp": "2026-07-10T13:27:02.668763",
       "event": "agent_output",
       "agent": "Agent4:QualityReviewer",
-      "duration_ms": 40538.0,
+      "duration_ms": 63229.5,
       "output_summary": {
         "pass": true,
-        "score": 8,
+        "score": 9,
         "needs_regen": false
       }
     }

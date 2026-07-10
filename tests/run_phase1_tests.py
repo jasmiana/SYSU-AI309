@@ -13,7 +13,7 @@ PROJECT_ROOT = Path(__file__).parent.parent
 sys.path.insert(0, str(PROJECT_ROOT))
 os.chdir(str(PROJECT_ROOT))
 
-# ── Test 1: Imports ────────────────────────────────────────────────────
+# -- Test 1: Imports ----------------------------------------------------
 print("=" * 60)
 print("TEST 1: Module Imports")
 print("=" * 60)
@@ -40,7 +40,7 @@ print("  ✅ IR schema imported")
 from src.prompts import get_agent1_prompt, get_agent3_prompt, get_svg_guidelines
 print("  ✅ Prompts loader imported")
 
-# ── Test 2: JSON Extraction ────────────────────────────────────────────
+# -- Test 2: JSON Extraction --------------------------------------------
 print("\n" + "=" * 60)
 print("TEST 2: JSON Extraction from LLM Responses")
 print("=" * 60)
@@ -55,7 +55,7 @@ for raw, expected in tests:
     assert result == expected, f"Expected {expected}, got {result}"
     print(f"  ✅ {raw[:40]}... → {result}")
 
-# ── Test 3: SVG Stripping ──────────────────────────────────────────────
+# -- Test 3: SVG Stripping ----------------------------------------------
 print("\n" + "=" * 60)
 print("TEST 3: SVG Markdown Stripping")
 print("=" * 60)
@@ -68,7 +68,7 @@ result = strip_svg_markdown('<svg xmlns="x">content</svg>')
 assert result == '<svg xmlns="x">content</svg>', f"Got: {result}"
 print(f"  ✅ Bare SVG → {result}")
 
-# ── Test 4: IR Validation ──────────────────────────────────────────────
+# -- Test 4: IR Validation ----------------------------------------------
 print("\n" + "=" * 60)
 print("TEST 4: Content IR Validation")
 print("=" * 60)
@@ -90,7 +90,7 @@ issues = validate_content_ir(invalid_ir)
 assert len(issues) > 0
 print(f"  ✅ Invalid IR caught with {len(issues)} issues: {issues}")
 
-# ── Test 5: Prompts Loading ────────────────────────────────────────────
+# -- Test 5: Prompts Loading --------------------------------------------
 print("\n" + "=" * 60)
 print("TEST 5: System Prompts")
 print("=" * 60)
@@ -110,7 +110,7 @@ assert len(g) > 500, f"SVG guidelines too short: {len(g)}"
 assert "viewBox" in g
 print(f"  ✅ SVG guidelines: {len(g)} chars")
 
-# ── Test 6: File Manager ───────────────────────────────────────────────
+# -- Test 6: File Manager -----------------------------------------------
 print("\n" + "=" * 60)
 print("TEST 6: Output File Management")
 print("=" * 60)
@@ -131,7 +131,7 @@ ir_path = save_ir("test_sample", test_ir, "content")
 assert ir_path.exists()
 print(f"  ✅ IR saved: {ir_path}")
 
-# ── Summary ────────────────────────────────────────────────────────────
+# -- Summary ------------------------------------------------------------
 print("\n" + "=" * 60)
 print("RESULTS")
 print("=" * 60)

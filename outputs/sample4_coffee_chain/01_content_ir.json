@@ -2,14 +2,20 @@
   "intent": {
     "primary_type": "process_flow",
     "secondary_type": null,
-    "confidence": 1.0,
-    "reasoning": "用户明确要求绘制SVG流程图，展示从咖啡豆到一杯咖啡的完整生产链，并列出种植、采摘、烘焙、研磨、冲煮五个步骤，属于典型的流程展示意图。"
+    "confidence": 0.98,
+    "reasoning": "用户明确要求“绘制 SVG 流程图”，并给出了生产链的5个步骤，属于典型的流程展示。"
   },
   "entities": [
     {
-      "name": "一颗咖啡豆",
+      "name": "咖啡豆",
       "type": "term",
       "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "一杯咖啡",
+      "type": "term",
+      "role": "object",
       "importance": "primary"
     },
     {
@@ -41,66 +47,53 @@
       "type": "term",
       "role": "attribute",
       "importance": "primary"
-    },
-    {
-      "name": "一杯咖啡",
-      "type": "term",
-      "role": "object",
-      "importance": "primary"
     }
   ],
   "relations": [
     {
       "type": "sequence",
-      "source": "一颗咖啡豆",
-      "target": "种植",
-      "description": "咖啡豆作为种子，被种植到适宜生长的土壤中",
+      "source": "咖啡豆",
+      "target": "一杯咖啡",
+      "description": "从咖啡豆开始，经过种植、采摘、烘焙、研磨、冲煮最终得到一杯咖啡",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "种植",
       "target": "采摘",
-      "description": "咖啡树结果后，成熟果实被手工或机械采摘",
+      "description": "种植环节完成后进入采摘",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "采摘",
       "target": "烘焙",
-      "description": "从果实中取出咖啡生豆，进行高温烘焙以发展风味",
+      "description": "采摘处理后送至烘焙阶段",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "烘焙",
       "target": "研磨",
-      "description": "烘焙好的咖啡豆冷却后，按需研磨成特定粗细的粉末",
+      "description": "烘焙好的豆子进行研磨",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "研磨",
       "target": "冲煮",
-      "description": "将咖啡粉用热水冲泡，提取出芳香物质",
-      "quantifier": null
-    },
-    {
-      "type": "sequence",
-      "source": "冲煮",
-      "target": "一杯咖啡",
-      "description": "经过冲煮，得到一杯可饮用的咖啡",
+      "description": "研磨后的咖啡粉用于冲煮",
       "quantifier": null
     }
   ],
   "content_summary": {
-    "title": "从咖啡豆到一杯咖啡的生产链",
+    "title": "从咖啡豆到一杯咖啡的完整生产链",
     "key_points": [
-      "种植：选择优质咖啡种子，在适宜气候和海拔的土壤中播种，咖啡树需要3-4年才能结果。",
-      "采摘：当咖啡果实成熟变为红色时，通过手工或机器采摘，确保只摘取成熟果实以保证品质。",
-      "烘焙：将咖啡生豆在高温下烘焙，发生美拉德反应和焦糖化，发展出独特的风味和香气。",
-      "研磨：烘焙后的咖啡豆冷却后，根据冲煮方式（如手冲、意式浓缩）研磨成不同粗细的粉末。",
-      "冲煮：使用热水（温度约88-96°C）以不同方法（滴滤、浸泡、加压）冲泡咖啡粉，提取风味物质，最终得到一杯香醇的咖啡。"
+      "种植阶段：咖啡农培育咖啡树，待咖啡果成熟后进入采摘环节。",
+      "采摘环节：通过手工或机械方式收获成熟的咖啡果实，并进行初步处理以获取生豆。",
+      "烘焙环节：将生豆放入烘焙机高温加热，使其发生物理化学变化，形成咖啡特有的风味。",
+      "研磨环节：将烘焙好的咖啡豆研磨成粗细适中的咖啡粉。",
+      "冲煮环节：通过热水萃取咖啡粉，得到最终的咖啡饮品。"
     ],
     "target_audience": "general",
     "language": "zh"
@@ -115,6 +108,6 @@
     "alternatives": [
       "flowchart"
     ],
-    "type_confidence": 1.0
+    "type_confidence": 0.95
   }
 }

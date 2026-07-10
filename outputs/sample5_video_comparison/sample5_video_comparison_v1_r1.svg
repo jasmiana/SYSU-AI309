@@ -1,140 +1,120 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" width="800" height="900">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000">
   <defs>
-    <!-- Background Gradient for Header -->
-    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+    <!-- 阴影 -->
+    <filter id="cardShadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#000000" flood-opacity="0.06"/>
+    </filter>
+    <filter id="barShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+    
+    <!-- 标题渐变 -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#4A90D9"/>
       <stop offset="100%" stop-color="#7B68EE"/>
     </linearGradient>
-
-    <!-- Drop Shadow for Chart Area -->
-    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="8" stdDeviation="15" flood-color="#4A90D9" flood-opacity="0.08"/>
-    </filter>
-
-    <!-- Gradients for Bars -->
-    <linearGradient id="grad-yt" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#5DA3E8"/>
-      <stop offset="100%" stop-color="#4A90D9"/>
-    </linearGradient>
-    <linearGradient id="grad-tt" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#9D91F2"/>
-      <stop offset="100%" stop-color="#7B68EE"/>
-    </linearGradient>
-    <linearGradient id="grad-ks" x1="0%" y1="0%" x2="0%" y2="100%">
-      <stop offset="0%" stop-color="#3DDC84"/>
-      <stop offset="100%" stop-color="#27AE60"/>
-    </linearGradient>
-
-    <!-- Arrowheads -->
-    <marker id="arrow-purple" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
-      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#7B68EE"/>
-    </marker>
-    <marker id="arrow-green" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
-      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#27AE60"/>
-    </marker>
-    <marker id="arrow-red" markerWidth="10" markerHeight="10" refX="8" refY="4" orient="auto">
-      <path d="M 0 0 L 10 4 L 0 8 Z" fill="#FF6B6B"/>
+    
+    <!-- 箭头 -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#FF6B6B"/>
     </marker>
   </defs>
 
   <style>
-    .title-main { font-family: system-ui, -apple-system, sans-serif; font-size: 30px; font-weight: 800; fill: #FFFFFF; }
-    .title-sub { font-family: system-ui, -apple-system, sans-serif; font-size: 22px; font-weight: 600; fill: #E8F0FE; }
-    .chart-title { font-family: system-ui, -apple-system, sans-serif; font-size: 18px; font-weight: 700; fill: #2C3E50; }
-    .axis-text { font-family: system-ui, -apple-system, sans-serif; font-size: 14px; font-weight: 500; fill: #7F8C8D; }
-    .bar-value { font-family: system-ui, -apple-system, sans-serif; font-size: 20px; font-weight: 800; }
-    .bar-label { font-family: system-ui, -apple-system, sans-serif; font-size: 16px; font-weight: 600; fill: #34495E; }
-    .arrow-text { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; font-weight: 700; }
-    .legend-text { font-family: system-ui, -apple-system, sans-serif; font-size: 15px; fill: #7F8C8D; }
+    .title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-weight: 700; fill: #FFFFFF; }
+    .subtitle { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; font-weight: 500; fill: #E8F0FE; }
+    .axis-text { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-size: 13px; fill: #666666; }
+    .bar-label { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; font-weight: 600; text-anchor: middle; }
+    .platform-name { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-weight: 600; font-size: 16px; fill: #333333; text-anchor: middle; }
+    .insight-title { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-weight: 700; font-size: 20px; fill: #1A1A2E; }
+    .insight-text { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; font-weight: 400; font-size: 15px; fill: #4A4A4A; }
+    .footer-text { font-family: system-ui, -apple-system, 'Segoe UI', sans-serif; font-weight: 400; font-size: 13px; fill: #999999; text-anchor: middle; }
+    .icon-text { font-family: system-ui, -apple-system, sans-serif; font-weight: 700; fill: #FFFFFF; font-size: 16px; text-anchor: middle; dominant-baseline: central; }
   </style>
 
-  <!-- Global Background -->
-  <rect width="800" height="900" fill="#F8F9FF"/>
+  <!-- 背景 -->
+  <rect width="800" height="1000" fill="#F8F9FF"/>
 
-  <!-- Header Section -->
-  <g id="title-section">
-    <rect x="0" y="0" width="800" height="110" fill="url(#headerGrad)"/>
-    <text x="400" y="50" text-anchor="middle" class="title-main">Video Quantity Comparison</text>
-    <text x="400" y="80" text-anchor="middle" class="title-sub">YouTube vs TikTok vs Kuaishou</text>
-  </g>
+  <!-- 标题区域 -->
+  <rect x="40" y="30" width="720" height="80" rx="40" fill="url(#titleGrad)" filter="url(#cardShadow)"/>
+  <text x="400" y="62" text-anchor="middle" font-size="28" class="title">YouTube vs TikTok vs Kuaishou: Video Count Comparison</text>
+  <text x="400" y="92" text-anchor="middle" font-size="14" class="subtitle">Content Volume Disparity in the Short-Video Ecosystem</text>
 
-  <!-- Chart Area Background -->
-  <g id="chart-section">
-    <rect x="60" y="140" width="680" height="620" rx="16" fill="#FFFFFF" filter="url(#cardShadow)"/>
-    <text x="400" y="175" text-anchor="middle" class="chart-title">Relative Number of Videos (Kuaishou = 1 unit)</text>
+  <!-- 图表区域 -->
+  <!-- Y 轴 -->
+  <line x1="120" y1="180" x2="120" y2="600" stroke="#333333" stroke-width="2"/>
+  <!-- X 轴 -->
+  <line x1="120" y1="600" x2="750" y2="600" stroke="#333333" stroke-width="2"/>
 
-    <!-- Y-Axis Labels & Grid Lines -->
-    <g id="grid-lines">
-      <!-- 20x -->
-      <line x1="120" y1="700" x2="680" y2="700" stroke="#F0F0F0" stroke-width="2" stroke-dasharray="6,6"/> <!-- Base 0 -->
-      <line x1="120" y1="180" x2="680" y2="180" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
-      <text x="110" y="185" text-anchor="end" class="axis-text">20x</text>
-      
-      <!-- 10x -->
-      <line x1="120" y1="440" x2="680" y2="440" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
-      <text x="110" y="445" text-anchor="end" class="axis-text">10x</text>
-      
-      <!-- 2x -->
-      <line x1="120" y1="648" x2="680" y2="648" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
-      <text x="110" y="653" text-anchor="end" class="axis-text">2x</text>
-      
-      <!-- 1x -->
-      <line x1="120" y1="674" x2="680" y2="674" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
-      <text x="110" y="679" text-anchor="end" class="axis-text">1x</text>
+  <!-- Y 轴标签 -->
+  <text x="90" y="390" text-anchor="middle" transform="rotate(-90 90,390)" class="axis-text">Relative Video Count (Scale)</text>
 
-      <!-- X-Axis Base -->
-      <line x1="120" y1="700" x2="680" y2="700" stroke="#BDC3C7" stroke-width="2"/>
-    </g>
+  <!-- 网格线 -->
+  <line x1="120" y1="495" x2="750" y2="495" stroke="#E0E4F0" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="120" y1="390" x2="750" y2="390" stroke="#E0E4F0" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="120" y1="285" x2="750" y2="285" stroke="#E0E4F0" stroke-width="1" stroke-dasharray="4,4"/>
+  <line x1="120" y1="180" x2="750" y2="180" stroke="#E0E4F0" stroke-width="1" stroke-dasharray="4,4"/>
 
-    <!-- Bar Graphs -->
-    <g id="bars">
-      <!-- Kuaishou Bar (1x) -->
-      <rect x="190" y="674" width="100" height="26" rx="6" fill="url(#grad-ks)"/>
-      <text x="240" y="664" text-anchor="middle" class="bar-value" fill="#27AE60">1x</text>
-      <text x="240" y="730" text-anchor="middle" class="bar-label">Kuaishou</text>
+  <!-- 网格刻度 -->
+  <text x="105" y="500" text-anchor="end" class="axis-text">25%</text>
+  <text x="105" y="395" text-anchor="end" class="axis-text">50%</text>
+  <text x="105" y="290" text-anchor="end" class="axis-text">75%</text>
+  <text x="105" y="185" text-anchor="end" class="axis-text">100%</text>
 
-      <!-- TikTok Bar (2x) -->
-      <rect x="350" y="648" width="100" height="52" rx="6" fill="url(#grad-tt)"/>
-      <text x="400" y="638" text-anchor="middle" class="bar-value" fill="#7B68EE">2x</text>
-      <text x="400" y="730" text-anchor="middle" class="bar-label">TikTok</text>
+  <!-- 曲线连接线（在条形图之前放置以在底部） -->
+  <!-- Kuaishou 到 TikTok (2x more) -->
+  <path d="M 295 560 Q 365 540 425 520" fill="none" stroke="#FF6B6B" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+  <!-- TikTok 到 YouTube (10x more) -->
+  <path d="M 445 520 Q 515 360 575 200" fill="none" stroke="#FF6B6B" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
 
-      <!-- YouTube Bar (20x) -->
-      <rect x="510" y="180" width="100" height="520" rx="6" fill="url(#grad-yt)"/>
-      <text x="560" y="165" text-anchor="middle" class="bar-value" fill="#4A90D9">20x</text>
-      <text x="560" y="730" text-anchor="middle" class="bar-label">YouTube</text>
-    </g>
+  <!-- 倍数标签 -->
+  <text x="360" y="525" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="18" fill="#FF6B6B">2× more</text>
+  <text x="515" y="345" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="18" fill="#FF6B6B">10× more</text>
 
-    <!-- Connecting Arrows & Multipliers -->
-    <g id="connections">
-      <!-- Arrow 1: TikTok (2x) to YouTube (10x) -->
-      <path d="M 455 648 L 475 648 L 475 440 L 505 440" fill="none" stroke="#7B68EE" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arrow-purple)"/>
-      <rect x="448" y="530" width="54" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.9"/>
-      <text x="475" y="546" text-anchor="middle" class="arrow-text" fill="#7B68EE">10x</text>
+  <!-- 条形图 -->
+  <!-- Kuaishou: h=40, y=560 -->
+  <rect x="240" y="560" width="90" height="40" rx="6" fill="#27AE60" filter="url(#barShadow)"/>
+  <!-- TikTok: h=80, y=520 -->
+  <rect x="390" y="520" width="90" height="80" rx="6" fill="#7B68EE" filter="url(#barShadow)"/>
+  <!-- YouTube: h=400, y=200 -->
+  <rect x="540" y="200" width="90" height="400" rx="6" fill="#4A90D9" filter="url(#barShadow)"/>
 
-      <!-- Arrow 2: Kuaishou (1x) to TikTok (2x) -->
-      <path d="M 295 674 L 320 674 L 320 648 L 345 648" fill="none" stroke="#27AE60" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arrow-green)"/>
-      <rect x="295" y="662" width="46" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.9"/>
-      <text x="318" y="678" text-anchor="middle" class="arrow-text" fill="#27AE60">2x</text>
+  <!-- 平台名称 -->
+  <text x="285" y="625" class="platform-name">Kuaishou</text>
+  <text x="435" y="625" class="platform-name">TikTok</text>
+  <text x="585" y="625" class="platform-name">YouTube</text>
 
-      <!-- Arrow 3: Kuaishou (1x) to YouTube (20x) -->
-      <path d="M 295 674 L 390 674 L 390 300 L 505 300" fill="none" stroke="#FF6B6B" stroke-width="3" stroke-dasharray="6,4" marker-end="url(#arrow-red)"/>
-      <rect x="365" y="490" width="50" height="22" rx="4" fill="#FFFFFF" fill-opacity="0.9"/>
-      <text x="390" y="506" text-anchor="middle" class="arrow-text" fill="#FF6B6B">20x</text>
-    </g>
-  </g>
+  <!-- 平台字母图标 -->
+  <!-- Kuaishou -->
+  <circle cx="285" cy="525" r="22" fill="#27AE60" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="285" y="525" class="icon-text">K</text>
+  
+  <!-- TikTok -->
+  <circle cx="435" cy="485" r="22" fill="#7B68EE" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="435" y="485" class="icon-text">T</text>
+  
+  <!-- YouTube -->
+  <circle cx="585" cy="165" r="22" fill="#4A90D9" stroke="#FFFFFF" stroke-width="3"/>
+  <text x="585" y="165" class="icon-text">Y</text>
 
-  <!-- Footer Section -->
-  <g id="footer-section">
-    <text x="400" y="810" text-anchor="middle" class="legend-text">
-      * Comparison based on relative multiplier values (Kuaishou = 1 unit). YouTube has 20 times more videos than Kuaishou.
-    </text>
-    <circle cx="580" cy="806" r="3" fill="#4A90D9"/>
-    <text x="590" y="810" class="legend-text" fill="#4A90D9">YouTube</text>
-    
-    <circle cx="650" cy="806" r="3" fill="#7B68EE"/>
-    <text x="660" y="810" class="legend-text" fill="#7B68EE">TikTok</text>
-    
-    <circle cx="720" cy="806" r="3" fill="#27AE60"/>
-    <text x="730" y="810" class="legend-text" fill="#27AE60">Kuaishou</text>
-  </g>
+  <!-- 见解区域 -->
+  <rect x="60" y="690" width="680" height="220" rx="16" fill="#FFFFFF" filter="url(#cardShadow)"/>
+  
+  <text x="80" y="730" class="insight-title">Insights &amp; Analysis</text>
+  
+  <circle cx="85" cy="755" r="4" fill="#FF6B6B"/>
+  <text x="100" y="760" class="insight-text">YouTube leads with 10× the video library of TikTok, demonstrating overwhelming content dominance.</text>
+  
+  <circle cx="85" cy="790" r="4" fill="#FF6B6B"/>
+  <text x="100" y="795" class="insight-text">TikTok still holds 2× the content volume of Kuaishou, highlighting a significant mid-pack gap.</text>
+  
+  <circle cx="85" cy="825" r="4" fill="#FF6B6B"/>
+  <text x="100" y="830" class="insight-text">The supply gap underscores YouTube's long-tail content advantage in the evolving video landscape.</text>
+
+  <circle cx="85" cy="860" r="4" fill="#FF6B6B"/>
+  <text x="100" y="865" class="insight-text">Content supply imbalance persists across the short-video market, with YouTube retaining the upper hand.</text>
+
+  <!-- 页脚 -->
+  <rect x="250" y="945" width="300" height="30" rx="15" fill="#F0F2F5"/>
+  <text x="400" y="964" class="footer-text">Source: Public estimates &amp; market data, 2025</text>
 </svg>

@@ -13,7 +13,7 @@ load_dotenv(PROJECT_ROOT / ".env")
 class Config:
     """Application configuration loaded from environment variables."""
 
-    # ── DeepSeek API ───────────────────────────────────────────────
+    # -- DeepSeek API -----------------------------------------------
     DEEPSEEK_API_KEY: str = os.getenv("DEEPSEEK_API_KEY", "")
     DEEPSEEK_MODEL: str = os.getenv("DEEPSEEK_MODEL", "deepseek-v4-pro")
     DEEPSEEK_FALLBACK_MODEL: str = os.getenv(
@@ -23,7 +23,7 @@ class Config:
         "DEEPSEEK_BASE_URL", "https://api.deepseek.com"
     )
 
-    # ── Thinking / Reasoning (DeepSeek native) ─────────────────────
+    # -- Thinking / Reasoning (DeepSeek native) ---------------------
     THINKING_ENABLED: bool = os.getenv("THINKING_ENABLED", "true").lower() == "true"
     REASONING_EFFORT: str = os.getenv("REASONING_EFFORT", "high")
 
@@ -37,15 +37,15 @@ class Config:
             "reasoning_effort": cls.REASONING_EFFORT,
         }
 
-    # ── Pipeline ───────────────────────────────────────────────────
+    # -- Pipeline ---------------------------------------------------
     MAX_RETRIES: int = int(os.getenv("MAX_RETRIES", "3"))
     REQUEST_TIMEOUT: int = int(os.getenv("REQUEST_TIMEOUT", "120"))
     MAX_TOKENS: int = int(os.getenv("MAX_TOKENS", "8192"))
 
-    # ── Output ─────────────────────────────────────────────────────
+    # -- Output -----------------------------------------------------
     OUTPUT_DIR: Path = PROJECT_ROOT / "outputs"
 
-    # ── Logging ────────────────────────────────────────────────────
+    # -- Logging ----------------------------------------------------
     LOG_LEVEL: str = os.getenv("LOG_LEVEL", "INFO")
     LOG_DIR: Path = PROJECT_ROOT / "outputs" / "_logs"
 

@@ -1,11 +1,11 @@
 {
   "sample": "sample2_word_embedding",
-  "start_time": "2026-07-10T11:02:23.137166",
-  "end_time": "2026-07-10T11:07:30.784721",
-  "total_duration_s": 307.647555,
+  "start_time": "2026-07-10T13:27:02.676995",
+  "end_time": "2026-07-10T13:31:58.402422",
+  "total_duration_s": 295.725427,
   "events": [
     {
-      "timestamp": "2026-07-10T11:02:23.137166",
+      "timestamp": "2026-07-10T13:27:02.676995",
       "event": "agent_start",
       "agent": "Agent1:ContentAnalyzer",
       "input_summary": {
@@ -13,20 +13,20 @@
       }
     },
     {
-      "timestamp": "2026-07-10T11:02:37.870235",
+      "timestamp": "2026-07-10T13:27:16.202794",
       "event": "agent_output",
       "agent": "Agent1:ContentAnalyzer",
-      "duration_ms": 14733.1,
+      "duration_ms": 13525.8,
       "output_summary": {
         "intent": {
           "primary_type": "concept_expl...",
           "secondary_type": "科普",
           "confidence": 0.95,
-          "reasoning": "用户明确要求'通俗易懂地..."
+          "reasoning": "明确要求解释概念且强调通..."
         },
         "entities": [
           {
-            "name": "词向量...",
+            "name": "词向量",
             "type": "ter...",
             "role": "sub...",
             "importance": "pri..."
@@ -34,11 +34,11 @@
         ],
         "relations": [],
         "content_summary": {
-          "title": "词向量（Word Emb...",
+          "title": "词向量：让计算机理解词语...",
           "key_points": [
             "词向量...",
-            "词向量...",
-            "典型的...",
+            "通过训...",
+            "经典方...",
             "..."
           ],
           "target_audience": "general",
@@ -48,37 +48,37 @@
           "needs_external_knowledge": true,
           "search_queries": [
             "词向量...",
-            "Wor...",
-            "词向量..."
+            "wor...",
+            "什么是..."
           ],
-          "fallback_knowledge": "词向量（Word Emb..."
+          "fallback_knowledge": "词向量是自然语言处理中的..."
         },
         "chart_type": {
           "recommended": "concept_map",
           "alternatives": [
             "arc...",
-            "pro..."
+            "flo..."
           ],
           "type_confidence": 0.9
         }
       }
     },
     {
-      "timestamp": "2026-07-10T11:02:37.875437",
+      "timestamp": "2026-07-10T13:27:16.202794",
       "event": "agent_start",
       "agent": "Agent2:LayoutPlanner",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-10T11:04:34.023369",
+      "timestamp": "2026-07-10T13:28:17.217001",
       "event": "agent_output",
       "agent": "Agent2:LayoutPlanner",
-      "duration_ms": 116147.9,
+      "duration_ms": 61014.2,
       "output_summary": {
         "chart_type": "concept_map",
         "canvas": {
           "width": 800,
-          "height": 1100,
+          "height": 1000,
           "background": "#F8F9FF"
         },
         "color_scheme": {
@@ -92,21 +92,21 @@
           "palette": [
             "#4A...",
             "#7B...",
-            "#5D...",
+            "#27...",
             "..."
           ],
-          "rationale": "技术概念图适合使用冷静专..."
+          "rationale": "科技蓝紫配色方案符合技术..."
         },
         "typography": {
-          "title_size": 30,
-          "heading_size": 20,
+          "title_size": 36,
+          "heading_size": 22,
           "body_size": 15,
           "label_size": 14,
           "font_family": "system-ui, '..."
         },
         "layout_grid": {
           "columns": 12,
-          "rows": 12,
+          "rows": 6,
           "gutter": 20
         },
         "sections": [
@@ -117,36 +117,35 @@
               "x_pct": 0,
               "y_pct": 0,
               "width_pct": 100,
-              "height_pct": 8
+              "height_pct": 10
             },
             "visual_weight": "pri...",
-            "purpose": "显示主..."
+            "purpose": "主标题..."
           },
           {
             "id": "dia...",
             "type": "dia...",
             "position": {
               "x_pct": 0,
-              "y_pct": 8,
+              "y_pct": 10,
               "width_pct": 100,
-              "height_pct": 40
+              "height_pct": 80
             },
             "visual_weight": "pri...",
-            "purpose": "核心概..."
+            "purpose": "概念图..."
           },
           {
-            "id": "inf...",
-            "type": "con...",
+            "id": "foo...",
+            "type": "foo...",
             "position": {
-              "x_pct": 2,
-              "y_pct": 50,
-              "width_pct": 47,
-              "height_pct": 13
+              "x_pct": 0,
+              "y_pct": 90,
+              "width_pct": 100,
+              "height_pct": 10
             },
-            "visual_weight": "sec...",
-            "purpose": "解释词..."
-          },
-          "..."
+            "visual_weight": "ter...",
+            "purpose": "脚注或..."
+          }
         ],
         "elements": [
           {
@@ -158,119 +157,119 @@
             "importance": "pri...",
             "size_hint": {
               "min_width": 400,
-              "min_height": 50,
+              "min_height": 60,
               "aspect_ratio": null
             },
-            "content_hint": "显示主..."
+            "content_hint": "主标题..."
           },
           {
             "id": "cen...",
-            "type": "rou...",
-            "label": "词向量...",
+            "type": "cir...",
+            "label": "词向量",
             "parent_section": "dia...",
             "color_key": "pri...",
             "importance": "pri...",
             "size_hint": {
-              "min_width": 180,
-              "min_height": 60,
-              "aspect_ratio": null
+              "min_width": 120,
+              "min_height": 120,
+              "aspect_ratio": 1
             },
             "content_hint": "中心概..."
           },
           {
             "id": "nod...",
             "type": "rou...",
-            "label": "稠密低...",
+            "label": "语义映...",
             "parent_section": "dia...",
             "color_key": "sec...",
             "importance": "sec...",
             "size_hint": {
-              "min_width": 130,
-              "min_height": 40,
+              "min_width": 200,
+              "min_height": 80,
               "aspect_ratio": null
             },
-            "content_hint": "子节点..."
+            "content_hint": "解释词..."
           },
           "..."
         ],
         "connections": [
           {
             "id": "con...",
-            "type": "cur...",
+            "type": "arr...",
             "from_element": "cen...",
             "to_element": "nod...",
-            "direction": "top...",
+            "direction": "rad...",
             "label": null,
             "line_style": "sol..."
           },
           {
             "id": "con...",
-            "type": "cur...",
+            "type": "arr...",
             "from_element": "cen...",
             "to_element": "nod...",
-            "direction": "top...",
+            "direction": "rad...",
             "label": null,
             "line_style": "sol..."
           },
           {
             "id": "con...",
-            "type": "cur...",
+            "type": "arr...",
             "from_element": "cen...",
             "to_element": "nod...",
-            "direction": "top...",
+            "direction": "rad...",
             "label": null,
             "line_style": "sol..."
           },
           "..."
         ],
-        "design_notes": "采用现代科技风格的概念图布局。标题居中放置于顶部。概念图区域以中心的‘词向量’节点为根，通过曲线箭头..."
+        "design_notes": "采用放射状概念图设计，中心为显著加大的圆形节点'词向量'，使用主色填充并加阴影突出其核心地位。五个围..."
       }
     },
     {
-      "timestamp": "2026-07-10T11:04:34.024379",
+      "timestamp": "2026-07-10T13:28:17.219180",
       "event": "agent_start",
       "agent": "Agent3:SVGCoder (round 1)",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-10T11:06:46.988045",
+      "timestamp": "2026-07-10T13:31:11.573025",
       "event": "agent_output",
       "agent": "Agent3:SVGCoder",
-      "duration_ms": 132963.7,
+      "duration_ms": 174353.8,
       "output_summary": {
-        "svg_length": 7877
+        "svg_length": 6067
       }
     },
     {
-      "timestamp": "2026-07-10T11:06:46.988045",
+      "timestamp": "2026-07-10T13:31:11.574634",
       "event": "agent_start",
       "agent": "RenderingValidator",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-10T11:06:46.992557",
+      "timestamp": "2026-07-10T13:31:11.744397",
       "event": "agent_output",
       "agent": "RenderingValidator",
-      "duration_ms": 4.5,
+      "duration_ms": 169.8,
       "output_summary": {
         "xml_valid": true,
         "all_pass": false
       }
     },
     {
-      "timestamp": "2026-07-10T11:06:46.992557",
+      "timestamp": "2026-07-10T13:31:11.744397",
       "event": "agent_start",
       "agent": "Agent4:QualityReviewer (round 1)",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-10T11:07:30.783290",
+      "timestamp": "2026-07-10T13:31:58.397331",
       "event": "agent_output",
       "agent": "Agent4:QualityReviewer",
-      "duration_ms": 43790.7,
+      "duration_ms": 46652.9,
       "output_summary": {
         "pass": true,
-        "score": 8.5,
+        "score": 9,
         "needs_regen": false
       }
     }

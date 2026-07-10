@@ -1,9 +1,9 @@
 {
   "intent": {
     "primary_type": "concept_explanation",
-    "secondary_type": "科普",
-    "confidence": 0.95,
-    "reasoning": "用户明确要求解释大语言模型的基本原理，属于概念解释及科普说明。"
+    "secondary_type": null,
+    "confidence": 0.9,
+    "reasoning": "用户明确要求解释大语言模型的基本原理，属于典型的概念解释类信息图。"
   },
   "entities": [
     {
@@ -16,18 +16,18 @@
       "name": "基本原理",
       "type": "term",
       "role": "attribute",
-      "importance": "primary"
+      "importance": "secondary"
     }
   ],
   "relations": [],
   "content_summary": {
-    "title": "大语言模型基本原理",
+    "title": "大语言模型的基本原理",
     "key_points": [
-      "大语言模型（LLM）是一种基于Transformer架构的深度学习模型。",
-      "LLM通过自注意力机制捕捉长距离依赖关系，高效处理文本序列。",
-      "模型在大规模文本数据上进行预训练，学习语言的统计规律和世界知识。",
-      "预训练通常采用预测下一个词的任务，使模型掌握语言生成能力。",
-      "LLM可通过微调或提示工程适应特定任务，如翻译、问答等。"
+      "大语言模型是基于Transformer架构的深度学习模型，通过自注意力机制捕捉文本中的长距离依赖关系。",
+      "模型将输入文本转化为词嵌入向量，经过多头注意力层和前馈网络，逐步理解语义。",
+      "训练阶段使用海量文本数据，通过预测下一个词的任务进行自监督学习，调整数十亿参数。",
+      "核心原理包括：词嵌入（Word Embedding）、多头自注意力（Multi-Head Self-Attention）、残差连接与层归一化。",
+      "预训练后可通过少量任务数据微调，适配翻译、问答、摘要等多种自然语言处理场景。"
     ],
     "target_audience": "general",
     "language": "zh"
@@ -36,17 +36,16 @@
     "needs_external_knowledge": true,
     "search_queries": [
       "大语言模型基本原理",
-      "LLM工作原理",
-      "Transformer架构自注意力机制"
+      "大语言模型工作原理简单解释",
+      "Transformer架构注意力机制介绍"
     ],
-    "fallback_knowledge": "Large language models are based on Transformer architecture, using self-attention to process sequences, pre-trained on massive text with next-token prediction, and fine-tuned for tasks."
+    "fallback_knowledge": "大语言模型（LLM）基于Transformer架构，核心是自注意力机制，允许模型在处理每个词时关注输入中的所有词。训练通过掩码语言模型或因果语言模型（预测下一个词）在海量语料上优化参数。模型包含嵌入层、多头注意力层、前馈网络、残差连接和层归一化，通过堆叠这些模块实现深层语义理解。"
   },
   "chart_type": {
     "recommended": "concept_map",
     "alternatives": [
-      "architecture_diagram",
-      "process_diagram"
+      "architecture_diagram"
     ],
-    "type_confidence": 0.95
+    "type_confidence": 0.85
   }
 }

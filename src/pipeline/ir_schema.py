@@ -7,7 +7,7 @@ Used for validation and documentation purposes.
 from typing import Any
 
 
-# ── Content IR (Agent 1 output) ──────────────────────────────────────
+# -- Content IR (Agent 1 output) --------------------------------------
 
 CONTENT_IR_SCHEMA: dict[str, Any] = {
     "intent": {
@@ -51,7 +51,7 @@ CONTENT_IR_SCHEMA: dict[str, Any] = {
     },
 }
 
-# ── Layout IR (Agent 2 output, Phase 2) ──────────────────────────────
+# -- Layout IR (Agent 2 output, Phase 2) ------------------------------
 
 LAYOUT_IR_SCHEMA: dict[str, Any] = {
     "chart_type": "string",
@@ -121,7 +121,7 @@ LAYOUT_IR_SCHEMA: dict[str, Any] = {
     "design_notes": "string",
 }
 
-# ── Review IR (Agent 4 output, Phase 2) ──────────────────────────────
+# -- Review IR (Agent 4 output, Phase 2) ------------------------------
 
 REVIEW_IR_SCHEMA: dict[str, Any] = {
     "pass": "boolean",

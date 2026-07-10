@@ -21,7 +21,7 @@ from src.utils.config import config
 from src.pipeline.orchestrator import Pipeline
 
 
-# ── Five mandatory test samples ────────────────────────────────────────
+# -- Five mandatory test samples ----------------------------------------
 
 SAMPLES = {
     "sample1": {

@@ -3,7 +3,7 @@
     "primary_type": "data_comparison",
     "secondary_type": null,
     "confidence": 0.95,
-    "reasoning": "提示词明确要求对比数据，且给出了具体数量倍数关系，符合数据对比意图。"
+    "reasoning": "用户明确要求绘制信息图对比数据，直接体现数据对比意图。"
   },
   "entities": [
     {
@@ -28,13 +28,13 @@
       "name": "10 times",
       "type": "number",
       "role": "attribute",
-      "importance": "primary"
+      "importance": "secondary"
     },
     {
       "name": "2 times",
       "type": "number",
       "role": "attribute",
-      "importance": "primary"
+      "importance": "secondary"
     }
   ],
   "relations": [
@@ -42,26 +42,27 @@
       "type": "comparison",
       "source": "YouTube",
       "target": "TikTok",
-      "description": "YouTube has 10 times more videos than TikTok",
-      "quantifier": "10 times more than"
+      "description": "YouTube 的视频数量是 TikTok 的 10 倍",
+      "quantifier": "10 times more"
     },
     {
       "type": "comparison",
       "source": "TikTok",
       "target": "Kuaishou",
-      "description": "TikTok has 2 times more videos than Kuaishou",
-      "quantifier": "2 times more than"
+      "description": "TikTok 的视频数量是 Kuaishou 的 2 倍",
+      "quantifier": "2 times more"
     }
   ],
   "content_summary": {
-    "title": "Video Quantity Comparison: YouTube vs TikTok vs Kuaishou",
+    "title": "YouTube vs TikTok vs Kuaishou: Video Count Comparison",
     "key_points": [
-      "YouTube has 10 times more videos than TikTok.",
-      "TikTok has 2 times more videos than Kuaishou.",
-      "Thus, YouTube has approximately 20 times more videos than Kuaishou."
+      "YouTube 拥有的视频数量是 TikTok 的 10 倍，表明 YouTube 拥有绝对领先的视频库规模。",
+      "TikTok 的视频数量是快手（Kuaishou）的 2 倍，两者之间也有明显差距。",
+      "三大平台的视频数量呈阶梯式分布：YouTube > TikTok > Kuaishou。",
+      "这些数据揭示了短视频市场中内容供给端的不平衡性，YouTube 仍占据内容存量优势。"
     ],
     "target_audience": "general",
-    "language": "en"
+    "language": "mixed"
   },
   "knowledge_gap": {
     "needs_external_knowledge": false,
@@ -69,9 +70,9 @@
     "fallback_knowledge": null
   },
   "chart_type": {
-    "recommended": "comparison_chart",
+    "recommended": "bar_chart",
     "alternatives": [
-      "bar_chart"
+      "comparison_chart"
     ],
     "type_confidence": 0.95
   }

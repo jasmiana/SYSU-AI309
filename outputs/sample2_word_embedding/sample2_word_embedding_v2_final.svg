@@ -1,142 +1,105 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 960" width="100%" height="100%">
-  <defs>
-    <style>
-      .title { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 30px; font-weight: bold; fill: #FFFFFF; }
-      .subtitle { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 20px; font-weight: bold; }
-      .body-text { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 15px; fill: #2C3E50; }
-      .body-light { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 15px; fill: #7F8C8D; }
-      .footer-text { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 14px; fill: #4A90D9; }
-      .node-text { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 16px; font-weight: bold; fill: #FFFFFF; }
-      .node-center-text { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 22px; font-weight: bold; fill: #FFFFFF; }
-      .number-text { font-family: system-ui, 'Microsoft YaHei', sans-serif; font-size: 14px; font-weight: bold; fill: #FFFFFF; }
-    </style>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1050" width="800" height="1050">
+    <defs>
+        <!-- 背景渐变 -->
+        <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#F8F9FF"/>
+            <stop offset="100%" stop-color="#F0F2FF"/>
+        </linearGradient>
 
-    <!-- 图表页眉渐变 -->
-    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#4A90D9"/>
-      <stop offset="100%" stop-color="#7B68EE"/>
-    </linearGradient>
+        <!-- 中心节点渐变 -->
+        <linearGradient id="centerGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#4A90D9"/>
+            <stop offset="100%" stop-color="#7B68EE"/>
+        </linearGradient>
 
-    <!-- 卡片投影阴影 -->
-    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="8" stdDeviation="15" flood-color="#000000" flood-opacity="0.06"/>
-    </filter>
+        <!-- 子节点渐变 -->
+        <linearGradient id="nodeGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+            <stop offset="0%" stop-color="#7B68EE"/>
+            <stop offset="100%" stop-color="#6A5ACD"/>
+        </linearGradient>
 
-    <!-- 节点投影阴影 -->
-    <filter id="nodeShadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="6" stdDeviation="8" flood-color="#4A90D9" flood-opacity="0.25"/>
-    </filter>
+        <!-- 投影阴影 -->
+        <filter id="shadow" x="-10%" y="-10%" width="130%" height="130%">
+            <feDropShadow dx="3" dy="5" stdDeviation="5" flood-color="#000000" flood-opacity="0.15"/>
+        </filter>
 
-    <!-- 连接线箭头标记 -->
-    <marker id="arrow" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
-      <path d="M0,0 L10,5 L0,10 z" fill="#A0B2C6" />
-    </marker>
-  </defs>
+        <!-- 箭头标记 -->
+        <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+            <polygon points="0 0, 10 3.5, 0 7" fill="#8B5CF6"/>
+        </marker>
 
-  <!-- 基础背景 -->
-  <rect width="800" height="960" fill="#F8F9FF" />
+        <!-- 背景点状图案 -->
+        <pattern id="dotPattern" x="0" y="0" width="30" height="30" patternUnits="userSpaceOnUse">
+            <circle cx="15" cy="15" r="1.5" fill="#D0D5E0" opacity="0.4"/>
+        </pattern>
+    </defs>
 
-  <!-- 标题部分 (y=0 到 80) -->
-  <rect x="0" y="0" width="800" height="80" fill="url(#headerGrad)" />
-  <text x="400" y="50" text-anchor="middle" dominant-baseline="middle" class="title">词向量（Word Embedding）的基本概念</text>
+    <!-- 背景 -->
+    <rect width="100%" height="100%" fill="url(#bgGrad)"/>
+    <rect width="100%" height="100%" fill="url(#dotPattern)"/>
 
-  <!-- 图示部分 (y=90 到 480) -->
-  <!-- 背景装饰环 -->
-  <circle cx="400" cy="180" r="110" fill="none" stroke="#E0E7FF" stroke-width="2" stroke-dasharray="6,4"/>
-  <circle cx="400" cy="180" r="150" fill="none" stroke="#E0E7FF" stroke-width="1" stroke-dasharray="10,6"/>
+    <!-- 标题区域 -->
+    <g id="title-section">
+        <text x="400" y="65" text-anchor="middle" fill="#1E293B" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="32" font-weight="bold" letter-spacing="1">词向量：让计算机理解词语的意义</text>
+    </g>
 
-  <!-- 连接线（曲线） -->
-  <!-- 到子节点 1 -->
-  <path d="M 400 215 C 400 260, 120 240, 120 290" stroke="#A0B2C6" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-  <!-- 到子节点 2 -->
-  <path d="M 400 215 C 400 260, 307 240, 307 290" stroke="#A0B2C6" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-  <!-- 到子节点 3 -->
-  <path d="M 400 215 C 400 260, 494 240, 494 290" stroke="#A0B2C6" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
-  <!-- 到子节点 4 -->
-  <path d="M 400 215 C 400 260, 681 240, 681 290" stroke="#A0B2C6" stroke-width="2.5" fill="none" marker-end="url(#arrow)"/>
+    <!-- 图表区域 -->
+    <g id="diagram-section">
+        <!-- 中心虚线圈 -->
+        <circle cx="400" cy="540" r="95" fill="none" stroke="#4A90D9" stroke-width="2" stroke-dasharray="6,4" opacity="0.3"/>
 
-  <!-- 中心主节点 -->
-  <rect x="280" y="145" width="240" height="70" rx="35" fill="#4A90D9" filter="url(#nodeShadow)"/>
-  <text x="400" y="180" text-anchor="middle" dominant-baseline="middle" class="node-center-text">词向量 (Word Embedding)</text>
+        <!-- 连接线（箭头） -->
+        <g id="connections" stroke="#8B5CF6" stroke-width="3" marker-end="url(#arrowhead)">
+            <!-- 顶部：定义 -->
+            <line x1="400" y1="540" x2="400" y2="300"/>
+            <!-- 右上：相似性 -->
+            <line x1="400" y1="540" x2="628" y2="614"/>
+            <!-- 右下：方法 -->
+            <line x1="400" y1="540" x2="541" y2="734"/>
+            <!-- 左下：类比 -->
+            <line x1="400" y1="540" x2="259" y2="734"/>
+            <!-- 左上：应用 -->
+            <line x1="400" y1="540" x2="172" y2="614"/>
+        </g>
 
-  <!-- 子节点 1：稠密低维向量 -->
-  <rect x="40" y="300" width="160" height="60" rx="8" fill="#7B68EE" filter="url(#nodeShadow)"/>
-  <circle cx="55" cy="330" r="2" fill="#FFFFFF" opacity="0.6"/>
-  <circle cx="65" cy="330" r="2" fill="#FFFFFF" opacity="0.6"/>
-  <circle cx="75" cy="330" r="2" fill="#FFFFFF" opacity="0.6"/>
-  <text x="120" y="330" text-anchor="middle" dominant-baseline="middle" class="node-text">稠密低维向量</text>
+        <!-- 子节点 -->
+        <g id="sub-nodes" fill="url(#nodeGrad)" stroke="#FFFFFF" stroke-width="3" filter="url(#shadow)" rx="12">
+            <!-- 节点 1：定义（顶部） -->
+            <rect x="295" y="265" width="210" height="70" rx="12"/>
+            <text x="400" y="317" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="17" font-weight="bold">语义映射</text>
+            <text x="400" y="342" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="14" opacity="0.9">词语 → 实数向量</text>
 
-  <!-- 子节点 2：语义相似性 -->
-  <rect x="227" y="300" width="160" height="60" rx="8" fill="#7B68EE" filter="url(#nodeShadow)"/>
-  <line x1="237" y1="322" x2="247" y2="332" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-  <line x1="247" y1="322" x2="237" y2="332" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-  <text x="307" y="330" text-anchor="middle" dominant-baseline="middle" class="node-text">语义相似性</text>
+            <!-- 节点 2：相似性（右上） -->
+            <rect x="523" y="579" width="210" height="70" rx="12"/>
+            <text x="628" y="631" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="17" font-weight="bold">语义相似性</text>
+            <text x="628" y="656" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="14" opacity="0.9">空间距离近</text>
 
-  <!-- 子节点 3：类比推理 -->
-  <rect x="414" y="300" width="160" height="60" rx="8" fill="#7B68EE" filter="url(#nodeShadow)"/>
-  <line x1="426" y1="328" x2="440" y2="328" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-  <line x1="426" y1="334" x2="440" y2="334" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" opacity="0.6"/>
-  <text x="494" y="330" text-anchor="middle" dominant-baseline="middle" class="node-text">类比推理</text>
+            <!-- 节点 3：方法（右下） -->
+            <rect x="436" y="699" width="210" height="70" rx="12"/>
+            <text x="541" y="751" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="17" font-weight="bold">训练方法</text>
+            <text x="541" y="776" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="14" opacity="0.9">Word2Vec &amp; GloVe</text>
 
-  <!-- 子节点 4：NLP应用 -->
-  <rect x="601" y="300" width="160" height="60" rx="8" fill="#7B68EE" filter="url(#nodeShadow)"/>
-  <rect x="613" y="324" width="12" height="8" fill="none" stroke="#FFFFFF" stroke-width="1.5" rx="1" opacity="0.6"/>
-  <rect x="617" y="322" width="12" height="8" fill="none" stroke="#FFFFFF" stroke-width="1.5" rx="1" opacity="0.6"/>
-  <rect x="621" y="320" width="12" height="8" fill="none" stroke="#FFFFFF" stroke-width="1.5" rx="1" opacity="0.6"/>
-  <text x="681" y="330" text-anchor="middle" dominant-baseline="middle" class="node-text">NLP应用</text>
+            <!-- 节点 4：类比（左下） -->
+            <rect x="154" y="699" width="210" height="70" rx="12"/>
+            <text x="259" y="751" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="17" font-weight="bold">类比运算</text>
+            <text x="259" y="776" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="14" opacity="0.9">国王-男人+女人≈王后</text>
 
-  <!-- 信息卡片 1 & 2 (y=520 到 650, h=130) -->
-  
-  <!-- 卡片 1 -->
-  <g transform="translate(40, 520)">
-    <rect width="350" height="130" rx="10" fill="#FFFFFF" filter="url(#cardShadow)"/>
-    <circle cx="25" cy="25" r="14" fill="#4A90D9"/>
-    <text x="25" y="25" text-anchor="middle" dominant-baseline="middle" class="number-text">1</text>
-    <text x="50" y="25" dominant-baseline="middle" class="subtitle" fill="#2C3E50">什么是词向量？</text>
-    <text x="20" y="55" class="body-light">将词语表示为连续、低维、稠密的</text>
-    <text x="20" y="75" class="body-light">实数向量，解决了传统独热编码</text>
-    <text x="20" y="95" class="body-light">维度过高且无语义问题。</text>
-  </g>
+            <!-- 节点 5：应用（左上） -->
+            <rect x="67" y="579" width="210" height="70" rx="12"/>
+            <text x="172" y="631" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="17" font-weight="bold">应用场景</text>
+            <text x="172" y="656" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="14" opacity="0.9">翻译、情感分析、问答</text>
+        </g>
 
-  <!-- 卡片 2 -->
-  <g transform="translate(410, 520)">
-    <rect width="350" height="130" rx="10" fill="#FFFFFF" filter="url(#cardShadow)"/>
-    <circle cx="25" cy="25" r="14" fill="#7B68EE"/>
-    <text x="25" y="25" text-anchor="middle" dominant-baseline="middle" class="number-text">2</text>
-    <text x="50" y="25" dominant-baseline="middle" class="subtitle" fill="#2C3E50">语义相似性</text>
-    <text x="20" y="55" class="body-light">通过 Word2Vec、GloVe 等模型</text>
-    <text x="20" y="75" class="body-light">训练得到，语义相似的词在</text>
-    <text x="20" y="95" class="body-light">向量空间中距离更近。</text>
-  </g>
+        <!-- 中心节点 -->
+        <g id="center-node">
+            <circle cx="400" cy="540" r="70" fill="url(#centerGrad)" filter="url(#shadow)" stroke="#FFFFFF" stroke-width="4"/>
+            <text x="400" y="548" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="26" font-weight="bold">词向量</text>
+        </g>
+    </g>
 
-  <!-- 信息卡片 3 & 4 (y=680 到 810, h=130) -->
-  
-  <!-- 卡片 3 -->
-  <g transform="translate(40, 680)">
-    <rect width="350" height="130" rx="10" fill="#FFFFFF" filter="url(#cardShadow)"/>
-    <circle cx="25" cy="25" r="14" fill="#4A90D9"/>
-    <text x="25" y="25" text-anchor="middle" dominant-baseline="middle" class="number-text">3</text>
-    <text x="50" y="25" dominant-baseline="middle" class="subtitle" fill="#2C3E50">类比推理能力</text>
-    <text x="20" y="55" class="body-light">“国王” - “男人” + “女人” ≈</text>
-    <text x="20" y="75" class="body-light">“王后”，体现了词向量强大的</text>
-    <text x="20" y="95" class="body-light">类比推理能力。</text>
-  </g>
-
-  <!-- 卡片 4 -->
-  <g transform="translate(410, 680)">
-    <rect width="350" height="130" rx="10" fill="#FFFFFF" filter="url(#cardShadow)"/>
-    <circle cx="25" cy="25" r="14" fill="#7B68EE"/>
-    <text x="25" y="25" text-anchor="middle" dominant-baseline="middle" class="number-text">4</text>
-    <text x="50" y="25" dominant-baseline="middle" class="subtitle" fill="#2C3E50">应用领域</text>
-    <text x="20" y="55" class="body-light">文本分类、机器翻译、情感分析</text>
-    <text x="20" y="75" class="body-light">等 NLP 任务的基础，让计算机</text>
-    <text x="20" y="95" class="body-light">更好地理解语言。</text>
-  </g>
-
-  <!-- 页脚部分 (y=860 到 940, h=80) -->
-  <g transform="translate(0, 860)">
-    <rect width="800" height="80" fill="#E8F0FE"/>
-    <text x="400" y="45" text-anchor="middle" dominant-baseline="middle" class="footer-text">来源：词向量技术科普</text>
-  </g>
-
+    <!-- 页脚区域 -->
+    <g id="footer-section">
+        <line x1="300" y1="1010" x2="500" y2="1010" stroke="#D0D5E0" stroke-width="2"/>
+        <text x="400" y="1040" text-anchor="middle" fill="#64748B" font-family="system-ui, -apple-system, 'Microsoft YaHei', 'PingFang SC', sans-serif" font-size="15" letter-spacing="0.5">词向量技术是自然语言处理的基础，让机器理解语言的内涵。</text>
+    </g>
 </svg>

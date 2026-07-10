@@ -57,7 +57,7 @@ class SVGCoder(BaseAgent):
         for i, point in enumerate(content_summary.get("key_points", []), 1):
             parts.append(f"{i}. {point}")
 
-        # ── Layout IR integration ──────────────────────────
+        # -- Layout IR integration --------------------------
         if layout_ir:
             parts.append(f"\n## 布局规范（来自 Layout Planner）\n")
             parts.append(f"- 图表类型: {layout_ir.get('chart_type', 'unknown')}")
@@ -143,7 +143,7 @@ class SVGCoder(BaseAgent):
         parts.append("\n## 设计参数\n")
         parts.append(f"- 画布: {svg_spec.get('width', 800)} × {svg_spec.get('height', '自适应')}")
 
-        # ── Review feedback (for refinement rounds) ────────
+        # -- Review feedback (for refinement rounds) --------
         if review_feedback:
             parts.append("\n## ⚠️ 修改要求（上一轮审核反馈）\n")
             parts.append(f"### 问题总结: {review_feedback.get('summary', '')}")
