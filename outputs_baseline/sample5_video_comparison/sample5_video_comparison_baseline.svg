@@ -1,0 +1,102 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#FF0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CC0000;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="youtubeGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF0000;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#CC0000;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="tiktokGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#00F2EA;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FF0050;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="kuaishouGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#FF6B00;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#E55A00;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.08"/>
+    </filter>
+  </defs>
+
+  <!-- 白色背景 -->
+  <rect width="800" height="600" fill="#FFFFFF" rx="0"/>
+
+  <!-- 标题横幅 -->
+  <rect x="0" y="0" width="800" height="80" fill="url(#headerGrad)" rx="0"/>
+  <text x="400" y="50" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="30" font-weight="bold" fill="#FFFFFF">短视频平台视频数量对比</text>
+
+  <!-- 副标题 -->
+  <text x="400" y="115" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="16" fill="#666666">YouTube 视频数量是 TikTok 的 10 倍，TikTok 是快手（Kuaishou）的 2 倍</text>
+
+  <!-- 数据卡片区域 -->
+  <!-- YouTube 卡片 -->
+  <g filter="url(#cardShadow)">
+    <rect x="50" y="145" width="700" height="110" rx="16" fill="#FFFFFF" stroke="#EEEEEE" stroke-width="1"/>
+    <rect x="50" y="145" width="12" height="110" rx="6" fill="url(#youtubeGrad)"/>
+    <rect x="56" y="145" width="6" height="110" fill="url(#youtubeGrad)"/>
+    
+    <text x="90" y="185" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="22" font-weight="bold" fill="#333333">YouTube</text>
+    <text x="90" y="215" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" fill="#888888">视频数量基准</text>
+    
+    <!-- 比例条 -->
+    <rect x="90" y="230" width="500" height="12" rx="6" fill="#FF0000" opacity="0.15"/>
+    <rect x="90" y="230" width="500" height="12" rx="6" fill="url(#youtubeGrad)" opacity="0.85"/>
+    
+    <text x="610" y="215" text-anchor="end" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold" fill="#FF0000">10x</text>
+  </g>
+
+  <!-- TikTok 卡片 -->
+  <g filter="url(#cardShadow)">
+    <rect x="50" y="275" width="700" height="110" rx="16" fill="#FFFFFF" stroke="#EEEEEE" stroke-width="1"/>
+    <rect x="50" y="275" width="12" height="110" rx="6" fill="url(#tiktokGrad)"/>
+    <rect x="56" y="275" width="6" height="110" fill="url(#tiktokGrad)"/>
+    
+    <text x="90" y="315" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="22" font-weight="bold" fill="#333333">TikTok</text>
+    <text x="90" y="345" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" fill="#888888">YouTube 的 1/10</text>
+    
+    <!-- 比例条 -->
+    <rect x="90" y="360" width="500" height="12" rx="6" fill="#00F2EA" opacity="0.15"/>
+    <rect x="90" y="360" width="50" height="12" rx="6" fill="url(#tiktokGrad)" opacity="0.85"/>
+    
+    <text x="610" y="345" text-anchor="end" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold" fill="#FF0050">1x</text>
+  </g>
+
+  <!-- 快手 Kuaishou 卡片 -->
+  <g filter="url(#cardShadow)">
+    <rect x="50" y="405" width="700" height="110" rx="16" fill="#FFFFFF" stroke="#EEEEEE" stroke-width="1"/>
+    <rect x="50" y="405" width="12" height="110" rx="6" fill="url(#kuaishouGrad)"/>
+    <rect x="56" y="405" width="6" height="110" fill="url(#kuaishouGrad)"/>
+    
+    <text x="90" y="445" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="22" font-weight="bold" fill="#333333">快手（Kuaishou）</text>
+    <text x="90" y="475" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" fill="#888888">TikTok 的 1/2</text>
+    
+    <!-- 比例条 -->
+    <rect x="90" y="490" width="500" height="12" rx="6" fill="#FF6B00" opacity="0.15"/>
+    <rect x="90" y="490" width="25" height="12" rx="6" fill="url(#kuaishouGrad)" opacity="0.85"/>
+    
+    <text x="610" y="475" text-anchor="end" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold" fill="#FF6B00">0.5x</text>
+  </g>
+
+  <!-- 底部说明 -->
+  <text x="400" y="560" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#AAAAAA">数据基于公开信息估算，仅供参考</text>
+
+  <!-- 装饰图标 -->
+  <g transform="translate(680, 160)" opacity="0.1">
+    <rect x="0" y="0" width="40" height="40" rx="8" fill="#FF0000"/>
+    <polygon points="16,10 16,30 32,20" fill="#FFFFFF"/>
+  </g>
+  <g transform="translate(680, 290)" opacity="0.1">
+    <rect x="0" y="0" width="40" height="40" rx="8" fill="#00F2EA"/>
+    <text x="20" y="28" text-anchor="middle" font-size="20" fill="#FFFFFF">♪</text>
+  </g>
+  <g transform="translate(680, 420)" opacity="0.1">
+    <rect x="0" y="0" width="40" height="40" rx="8" fill="#FF6B00"/>
+    <text x="20" y="28" text-anchor="middle" font-size="20" fill="#FFFFFF">K</text>
+  </g>
+</svg>

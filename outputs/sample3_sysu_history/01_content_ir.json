@@ -3,64 +3,225 @@
     "primary_type": "timeline",
     "secondary_type": null,
     "confidence": 0.95,
-    "reasoning": "用户明确要求展示'发展历程'，这属于典型的时间线/历史叙述类可视化。"
+    "reasoning": "用户明确要求展示发展历程，适合采用时间线可视化。"
   },
   "entities": [
+    {
+      "name": "孙中山",
+      "type": "person",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "国立广东大学",
+      "type": "organization",
+      "role": "object",
+      "importance": "primary"
+    },
     {
       "name": "中山大学",
       "type": "organization",
       "role": "subject",
       "importance": "primary"
+    },
+    {
+      "name": "中山医科大学",
+      "type": "organization",
+      "role": "object",
+      "importance": "secondary"
+    },
+    {
+      "name": "双一流",
+      "type": "term",
+      "role": "attribute",
+      "importance": "secondary"
+    },
+    {
+      "name": "院系调整",
+      "type": "term",
+      "role": "attribute",
+      "importance": "secondary"
+    },
+    {
+      "name": "合并",
+      "type": "term",
+      "role": "attribute",
+      "importance": "secondary"
+    },
+    {
+      "name": "百年校庆",
+      "type": "term",
+      "role": "attribute",
+      "importance": "context"
+    },
+    {
+      "name": "珠海校区",
+      "type": "location",
+      "role": "object",
+      "importance": "secondary"
+    },
+    {
+      "name": "深圳校区",
+      "type": "location",
+      "role": "object",
+      "importance": "secondary"
+    },
+    {
+      "name": "广州",
+      "type": "location",
+      "role": "location",
+      "importance": "primary"
+    },
+    {
+      "name": "珠海",
+      "type": "location",
+      "role": "location",
+      "importance": "secondary"
+    },
+    {
+      "name": "深圳",
+      "type": "location",
+      "role": "location",
+      "importance": "secondary"
+    },
+    {
+      "name": "1924年",
+      "type": "date",
+      "role": "time",
+      "importance": "primary"
+    },
+    {
+      "name": "1926年",
+      "type": "date",
+      "role": "time",
+      "importance": "secondary"
+    },
+    {
+      "name": "1952年",
+      "type": "date",
+      "role": "time",
+      "importance": "secondary"
+    },
+    {
+      "name": "2001年",
+      "type": "date",
+      "role": "time",
+      "importance": "secondary"
+    },
+    {
+      "name": "2017年",
+      "type": "date",
+      "role": "time",
+      "importance": "secondary"
+    },
+    {
+      "name": "2024年",
+      "type": "date",
+      "role": "time",
+      "importance": "context"
     }
   ],
   "relations": [
     {
-      "type": "temporal",
+      "type": "causality",
+      "source": "孙中山",
+      "target": "国立广东大学",
+      "description": "孙中山创办国立广东大学",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "1924年",
+      "target": "1926年",
+      "description": "1924年成立，1926年更名",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "1926年",
+      "target": "1952年",
+      "description": "1926年更名后至1952年院系调整",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "1952年",
+      "target": "2001年",
+      "description": "院系调整后至合并中山医科大学",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "2001年",
+      "target": "2017年",
+      "description": "合并后至入选双一流",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "2017年",
+      "target": "2024年",
+      "description": "双一流建设至百年校庆",
+      "quantifier": null
+    },
+    {
+      "type": "causality",
+      "source": "国立广东大学",
+      "target": "中山大学",
+      "description": "国立广东大学更名发展为中山大学",
+      "quantifier": null
+    },
+    {
+      "type": "hierarchy",
       "source": "中山大学",
-      "target": "发展历程中的多个时间节点",
-      "description": "中山大学在不同历史时期的发展阶段",
+      "target": "珠海校区",
+      "description": "中山大学下属珠海校区",
+      "quantifier": null
+    },
+    {
+      "type": "hierarchy",
+      "source": "中山大学",
+      "target": "深圳校区",
+      "description": "中山大学下属深圳校区",
+      "quantifier": null
+    },
+    {
+      "type": "causality",
+      "source": "2001年",
+      "target": "合并",
+      "description": "2001年中山大学与中山医科大学合并",
+      "quantifier": null
+    },
+    {
+      "type": "temporal",
+      "source": "1924年",
+      "target": "中山大学",
+      "description": "中山大学诞生于1924年",
       "quantifier": null
     }
   ],
   "content_summary": {
     "title": "中山大学发展历程",
     "key_points": [
-      "1924年，孙中山先生亲手创立国立广东大学，1926年更名为国立中山大学。",
-      "1952年全国院系调整，中山大学成为文理科综合性大学，校址迁至广州康乐园。",
-      "2000年珠海校区落成，扩展了办学空间，形成多校区办学格局。",
-      "2001年与中山医科大学合并，组建新的中山大学，学科实力显著增强。",
-      "2017年入选国家'双一流'建设高校，迈向世界一流大学。"
+      "孙中山先生于1924年创办国立广东大学，为中山大学前身。",
+      "1926年国立广东大学正式更名为国立中山大学。",
+      "1952年全国院系调整，中山大学部分学科外迁。",
+      "2001年中山大学与中山医科大学合并，实力增强。",
+      "2017年入选国家双一流建设高校，2024年迎来百年校庆并拥有广州、珠海、深圳三校区。"
     ],
     "target_audience": "general",
     "language": "zh"
   },
   "knowledge_gap": {
     "needs_external_knowledge": true,
-    "search_queries": [
-      "中山大学发展历程 重要历史节点",
-      "中山大学创立 更名 合并 历史"
-    ],
-    "fallback_knowledge": "中山大学由孙中山于1924年创办，经历了国立广东大学、国立中山大学等阶段，1952年院系调整后迁址，2001年与中山医科大学合并，现为985、双一流高校。"
+    "search_queries": [],
+    "fallback_knowledge": "中山大学由孙中山先生于1924年创立，始称国立广东大学；1926年更名为国立中山大学；1952年院系调整中部分学科调出；2001年与原中山医科大学合并；2017年入选双一流；现拥有广州、珠海、深圳三个校区。"
   },
   "chart_type": {
     "recommended": "timeline",
     "alternatives": [
-      "process_diagram",
-      "concept_map"
+      "process_diagram"
     ],
-    "type_confidence": 0.95
-  },
-  "knowledge_supplement": "## 中山大学发展历程\n\n来源: 手工整理 + 中山大学官网验证\n\n- **1924**: 国立广东大学创立，孙中山先生亲手创办\n- **1926**: 更名为国立中山大学，以纪念孙中山先生\n- **1930**: 发展为文理工医农法多学科综合大学\n- **1952**: 全国院系调整，成为文理科综合大学\n- **1980**: 改革开放后迅速发展，扩大办学规模\n- **2000**: 珠海校区正式启用，拓展办学空间\n- **2001**: 与原中山医科大学合并，组建新的中山大学\n- **2004**: 广州东校区（大学城校区）启用\n- **2015**: 深圳校区启动建设，布局粤港澳大湾区\n- **2017**: 入选国家'双一流'建设高校（A类）\n- **2022**: 11个学科入选第二轮'双一流'建设名单\n- **2024**: 形成三校区五校园办学格局，百年校庆\n\n概述: 中山大学由孙中山先生于1924年创办，是中国南方最著名的高等学府之一。历经百年发展，学校从单一校区扩展为广州（南校园、北校园、东校园）、珠海、深圳三校区五校园的宏大格局。2001年与原中山医科大学合并后学科门类更加齐全，2017年入选国家双一流建设高校A类。2024年迎来百年华诞。\n\n## 中山大学发展历程\n\n来源: 手工整理 + 中山大学官网验证\n\n- **1924**: 国立广东大学创立，孙中山先生亲手创办\n- **1926**: 更名为国立中山大学，以纪念孙中山先生\n- **1930**: 发展为文理工医农法多学科综合大学\n- **1952**: 全国院系调整，成为文理科综合大学\n- **1980**: 改革开放后迅速发展，扩大办学规模\n- **2000**: 珠海校区正式启用，拓展办学空间\n- **2001**: 与原中山医科大学合并，组建新的中山大学\n- **2004**: 广州东校区（大学城校区）启用\n- **2015**: 深圳校区启动建设，布局粤港澳大湾区\n- **2017**: 入选国家'双一流'建设高校（A类）\n- **2022**: 11个学科入选第二轮'双一流'建设名单\n- **2024**: 形成三校区五校园办学格局，百年校庆\n\n概述: 中山大学由孙中山先生于1924年创办，是中国南方最著名的高等学府之一。历经百年发展，学校从单一校区扩展为广州（南校园、北校园、东校园）、珠海、深圳三校区五校园的宏大格局。2001年与原中山医科大学合并后学科门类更加齐全，2017年入选国家双一流建设高校A类。2024年迎来百年华诞。",
-  "knowledge_sources": [
-    {
-      "query": "中山大学发展历程 重要历史节点",
-      "source": "fallback_db",
-      "reliability": "high"
-    },
-    {
-      "query": "中山大学创立 更名 合并 历史",
-      "source": "fallback_db",
-      "reliability": "high"
-    }
-  ]
+    "type_confidence": 0.92
+  }
 }

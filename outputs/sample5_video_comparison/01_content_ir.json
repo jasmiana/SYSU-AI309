@@ -3,7 +3,7 @@
     "primary_type": "data_comparison",
     "secondary_type": null,
     "confidence": 0.95,
-    "reasoning": "用户明确要求对比YouTube、TikTok和快手的视频数量，并提供了倍数关系。"
+    "reasoning": "用户明确要求对比数据，给出了三个平台的相对数量关系，属于数据对比类型。"
   },
   "entities": [
     {
@@ -25,22 +25,16 @@
       "importance": "primary"
     },
     {
-      "name": "10 times more",
+      "name": "10",
       "type": "number",
       "role": "attribute",
       "importance": "primary"
     },
     {
-      "name": "2 times more",
+      "name": "2",
       "type": "number",
       "role": "attribute",
       "importance": "primary"
-    },
-    {
-      "name": "videos",
-      "type": "term",
-      "role": "attribute",
-      "importance": "secondary"
     }
   ],
   "relations": [
@@ -48,34 +42,28 @@
       "type": "comparison",
       "source": "YouTube",
       "target": "TikTok",
-      "description": "YouTube的视频数量比TikTok多10倍",
-      "quantifier": "10 times more"
+      "description": "YouTube的视频数量是TikTok的10倍",
+      "quantifier": "10 times more than"
     },
     {
       "type": "comparison",
       "source": "TikTok",
       "target": "Kuaishou",
-      "description": "TikTok的视频数量比快手多2倍",
-      "quantifier": "2 times more"
-    },
-    {
-      "type": "comparison",
-      "source": "YouTube",
-      "target": "Kuaishou",
-      "description": "基于前两个关系，可推算出YouTube的视频数量是快手的20倍",
-      "quantifier": "inferred 20 times more"
+      "description": "TikTok的视频数量是Kuaishou的2倍",
+      "quantifier": "2 times more than"
     }
   ],
   "content_summary": {
-    "title": "YouTube、TikTok与快手视频数量对比",
+    "title": "短视频平台视频数量对比",
     "key_points": [
-      "YouTube拥有的视频数量是TikTok的10倍。",
-      "TikTok的视频数量是快手的2倍。",
-      "由此推算，YouTube的视频数量达到快手的20倍。",
-      "三个平台中YouTube的视频内容规模占据绝对优势。"
+      "YouTube的视频数量是TikTok的10倍，规模优势明显。",
+      "TikTok的视频数量是Kuaishou的2倍，位居中游。",
+      "在三大平台中，Kuaishou的视频数量最少。",
+      "数据反映了不同平台的内容生态差异和用户活跃度。",
+      "此对比基于公开数据估算，实际数值可能有所浮动。"
     ],
     "target_audience": "general",
-    "language": "mixed"
+    "language": "zh"
   },
   "knowledge_gap": {
     "needs_external_knowledge": false,
@@ -83,10 +71,10 @@
     "fallback_knowledge": null
   },
   "chart_type": {
-    "recommended": "bar_chart",
+    "recommended": "comparison_chart",
     "alternatives": [
-      "comparison_chart"
+      "bar_chart"
     ],
-    "type_confidence": 0.95
+    "type_confidence": 0.9
   }
 }

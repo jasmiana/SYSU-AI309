@@ -1,0 +1,148 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100">
+  <defs>
+    <linearGradient id="bgGrad" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F5F0E8"/>
+      <stop offset="100%" stop-color="#EDE0D4"/>
+    </linearGradient>
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6B3A2A"/>
+      <stop offset="100%" stop-color="#A0522D"/>
+    </linearGradient>
+    <linearGradient id="card1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#8FBC8F"/>
+      <stop offset="100%" stop-color="#6B8E23"/>
+    </linearGradient>
+    <linearGradient id="card2" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#DEB887"/>
+      <stop offset="100%" stop-color="#D2A679"/>
+    </linearGradient>
+    <linearGradient id="card3" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#A0522D"/>
+      <stop offset="100%" stop-color="#8B4513"/>
+    </linearGradient>
+    <linearGradient id="card4" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#C0C0C0"/>
+      <stop offset="100%" stop-color="#A9A9A9"/>
+    </linearGradient>
+    <linearGradient id="card5" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#D2691E"/>
+      <stop offset="100%" stop-color="#B8860B"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="#00000030"/>
+    </filter>
+    <filter id="shadowLight" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#00000020"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#8B7355"/>
+    </marker>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="1100" fill="url(#bgGrad)" rx="16"/>
+
+  <!-- 标题横幅 -->
+  <rect x="40" y="30" width="720" height="80" rx="12" fill="url(#titleGrad)" filter="url(#shadow)"/>
+  <text x="400" y="78" text-anchor="middle" fill="#FFFFFF" font-size="30" font-weight="bold" font-family="system-ui, 'Microsoft YaHei', sans-serif">从咖啡豆到一杯咖啡 · 完整生产链</text>
+
+  <!-- 连接线（纵向流程） -->
+  <line x1="400" y1="160" x2="400" y2="210" stroke="#8B7355" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="400" y1="340" x2="400" y2="390" stroke="#8B7355" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="400" y1="520" x2="400" y2="570" stroke="#8B7355" stroke-width="3" marker-end="url(#arrow)"/>
+  <line x1="400" y1="700" x2="400" y2="750" stroke="#8B7355" stroke-width="3" marker-end="url(#arrow)"/>
+
+  <!-- 步骤 1：种植 -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="160" width="560" height="180" rx="16" fill="#FFFFFF" opacity="0.95"/>
+    <rect x="120" y="160" width="560" height="180" rx="16" fill="url(#card1)" opacity="0.12"/>
+    <rect x="120" y="160" width="8" height="180" rx="4" fill="#6B8E23"/>
+    <circle cx="180" cy="220" r="36" fill="#6B8E23" opacity="0.15"/>
+    <text x="180" y="228" text-anchor="middle" fill="#6B8E23" font-size="28" font-weight="bold" font-family="system-ui, 'Microsoft YaHei', sans-serif">🌱</text>
+    <text x="230" y="220" fill="#3D2B1F" font-size="22" font-weight="bold" font-family="system-ui, 'Microsoft YaHei', sans-serif">种植</text>
+    <text x="230" y="248" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">咖啡树在热带高海拔地区生长</text>
+    <text x="230" y="272" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">需要充足的降雨和肥沃的火山土壤</text>
+    <text x="230" y="296" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">3-4年才能结出成熟的咖啡樱桃</text>
+    <!-- 装饰小图标 -->
+    <circle cx="580" cy="200" r="20" fill="#6B8E23" opacity="0.08"/>
+    <text x="580" y="206" text-anchor="middle" fill="#6B8E23" font-size="18">⛰️</text>
+    <circle cx="620" cy="200" r="20" fill="#6B8E23" opacity="0.08"/>
+    <text x="620" y="206" text-anchor="middle" fill="#6B8E23" font-size="18">🌧️</text>
+  </g>
+
+  <!-- 步骤 2：采摘 -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="340" width="560" height="180" rx="16" fill="#FFFFFF" opacity="0.95"/>
+    <rect x="120" y="340" width="560" height="180" rx="16" fill="url(#card2)" opacity="0.12"/>
+    <rect x="120" y="340" width="8" height="180" rx="4" fill="#D2A679"/>
+    <circle cx="180" cy="400" r="36" fill="#D2A679" opacity="0.15"/>
+    <text x="180" y="408" text-anchor="middle" fill="#D2A679" font-size="28" font-weight="bold" font-family="system-ui, 'Microsoft YaHei', sans-serif">🧑‍🌾</text>
+    <text x="230" y="400" fill="#3D2B1F" font-size="22" font-weight="bold" font-family="system-ui, 'Microsoft YaHei', sans-serif">采摘</text>
+    <text x="230" y="428" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">手工采摘成熟的红色咖啡樱桃</text>
+    <text x="230" y="452" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">每棵树每年仅产约0.5kg咖啡豆</text>
+    <text x="230" y="476" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">采摘后需在24小时内进行加工</text>
+    <!-- 装饰 -->
+    <circle cx="580" cy="380" r="20" fill="#D2A679" opacity="0.08"/>
+    <text x="580" y="386" text-anchor="middle" fill="#D2A679" font-size="18">🍒</text>
+    <circle cx="620" cy="380" r="20" fill="#D2A679" opacity="0.08"/>
+    <text x="620" y="386" text-anchor="middle" fill="#D2A679" font-size="18">🧺</text>
+  </g>
+
+  <!-- 步骤 3：烘焙 -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="520" width="560" height="180" rx="16" fill="#FFFFFF" opacity="0.95"/>
+    <rect x="120" y="520" width="560" height="180" rx="16" fill="url(#card3)" opacity="0.12"/>
+    <rect x="120" y="520" width="8" height="180" rx="4" fill="#8B4513"/>
+    <circle cx="180" cy="580" r="36" fill="#8B4513" opacity="0.15"/>
+    <text x="180" y="588" text-anchor="middle" fill="#8B4513" font-size="28" font-weight="bold" font-family="system-ui, 'Microsoft YaHei', sans-serif">🔥</text>
+    <text x="230" y="580" fill="#3D2B1F" font-size="22" font-weight="bold" font-family="system-ui, 'Microsoft YaHei', sans-serif">烘焙</text>
+    <text x="230" y="608" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">生豆在180-240°C下烘焙10-20分钟</text>
+    <text x="230" y="632" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">浅烘保留花果香，中烘平衡酸甜</text>
+    <text x="230" y="656" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">深烘产生焦糖化与烟熏风味</text>
+    <!-- 装饰 -->
+    <circle cx="580" cy="560" r="20" fill="#8B4513" opacity="0.08"/>
+    <text x="580" y="566" text-anchor="middle" fill="#8B4513" font-size="18">🌰</text>
+    <circle cx="620" cy="560" r="20" fill="#8B4513" opacity="0.08"/>
+    <text x="620" y="566" text-anchor="middle" fill="#8B4513" font-size="18">⚫</text>
+  </g>
+
+  <!-- 步骤 4：研磨 -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="700" width="560" height="180" rx="16" fill="#FFFFFF" opacity="0.95"/>
+    <rect x="120" y="700" width="560" height="180" rx="16" fill="url(#card4)" opacity="0.12"/>
+    <rect x="120" y="700" width="8" height="180" rx="4" fill="#A9A9A9"/>
+    <circle cx="180" cy="760" r="36" fill="#A9A9A9" opacity="0.15"/>
+    <text x="180" y="768" text-anchor="middle" fill="#A9A9A9" font-size="28" font-weight="bold" font-family="system-ui, 'Microsoft YaHei', sans-serif">⚙️</text>
+    <text x="230" y="760" fill="#3D2B1F" font-size="22" font-weight="bold" font-family="system-ui, 'Microsoft YaHei', sans-serif">研磨</text>
+    <text x="230" y="788" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">根据冲煮方式选择研磨粗细</text>
+    <text x="230" y="812" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">意式浓缩需极细粉，手冲用中细粉</text>
+    <text x="230" y="836" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">研磨后风味快速流失，需立即使用</text>
+    <!-- 装饰 -->
+    <circle cx="580" cy="740" r="20" fill="#A9A9A9" opacity="0.08"/>
+    <text x="580" y="746" text-anchor="middle" fill="#A9A9A9" font-size="18">🔧</text>
+    <circle cx="620" cy="740" r="20" fill="#A9A9A9" opacity="0.08"/>
+    <text x="620" y="746" text-anchor="middle" fill="#A9A9A9" font-size="18">💨</text>
+  </g>
+
+  <!-- 步骤 5：冲煮 -->
+  <g filter="url(#shadow)">
+    <rect x="120" y="880" width="560" height="180" rx="16" fill="#FFFFFF" opacity="0.95"/>
+    <rect x="120" y="880" width="560" height="180" rx="16" fill="url(#card5)" opacity="0.12"/>
+    <rect x="120" y="880" width="8" height="180" rx="4" fill="#B8860B"/>
+    <circle cx="180" cy="940" r="36" fill="#B8860B" opacity="0.15"/>
+    <text x="180" y="948" text-anchor="middle" fill="#B8860B" font-size="28" font-weight="bold" font-family="system-ui, 'Microsoft YaHei', sans-serif">☕</text>
+    <text x="230" y="940" fill="#3D2B1F" font-size="22" font-weight="bold" font-family="system-ui, 'Microsoft YaHei', sans-serif">冲煮</text>
+    <text x="230" y="968" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">92-96°C热水萃取咖啡粉中的风味物质</text>
+    <text x="230" y="992" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">手冲、法压、意式浓缩等不同方式</text>
+    <text x="230" y="1016" fill="#5C4033" font-size="14" font-family="system-ui, 'Microsoft YaHei', sans-serif">一杯完美咖啡，从种植到杯中需数年</text>
+    <!-- 装饰 -->
+    <circle cx="580" cy="920" r="20" fill="#B8860B" opacity="0.08"/>
+    <text x="580" y="926" text-anchor="middle" fill="#B8860B" font-size="18">☕</text>
+    <circle cx="620" cy="920" r="20" fill="#B8860B" opacity="0.08"/>
+    <text x="620" y="926" text-anchor="middle" fill="#B8860B" font-size="18">❤️</text>
+  </g>
+
+  <!-- 底部装饰线 -->
+  <line x1="200" y1="1080" x2="600" y2="1080" stroke="#8B7355" stroke-width="1" opacity="0.3"/>
+  <text x="400" y="1095" text-anchor="middle" fill="#8B7355" font-size="12" font-family="system-ui, 'Microsoft YaHei', sans-serif" opacity="0.6">每一杯咖啡，都是大自然的馈赠与人类智慧的结晶</text>
+</svg>

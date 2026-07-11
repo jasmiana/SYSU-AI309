@@ -39,7 +39,7 @@ class Config:
 
     # -- Pipeline ---------------------------------------------------
     MAX_RETRIES: int = int(os.getenv("MAX_RETRIES", "3"))
-    REQUEST_TIMEOUT: int = int(os.getenv("REQUEST_TIMEOUT", "120"))
+    REQUEST_TIMEOUT: int = int(os.getenv("REQUEST_TIMEOUT", "300"))
     MAX_TOKENS: int = int(os.getenv("MAX_TOKENS", "8192"))
 
     # -- Output -----------------------------------------------------

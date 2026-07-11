@@ -277,6 +277,7 @@ class BaseAgent(ABC):
                     messages=messages,
                     temperature=self.temperature,
                     max_tokens=self.max_tokens,
+                    timeout=config.REQUEST_TIMEOUT,
                     extra_body=config.get_thinking_config(),
                 )
 

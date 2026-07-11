@@ -1,0 +1,124 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100">
+  <defs>
+    <!-- 渐变 -->
+    <linearGradient id="titleGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4A90D9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7B68EE;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#EBF5FB;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#F0E6FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8F8F5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFFFFF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="arrowGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#4A90D9;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7B68EE;stop-opacity:1" />
+    </linearGradient>
+    
+    <!-- 阴影 -->
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="#00000020"/>
+    </filter>
+    <filter id="shadowLight" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#00000015"/>
+    </filter>
+    
+    <!-- 箭头标记 -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#7B68EE"/>
+    </marker>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="1100" rx="0" fill="#FFFFFF"/>
+  
+  <!-- 装饰圆 -->
+  <circle cx="750" cy="60" r="120" fill="#4A90D9" opacity="0.04"/>
+  <circle cx="50" cy="1050" r="100" fill="#7B68EE" opacity="0.04"/>
+
+  <!-- 标题横幅 -->
+  <rect x="40" y="40" width="720" height="80" rx="16" fill="url(#titleGrad)" filter="url(#shadow)"/>
+  <text x="400" y="88" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="30" font-weight="bold" letter-spacing="2">大语言模型基本原理</text>
+
+  <!-- 副标题 -->
+  <text x="400" y="150" text-anchor="middle" fill="#666666" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="16" letter-spacing="1">从海量文本中学习语言规律，实现理解与生成</text>
+
+  <!-- ===== 第一阶段：数据收集与预处理 ===== -->
+  <rect x="60" y="185" width="680" height="170" rx="14" fill="url(#cardGrad1)" filter="url(#shadowLight)" stroke="#4A90D9" stroke-width="1.5"/>
+  <rect x="60" y="185" width="680" height="40" rx="14" fill="#4A90D9" opacity="0.1"/>
+  <text x="80" y="210" fill="#2C3E50" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold">📚 第一步：数据收集与预处理</text>
+  
+  <text x="80" y="250" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 从互联网、书籍、论文等多源收集海量文本数据（TB 级别）</text>
+  <text x="80" y="275" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 清洗数据：去除噪声、重复、低质量内容</text>
+  <text x="80" y="300" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 分词处理：将文本切分为词或子词单元（Tokenization）</text>
+  <text x="80" y="325" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 构建词汇表，将每个 Token 映射为唯一数字 ID</text>
+
+  <!-- 箭头 1→2 -->
+  <line x1="400" y1="355" x2="400" y2="390" stroke="url(#arrowGrad)" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+
+  <!-- ===== 第二阶段：模型架构 ===== -->
+  <rect x="60" y="395" width="680" height="200" rx="14" fill="url(#cardGrad2)" filter="url(#shadowLight)" stroke="#7B68EE" stroke-width="1.5"/>
+  <rect x="60" y="395" width="680" height="40" rx="14" fill="#7B68EE" opacity="0.1"/>
+  <text x="80" y="420" fill="#2C3E50" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold">🧠 第二步：Transformer 模型架构</text>
+
+  <text x="80" y="460" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 核心组件：多头自注意力机制（Multi-Head Self-Attention）</text>
+  <text x="80" y="485" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 位置编码（Positional Encoding）：让模型感知词语顺序</text>
+  <text x="80" y="510" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 前馈神经网络（FFN）：逐位置的非线性变换</text>
+  <text x="80" y="535" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 层归一化（LayerNorm）+ 残差连接（Residual Connection）</text>
+  <text x="80" y="560" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 堆叠数十层（如 GPT-3 有 96 层），参数规模达数十亿至数千亿</text>
+
+  <!-- 架构示意图 -->
+  <rect x="560" y="440" width="155" height="130" rx="10" fill="#7B68EE" opacity="0.06" stroke="#7B68EE" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="637" y="462" text-anchor="middle" fill="#7B68EE" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" font-weight="bold">Transformer 层</text>
+  <rect x="575" y="472" width="125" height="22" rx="4" fill="#7B68EE" opacity="0.15"/>
+  <text x="637" y="488" text-anchor="middle" fill="#5B4EAE" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="10">多头自注意力</text>
+  <rect x="575" y="500" width="125" height="22" rx="4" fill="#7B68EE" opacity="0.15"/>
+  <text x="637" y="516" text-anchor="middle" fill="#5B4EAE" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="10">前馈神经网络</text>
+  <rect x="575" y="528" width="125" height="22" rx="4" fill="#7B68EE" opacity="0.15"/>
+  <text x="637" y="544" text-anchor="middle" fill="#5B4EAE" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="10">层归一化</text>
+  <text x="637" y="562" text-anchor="middle" fill="#7B68EE" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="10">× N 层</text>
+
+  <!-- 箭头 2→3 -->
+  <line x1="400" y1="595" x2="400" y2="630" stroke="url(#arrowGrad)" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+
+  <!-- ===== 第三阶段：训练过程 ===== -->
+  <rect x="60" y="635" width="680" height="170" rx="14" fill="url(#cardGrad3)" filter="url(#shadowLight)" stroke="#27AE60" stroke-width="1.5"/>
+  <rect x="60" y="635" width="680" height="40" rx="14" fill="#27AE60" opacity="0.1"/>
+  <text x="80" y="660" fill="#2C3E50" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold">⚙️ 第三步：训练过程</text>
+
+  <text x="80" y="700" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 预训练（Pre-training）：使用大规模无标注数据，通过自监督学习</text>
+  <text x="80" y="725" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 核心任务：预测下一个 Token（Next Token Prediction）</text>
+  <text x="80" y="750" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 损失函数：交叉熵损失（Cross-Entropy Loss）</text>
+  <text x="80" y="775" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 优化器：AdamW，学习率调度，梯度裁剪等技术</text>
+
+  <!-- 训练过程小图 -->
+  <rect x="560" y="680" width="155" height="100" rx="10" fill="#27AE60" opacity="0.06" stroke="#27AE60" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="637" y="700" text-anchor="middle" fill="#27AE60" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" font-weight="bold">训练循环</text>
+  <text x="637" y="722" text-anchor="middle" fill="#1E8449" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="10">输入文本 → 预测 →</text>
+  <text x="637" y="740" text-anchor="middle" fill="#1E8449" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="10">计算损失 → 反向传播</text>
+  <text x="637" y="758" text-anchor="middle" fill="#1E8449" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="10">→ 更新参数</text>
+
+  <!-- 箭头 3→4 -->
+  <line x1="400" y1="805" x2="400" y2="840" stroke="url(#arrowGrad)" stroke-width="2.5" marker-end="url(#arrowhead)"/>
+
+  <!-- ===== 第四阶段：推理与应用 ===== -->
+  <rect x="60" y="845" width="680" height="170" rx="14" fill="url(#cardGrad1)" filter="url(#shadowLight)" stroke="#E67E22" stroke-width="1.5"/>
+  <rect x="60" y="845" width="680" height="40" rx="14" fill="#E67E22" opacity="0.1"/>
+  <text x="80" y="870" fill="#2C3E50" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold">🚀 第四步：推理与文本生成</text>
+
+  <text x="80" y="910" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 给定输入提示（Prompt），模型逐 Token 生成回复</text>
+  <text x="80" y="935" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 采样策略：温度（Temperature）、Top-K、Top-P 控制多样性</text>
+  <text x="80" y="960" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 微调（Fine-tuning）：针对特定任务调整模型参数</text>
+  <text x="80" y="985" fill="#34495E" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">• 应用场景：对话、翻译、摘要、代码生成、创意写作等</text>
+
+  <!-- 底部总结 -->
+  <rect x="140" y="1040" width="520" height="40" rx="20" fill="url(#titleGrad)" opacity="0.9" filter="url(#shadowLight)"/>
+  <text x="400" y="1066" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="15" font-weight="bold">数据 → 架构 → 训练 → 推理：大语言模型的核心流程</text>
+</svg>

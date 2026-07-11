@@ -1,0 +1,136 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1200" width="800" height="1200">
+  <defs>
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#003366;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#006699;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="lineGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#003366;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#006699;stop-opacity:0.3" />
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E8F4FD;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F0F8FF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF5E6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFF8F0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad3" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#E6F7E6;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F0FFF0;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F3E8FF;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#F8F0FF;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="cardGrad5" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFE8E8;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFF0F0;stop-opacity:1" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="3" stdDeviation="4" flood-color="#00000020"/>
+    </filter>
+    <filter id="shadowLight" x="-5%" y="-5%" width="110%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#00000015"/>
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#003366"/>
+    </marker>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="1200" fill="#FFFFFF" rx="0"/>
+
+  <!-- 顶部装饰线 -->
+  <rect x="0" y="0" width="800" height="6" fill="#003366"/>
+
+  <!-- 标题横幅 -->
+  <rect x="40" y="30" width="720" height="80" rx="12" fill="url(#headerGrad)" filter="url(#shadow)"/>
+  <text x="400" y="78" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold" fill="#FFFFFF" letter-spacing="4">中山大学发展历程</text>
+
+  <!-- 副标题 -->
+  <text x="400" y="130" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="15" fill="#666666" letter-spacing="2">1924 — 2024 · 百年学府 世纪华章</text>
+
+  <!-- 时间线 -->
+  <line x1="120" y1="170" x2="120" y2="1130" stroke="url(#lineGrad)" stroke-width="3" stroke-dasharray="8,4"/>
+
+  <!-- 节点1：1924 -->
+  <circle cx="120" cy="210" r="14" fill="#003366" stroke="#FFFFFF" stroke-width="3" filter="url(#shadowLight)"/>
+  <circle cx="120" cy="210" r="6" fill="#FFFFFF"/>
+
+  <rect x="160" y="175" width="560" height="72" rx="10" fill="url(#cardGrad1)" filter="url(#shadowLight)" stroke="#003366" stroke-width="1"/>
+  <text x="180" y="200" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#003366">1924年 · 国立广东大学成立</text>
+  <text x="180" y="225" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="13" fill="#444444">孙中山先生亲手创办，初名国立广东大学，1926年更名为国立中山大学</text>
+
+  <!-- 节点2：1935 -->
+  <circle cx="120" cy="330" r="14" fill="#003366" stroke="#FFFFFF" stroke-width="3" filter="url(#shadowLight)"/>
+  <circle cx="120" cy="330" r="6" fill="#FFFFFF"/>
+
+  <rect x="160" y="295" width="560" height="72" rx="10" fill="url(#cardGrad2)" filter="url(#shadowLight)" stroke="#CC7A00" stroke-width="1"/>
+  <text x="180" y="320" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#CC7A00">1935年 · 设立研究院</text>
+  <text x="180" y="345" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="13" fill="#444444">成为当时全国最早设立研究生院的大学之一，开启高层次人才培养</text>
+
+  <!-- 节点3：1952 -->
+  <circle cx="120" cy="450" r="14" fill="#003366" stroke="#FFFFFF" stroke-width="3" filter="url(#shadowLight)"/>
+  <circle cx="120" cy="450" r="6" fill="#FFFFFF"/>
+
+  <rect x="160" y="415" width="560" height="72" rx="10" fill="url(#cardGrad3)" filter="url(#shadowLight)" stroke="#006633" stroke-width="1"/>
+  <text x="180" y="440" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#006633">1952年 · 院系调整</text>
+  <text x="180" y="465" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="13" fill="#444444">全国高校院系调整，中山大学成为一所以文理学科为主的综合性大学</text>
+
+  <!-- 节点4：2001 -->
+  <circle cx="120" cy="570" r="14" fill="#003366" stroke="#FFFFFF" stroke-width="3" filter="url(#shadowLight)"/>
+  <circle cx="120" cy="570" r="6" fill="#FFFFFF"/>
+
+  <rect x="160" y="535" width="560" height="72" rx="10" fill="url(#cardGrad4)" filter="url(#shadowLight)" stroke="#6600CC" stroke-width="1"/>
+  <text x="180" y="560" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#6600CC">2001年 · 合并中山医科大学</text>
+  <text x="180" y="585" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="13" fill="#444444">与原中山医科大学合并，形成文理医工协调发展的学科格局</text>
+
+  <!-- 节点5：2017 -->
+  <circle cx="120" cy="690" r="14" fill="#003366" stroke="#FFFFFF" stroke-width="3" filter="url(#shadowLight)"/>
+  <circle cx="120" cy="690" r="6" fill="#FFFFFF"/>
+
+  <rect x="160" y="655" width="560" height="72" rx="10" fill="url(#cardGrad5)" filter="url(#shadowLight)" stroke="#CC0000" stroke-width="1"/>
+  <text x="180" y="680" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#CC0000">2017年 · 入选“双一流”</text>
+  <text x="180" y="705" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="13" fill="#444444">入选国家“双一流”建设高校名单，11个学科入选世界一流学科建设</text>
+
+  <!-- 节点6：2024 -->
+  <circle cx="120" cy="810" r="16" fill="#003366" stroke="#FFFFFF" stroke-width="4" filter="url(#shadow)"/>
+  <circle cx="120" cy="810" r="8" fill="#FFD700"/>
+
+  <rect x="160" y="775" width="560" height="72" rx="10" fill="url(#cardGrad1)" filter="url(#shadow)" stroke="#003366" stroke-width="2"/>
+  <text x="180" y="800" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="bold" fill="#003366">2024年 · 百年校庆</text>
+  <text x="180" y="825" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="13" fill="#444444">迎来建校100周年华诞，三校区五校园办学格局全面形成</text>
+
+  <!-- 数据亮点区域 -->
+  <rect x="40" y="900" width="720" height="130" rx="12" fill="#F5F8FC" filter="url(#shadowLight)" stroke="#E0E8F0" stroke-width="1"/>
+
+  <text x="400" y="930" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#003366">今日中大 · 关键数据</text>
+
+  <!-- 数据项1 -->
+  <rect x="70" y="950" width="150" height="60" rx="8" fill="#FFFFFF" filter="url(#shadowLight)"/>
+  <text x="145" y="975" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="22" font-weight="bold" fill="#003366">58</text>
+  <text x="145" y="995" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#666666">个博士学位授权点</text>
+
+  <!-- 数据项2 -->
+  <rect x="240" y="950" width="150" height="60" rx="8" fill="#FFFFFF" filter="url(#shadowLight)"/>
+  <text x="315" y="975" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="22" font-weight="bold" fill="#CC7A00">7</text>
+  <text x="315" y="995" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#666666">家直属附属医院</text>
+
+  <!-- 数据项3 -->
+  <rect x="410" y="950" width="150" height="60" rx="8" fill="#FFFFFF" filter="url(#shadowLight)"/>
+  <text x="485" y="975" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="22" font-weight="bold" fill="#006633">5</text>
+  <text x="485" y="995" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#666666">个校区/校园</text>
+
+  <!-- 数据项4 -->
+  <rect x="580" y="950" width="150" height="60" rx="8" fill="#FFFFFF" filter="url(#shadowLight)"/>
+  <text x="655" y="975" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="22" font-weight="bold" fill="#6600CC">6.5万+</text>
+  <text x="655" y="995" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#666666">在校学生总数</text>
+
+  <!-- 底部装饰 -->
+  <rect x="0" y="1194" width="800" height="6" fill="#003366"/>
+
+  <!-- 底部文字 -->
+  <text x="400" y="1170" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="11" fill="#999999">博学 审问 慎思 明辨 笃行 — 中山大学校训</text>
+</svg>

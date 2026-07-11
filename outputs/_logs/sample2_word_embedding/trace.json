@@ -1,11 +1,11 @@
 {
   "sample": "sample2_word_embedding",
-  "start_time": "2026-07-10T14:37:31.832403",
-  "end_time": "2026-07-10T14:42:30.690829",
-  "total_duration_s": 298.858426,
+  "start_time": "2026-07-11T19:06:23.628341",
+  "end_time": "2026-07-11T19:09:07.879017",
+  "total_duration_s": 164.250676,
   "events": [
     {
-      "timestamp": "2026-07-10T14:37:31.832403",
+      "timestamp": "2026-07-11T19:06:23.628341",
       "event": "agent_start",
       "agent": "Agent1:ContentAnalyzer",
       "input_summary": {
@@ -13,16 +13,16 @@
       }
     },
     {
-      "timestamp": "2026-07-10T14:37:48.687413",
+      "timestamp": "2026-07-11T19:06:39.454309",
       "event": "agent_output",
       "agent": "Agent1:ContentAnalyzer",
-      "duration_ms": 16855.0,
+      "duration_ms": 15826.0,
       "output_summary": {
         "intent": {
-          "primary_type": "科普",
-          "secondary_type": "concept_expl...",
-          "confidence": 0.9,
-          "reasoning": "用户明确要求'通俗易懂地..."
+          "primary_type": "concept_expl...",
+          "secondary_type": "popular_scie...",
+          "confidence": 0.95,
+          "reasoning": "用户明确要求‘通俗易懂地..."
         },
         "entities": [
           {
@@ -32,19 +32,49 @@
             "importance": "pri..."
           },
           {
-            "name": "自然语...",
+            "name": "Wor...",
             "type": "ter...",
-            "role": "con...",
-            "importance": "con..."
-          }
+            "role": "obj...",
+            "importance": "pri..."
+          },
+          {
+            "name": "分布式...",
+            "type": "ter...",
+            "role": "att...",
+            "importance": "pri..."
+          },
+          "..."
         ],
-        "relations": [],
+        "relations": [
+          {
+            "type": "hie...",
+            "source": "词向量",
+            "target": "Wor...",
+            "description": "词向量...",
+            "quantifier": null
+          },
+          {
+            "type": "hie...",
+            "source": "词向量",
+            "target": "分布式...",
+            "description": "词向量...",
+            "quantifier": null
+          },
+          {
+            "type": "com...",
+            "source": "独热编...",
+            "target": "分布式...",
+            "description": "独热编...",
+            "quantifier": null
+          },
+          "..."
+        ],
         "content_summary": {
           "title": "词向量（Word Emb...",
           "key_points": [
             "词向量...",
-            "向量空...",
-            "典型模...",
+            "与传统...",
+            "Wor...",
             "..."
           ],
           "target_audience": "general",
@@ -54,167 +84,170 @@
           "needs_external_knowledge": true,
           "search_queries": [
             "词向量...",
-            "wor..."
+            "Wor...",
+            "Glo..."
           ],
-          "fallback_knowledge": "词向量（Word Emb..."
+          "fallback_knowledge": "词向量通常将词汇映射到5..."
         },
         "chart_type": {
           "recommended": "concept_map",
           "alternatives": [
+            "com...",
             "arc..."
           ],
-          "type_confidence": 0.85
+          "type_confidence": 0.9
         }
       }
     },
     {
-      "timestamp": "2026-07-10T14:37:48.688420",
+      "timestamp": "2026-07-11T19:06:39.457825",
       "event": "agent_start",
       "agent": "KnowledgeRetriever",
       "input_summary": {
         "queries": [
-          "词向量 基本概念 通俗解...",
-          "word embeddi..."
+          "词向量典型维度范围 50...",
+          "Word2Vec CBO...",
+          "GloVe 和 Fast..."
         ]
       }
     },
     {
-      "timestamp": "2026-07-10T14:37:48.688420",
+      "timestamp": "2026-07-11T19:06:39.459830",
       "event": "agent_output",
       "agent": "KnowledgeRetriever",
-      "duration_ms": 0.0,
+      "duration_ms": 2.0,
       "output_summary": {
         "found": true,
-        "results": 2
+        "results": 3
       }
     },
     {
-      "timestamp": "2026-07-10T14:37:48.690772",
+      "timestamp": "2026-07-11T19:06:39.461829",
       "event": "agent_start",
       "agent": "Agent2:LayoutPlanner",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-10T14:39:00.974644",
+      "timestamp": "2026-07-11T19:07:22.765843",
       "event": "agent_output",
       "agent": "Agent2:LayoutPlanner",
-      "duration_ms": 72283.9,
+      "duration_ms": 43304.0,
       "output_summary": {
         "chart_type": "concept_map",
         "canvas": {
           "width": 800,
-          "height": 1100,
+          "height": 1200,
           "background": "#F8F9FF"
         },
         "color_scheme": {
-          "name": "科技蓝紫",
-          "primary": "#4A90D9",
-          "secondary": "#7B68EE",
+          "name": "柔和蓝紫渐变",
+          "primary": "#6C63FF",
+          "secondary": "#4A90D9",
           "accent": "#FF6B6B",
           "background": "#F8F9FF",
           "text_primary": "#2C3E50",
           "text_secondary": "#7F8C8D",
           "palette": [
+            "#6C...",
             "#4A...",
-            "#7B...",
             "#27...",
             "..."
           ],
-          "rationale": "柔和蓝紫渐变营造科技感且..."
+          "rationale": "目标受众为不了解NLP的..."
         },
         "typography": {
           "title_size": 32,
           "heading_size": 22,
-          "body_size": 16,
-          "label_size": 14,
+          "body_size": 15,
+          "label_size": 13,
           "font_family": "system-ui, '..."
         },
         "layout_grid": {
-          "columns": 12,
-          "rows": 6,
+          "columns": 4,
+          "rows": 12,
           "gutter": 20
         },
         "sections": [
           {
-            "id": "sec...",
+            "id": "tit...",
             "type": "tit...",
             "position": {
               "x_pct": 5,
               "y_pct": 0,
               "width_pct": 90,
-              "height_pct": 8
+              "height_pct": 10
             },
             "visual_weight": "pri...",
-            "purpose": "显示主..."
+            "purpose": "展示主..."
           },
           {
-            "id": "sec...",
+            "id": "upp...",
             "type": "con...",
             "position": {
               "x_pct": 5,
               "y_pct": 10,
               "width_pct": 90,
-              "height_pct": 18
+              "height_pct": 25
             },
             "visual_weight": "sec...",
-            "purpose": "解释词..."
+            "purpose": "解释什..."
           },
           {
-            "id": "sec...",
-            "type": "cha...",
+            "id": "mid...",
+            "type": "dia...",
             "position": {
               "x_pct": 5,
-              "y_pct": 30,
+              "y_pct": 35,
               "width_pct": 90,
               "height_pct": 35
             },
             "visual_weight": "pri...",
-            "purpose": "2D散..."
+            "purpose": "展示词..."
           },
           "..."
         ],
         "elements": [
           {
-            "id": "tit...",
+            "id": "mai...",
             "type": "tex...",
             "label": "词向量...",
-            "parent_section": "sec...",
+            "parent_section": "tit...",
             "color_key": "tex...",
             "importance": "pri...",
             "size_hint": {
-              "min_width": 400,
+              "min_width": 500,
               "min_height": 50,
               "aspect_ratio": null
             },
-            "content_hint": "居中显..."
+            "content_hint": "主标题..."
           },
           {
-            "id": "con...",
+            "id": "sub...",
             "type": "tex...",
-            "label": "词向量...",
-            "parent_section": "sec...",
+            "label": "让计算...",
+            "parent_section": "tit...",
             "color_key": "tex...",
             "importance": "sec...",
             "size_hint": {
               "min_width": 300,
-              "min_height": 60,
+              "min_height": 30,
               "aspect_ratio": null
             },
-            "content_hint": "放置在..."
+            "content_hint": "副标题..."
           },
           {
-            "id": "vec...",
-            "type": "rec...",
-            "label": "[0....",
-            "parent_section": "sec...",
-            "color_key": "sec...",
+            "id": "upp...",
+            "type": "tex...",
+            "label": "词向量...",
+            "parent_section": "upp...",
+            "color_key": "tex...",
             "importance": "sec...",
             "size_hint": {
-              "min_width": 200,
-              "min_height": 60,
-              "aspect_ratio": 3.3
+              "min_width": 400,
+              "min_height": 80,
+              "aspect_ratio": null
             },
-            "content_hint": "展示一..."
+            "content_hint": "解释性..."
           },
           "..."
         ],
@@ -222,8 +255,8 @@
           {
             "id": "con...",
             "type": "arr...",
-            "from_element": "man...",
-            "to_element": "kin...",
+            "from_element": "ana...",
+            "to_element": "ana...",
             "direction": "bot...",
             "label": "+ro...",
             "line_style": "sol..."
@@ -231,70 +264,61 @@
           {
             "id": "con...",
             "type": "arr...",
-            "from_element": "wom...",
-            "to_element": "que...",
+            "from_element": "ana...",
+            "to_element": "ana...",
             "direction": "bot...",
             "label": "+ro...",
             "line_style": "sol..."
-          },
-          {
-            "id": "con...",
-            "type": "lin...",
-            "from_element": "arr...",
-            "to_element": "arr...",
-            "direction": "lef...",
-            "label": null,
-            "line_style": "das..."
           }
         ],
-        "design_notes": "整体采用现代扁平化科普风格，卡片式布局与柔和渐变背景。三个主区域用浅色圆角卡片区分，卡片有细微阴影。..."
+        "design_notes": "整体采用垂直三区域布局，上部文字+向量示例直观展示概念，中部用t-SNE降维散点图体现语义聚类（添加..."
       }
     },
     {
-      "timestamp": "2026-07-10T14:39:00.976398",
+      "timestamp": "2026-07-11T19:07:22.769169",
       "event": "agent_start",
       "agent": "Agent3:SVGCoder (round 1)",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-10T14:41:06.321656",
+      "timestamp": "2026-07-11T19:08:32.204773",
       "event": "agent_output",
       "agent": "Agent3:SVGCoder",
-      "duration_ms": 125345.3,
+      "duration_ms": 69435.6,
       "output_summary": {
-        "svg_length": 10631
+        "svg_length": 11139
       }
     },
     {
-      "timestamp": "2026-07-10T14:41:06.321656",
+      "timestamp": "2026-07-11T19:08:32.206813",
       "event": "agent_start",
       "agent": "RenderingValidator",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-10T14:41:06.540332",
+      "timestamp": "2026-07-11T19:08:32.600888",
       "event": "agent_output",
       "agent": "RenderingValidator",
-      "duration_ms": 218.7,
+      "duration_ms": 394.1,
       "output_summary": {
         "xml_valid": true,
         "all_pass": false
       }
     },
     {
-      "timestamp": "2026-07-10T14:41:06.540332",
+      "timestamp": "2026-07-11T19:08:32.600888",
       "event": "agent_start",
       "agent": "Agent4:QualityReviewer (round 1)",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-10T14:42:30.689722",
+      "timestamp": "2026-07-11T19:09:07.875411",
       "event": "agent_output",
       "agent": "Agent4:QualityReviewer",
-      "duration_ms": 84149.4,
+      "duration_ms": 35274.5,
       "output_summary": {
         "pass": true,
-        "score": 9,
+        "score": 9.8,
         "needs_regen": false
       }
     }

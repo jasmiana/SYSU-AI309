@@ -1,0 +1,57 @@
+{
+  "model": "deepseek-v4-flash",
+  "results": [
+    {
+      "sample": "sample1",
+      "name": "sample1_llm_principles",
+      "status": "XML_INVALID",
+      "duration_s": 62.7,
+      "svg_chars": 0,
+      "tokens": 8538,
+      "xml_valid": false,
+      "svg_path": "D:\\日常\\大学用\\大三下\\NLP\\project3\\outputs_baseline\\sample1_llm_principles\\sample1_llm_principles_baseline.svg"
+    },
+    {
+      "sample": "sample2",
+      "name": "sample2_word_embedding",
+      "status": "XML_INVALID",
+      "duration_s": 62.7,
+      "svg_chars": 674,
+      "tokens": 8546,
+      "xml_valid": false,
+      "svg_path": "D:\\日常\\大学用\\大三下\\NLP\\project3\\outputs_baseline\\sample2_word_embedding\\sample2_word_embedding_baseline.svg"
+    },
+    {
+      "sample": "sample3",
+      "name": "sample3_sysu_history",
+      "status": "XML_INVALID",
+      "duration_s": 61.5,
+      "svg_chars": 3324,
+      "tokens": 8539,
+      "xml_valid": false,
+      "svg_path": "D:\\日常\\大学用\\大三下\\NLP\\project3\\outputs_baseline\\sample3_sysu_history\\sample3_sysu_history_baseline.svg"
+    },
+    {
+      "sample": "sample4",
+      "name": "sample4_coffee_chain",
+      "status": "XML_INVALID",
+      "duration_s": 62.8,
+      "svg_chars": 0,
+      "tokens": 8553,
+      "xml_valid": false,
+      "svg_path": "D:\\日常\\大学用\\大三下\\NLP\\project3\\outputs_baseline\\sample4_coffee_chain\\sample4_coffee_chain_baseline.svg"
+    },
+    {
+      "sample": "sample5",
+      "name": "sample5_video_comparison",
+      "status": "OK",
+      "duration_s": 59.7,
+      "svg_chars": 3529,
+      "tokens": 7881,
+      "xml_valid": true,
+      "svg_path": "D:\\日常\\大学用\\大三下\\NLP\\project3\\outputs_baseline\\sample5_video_comparison\\sample5_video_comparison_baseline.svg"
+    }
+  ],
+  "total_duration_s": 309.4,
+  "xml_valid_count": 1
+}

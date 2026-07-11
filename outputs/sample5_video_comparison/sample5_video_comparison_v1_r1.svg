@@ -1,93 +1,93 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
-    <defs>
-        <linearGradient id="gradYouTube" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#4A90D9"/>
-            <stop offset="100%" stop-color="#357ABD"/>
-        </linearGradient>
-        <linearGradient id="gradTikTok" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#7B68EE"/>
-            <stop offset="100%" stop-color="#5A53D1"/>
-        </linearGradient>
-        <linearGradient id="gradKuaishou" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#27AE60"/>
-            <stop offset="100%" stop-color="#1F8B4C"/>
-        </linearGradient>
-        
-        <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
-            <feDropShadow dx="0" dy="8" stdDeviation="16" flood-color="#4A90D9" flood-opacity="0.06"/>
-        </filter>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 900" width="800" height="900">
+  <defs>
+    <linearGradient id="gradYoutube" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#4A90D9" />
+      <stop offset="100%" stop-color="#357ABD" />
+    </linearGradient>
+    <linearGradient id="gradTikTok" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#7B68EE" />
+      <stop offset="100%" stop-color="#6A5ACD" />
+    </linearGradient>
+    <linearGradient id="gradKuaishou" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#27AE60" />
+      <stop offset="100%" stop-color="#1E8449" />
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000" flood-opacity="0.15" />
+    </filter>
+    <marker id="arrowRed" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#FF6B6B" />
+    </marker>
+    <style>
+      .title { font-family: 'Microsoft YaHei', system-ui, -apple-system, sans-serif; }
+      .axis-label { font-family: system-ui, -apple-system, sans-serif; }
+      .data-label { font-family: system-ui, -apple-system, sans-serif; }
+    </style>
+  </defs>
+  
+  <rect width="800" height="900" fill="#FFFFFF" />
 
-        <marker id="arrowStart" markerWidth="10" markerHeight="10" refX="2" refY="5" orient="auto-start-reverse">
-            <path d="M 10 0 L 0 5 L 10 10 z" fill="#95A5A6" />
-        </marker>
-        <marker id="arrowEnd" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto">
-            <path d="M 0 0 L 10 5 L 0 10 z" fill="#95A5A6" />
-        </marker>
-    </defs>
+  <!-- 标题区域 -->
+  <g id="title">
+    <rect x="40" y="20" width="720" height="60" rx="8" fill="url(#gradYoutube)" filter="url(#shadow)" />
+    <text x="400" y="56" class="title" fill="#FFFFFF" font-size="28" font-weight="bold" text-anchor="middle" dominant-baseline="middle">短视频平台视频数量对比</text>
+  </g>
 
-    <!-- Background -->
-    <rect width="800" height="1000" fill="#F8FAFD" />
+  <!-- 图表区域 -->
+  <g id="chart-area">
+    <!-- Y轴标题 -->
+    <text x="25" y="410" class="title" fill="#666666" font-size="14" text-anchor="middle" transform="rotate(-90 25 410)">相对视频数量（倍数）</text>
 
-    <!-- Main Card -->
-    <rect x="30" y="30" width="740" height="940" rx="16" fill="#FFFFFF" filter="url(#shadow)" />
+    <!-- 背景网格线 -->
+    <line x1="100" y1="120" x2="700" y2="120" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4" />
+    <line x1="100" y1="240" x2="700" y2="240" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4" />
+    <line x1="100" y1="360" x2="700" y2="360" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4" />
+    <line x1="100" y1="480" x2="700" y2="480" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4" />
+    <line x1="100" y1="600" x2="700" y2="600" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4" />
 
-    <!-- Title Section -->
-    <g id="title-section">
-        <text x="400" y="80" text-anchor="middle" font-family="'Microsoft YaHei', -apple-system, sans-serif" font-size="28" font-weight="bold" fill="#1D3557" dominant-baseline="central">
-            YouTube、TikTok与快手视频数量对比
-        </text>
-        <line x1="360" y1="105" x2="440" y2="105" stroke="#4A90D9" stroke-width="3" stroke-linecap="round" />
-    </g>
+    <!-- Y轴和X轴 -->
+    <line x1="100" y1="100" x2="100" y2="720" stroke="#333333" stroke-width="2" />
+    <line x1="100" y1="720" x2="700" y2="720" stroke="#333333" stroke-width="2" />
 
-    <!-- Legend Section -->
-    <g id="legend-section">
-        <circle cx="290" cy="140" r="7" fill="url(#gradKuaishou)" />
-        <text x="310" y="140" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#2C3E50" dominant-baseline="central" font-weight="medium">快手 (1x)</text>
-        
-        <circle cx="390" cy="140" r="7" fill="url(#gradTikTok)" />
-        <text x="410" y="140" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#2C3E50" dominant-baseline="central" font-weight="medium">TikTok (2x)</text>
-        
-        <circle cx="490" cy="140" r="7" fill="url(#gradYouTube)" />
-        <text x="510" y="140" font-family="'Microsoft YaHei', sans-serif" font-size="14" fill="#2C3E50" dominant-baseline="central" font-weight="medium">YouTube (20x)</text>
-    </g>
+    <!-- Y轴刻度 -->
+    <text x="90" y="724" class="axis-label" fill="#333333" font-size="14" text-anchor="end">0</text>
+    <text x="90" y="604" class="axis-label" fill="#333333" font-size="14" text-anchor="end">5</text>
+    <text x="90" y="484" class="axis-label" fill="#333333" font-size="14" text-anchor="end">10</text>
+    <text x="90" y="364" class="axis-label" fill="#333333" font-size="14" text-anchor="end">15</text>
+    <text x="90" y="244" class="axis-label" fill="#333333" font-size="14" text-anchor="end">20</text>
+    <text x="90" y="124" class="axis-label" fill="#333333" font-size="14" text-anchor="end">25</text>
 
-    <!-- Chart Section -->
-    <g id="chart-section">
-        <!-- Baseline -->
-        <line x1="130" y1="220" x2="130" y2="620" stroke="#D1D8E0" stroke-width="2" stroke-linecap="round" />
+    <!-- X轴平台标签 -->
+    <text x="240" y="745" class="title" fill="#333333" font-size="16" font-weight="bold" text-anchor="middle">YouTube</text>
+    <text x="400" y="745" class="title" fill="#333333" font-size="16" font-weight="bold" text-anchor="middle">TikTok</text>
+    <text x="560" y="745" class="title" fill="#333333" font-size="16" font-weight="bold" text-anchor="middle">快手（Kuaishou）</text>
 
-        <!-- Comparison Span Line 1 (2x) -->
-        <line x1="165" y1="250" x2="185" y2="250" stroke="#BDC3C7" stroke-width="2" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
-        <text x="175" y="240" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="13" fill="#7F8C8D" font-weight="bold" dominant-baseline="baseline">2倍</text>
+    <!-- 数据柱体 -->
+    <rect x="180" y="240" width="120" height="480" rx="4" fill="url(#gradYoutube)" filter="url(#shadow)" />
+    <rect x="340" y="672" width="120" height="48" rx="4" fill="url(#gradTikTok)" filter="url(#shadow)" />
+    <rect x="500" y="696" width="120" height="24" rx="4" fill="url(#gradKuaishou)" filter="url(#shadow)" />
 
-        <!-- Bar: Kuaishou -->
-        <rect x="130" y="280" width="30" height="40" rx="4" fill="url(#gradKuaishou)" />
-        <text x="110" y="300" text-anchor="end" font-family="'Microsoft YaHei', sans-serif" font-size="18" fill="#1E272E" font-weight="bold" dominant-baseline="central">快手</text>
-        <text x="170" y="300" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#27AE60" font-weight="bold" dominant-baseline="central">1×</text>
+    <!-- 柱顶数据标签 -->
+    <text x="240" y="225" class="data-label" fill="#333333" font-size="20" font-weight="bold" text-anchor="middle">20x</text>
+    <text x="400" y="660" class="data-label" fill="#333333" font-size="20" font-weight="bold" text-anchor="middle">2x</text>
+    <text x="560" y="684" class="data-label" fill="#333333" font-size="20" font-weight="bold" text-anchor="middle">1x</text>
 
-        <!-- Comparison Span Line 2 (10x) -->
-        <line x1="195" y1="370" x2="725" y2="370" stroke="#BDC3C7" stroke-width="2" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
-        <text x="460" y="360" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="13" fill="#7F8C8D" font-weight="bold" dominant-baseline="baseline">10倍</text>
+    <!-- 倍数关系指示 -->
+    <!-- YouTube 和 TikTok 之间 -->
+    <line x1="305" y1="320" x2="335" y2="320" stroke="#FF6B6B" stroke-width="3" marker-end="url(#arrowRed)" />
+    <text x="320" y="310" class="title" fill="#FF6B6B" font-size="14" font-weight="bold" text-anchor="middle">10倍</text>
 
-        <!-- Bar: TikTok -->
-        <rect x="130" y="400" width="60" height="40" rx="4" fill="url(#gradTikTok)" />
-        <text x="110" y="420" text-anchor="end" font-family="'Microsoft YaHei', sans-serif" font-size="18" fill="#1E272E" font-weight="bold" dominant-baseline="central">TikTok</text>
-        <text x="200" y="420" font-family="'Microsoft YaHei', sans-serif" font-size="16" fill="#7B68EE" font-weight="bold" dominant-baseline="central">2×</text>
+    <!-- TikTok 和 快手 之间 -->
+    <line x1="465" y1="680" x2="495" y2="680" stroke="#FF6B6B" stroke-width="3" marker-end="url(#arrowRed)" />
+    <text x="480" y="670" class="title" fill="#FF6B6B" font-size="14" font-weight="bold" text-anchor="middle">2倍</text>
 
-        <!-- Comparison Span Line 3 (20x Inferred) -->
-        <line x1="165" y1="505" x2="725" y2="505" stroke="#BDC3C7" stroke-width="2" stroke-dasharray="6,4" marker-start="url(#arrowStart)" marker-end="url(#arrowEnd)" />
-        <text x="445" y="495" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="13" fill="#7F8C8D" font-weight="bold" dominant-baseline="baseline">20倍 (推断)</text>
+    <!-- 图表说明 -->
+    <text x="400" y="790" class="title" fill="#666666" font-size="14" text-anchor="middle">YouTube视频数量是TikTok的10倍，TikTok是Kuaishou的2倍</text>
+  </g>
 
-        <!-- Bar: YouTube -->
-        <rect x="130" y="530" width="600" height="60" rx="8" fill="url(#gradYouTube)" />
-        <text x="110" y="560" text-anchor="end" font-family="'Microsoft YaHei', sans-serif" font-size="20" fill="#1E272E" font-weight="bold" dominant-baseline="central">YouTube</text>
-        <text x="710" y="560" text-anchor="end" font-family="'system-ui', -apple-system, sans-serif" font-size="18" fill="#FFFFFF" font-weight="bold" dominant-baseline="central">20×</text>
-    </g>
-
-    <!-- Footer Section -->
-    <g id="footer-section">
-        <text x="400" y="880" text-anchor="middle" font-family="'Microsoft YaHei', sans-serif" font-size="13" fill="#A0AAB5" dominant-baseline="central">
-            * 以快手视频数量为基准（1x），数据基于用户提供倍数关系推算
-        </text>
-    </g>
+  <!-- 页脚区域 -->
+  <g id="footer">
+    <line x1="250" y1="845" x2="550" y2="845" stroke="#E0E0E0" stroke-width="1" />
+    <text x="400" y="870" class="title" fill="#999999" font-size="12" text-anchor="middle">数据基于公开估算，实际数值可能有所浮动</text>
+  </g>
 </svg>

@@ -76,7 +76,7 @@ def run_all_samples(model: str | None = None) -> None:
                 "refinement_rounds": result["refinement_rounds"],
                 "metadata": result["metadata"],
             }
-            print(f"✅ Success! SVG saved to: {result['svg_path']}")
+            print(f"[OK] Success! SVG saved to: {result['svg_path']}")
             print(f"   Duration: {result['duration_s']:.1f}s")
             print(f"   Score: {result['final_score']}, Rounds: {result['refinement_rounds']}")
             print(f"   Intent: {result['metadata']['content_ir_summary']['intent']}")
@@ -87,7 +87,7 @@ def run_all_samples(model: str | None = None) -> None:
                 "status": "failed",
                 "error": str(e),
             }
-            print(f"❌ Failed: {e}")
+            print(f"[FAIL] Failed: {e}")
 
     # Summary
     print(f"\n{'='*60}")
@@ -96,7 +96,7 @@ def run_all_samples(model: str | None = None) -> None:
     success_count = sum(1 for r in results.values() if r["status"] == "success")
     print(f"Total: {len(results)}, Success: {success_count}, Failed: {len(results) - success_count}")
     for sid, r in results.items():
-        status_icon = "✅" if r["status"] == "success" else "❌"
+        status_icon = "[OK]" if r["status"] == "success" else "[FAIL]"
         if r["status"] == "success":
             print(f"  {status_icon} {sid}: {r['svg_path']} ({r['duration_s']}s)")
         else:
@@ -121,7 +121,7 @@ def run_single_sample(sample_id: str, model: str | None = None) -> None:
         sample_name=sample_info["name"],
     )
 
-    print(f"\n✅ Success!")
+    print(f"\n[OK] Success!")
     print(f"   SVG: {result['svg_path']}")
     print(f"   Trace: {result['trace_path']}")
     print(f"   Duration: {result['duration_s']:.1f}s")

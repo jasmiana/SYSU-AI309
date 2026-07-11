@@ -3,17 +3,17 @@
     "primary_type": "process_flow",
     "secondary_type": null,
     "confidence": 0.95,
-    "reasoning": "用户明确要求绘制SVG流程图，展示从咖啡豆到咖啡的完整生产链，属于典型的流程展示。"
+    "reasoning": "用户明确要求'绘制SVG流程图'，并给出了从咖啡豆到咖啡的完整生产链的五个步骤，因此主要类型为流程展示。"
   },
   "entities": [
     {
       "name": "咖啡豆",
       "type": "term",
-      "role": "subject",
+      "role": "object",
       "importance": "primary"
     },
     {
-      "name": "一杯咖啡",
+      "name": "咖啡",
       "type": "term",
       "role": "object",
       "importance": "primary"
@@ -21,79 +21,130 @@
     {
       "name": "种植",
       "type": "term",
-      "role": "attribute",
+      "role": "subject",
       "importance": "primary"
     },
     {
       "name": "采摘",
       "type": "term",
-      "role": "attribute",
+      "role": "subject",
       "importance": "primary"
     },
     {
       "name": "烘焙",
       "type": "term",
-      "role": "attribute",
+      "role": "subject",
       "importance": "primary"
     },
     {
       "name": "研磨",
       "type": "term",
-      "role": "attribute",
+      "role": "subject",
       "importance": "primary"
     },
     {
       "name": "冲煮",
       "type": "term",
-      "role": "attribute",
+      "role": "subject",
       "importance": "primary"
+    },
+    {
+      "name": "生豆",
+      "type": "term",
+      "role": "object",
+      "importance": "secondary"
+    },
+    {
+      "name": "熟豆",
+      "type": "term",
+      "role": "object",
+      "importance": "secondary"
+    },
+    {
+      "name": "咖啡粉",
+      "type": "term",
+      "role": "object",
+      "importance": "secondary"
+    },
+    {
+      "name": "咖啡树",
+      "type": "term",
+      "role": "object",
+      "importance": "context"
+    },
+    {
+      "name": "咖啡果",
+      "type": "term",
+      "role": "object",
+      "importance": "context"
     }
   ],
   "relations": [
     {
       "type": "sequence",
-      "source": "咖啡豆",
-      "target": "种植",
-      "description": "咖啡豆来源于咖啡树的种植阶段",
-      "quantifier": null
-    },
-    {
-      "type": "sequence",
       "source": "种植",
       "target": "采摘",
-      "description": "种植后迎来果实成熟，进行采摘",
+      "description": "咖啡种植后，果实成熟进行采摘",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "采摘",
       "target": "烘焙",
-      "description": "采摘后的咖啡豆经过处理进入烘焙阶段",
+      "description": "采摘后的咖啡豆（生豆）进行烘焙",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "烘焙",
       "target": "研磨",
-      "description": "烘焙好的咖啡豆被研磨成粉",
+      "description": "烘焙后的熟豆研磨成咖啡粉",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "研磨",
       "target": "冲煮",
-      "description": "咖啡粉经过冲煮最终变成一杯咖啡",
+      "description": "咖啡粉通过冲煮得到最终咖啡饮品",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "咖啡豆",
+      "target": "生豆",
+      "description": "咖啡豆初始形态为生豆",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "生豆",
+      "target": "熟豆",
+      "description": "生豆经过烘焙成为熟豆",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "熟豆",
+      "target": "咖啡粉",
+      "description": "熟豆研磨成咖啡粉",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "咖啡粉",
+      "target": "咖啡",
+      "description": "咖啡粉冲煮后得到咖啡饮品",
       "quantifier": null
     }
   ],
   "content_summary": {
-    "title": "从咖啡豆到一杯咖啡的生产链",
+    "title": "从咖啡豆到咖啡的完整生产链流程图",
     "key_points": [
-      "第一步：种植——在适宜气候下培育咖啡树，等待咖啡果成熟。",
-      "第二步：采摘——手工或机械采摘成熟的咖啡果实。",
-      "第三步：烘焙——将生豆加热至特定温度，发展风味与香气。",
-      "第四步：研磨——将烘焙豆磨成均匀粉末，以便萃取。",
-      "第五步：冲煮——用热水萃取咖啡粉，得到最终饮品。"
+      "种植环节：咖啡树生长并结出咖啡果，果实内含咖啡豆。",
+      "采摘环节：成熟咖啡果被手工或机械采摘，取出咖啡豆（生豆）。",
+      "烘焙环节：生豆在高温下烘焙，产生香气和风味，颜色变深成为熟豆。",
+      "研磨环节：熟豆被研磨成细粉，增加萃取面积。",
+      "冲煮环节：咖啡粉与热水接触，通过萃取得到一杯香浓咖啡。"
     ],
     "target_audience": "general",
     "language": "zh"
@@ -104,10 +155,10 @@
     "fallback_knowledge": null
   },
   "chart_type": {
-    "recommended": "process_diagram",
+    "recommended": "flowchart",
     "alternatives": [
-      "flowchart"
+      "process_diagram"
     ],
-    "type_confidence": 0.95
+    "type_confidence": 0.98
   }
 }

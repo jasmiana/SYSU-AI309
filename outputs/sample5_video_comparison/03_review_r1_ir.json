@@ -1,6 +1,6 @@
 {
   "pass": true,
-  "overall_score": 8.5,
+  "overall_score": 8,
   "dimensions": {
     "syntax": {
       "score": 10,
@@ -10,9 +10,7 @@
     "layout": {
       "score": 9,
       "pass": true,
-      "issues": [
-        "对比度检测报告指出 3 处低对比度文本，但布局本身无越界、无重叠、无截断。"
-      ]
+      "issues": []
     },
     "content_accuracy": {
       "score": 10,
@@ -20,24 +18,21 @@
       "issues": []
     },
     "chart_type_appropriateness": {
-      "score": 10,
+      "score": 9,
       "pass": true,
       "issues": []
     },
     "information_completeness": {
       "score": 9,
       "pass": true,
-      "issues": [
-        "已完整展示所有关键倍数关系和实体，并以注释说明基准。"
-      ]
+      "issues": []
     },
     "aesthetics": {
       "score": 7,
       "pass": true,
       "issues": [
-        "Kuaishou 条形旁的绿色文字 (#27AE60) 在白色背景上对比度仅 2.87，未通过 WCAG AA。",
-        "页脚文字 (#A0AAB5) 在白色背景上对比度仅 2.36，可读性差。",
-        "YouTube 条形上的白色文字理论上在渐变色上对比度足够，但程序检测将其视为白色背景，建议验证实际渲染效果。"
+        "页脚文本(#999999)与白色背景对比度不足(2.85)",
+        "箭头指示文本(#FF6B6B)与白色背景对比度不足(2.78)"
       ]
     }
   },
@@ -45,23 +40,23 @@
   "regeneration_focus": [],
   "specific_suggestions": [
     {
-      "target": "Kuaishou 条形右侧的“1×”文本",
-      "issue": "文字颜色 #27AE60 在白色背景上对比度低，不易阅读。",
-      "suggestion": "将 fill 改为深绿色，如 #1E8C4C，或添加半透明深色背景。",
-      "priority": "medium"
+      "target": "页脚文本",
+      "issue": "fill=\"#999999\"与白色背景对比度仅2.85，不满足WCAG AA标准",
+      "suggestion": "将页脚文本颜色改为更深的灰色，如#666666，或使用#555555以确保对比度≥4.5",
+      "priority": "high"
     },
     {
-      "target": "页脚注释文字",
-      "issue": "文字颜色 #A0AAB5 过浅，与白色背景对比度不足。",
-      "suggestion": "将 fill 改为 #6B7B8D 或 #5A6878，以保证 WCAG AA 对比度。",
-      "priority": "medium"
+      "target": "箭头指示文本（10倍、2倍）",
+      "issue": "fill=\"#FF6B6B\"与白色背景对比度仅2.78，可读性差",
+      "suggestion": "将颜色改为更暗的红色，如#CC0000或#B30000，或增加一个半透明背景框",
+      "priority": "high"
     },
     {
-      "target": "YouTube 条形上的白色“20×”文本",
-      "issue": "程序检测认为白色文字在白色背景上，但实际条形渐变色较深，对比度通常足够；若有疑虑，可加强文字与背景的分离。",
-      "suggestion": "可选：为文字添加轻微投影或使用深色半透明背景，确保在任何渐变位置都清晰。",
-      "priority": "low"
+      "target": "数据标签（柱顶数值）",
+      "issue": "TikTok和Kuaishou的数据标签放置于柱体内，可能被柱体渐变色影响可读性",
+      "suggestion": "可将标签移出柱顶上方，并添加白色描边或调整字体颜色为白色（柱体背景深色时）",
+      "priority": "medium"
     }
   ],
-  "summary": "信息图准确且布局合理，主要提升点在于改善低对比度文本的配色：将快手标签的绿色和页脚浅灰色加深，确保文字在所有背景下均清晰可读。"
+  "summary": "SVG整体合格，语法、布局、内容均正确。主要问题是两处文本对比度不足（页脚和箭头指示），建议提高颜色对比度以确保可读性。数据标签位置可微调以提升清晰度。"
 }

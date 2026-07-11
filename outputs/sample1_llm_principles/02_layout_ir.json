@@ -2,7 +2,7 @@
   "chart_type": "concept_map",
   "canvas": {
     "width": 800,
-    "height": 1100,
+    "height": 1200,
     "background": "#F8F9FF"
   },
   "color_scheme": {
@@ -16,549 +16,550 @@
     "palette": [
       "#4A90D9",
       "#7B68EE",
-      "#FF6B6B",
       "#27AE60",
-      "#F39C12"
+      "#F39C12",
+      "#E74C3C"
     ],
-    "rationale": "技术主题适合用冷静的蓝紫色调，primary用于核心概念，secondary用于分支节点，accent用于能力高亮，整体背景浅色确保可读性。"
+    "rationale": "科技蓝紫配色适合技术概念解释，蓝色传达可靠、专业，紫色增添科技感，符合大语言模型主题。"
   },
   "typography": {
     "title_size": 32,
-    "heading_size": 20,
-    "body_size": 14,
+    "heading_size": 22,
+    "body_size": 15,
     "label_size": 14,
     "font_family": "system-ui, 'Microsoft YaHei', sans-serif"
   },
   "layout_grid": {
-    "columns": 2,
-    "rows": 4,
+    "columns": 1,
+    "rows": 5,
     "gutter": 20
   },
   "sections": [
     {
-      "id": "title",
+      "id": "title_section",
       "type": "title",
       "position": {
         "x_pct": 0,
         "y_pct": 0,
         "width_pct": 100,
-        "height_pct": 8
+        "height_pct": 10
       },
       "visual_weight": "primary",
-      "purpose": "标题区域"
+      "purpose": "展示主标题和简短副标题"
     },
     {
-      "id": "center_node",
-      "type": "diagram",
-      "position": {
-        "x_pct": 30,
-        "y_pct": 12,
-        "width_pct": 40,
-        "height_pct": 18
-      },
-      "visual_weight": "primary",
-      "purpose": "核心概念节点，展示大语言模型及关键特性"
-    },
-    {
-      "id": "branch_training",
-      "type": "diagram",
-      "position": {
-        "x_pct": 8,
-        "y_pct": 38,
-        "width_pct": 38,
-        "height_pct": 20
-      },
-      "visual_weight": "secondary",
-      "purpose": "训练阶段流程图"
-    },
-    {
-      "id": "branch_inference",
-      "type": "diagram",
-      "position": {
-        "x_pct": 54,
-        "y_pct": 38,
-        "width_pct": 38,
-        "height_pct": 20
-      },
-      "visual_weight": "secondary",
-      "purpose": "推理流程图"
-    },
-    {
-      "id": "branch_architecture",
-      "type": "diagram",
-      "position": {
-        "x_pct": 8,
-        "y_pct": 65,
-        "width_pct": 38,
-        "height_pct": 15
-      },
-      "visual_weight": "secondary",
-      "purpose": "Transformer核心组件示意"
-    },
-    {
-      "id": "branch_capability",
+      "id": "concept_map_section",
       "type": "content_block",
       "position": {
-        "x_pct": 54,
-        "y_pct": 65,
-        "width_pct": 38,
-        "height_pct": 15
+        "x_pct": 0,
+        "y_pct": 10,
+        "width_pct": 100,
+        "height_pct": 45
+      },
+      "visual_weight": "primary",
+      "purpose": "展示大语言模型的核心概念关系图，包含中心节点和周围组件"
+    },
+    {
+      "id": "training_flow_section",
+      "type": "timeline",
+      "position": {
+        "x_pct": 0,
+        "y_pct": 55,
+        "width_pct": 100,
+        "height_pct": 20
+      },
+      "visual_weight": "secondary",
+      "purpose": "展示训练阶段流程：预训练 → 监督微调 → RLHF"
+    },
+    {
+      "id": "inference_flow_section",
+      "type": "process_diagram",
+      "position": {
+        "x_pct": 0,
+        "y_pct": 75,
+        "width_pct": 100,
+        "height_pct": 17
+      },
+      "visual_weight": "secondary",
+      "purpose": "展示推理流程：输入文本 → Tokenization → Embedding → N层Transformer → 输出概率 → 生成文本"
+    },
+    {
+      "id": "footer_section",
+      "type": "footer",
+      "position": {
+        "x_pct": 0,
+        "y_pct": 92,
+        "width_pct": 100,
+        "height_pct": 8
       },
       "visual_weight": "tertiary",
-      "purpose": "模型规模与涌现能力说明"
+      "purpose": "注释来源或说明"
     }
   ],
   "elements": [
     {
       "id": "title_text",
       "type": "text_block",
-      "label": "大语言模型基本原理",
-      "parent_section": "title",
+      "label": "大语言模型的基本原理",
+      "parent_section": "title_section",
       "color_key": "text_primary",
       "importance": "primary",
       "size_hint": {
         "min_width": 400,
-        "min_height": 50,
+        "min_height": 60,
         "aspect_ratio": null
       },
-      "content_hint": "主标题"
+      "content_hint": "居中显示主标题，下方可加副标题 '从Transformer到ChatGPT'"
     },
     {
-      "id": "center_box",
-      "type": "rounded_rect",
+      "id": "central_node",
+      "type": "ellipse",
       "label": "大语言模型",
-      "parent_section": "center_node",
+      "parent_section": "concept_map_section",
       "color_key": "primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 200,
+        "min_width": 160,
         "min_height": 80,
-        "aspect_ratio": null
+        "aspect_ratio": 2
       },
-      "content_hint": "核心节点，内部显示‘大语言模型’字样及简短描述，如‘基于Transformer架构’"
+      "content_hint": "中心椭圆节点，填充主色，白色文字"
     },
     {
-      "id": "center_sub_text",
-      "type": "text_block",
-      "label": "基于Transformer · 自注意力机制 · 海量参数",
-      "parent_section": "center_node",
-      "color_key": "text_secondary",
+      "id": "transformer_node",
+      "type": "rounded_rect",
+      "label": "Transformer架构",
+      "parent_section": "concept_map_section",
+      "color_key": "secondary",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 200,
-        "min_height": 30,
-        "aspect_ratio": null
+        "min_width": 120,
+        "min_height": 50,
+        "aspect_ratio": 2.4
       },
-      "content_hint": "核心节点下方的副标题或标注"
+      "content_hint": "位于中心节点上方偏左"
     },
     {
-      "id": "train_title",
-      "type": "text_block",
-      "label": "训练阶段",
-      "parent_section": "branch_training",
-      "color_key": "secondary",
+      "id": "self_attention_node",
+      "type": "rounded_rect",
+      "label": "自注意力机制",
+      "parent_section": "concept_map_section",
+      "color_key": "accent",
       "importance": "secondary",
       "size_hint": {
         "min_width": 100,
-        "min_height": 30,
-        "aspect_ratio": null
+        "min_height": 40,
+        "aspect_ratio": 2.5
       },
-      "content_hint": "训练分支的小标题"
+      "content_hint": "位于transformer_node右侧"
     },
     {
-      "id": "train_pre",
+      "id": "multi_head_attention_node",
       "type": "rounded_rect",
-      "label": "预训练 (Pre-training)",
-      "parent_section": "branch_training",
+      "label": "多头注意力",
+      "parent_section": "concept_map_section",
+      "color_key": "palette[2]",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 100,
+        "min_height": 40,
+        "aspect_ratio": 2.5
+      },
+      "content_hint": "位于self_attention_node下方"
+    },
+    {
+      "id": "ffn_node",
+      "type": "rounded_rect",
+      "label": "前馈神经网络",
+      "parent_section": "concept_map_section",
+      "color_key": "palette[3]",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 100,
+        "min_height": 40,
+        "aspect_ratio": 2.5
+      },
+      "content_hint": "位于transformer_node右侧下方"
+    },
+    {
+      "id": "embedding_node",
+      "type": "rounded_rect",
+      "label": "词嵌入",
+      "parent_section": "concept_map_section",
+      "color_key": "palette[4]",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 100,
+        "min_height": 40,
+        "aspect_ratio": 2.5
+      },
+      "content_hint": "位于transformer_node左侧"
+    },
+    {
+      "id": "pos_encoding_node",
+      "type": "rounded_rect",
+      "label": "位置编码",
+      "parent_section": "concept_map_section",
+      "color_key": "palette[0]",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 100,
+        "min_height": 40,
+        "aspect_ratio": 2.5
+      },
+      "content_hint": "位于embedding_node下方"
+    },
+    {
+      "id": "residual_node",
+      "type": "rounded_rect",
+      "label": "残差连接",
+      "parent_section": "concept_map_section",
+      "color_key": "palette[1]",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 100,
+        "min_height": 40,
+        "aspect_ratio": 2.5
+      },
+      "content_hint": "位于transformer_node下方"
+    },
+    {
+      "id": "layer_norm_node",
+      "type": "rounded_rect",
+      "label": "层归一化",
+      "parent_section": "concept_map_section",
+      "color_key": "palette[2]",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 100,
+        "min_height": 40,
+        "aspect_ratio": 2.5
+      },
+      "content_hint": "位于residual_node右侧"
+    },
+    {
+      "id": "encoder_node",
+      "type": "rounded_rect",
+      "label": "编码器",
+      "parent_section": "concept_map_section",
+      "color_key": "palette[3]",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 100,
+        "min_height": 40,
+        "aspect_ratio": 2.5
+      },
+      "content_hint": "位于transformer_node左侧下方"
+    },
+    {
+      "id": "decoder_node",
+      "type": "rounded_rect",
+      "label": "解码器",
+      "parent_section": "concept_map_section",
+      "color_key": "palette[4]",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 100,
+        "min_height": 40,
+        "aspect_ratio": 2.5
+      },
+      "content_hint": "位于transformer_node右侧下方"
+    },
+    {
+      "id": "pretrain_node",
+      "type": "rounded_rect",
+      "label": "预训练",
+      "parent_section": "training_flow_section",
+      "color_key": "primary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 120,
+        "min_height": 50,
+        "aspect_ratio": 2.4
+      },
+      "content_hint": "训练阶段第一个节点，描述：在大规模语料上学习语言模式"
+    },
+    {
+      "id": "sft_node",
+      "type": "rounded_rect",
+      "label": "监督微调",
+      "parent_section": "training_flow_section",
       "color_key": "secondary",
       "importance": "secondary",
       "size_hint": {
         "min_width": 120,
-        "min_height": 30,
-        "aspect_ratio": null
+        "min_height": 50,
+        "aspect_ratio": 2.4
       },
-      "content_hint": "预训练阶段，描述：在大规模语料上学习语言模式，预测下一个token"
+      "content_hint": "训练阶段第二个节点，描述：在人工标注的指令数据上微调"
     },
     {
-      "id": "train_sft",
-      "type": "rounded_rect",
-      "label": "监督微调 (SFT)",
-      "parent_section": "branch_training",
-      "color_key": "secondary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 120,
-        "min_height": 30,
-        "aspect_ratio": null
-      },
-      "content_hint": "SFT阶段，描述：在人工标注的指令数据上微调，学会遵循指令"
-    },
-    {
-      "id": "train_rlhf",
+      "id": "rlhf_node",
       "type": "rounded_rect",
       "label": "RLHF",
-      "parent_section": "branch_training",
-      "color_key": "secondary",
+      "parent_section": "training_flow_section",
+      "color_key": "accent",
       "importance": "secondary",
       "size_hint": {
         "min_width": 120,
-        "min_height": 30,
-        "aspect_ratio": null
+        "min_height": 50,
+        "aspect_ratio": 2.4
       },
-      "content_hint": "RLHF阶段，描述：基于人类反馈的强化学习，对齐人类偏好"
+      "content_hint": "训练阶段第三个节点，描述：基于人类反馈的强化学习"
     },
     {
-      "id": "infer_title",
-      "type": "text_block",
-      "label": "推理流程",
-      "parent_section": "branch_inference",
-      "color_key": "secondary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 100,
-        "min_height": 30,
-        "aspect_ratio": null
-      },
-      "content_hint": "推理分支的小标题"
-    },
-    {
-      "id": "infer_input",
+      "id": "input_text_node",
       "type": "rounded_rect",
       "label": "输入文本",
-      "parent_section": "branch_inference",
-      "color_key": "secondary",
+      "parent_section": "inference_flow_section",
+      "color_key": "palette[0]",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 100,
-        "min_height": 25,
-        "aspect_ratio": null
+        "min_width": 80,
+        "min_height": 40,
+        "aspect_ratio": 2
       },
-      "content_hint": "推理第一步：输入文本"
+      "content_hint": "推理流程起始节点"
     },
     {
-      "id": "infer_tokenize",
+      "id": "tokenization_node",
       "type": "rounded_rect",
       "label": "Tokenization",
-      "parent_section": "branch_inference",
-      "color_key": "secondary",
+      "parent_section": "inference_flow_section",
+      "color_key": "palette[1]",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 100,
-        "min_height": 25,
-        "aspect_ratio": null
+        "min_width": 80,
+        "min_height": 40,
+        "aspect_ratio": 2
       },
-      "content_hint": "推理第二步：分词"
+      "content_hint": "分词"
     },
     {
-      "id": "infer_embedding",
+      "id": "embedding_node2",
       "type": "rounded_rect",
       "label": "Embedding",
-      "parent_section": "branch_inference",
-      "color_key": "secondary",
+      "parent_section": "inference_flow_section",
+      "color_key": "palette[2]",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 100,
-        "min_height": 25,
-        "aspect_ratio": null
+        "min_width": 80,
+        "min_height": 40,
+        "aspect_ratio": 2
       },
-      "content_hint": "推理第三步：嵌入向量"
+      "content_hint": "词嵌入+位置编码"
     },
     {
-      "id": "infer_transformer",
+      "id": "transformer_block_node",
       "type": "rounded_rect",
-      "label": "N×Transformer Block",
-      "parent_section": "branch_inference",
-      "color_key": "secondary",
+      "label": "N层Transformer\nBlock",
+      "parent_section": "inference_flow_section",
+      "color_key": "palette[3]",
       "importance": "secondary",
       "size_hint": {
         "min_width": 100,
-        "min_height": 25,
-        "aspect_ratio": null
+        "min_height": 50,
+        "aspect_ratio": 2
       },
-      "content_hint": "推理第四步：多层Transformer处理"
+      "content_hint": "多层Transformer块"
     },
     {
-      "id": "infer_prob",
+      "id": "output_prob_node",
       "type": "rounded_rect",
       "label": "输出概率分布",
-      "parent_section": "branch_inference",
-      "color_key": "secondary",
+      "parent_section": "inference_flow_section",
+      "color_key": "palette[4]",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 100,
-        "min_height": 25,
-        "aspect_ratio": null
+        "min_width": 80,
+        "min_height": 40,
+        "aspect_ratio": 2
       },
-      "content_hint": "推理第五步：输出词表概率"
+      "content_hint": "Softmax输出"
     },
     {
-      "id": "infer_sample",
+      "id": "generate_text_node",
       "type": "rounded_rect",
-      "label": "采样/解码",
-      "parent_section": "branch_inference",
-      "color_key": "secondary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 100,
-        "min_height": 25,
-        "aspect_ratio": null
-      },
-      "content_hint": "推理第六步：采样或贪心解码生成文本"
-    },
-    {
-      "id": "arch_title",
-      "type": "text_block",
-      "label": "Transformer核心组件",
-      "parent_section": "branch_architecture",
-      "color_key": "secondary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 100,
-        "min_height": 30,
-        "aspect_ratio": null
-      },
-      "content_hint": "架构分支的小标题"
-    },
-    {
-      "id": "arch_emb",
-      "type": "rounded_rect",
-      "label": "输入嵌入 + 位置编码",
-      "parent_section": "branch_architecture",
-      "color_key": "secondary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 120,
-        "min_height": 25,
-        "aspect_ratio": null
-      },
-      "content_hint": "Transformer输入处理"
-    },
-    {
-      "id": "arch_att",
-      "type": "rounded_rect",
-      "label": "多头自注意力",
-      "parent_section": "branch_architecture",
-      "color_key": "secondary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 120,
-        "min_height": 25,
-        "aspect_ratio": null
-      },
-      "content_hint": "同时关注序列中不同位置的关系"
-    },
-    {
-      "id": "arch_ffn",
-      "type": "rounded_rect",
-      "label": "前馈网络",
-      "parent_section": "branch_architecture",
-      "color_key": "secondary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 120,
-        "min_height": 25,
-        "aspect_ratio": null
-      },
-      "content_hint": "对每个位置进行非线性变换"
-    },
-    {
-      "id": "arch_norm",
-      "type": "rounded_rect",
-      "label": "残差连接 & 层归一化",
-      "parent_section": "branch_architecture",
-      "color_key": "secondary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 120,
-        "min_height": 25,
-        "aspect_ratio": null
-      },
-      "content_hint": "稳定训练，缓解梯度消失"
-    },
-    {
-      "id": "cap_title",
-      "type": "text_block",
-      "label": "模型能力与特性",
-      "parent_section": "branch_capability",
+      "label": "生成文本",
+      "parent_section": "inference_flow_section",
       "color_key": "accent",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 80,
+        "min_height": 40,
+        "aspect_ratio": 2
+      },
+      "content_hint": "采样/贪心解码"
+    },
+    {
+      "id": "footer_text",
+      "type": "text_block",
+      "label": "参考：Transformer架构由Vaswani等人在2017年提出，后续发展出GPT、BERT等模型。",
+      "parent_section": "footer_section",
+      "color_key": "text_secondary",
       "importance": "tertiary",
       "size_hint": {
-        "min_width": 100,
+        "min_width": 600,
         "min_height": 30,
         "aspect_ratio": null
       },
-      "content_hint": "能力分支的小标题"
-    },
-    {
-      "id": "cap_text1",
-      "type": "text_block",
-      "label": "参数规模：数十亿至数万亿",
-      "parent_section": "branch_capability",
-      "color_key": "text_primary",
-      "importance": "tertiary",
-      "size_hint": {
-        "min_width": 150,
-        "min_height": 25,
-        "aspect_ratio": null
-      },
-      "content_hint": "说明模型参数的巨大规模"
-    },
-    {
-      "id": "cap_text2",
-      "type": "text_block",
-      "label": "涌现能力：上下文学习、推理等",
-      "parent_section": "branch_capability",
-      "color_key": "text_primary",
-      "importance": "tertiary",
-      "size_hint": {
-        "min_width": 150,
-        "min_height": 25,
-        "aspect_ratio": null
-      },
-      "content_hint": "说明模型表现出的高级能力"
-    },
-    {
-      "id": "cap_text3",
-      "type": "text_block",
-      "label": "适应下游任务：文本生成、翻译、问答",
-      "parent_section": "branch_capability",
-      "color_key": "text_primary",
-      "importance": "tertiary",
-      "size_hint": {
-        "min_width": 150,
-        "min_height": 25,
-        "aspect_ratio": null
-      },
-      "content_hint": "说明模型可通过提示工程或微调适应多种任务"
+      "content_hint": "右下角小字注释"
     }
   ],
   "connections": [
     {
-      "id": "center_to_train",
+      "id": "conn_central_transformer",
       "type": "arrow",
-      "from_element": "center_box",
-      "to_element": "train_title",
+      "from_element": "central_node",
+      "to_element": "transformer_node",
       "direction": "top-to-bottom",
+      "label": "基于",
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_transformer_selfattn",
+      "type": "arrow",
+      "from_element": "transformer_node",
+      "to_element": "self_attention_node",
+      "direction": "left-to-right",
+      "label": "包含",
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_selfattn_multihead",
+      "type": "arrow",
+      "from_element": "self_attention_node",
+      "to_element": "multi_head_attention_node",
+      "direction": "top-to-bottom",
+      "label": "扩展",
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_transformer_ffn",
+      "type": "arrow",
+      "from_element": "transformer_node",
+      "to_element": "ffn_node",
+      "direction": "left-to-right",
+      "label": "包含",
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_transformer_embedding",
+      "type": "arrow",
+      "from_element": "transformer_node",
+      "to_element": "embedding_node",
+      "direction": "right-to-left",
+      "label": "包含",
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_embedding_pos",
+      "type": "arrow",
+      "from_element": "embedding_node",
+      "to_element": "pos_encoding_node",
+      "direction": "top-to-bottom",
+      "label": "结合",
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_transformer_residual",
+      "type": "arrow",
+      "from_element": "transformer_node",
+      "to_element": "residual_node",
+      "direction": "top-to-bottom",
+      "label": "包含",
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_residual_layernorm",
+      "type": "arrow",
+      "from_element": "residual_node",
+      "to_element": "layer_norm_node",
+      "direction": "left-to-right",
+      "label": "配合",
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_transformer_encoder",
+      "type": "arrow",
+      "from_element": "transformer_node",
+      "to_element": "encoder_node",
+      "direction": "right-to-left",
+      "label": "子模块",
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_transformer_decoder",
+      "type": "arrow",
+      "from_element": "transformer_node",
+      "to_element": "decoder_node",
+      "direction": "left-to-right",
+      "label": "子模块",
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_pretrain_sft",
+      "type": "arrow",
+      "from_element": "pretrain_node",
+      "to_element": "sft_node",
+      "direction": "left-to-right",
+      "label": "下一步",
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_sft_rlhf",
+      "type": "arrow",
+      "from_element": "sft_node",
+      "to_element": "rlhf_node",
+      "direction": "left-to-right",
+      "label": "下一步",
+      "line_style": "solid"
+    },
+    {
+      "id": "conn_input_tokenization",
+      "type": "arrow",
+      "from_element": "input_text_node",
+      "to_element": "tokenization_node",
+      "direction": "left-to-right",
       "label": null,
       "line_style": "solid"
     },
     {
-      "id": "center_to_infer",
+      "id": "conn_tokenization_embedding",
       "type": "arrow",
-      "from_element": "center_box",
-      "to_element": "infer_title",
-      "direction": "top-to-bottom",
+      "from_element": "tokenization_node",
+      "to_element": "embedding_node2",
+      "direction": "left-to-right",
       "label": null,
       "line_style": "solid"
     },
     {
-      "id": "center_to_arch",
+      "id": "conn_embedding_transformerblock",
       "type": "arrow",
-      "from_element": "center_box",
-      "to_element": "arch_title",
-      "direction": "top-to-bottom",
+      "from_element": "embedding_node2",
+      "to_element": "transformer_block_node",
+      "direction": "left-to-right",
       "label": null,
       "line_style": "solid"
     },
     {
-      "id": "center_to_cap",
+      "id": "conn_transformerblock_outputprob",
       "type": "arrow",
-      "from_element": "center_box",
-      "to_element": "cap_title",
-      "direction": "top-to-bottom",
+      "from_element": "transformer_block_node",
+      "to_element": "output_prob_node",
+      "direction": "left-to-right",
       "label": null,
       "line_style": "solid"
     },
     {
-      "id": "train_step1",
+      "id": "conn_outputprob_generate",
       "type": "arrow",
-      "from_element": "train_pre",
-      "to_element": "train_sft",
-      "direction": "top-to-bottom",
-      "label": null,
-      "line_style": "solid"
-    },
-    {
-      "id": "train_step2",
-      "type": "arrow",
-      "from_element": "train_sft",
-      "to_element": "train_rlhf",
-      "direction": "top-to-bottom",
-      "label": null,
-      "line_style": "solid"
-    },
-    {
-      "id": "infer_step1",
-      "type": "arrow",
-      "from_element": "infer_input",
-      "to_element": "infer_tokenize",
-      "direction": "top-to-bottom",
-      "label": null,
-      "line_style": "solid"
-    },
-    {
-      "id": "infer_step2",
-      "type": "arrow",
-      "from_element": "infer_tokenize",
-      "to_element": "infer_embedding",
-      "direction": "top-to-bottom",
-      "label": null,
-      "line_style": "solid"
-    },
-    {
-      "id": "infer_step3",
-      "type": "arrow",
-      "from_element": "infer_embedding",
-      "to_element": "infer_transformer",
-      "direction": "top-to-bottom",
-      "label": null,
-      "line_style": "solid"
-    },
-    {
-      "id": "infer_step4",
-      "type": "arrow",
-      "from_element": "infer_transformer",
-      "to_element": "infer_prob",
-      "direction": "top-to-bottom",
-      "label": null,
-      "line_style": "solid"
-    },
-    {
-      "id": "infer_step5",
-      "type": "arrow",
-      "from_element": "infer_prob",
-      "to_element": "infer_sample",
-      "direction": "top-to-bottom",
-      "label": null,
-      "line_style": "solid"
-    },
-    {
-      "id": "arch_step1",
-      "type": "arrow",
-      "from_element": "arch_emb",
-      "to_element": "arch_att",
-      "direction": "top-to-bottom",
-      "label": null,
-      "line_style": "solid"
-    },
-    {
-      "id": "arch_step2",
-      "type": "arrow",
-      "from_element": "arch_att",
-      "to_element": "arch_ffn",
-      "direction": "top-to-bottom",
-      "label": null,
-      "line_style": "solid"
-    },
-    {
-      "id": "arch_step3",
-      "type": "arrow",
-      "from_element": "arch_ffn",
-      "to_element": "arch_norm",
-      "direction": "top-to-bottom",
+      "from_element": "output_prob_node",
+      "to_element": "generate_text_node",
+      "direction": "left-to-right",
       "label": null,
       "line_style": "solid"
     }
   ],
-  "design_notes": "整体采用中心辐射概念图布局，以圆角矩形‘大语言模型’为核心节点置于画布中上部，通过向下箭头连接四个分支区域：训练阶段（左下）、推理流程（右下）、Transformer组件（左中下）、模型能力（右中下）。每个分支区域使用浅色背景块和圆角节点纵向排列，用实线箭头衔接。主色调为科技蓝紫，核心节点用primary色强调，分支标题与节点使用secondary色，能力部分用accent色突出。标题使用大号粗体，节点内文字清晰可读。布局注意网格对齐和留白，分支之间保持20px以上间距，连线流畅避免交叉。整体传递清晰的概念层级与阅读顺序。"
+  "design_notes": "整体采用概念图布局，中心突出大语言模型，周围围绕Transformer架构关键组件，使用不同颜色区分模块。下部训练阶段和推理流程采用水平箭头串联，清晰展示时间顺序和数据处理步骤。配色科技蓝紫，背景淡蓝，节点圆角矩形，箭头加标签。确保文字可读性，组件间留白合理。"
 }

@@ -1,0 +1,144 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1150" width="800" height="1150">
+  <defs>
+    <linearGradient id="titleGrad" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#4A90D9"/>
+      <stop offset="100%" stop-color="#7B68EE"/>
+    </linearGradient>
+    <linearGradient id="cardGrad1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F0F4FF"/>
+      <stop offset="100%" stop-color="#E8EEFF"/>
+    </linearGradient>
+    <linearGradient id="cardGrad2" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF0F0"/>
+      <stop offset="100%" stop-color="#FFE8E8"/>
+    </linearGradient>
+    <linearGradient id="cardGrad3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#F0FFF4"/>
+      <stop offset="100%" stop-color="#E8FFE8"/>
+    </linearGradient>
+    <linearGradient id="cardGrad4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFF8F0"/>
+      <stop offset="100%" stop-color="#FFEFE0"/>
+    </linearGradient>
+    <filter id="shadow" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#00000020"/>
+    </filter>
+    <filter id="shadowLight" x="-5%" y="-5%" width="115%" height="115%">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#00000015"/>
+    </filter>
+    <marker id="arrowBlue" markerWidth="10" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#4A90D9"/>
+    </marker>
+    <marker id="arrowGray" markerWidth="10" markerHeight="8" refX="10" refY="4" orient="auto">
+      <path d="M0,0 L10,4 L0,8 Z" fill="#999"/>
+    </marker>
+  </defs>
+
+  <!-- 背景 -->
+  <rect width="800" height="1150" fill="#FFFFFF"/>
+
+  <!-- 标题横幅 -->
+  <rect x="0" y="0" width="800" height="80" fill="url(#titleGrad)"/>
+  <text x="400" y="48" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="30" font-weight="bold">什么是词向量？—— 让计算机理解词语含义</text>
+
+  <!-- 引言段落 -->
+  <text x="50" y="120" fill="#444" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="16" line-height="1.6">
+    <tspan x="50" dy="0">计算机无法直接理解文字，但擅长处理数字。词向量就是把词语转换成一串数字（向量），</tspan>
+    <tspan x="50" dy="24">让计算机能计算词语之间的相似关系。简单说：</tspan>
+    <tspan x="50" dy="24" fill="#4A90D9" font-weight="bold">词向量 = 词语的数学表示</tspan>
+  </text>
+
+  <!-- ===== 第一部分：直观理解 ===== -->
+  <rect x="50" y="170" width="700" height="200" rx="14" fill="url(#cardGrad1)" filter="url(#shadow)"/>
+  <text x="75" y="205" fill="#333" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold">🔤 直观理解：词语 → 坐标点</text>
+
+  <!-- 类比图：词语到坐标 -->
+  <rect x="75" y="225" width="140" height="50" rx="10" fill="#4A90D9" opacity="0.15"/>
+  <text x="145" y="255" text-anchor="middle" fill="#4A90D9" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold">"国王"</text>
+
+  <line x1="220" y1="250" x2="280" y2="250" stroke="#4A90D9" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+  <rect x="285" y="225" width="140" height="50" rx="10" fill="#4A90D9" opacity="0.15"/>
+  <text x="355" y="255" text-anchor="middle" fill="#4A90D9" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold">[0.21, 0.85, 0.33]</text>
+
+  <line x1="430" y1="250" x2="490" y2="250" stroke="#4A90D9" stroke-width="2" marker-end="url(#arrowBlue)"/>
+
+  <rect x="495" y="220" width="230" height="60" rx="10" fill="#4A90D9" opacity="0.1" stroke="#4A90D9" stroke-width="1.5" stroke-dasharray="4"/>
+  <text x="610" y="248" text-anchor="middle" fill="#4A90D9" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold">三维空间中的一个点</text>
+  <text x="610" y="268" text-anchor="middle" fill="#888" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12">（实际维度更高，如 100~300 维）</text>
+
+  <!-- 下方说明 -->
+  <text x="75" y="310" fill="#555" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">
+    <tspan x="75" dy="0">💡 每个词语被映射到高维空间中的一个点，</tspan>
+    <tspan x="75" dy="20" fill="#4A90D9" font-weight="bold">意思相近的词 → 空间距离近</tspan>
+    <tspan x="75" dy="20" fill="#4A90D9" font-weight="bold">意思相反的词 → 空间距离远</tspan>
+  </text>
+
+  <!-- ===== 第二部分：核心思想 ===== -->
+  <rect x="50" y="400" width="700" height="210" rx="14" fill="url(#cardGrad2)" filter="url(#shadow)"/>
+  <text x="75" y="435" fill="#333" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold">💡 核心思想：从上下文学习词义</text>
+
+  <text x="75" y="470" fill="#555" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="15">
+    <tspan x="75" dy="0">"You shall know a word by the company it keeps."</tspan>
+    <tspan x="75" dy="22" fill="#888" font-style="italic">—— J.R. Firth (1957)</tspan>
+  </text>
+
+  <!-- 上下文示例 -->
+  <rect x="75" y="510" width="640" height="80" rx="10" fill="#FFFFFF" filter="url(#shadowLight)"/>
+  <text x="95" y="535" fill="#666" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14">
+    <tspan x="95" dy="0">例句1：我 喜欢 喝 一杯 热 咖啡</tspan>
+    <tspan x="95" dy="24" fill="#4A90D9" font-weight="bold">例句2：请 帮 我 泡 一 杯 咖啡</tspan>
+  </text>
+  <text x="95" y="580" fill="#888" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="13">
+    → "咖啡" 常与 "喝"、"泡"、"杯" 等词一起出现 → 这些上下文定义了 "咖啡" 的含义
+  </text>
+
+  <!-- ===== 第三部分：词向量运算 ===== -->
+  <rect x="50" y="640" width="700" height="220" rx="14" fill="url(#cardGrad3)" filter="url(#shadow)"/>
+  <text x="75" y="675" fill="#333" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold">🧮 神奇之处：词向量可以运算</text>
+
+  <text x="75" y="710" fill="#555" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="15">
+    词向量之间可以做加减法，得到语义关系！
+  </text>
+
+  <!-- 经典例子 -->
+  <rect x="75" y="730" width="640" height="110" rx="10" fill="#FFFFFF" filter="url(#shadowLight)"/>
+  <text x="95" y="755" fill="#333" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold">经典例子：</text>
+
+  <text x="95" y="785" fill="#4A90D9" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="15" font-weight="bold">
+    <tspan x="95" dy="0">"国王" - "男人" + "女人" ≈ "女王"</tspan>
+  </text>
+
+  <text x="95" y="815" fill="#888" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="13">
+    <tspan x="95" dy="0">向量运算捕捉了：男性/女性、王室身份等抽象概念关系</tspan>
+  </text>
+
+  <!-- ===== 第四部分：应用场景 ===== -->
+  <rect x="50" y="890" width="700" height="180" rx="14" fill="url(#cardGrad4)" filter="url(#shadow)"/>
+  <text x="75" y="925" fill="#333" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="20" font-weight="bold">🚀 词向量的应用</text>
+
+  <!-- 四个应用卡片 -->
+  <rect x="75" y="945" width="145" height="100" rx="10" fill="#FFFFFF" filter="url(#shadowLight)"/>
+  <text x="147" y="975" text-anchor="middle" fill="#4A90D9" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold">机器翻译</text>
+  <text x="147" y="1000" text-anchor="middle" fill="#888" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12">理解词语含义</text>
+  <text x="147" y="1020" text-anchor="middle" fill="#888" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12">提升翻译质量</text>
+
+  <rect x="240" y="945" width="145" height="100" rx="10" fill="#FFFFFF" filter="url(#shadowLight)"/>
+  <text x="312" y="975" text-anchor="middle" fill="#4A90D9" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold">情感分析</text>
+  <text x="312" y="1000" text-anchor="middle" fill="#888" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12">判断评论情绪</text>
+  <text x="312" y="1020" text-anchor="middle" fill="#888" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12">正面/负面/中性</text>
+
+  <rect x="405" y="945" width="145" height="100" rx="10" fill="#FFFFFF" filter="url(#shadowLight)"/>
+  <text x="477" y="975" text-anchor="middle" fill="#4A90D9" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold">信息检索</text>
+  <text x="477" y="1000" text-anchor="middle" fill="#888" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12">语义搜索</text>
+  <text x="477" y="1020" text-anchor="middle" fill="#888" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12">理解查询意图</text>
+
+  <rect x="570" y="945" width="145" height="100" rx="10" fill="#FFFFFF" filter="url(#shadowLight)"/>
+  <text x="642" y="975" text-anchor="middle" fill="#4A90D9" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold">推荐系统</text>
+  <text x="642" y="1000" text-anchor="middle" fill="#888" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12">理解用户偏好</text>
+  <text x="642" y="1020" text-anchor="middle" fill="#888" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12">精准推荐内容</text>
+
+  <!-- 底部总结 -->
+  <rect x="50" y="1100" width="700" height="36" rx="18" fill="#4A90D9" opacity="0.1"/>
+  <text x="400" y="1124" text-anchor="middle" fill="#4A90D9" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold">📌 总结：词向量将词语转化为数学向量，让计算机理解语义，是自然语言处理的基础技术</text>
+</svg>

@@ -269,24 +269,24 @@ class Pipeline:
             # Check if we should stop
             if review.get("pass"):
                 plog.log_info(
-                    f"✅ Passed on round {round_num} "
+                    f"[PASS] Passed on round {round_num} "
                     f"(score: {review.get('overall_score')})"
                 )
                 break
             elif not review.get("needs_regeneration"):
                 plog.log_info(
-                    f"⏹ Not regenerating (needs_regeneration=false)"
+                    f"[SKIP] Not regenerating (needs_regeneration=false)"
                 )
                 break
             else:
                 if round_num <= MAX_REFINEMENT_ROUNDS:
                     plog.log_info(
-                        f"🔄 Round {round_num} not passed, "
+                        f"[RETRY] Round {round_num} not passed, "
                         f"regenerating with feedback..."
                     )
                 else:
                     plog.log_info(
-                        f"⏹ Max refinement rounds ({MAX_REFINEMENT_ROUNDS}) "
+                        f"[SKIP] Max refinement rounds ({MAX_REFINEMENT_ROUNDS}) "
                         f"reached, using best available version"
                     )
 

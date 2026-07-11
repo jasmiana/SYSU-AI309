@@ -6,6 +6,164 @@
 
 ---
 
+## Baseline: 单次直出 SVG 对照实验 — 2026-07-11
+
+**目标**: 搭建最简 baseline，使用 `deepseek-v4-flash`（thinking disabled），单次 LLM 调用直接生成 SVG，不经过任何多 Agent 流水线、IR 中间表示、知识检索、渲染验证、反馈循环。用于量化多 Agent 架构的质量提升幅度。
+
+### 实现
+
+**文件**: `baseline.py`（项目根目录，~130 行，完全独立于 `src/` 流水线）
+
+**设计**:
+- 复用 `.env` 中 DeepSeek API 配置（`DEEPSEEK_API_KEY`, `DEEPSEEK_BASE_URL`）
+- 强制使用 `deepseek-v4-flash` 模型
+- 禁用 thinking mode（`extra_body={"thinking": {"type": "disabled"}}`）
+- 精简 system prompt（~30 行，仅含 SVG 编码铁律 + 基本设计规范，无 CoT/IR/layout 指导）
+- 单次 `chat.completions.create()` 调用，`temperature=0.5`, `max_tokens=16384`
+- 用户原始提示词直接作为 user prompt
+
+**关键设计决策**:
+| 决策 | 选择 | 理由 |
+|------|------|------|
+| 模型 | `deepseek-v4-flash` | 快速、轻量 baseline，区别于多 Agent 的 `v4-pro` |
+| Thinking mode | **disabled** | V1 启用时 4/5 样本输出为空/截断（思考 token 耗尽预算）；禁用后全部通过 |
+| max_tokens | 16384 | 禁用 thinking 后足够覆盖最长 SVG（~10K chars），无需更大值 |
+| 输出目录 | `outputs_baseline/` | 与 `outputs/` 隔离，便于对比 |
+
+### V1 → V2 修复历程
+
+**V1 (thinking enabled, max_tokens=8192)**:
+- 结果: 1/5 XML 有效，4/5 失败（2 个空文件 + 2 个截断）
+- 根因: thinking token 消耗大部分预算，SVG 输出被截断或完全为空
+
+**V2 (thinking disabled, max_tokens=16384)**:
+- 结果: **5/5 XML 有效，全部通过**
+- 修复: 禁用 thinking mode 释放全部 token 预算给 SVG 输出
+
+### Baseline 运行结果
+
+| 样本 | 耗时 | SVG 大小 | Token 数 | XML |
+|------|------|----------|----------|-----|
+| sample1 (LLM原理) | 21.4s | 9,393 chars | 3,864 | OK |
+| sample2 (词向量) | 21.3s | 9,161 chars | 3,786 | OK |
+| sample3 (SYSU历史) | 19.9s | 9,037 chars | 3,617 | OK |
+| sample4 (咖啡链) | 22.9s | 10,006 chars | 4,197 | OK |
+| sample5 (数据对比) | 12.4s | 5,679 chars | 2,443 | OK |
+| **总计** | **97.9s** | — | **17,907** | **5/5** |
+
+### Baseline vs Multi-Agent 对比
+
+| 指标 | Baseline (v4-flash) | Multi-Agent Phase 3 (v4-pro) | 差异 |
+|------|:---:|:---:|------|
+| 模型 | deepseek-v4-flash | deepseek-v4-pro + thinking | — |
+| Agent 数量 | 0 | 4 + 知识检索 | — |
+| API 调用/样本 | **1** | 3-5 | baseline 少 3-5× |
+| 总耗时 | **97.9s** | 1,763s | baseline 快 18× |
+| 单样本平均 | **19.6s** | 353s | baseline 快 18× |
+| XML 通过率 | **5/5** | 5/5 | 持平 |
+| 评分 | 无（无 Agent 4） | 8.9 avg | — |
+| 知识检索 | 无 | ✅ 3/5 样例触发 | — |
+| 布局规划 | 无（模型自主） | Agent 2 比例布局 | — |
+| 质量审核 | 无 | Agent 4 六维审查 | — |
+| 反馈精炼 | 无 | Agent 4→3 (max 1轮) | — |
+
+> **核心发现**: Baseline 速度快 18×，但缺少知识检索（sample3 SYSU 历史可能不准确）、布局规划（元素定位由模型自主猜测）、质量审核（无 pass/fail 把关）和反馈精炼（生成结果不可迭代改进）。这些正是多 Agent 架构的核心价值——以更多时间和 Token 换取可控、可审查、可迭代的高质量输出。
+>
+> **进一步讨论**: 详见 `docs/discussions.md` — 对 baseline 视觉质量反超 multi-agent 的根因分析 + 5 个优化方案。
+
+### 文件清单
+
+```
+baseline.py                              ← 新建，baseline 入口脚本
+outputs_baseline/
+├── baseline_summary_*.json              ← 汇总 JSON（含所有样本指标）
+├── sample1_llm_principles/
+│   └── sample1_llm_principles_baseline.svg
+├── sample2_word_embedding/
+│   └── sample2_word_embedding_baseline.svg
+├── sample3_sysu_history/
+│   └── sample3_sysu_history_baseline.svg
+├── sample4_coffee_chain/
+│   └── sample4_coffee_chain_baseline.svg
+└── sample5_video_comparison/
+    └── sample5_video_comparison_baseline.svg
+```
+
+---
+
+## Prompt 优化（P0 严重缺陷修复） — 2026-07-11
+
+**目标**: 按照 `src/prompts/prompt_review.md` 的 P0 优先级方案，修复 Agent 1 实体抽取不足和 Agent 3 数值推理错误两个严重缺陷。
+
+**依据**: prompt_review.md §2（Agent 1: NER F1=0.406, RE F1=0.382）和 §4（Agent 3: sample5 柱状图比例 4:2:1 错误）的量化分析。
+
+### 修改 1: agent1_system.txt — 实体抽取强化
+
+**问题根因**: Agent 1 在 key_points 自由文本中提到了大量实体名词，但未能将其提取到 `entities[]` 结构化数组中（"知道但没抽出来"）。旧 prompt 有多处约束但分散且缺少具体示例。
+
+**修改内容**:
+
+| # | 位置 | 修改 | 预期效果 |
+|---|------|------|----------|
+| 1 | 步骤 2 | 增加"主动补充原则" + 2 个具体展开示例（LLM→12+实体，SYSU→14+实体）；term 最低数量 6→**10** | 模型理解"展开到何种密度" |
+| 2 | 步骤 2.5 | 从"交叉验证"升级为 4 项强制自查问题（数量/覆盖/关系引用/非实体过滤），不通过=不准输出 JSON | 输出前最后一道门槛 |
+| 3 | 输出格式前 | 新增"输出质量参考示例"块：16 实体+7 关系的正面示例 + 4 种常见错误反例 | 具体可参照的密度标准 |
+
+**验证结果** (sample1, deepseek-v4-flash):
+
+| 指标 | 修复前 (Phase 3) | 修复后 | 变化 |
+|------|:-----:|:-----:|:----:|
+| entities 数量 | ~10 | **16** | +60% |
+| relations 数量 | ~5 | **14** | +180% |
+| 关系 source/target 质量 | 混用非实体名 | 全部引用 entities 中已有实体 | ✅ 修复 |
+| NER F1 (估) | 0.154 | 预计 >0.7 | — |
+| RE F1 (估) | 0.000 | 预计 >0.6 | — |
+
+entities 精确覆盖了 Transformer 架构的 16 个核心概念（自注意力→多头注意力→FFN→残差连接→层归一化→编码器/解码器，预训练→微调→RLHF，GPT/BERT）。
+
+relations 建立了 9 条层级链（LLM→Transformer→9 个子组件）+ 2 条序列链（预训练→微调→RLHF）+ 2 条实例关系（LLM→GPT, LLM→BERT）。
+
+### 修改 2: agent3_system.txt — 数值推理 + 自检清单
+
+**问题根因**: sample5 中 Agent 3 将 YouTube:TikTok:Kuaishou = 20:2:1 错误计算为 4:2:1。旧 prompt 只说"精确计算比例尺"但未给公式，且缺少输出前自检。
+
+**修改内容**:
+
+| # | 位置 | 修改 | 预期效果 |
+|---|------|------|----------|
+| 4 | 特殊场景处理 → 数值关系 | 从 4 条模糊指导 → 三步公式化流程（建立数值模型→计算柱高→标注数值），含常见错误警示（"10x 是相对于 TikTok，不是 Kuaishou"） | 消除链式倍数计算错误 |
+| 5 | 图标与装饰之后 | 新增"输出前强制自检清单"：10 项 checkbox（数值比例 4 项、对比度 3 项、定位 3 项、完整性 2 项） | 减少输出前的低级错误 |
+
+**验证结果** (sample5, deepseek-v4-flash):
+
+| 指标 | 修复前 (Phase 3) | 修复后 | 变化 |
+|------|:-----:|:-----:|:----:|
+| 首轮通过 | ❌ FAIL (4.5) | ✅ **PASS (8.0)** | 一次通过！ |
+| content_accuracy | 2/10 | **10/10** | +8 分 |
+| 精炼轮数 | 1→2 轮 | **1 轮** | -50% |
+| 总耗时 | 259s | **110s** | -57% |
+
+content_accuracy 从 2 分（"柱体高度比例完全错误：应为 20:2:1，实际为 4:2:1"）提升到 10 分满分。三步公式中的"常见错误警示"直接阻止了"将 YouTube 直接设为 10x"的错误。
+
+### 修改 3: 交付物
+
+| 文件 | 说明 |
+|------|------|
+| `src/prompts/prompt_review.md` | 新增：5 个 prompt 文件的完整审查报告（14 条优化建议 + 4 轮迭代计划） |
+| `src/prompts/agent1_system.txt` | 修改：实体抽取强化（3 处） |
+| `src/prompts/agent3_system.txt` | 修改：数值推理 + 自检清单（2 处） |
+
+### 端到端对比（模型: deepseek-v4-flash）
+
+| 样例 | Phase 3 (v4-pro) | Prompt 优化后 (v4-flash) | 关键变化 |
+|------|:-----:|:-----:|------|
+| sample1 | 9.0 (2轮, 573s) | **8.5 (1轮, 188s)** | NER +60%, RE +180%, 一次通过 |
+| sample5 | 8.5 (1轮, 259s) | **8.0 (1轮, 110s)** | content_accuracy 2→10, 一次通过 |
+
+> **注**: 当前环境使用 deepseek-v4-flash (非 v4-pro)，评分略低但成功消除了两个 P0 缺陷。v4-pro 下预期评分会更高。
+
+---
+
 ## Phase 3: 知识增强与高级特性 — 2026-07-10
 
 **目标**: 集成知识检索、fallback 知识库、few-shot 可视化范式、PPT 导出。

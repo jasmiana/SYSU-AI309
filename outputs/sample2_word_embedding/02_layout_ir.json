@@ -2,358 +2,400 @@
   "chart_type": "concept_map",
   "canvas": {
     "width": 800,
-    "height": 1100,
+    "height": 1200,
     "background": "#F8F9FF"
   },
   "color_scheme": {
-    "name": "科技蓝紫",
-    "primary": "#4A90D9",
-    "secondary": "#7B68EE",
+    "name": "柔和蓝紫渐变",
+    "primary": "#6C63FF",
+    "secondary": "#4A90D9",
     "accent": "#FF6B6B",
     "background": "#F8F9FF",
     "text_primary": "#2C3E50",
     "text_secondary": "#7F8C8D",
     "palette": [
+      "#6C63FF",
       "#4A90D9",
-      "#7B68EE",
       "#27AE60",
       "#F39C12",
       "#E74C3C"
     ],
-    "rationale": "柔和蓝紫渐变营造科技感且不沉闷，适合面向大众的科普，同时传递专业可信赖感。"
+    "rationale": "目标受众为不了解NLP的大众，柔和蓝紫色系传递科技感且友好，渐变背景增强层次感，多色板用于散点图语义类别区分。"
   },
   "typography": {
     "title_size": 32,
     "heading_size": 22,
-    "body_size": 16,
-    "label_size": 14,
-    "font_family": "system-ui, 'Microsoft YaHei', sans-serif"
+    "body_size": 15,
+    "label_size": 13,
+    "font_family": "system-ui, 'Microsoft YaHei', -apple-system, sans-serif"
   },
   "layout_grid": {
-    "columns": 12,
-    "rows": 6,
+    "columns": 4,
+    "rows": 12,
     "gutter": 20
   },
   "sections": [
     {
-      "id": "sec_title",
+      "id": "title_section",
       "type": "title",
       "position": {
         "x_pct": 5,
         "y_pct": 0,
         "width_pct": 90,
-        "height_pct": 8
+        "height_pct": 10
       },
       "visual_weight": "primary",
-      "purpose": "显示主标题：词向量（Word Embedding）的基本概念"
+      "purpose": "展示主标题和副标题，吸引注意力"
     },
     {
-      "id": "sec_concept",
+      "id": "upper_section",
       "type": "content_block",
       "position": {
         "x_pct": 5,
         "y_pct": 10,
         "width_pct": 90,
-        "height_pct": 18
+        "height_pct": 25
       },
       "visual_weight": "secondary",
-      "purpose": "解释词向量的定义：将词映射为固定长度实数向量，展示示例向量并配图。"
+      "purpose": "解释什么是词向量，包含文字描述和数字向量示例"
     },
     {
-      "id": "sec_semantic_space",
-      "type": "chart",
+      "id": "middle_section",
+      "type": "diagram",
       "position": {
         "x_pct": 5,
-        "y_pct": 30,
+        "y_pct": 35,
         "width_pct": 90,
         "height_pct": 35
       },
       "visual_weight": "primary",
-      "purpose": "2D散点图展示词向量语义空间，降维后语义相似的词靠近，不同类别用不同颜色。"
+      "purpose": "展示词向量语义空间散点图（2D投影），突出语义相似性"
     },
     {
-      "id": "sec_analogy",
+      "id": "lower_section",
       "type": "diagram",
       "position": {
         "x_pct": 5,
-        "y_pct": 67,
+        "y_pct": 70,
         "width_pct": 90,
-        "height_pct": 25
+        "height_pct": 22
       },
-      "visual_weight": "primary",
-      "purpose": "展示经典类比 king - man + woman = queen 的向量运算示意图。"
+      "visual_weight": "secondary",
+      "purpose": "展示词向量类比示例（king - man + woman ≈ queen）"
     },
     {
-      "id": "sec_footer",
+      "id": "footer_section",
       "type": "footer",
       "position": {
         "x_pct": 5,
-        "y_pct": 93,
+        "y_pct": 92,
         "width_pct": 90,
-        "height_pct": 5
+        "height_pct": 8
       },
       "visual_weight": "tertiary",
-      "purpose": "简要说明词向量在NLP中的广泛应用。"
+      "purpose": "放置来源注释和版本信息"
     }
   ],
   "elements": [
     {
-      "id": "title_text",
+      "id": "main_title",
       "type": "text_block",
-      "label": "词向量（Word Embedding）的基本概念",
-      "parent_section": "sec_title",
+      "label": "词向量（Word Embedding）基本概念通俗解释",
+      "parent_section": "title_section",
       "color_key": "text_primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 400,
+        "min_width": 500,
         "min_height": 50,
         "aspect_ratio": null
       },
-      "content_hint": "居中显示主标题，使用大号粗体字，主色调深蓝灰。"
+      "content_hint": "主标题，居中加粗显示"
     },
     {
-      "id": "concept_text",
+      "id": "subtitle",
       "type": "text_block",
-      "label": "词向量是将词语映射为固定长度的实数向量，实现从离散符号到连续数值的转换。",
-      "parent_section": "sec_concept",
+      "label": "让计算机理解词语含义的魔法",
+      "parent_section": "title_section",
       "color_key": "text_secondary",
       "importance": "secondary",
       "size_hint": {
         "min_width": 300,
-        "min_height": 60,
+        "min_height": 30,
         "aspect_ratio": null
       },
-      "content_hint": "放置在概念区域左侧，说明词向量的基本定义，可配合一个小的示意图标。"
+      "content_hint": "副标题，位于主标题下方，颜色稍淡"
     },
     {
-      "id": "vec_illustration",
-      "type": "rect",
-      "label": "[0.2, 0.8, -0.3, 0.5, ...]",
-      "parent_section": "sec_concept",
-      "color_key": "secondary",
+      "id": "upper_intro_text",
+      "type": "text_block",
+      "label": "词向量将每个单词映射为固定长度的稠密向量，例如“苹果”可以表示为 [0.2, 0.8, -0.3, 0.5, ...]。这些数字代表词的语义特征，使得意义相近的词向量距离更近。独热编码是早期方法，但维度高、无法表达相似性；词向量则解决了这一问题。",
+      "parent_section": "upper_section",
+      "color_key": "text_primary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 400,
+        "min_height": 80,
+        "aspect_ratio": null
+      },
+      "content_hint": "解释性文字，段落形式，左侧排列"
+    },
+    {
+      "id": "vector_demo_rect",
+      "type": "rounded_rect",
+      "label": "",
+      "parent_section": "upper_section",
+      "color_key": "primary",
       "importance": "secondary",
       "size_hint": {
         "min_width": 200,
-        "min_height": 60,
-        "aspect_ratio": 3.3
+        "min_height": 80,
+        "aspect_ratio": "2.5"
       },
-      "content_hint": "展示一个示例词向量的数字表示，使用圆角矩形背景，内部文字标注维度数值，上方标注词语如‘猫’。"
+      "content_hint": "圆角矩形框，背景色使用primary（半透明或浅色），内部显示向量数字"
     },
     {
-      "id": "arrow_word_to_vec",
-      "type": "arrow",
-      "label": null,
-      "parent_section": "sec_concept",
-      "color_key": "primary",
+      "id": "vector_demo_text",
+      "type": "text_block",
+      "label": "[0.2, 0.8, -0.3, 0.5, ...]",
+      "parent_section": "upper_section",
+      "color_key": "text_primary",
       "importance": "tertiary",
       "size_hint": {
-        "min_width": 80,
-        "min_height": 20,
+        "min_width": 150,
+        "min_height": 30,
         "aspect_ratio": null
       },
-      "content_hint": "从左侧词语图标指向右侧向量框的箭头，表示映射过程。"
+      "content_hint": "等宽字体显示向量数字，放在vector_demo_rect内部居中"
     },
     {
-      "id": "scatter_axes",
+      "id": "scatter_axis_x",
       "type": "axis",
-      "label": "维度1 / 维度2",
-      "parent_section": "sec_semantic_space",
+      "label": "PC1",
+      "parent_section": "middle_section",
       "color_key": "text_secondary",
-      "importance": "secondary",
+      "importance": "tertiary",
       "size_hint": {
-        "min_width": 500,
-        "min_height": 300,
+        "min_width": 300,
+        "min_height": 8,
         "aspect_ratio": null
       },
-      "content_hint": "绘制2D坐标轴，轴标签为降维后的主成分，范围适当。"
+      "content_hint": "横轴，标注主成分1"
     },
     {
-      "id": "cluster_animals",
-      "type": "ellipse",
-      "label": "动物",
-      "parent_section": "sec_semantic_space",
-      "color_key": "primary",
-      "importance": "secondary",
+      "id": "scatter_axis_y",
+      "type": "axis",
+      "label": "PC2",
+      "parent_section": "middle_section",
+      "color_key": "text_secondary",
+      "importance": "tertiary",
       "size_hint": {
-        "min_width": 120,
-        "min_height": 80,
+        "min_width": 8,
+        "min_height": 250,
         "aspect_ratio": null
       },
-      "content_hint": "用虚线椭圆标注动物词语的聚类区域，内部放置猫、狗等散点。"
+      "content_hint": "纵轴，标注主成分2"
     },
     {
-      "id": "cluster_fruits",
+      "id": "cluster_region_fruit",
       "type": "ellipse",
       "label": "水果",
-      "parent_section": "sec_semantic_space",
+      "parent_section": "middle_section",
       "color_key": "secondary",
-      "importance": "secondary",
+      "importance": "tertiary",
       "size_hint": {
-        "min_width": 120,
+        "min_width": 100,
         "min_height": 80,
-        "aspect_ratio": null
+        "aspect_ratio": "1.25"
       },
-      "content_hint": "虚线椭圆标注水果聚类区域，内部放置苹果、香蕉等散点。"
+      "content_hint": "半透明椭圆区域，覆盖水果类词（如apple, banana），标注类别名称"
     },
     {
-      "id": "scatter_cat",
-      "type": "circle",
-      "label": "猫",
-      "parent_section": "sec_semantic_space",
-      "color_key": "primary",
-      "importance": "primary",
+      "id": "cluster_region_animal",
+      "type": "ellipse",
+      "label": "动物",
+      "parent_section": "middle_section",
+      "color_key": "accent",
+      "importance": "tertiary",
       "size_hint": {
-        "min_width": 12,
-        "min_height": 12,
-        "aspect_ratio": 1
+        "min_width": 100,
+        "min_height": 80,
+        "aspect_ratio": "1.25"
       },
-      "content_hint": "动物聚类中的一个圆点，标注词语‘猫’，使用主色。"
+      "content_hint": "半透明椭圆区域，覆盖动物类词（如dog, cat），标注类别名称"
     },
     {
-      "id": "scatter_dog",
-      "type": "circle",
-      "label": "狗",
-      "parent_section": "sec_semantic_space",
-      "color_key": "primary",
-      "importance": "primary",
-      "size_hint": {
-        "min_width": 12,
-        "min_height": 12,
-        "aspect_ratio": 1
-      },
-      "content_hint": "动物聚类中的一个圆点，标注‘狗’。"
-    },
-    {
-      "id": "scatter_apple",
+      "id": "point_apple",
       "type": "circle",
       "label": "苹果",
-      "parent_section": "sec_semantic_space",
-      "color_key": "secondary",
-      "importance": "primary",
+      "parent_section": "middle_section",
+      "color_key": "primary",
+      "importance": "secondary",
       "size_hint": {
         "min_width": 12,
         "min_height": 12,
         "aspect_ratio": 1
       },
-      "content_hint": "水果聚类中的一个圆点，标注‘苹果’。"
+      "content_hint": "散点，颜色代表语义类别，旁边标注词语"
     },
     {
-      "id": "scatter_banana",
+      "id": "point_banana",
       "type": "circle",
       "label": "香蕉",
-      "parent_section": "sec_semantic_space",
-      "color_key": "secondary",
-      "importance": "primary",
+      "parent_section": "middle_section",
+      "color_key": "primary",
+      "importance": "secondary",
       "size_hint": {
         "min_width": 12,
         "min_height": 12,
         "aspect_ratio": 1
       },
-      "content_hint": "水果聚类中的一个圆点，标注‘香蕉’。"
+      "content_hint": "同上"
     },
     {
-      "id": "king_point",
+      "id": "point_dog",
       "type": "circle",
+      "label": "狗",
+      "parent_section": "middle_section",
+      "color_key": "accent",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 12,
+        "min_height": 12,
+        "aspect_ratio": 1
+      },
+      "content_hint": "散点，颜色与动物类别一致"
+    },
+    {
+      "id": "point_cat",
+      "type": "circle",
+      "label": "猫",
+      "parent_section": "middle_section",
+      "color_key": "accent",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 12,
+        "min_height": 12,
+        "aspect_ratio": 1
+      },
+      "content_hint": "同上"
+    },
+    {
+      "id": "point_queen",
+      "type": "circle",
+      "label": "女王",
+      "parent_section": "middle_section",
+      "color_key": "palette[2]",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 12,
+        "min_height": 12,
+        "aspect_ratio": 1
+      },
+      "content_hint": "散点，与其他类别区分"
+    },
+    {
+      "id": "analogy_king",
+      "type": "rect",
       "label": "king",
-      "parent_section": "sec_analogy",
+      "parent_section": "lower_section",
       "color_key": "primary",
-      "importance": "primary",
+      "importance": "secondary",
       "size_hint": {
-        "min_width": 16,
-        "min_height": 16,
-        "aspect_ratio": 1
+        "min_width": 80,
+        "min_height": 40,
+        "aspect_ratio": "2"
       },
-      "content_hint": "类比图中的国王向量点，位于左上。"
+      "content_hint": "矩形节点，内部显示'king'，位于左侧上方"
     },
     {
-      "id": "man_point",
-      "type": "circle",
+      "id": "analogy_man",
+      "type": "rect",
       "label": "man",
-      "parent_section": "sec_analogy",
-      "color_key": "text_primary",
-      "importance": "primary",
-      "size_hint": {
-        "min_width": 14,
-        "min_height": 14,
-        "aspect_ratio": 1
-      },
-      "content_hint": "类比图中的男人向量点，位于左下。"
-    },
-    {
-      "id": "woman_point",
-      "type": "circle",
-      "label": "woman",
-      "parent_section": "sec_analogy",
-      "color_key": "text_primary",
-      "importance": "primary",
-      "size_hint": {
-        "min_width": 14,
-        "min_height": 14,
-        "aspect_ratio": 1
-      },
-      "content_hint": "类比图中的女人向量点，位于右下。"
-    },
-    {
-      "id": "queen_point",
-      "type": "circle",
-      "label": "queen",
-      "parent_section": "sec_analogy",
+      "parent_section": "lower_section",
       "color_key": "primary",
-      "importance": "primary",
-      "size_hint": {
-        "min_width": 16,
-        "min_height": 16,
-        "aspect_ratio": 1
-      },
-      "content_hint": "类比图中的王后向量点，位于右上。"
-    },
-    {
-      "id": "arrow_man_king",
-      "type": "arrow",
-      "label": "+royal",
-      "parent_section": "sec_analogy",
-      "color_key": "accent",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 60,
-        "min_height": 15,
-        "aspect_ratio": null
+        "min_width": 80,
+        "min_height": 40,
+        "aspect_ratio": "2"
       },
-      "content_hint": "从 man 指向 king 的箭头，标注‘+royal’，表示增加皇权属性。"
+      "content_hint": "矩形节点，内部显示'man'，位于左侧下方"
     },
     {
-      "id": "arrow_woman_queen",
-      "type": "arrow",
-      "label": "+royal",
-      "parent_section": "sec_analogy",
-      "color_key": "accent",
+      "id": "analogy_woman",
+      "type": "rect",
+      "label": "woman",
+      "parent_section": "lower_section",
+      "color_key": "secondary",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 60,
-        "min_height": 15,
+        "min_width": 80,
+        "min_height": 40,
+        "aspect_ratio": "2"
+      },
+      "content_hint": "矩形节点，内部显示'woman'，位于右侧下方"
+    },
+    {
+      "id": "analogy_queen",
+      "type": "rect",
+      "label": "queen",
+      "parent_section": "lower_section",
+      "color_key": "secondary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 80,
+        "min_height": 40,
+        "aspect_ratio": "2"
+      },
+      "content_hint": "矩形节点，内部显示'queen'，位于右侧上方"
+    },
+    {
+      "id": "arrow_man_to_king",
+      "type": "arrow",
+      "label": "+royal",
+      "parent_section": "lower_section",
+      "color_key": "primary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 100,
+        "min_height": 10,
         "aspect_ratio": null
       },
-      "content_hint": "从 woman 指向 queen 的箭头，标注‘+royal’，与左侧平行。"
+      "content_hint": "箭头从man指向king，标注'+royal'"
+    },
+    {
+      "id": "arrow_woman_to_queen",
+      "type": "arrow",
+      "label": "+royal",
+      "parent_section": "lower_section",
+      "color_key": "secondary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 100,
+        "min_height": 10,
+        "aspect_ratio": null
+      },
+      "content_hint": "箭头从woman指向queen，标注'+royal'，与左侧箭头平行"
     },
     {
       "id": "analogy_formula",
       "type": "text_block",
       "label": "king - man + woman ≈ queen",
-      "parent_section": "sec_analogy",
+      "parent_section": "lower_section",
       "color_key": "text_primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 200,
-        "min_height": 30,
+        "min_width": 300,
+        "min_height": 40,
         "aspect_ratio": null
       },
-      "content_hint": "在类比图底部居中展示公式文本。"
+      "content_hint": "等宽或稍大字体显示类比公式，位于节点下方居中"
     },
     {
       "id": "footer_text",
       "type": "text_block",
-      "label": "应用：文本分类、情感分析、问答系统、机器翻译等",
-      "parent_section": "sec_footer",
+      "label": "数据来源：公开词向量预训练数据；图示仅作概念说明",
+      "parent_section": "footer_section",
       "color_key": "text_secondary",
       "importance": "tertiary",
       "size_hint": {
@@ -361,15 +403,15 @@
         "min_height": 20,
         "aspect_ratio": null
       },
-      "content_hint": "页脚区域居中显示词向量的常见应用领域，字号较小。"
+      "content_hint": "小号字体，注释性文字"
     }
   ],
   "connections": [
     {
       "id": "conn_man_king",
       "type": "arrow",
-      "from_element": "man_point",
-      "to_element": "king_point",
+      "from_element": "analogy_man",
+      "to_element": "analogy_king",
       "direction": "bottom-to-top",
       "label": "+royal",
       "line_style": "solid"
@@ -377,21 +419,12 @@
     {
       "id": "conn_woman_queen",
       "type": "arrow",
-      "from_element": "woman_point",
-      "to_element": "queen_point",
+      "from_element": "analogy_woman",
+      "to_element": "analogy_queen",
       "direction": "bottom-to-top",
       "label": "+royal",
       "line_style": "solid"
-    },
-    {
-      "id": "conn_parallel_hint",
-      "type": "line",
-      "from_element": "arrow_man_king",
-      "to_element": "arrow_woman_queen",
-      "direction": "left-to-right",
-      "label": null,
-      "line_style": "dashed"
     }
   ],
-  "design_notes": "整体采用现代扁平化科普风格，卡片式布局与柔和渐变背景。三个主区域用浅色圆角卡片区分，卡片有细微阴影。标题居中醒目。概念区域左侧文字右侧数字向量框，中间用箭头连接。语义空间散点图使用带网格的坐标系，不同词语聚类用半透明椭圆标记，散点大小适中并带标签。类比展示区使用四个向量的点，两个平行的箭头高亮表示关系可迁移，底部公式加粗。所有文字清晰易读，配色以蓝紫为主，点缀暖色强调类比运算。留白充足，阅读顺序自上而下自然流畅。"
+  "design_notes": "整体采用垂直三区域布局，上部文字+向量示例直观展示概念，中部用t-SNE降维散点图体现语义聚类（添加椭圆色块），下部用平行箭头类比展示语义可迁移性。配色柔和蓝紫渐变，背景浅色。散点颜色按类别区分（水果、动物、其他）。所有文字使用清晰易读的无衬线字体。保持留白，让信息呼吸。"
 }
