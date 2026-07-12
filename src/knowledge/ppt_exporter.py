@@ -134,9 +134,9 @@ def _add_sample_slide(
 
 
 def export_ppt(output_path: str | None = None) -> str:
-    """Generate PPT from all existing Phase 2/3 outputs.
+    """Generate PPT from all existing Phase 3 outputs.
 
-    Scans outputs/ for v2_final.svg + metadata files and builds slides.
+    Scans outputs/ for v3_final.svg + metadata files and builds slides.
 
     Args:
         output_path: Path for the .pptx file. Defaults to outputs/presentation.pptx.
@@ -159,7 +159,7 @@ def export_ppt(output_path: str | None = None) -> str:
             continue
 
         # Find final SVG
-        svg_files = sorted(sample_dir.glob("*v2_final.svg"))
+        svg_files = sorted(sample_dir.glob("*v3_final.svg"))
         if not svg_files:
             svg_files = sorted(sample_dir.glob("*.svg"))
         if not svg_files:

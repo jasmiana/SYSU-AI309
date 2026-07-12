@@ -3,7 +3,7 @@
     "primary_type": "concept_explanation",
     "secondary_type": "科普",
     "confidence": 0.95,
-    "reasoning": "用户明确要求'解释大语言模型的基本原理'，属于概念解释类，适合科普式可视化。"
+    "reasoning": "用户明确要求'解释大语言模型的基本原理'，属于对技术概念进行原理性解释，适合概念说明类的可视化，同时面向大众科普。"
   },
   "entities": [
     {
@@ -27,13 +27,13 @@
     {
       "name": "多头注意力",
       "type": "term",
-      "role": "subject",
+      "role": "attribute",
       "importance": "secondary"
     },
     {
       "name": "前馈神经网络",
       "type": "term",
-      "role": "subject",
+      "role": "attribute",
       "importance": "secondary"
     },
     {
@@ -51,26 +51,26 @@
     {
       "name": "残差连接",
       "type": "term",
-      "role": "subject",
+      "role": "attribute",
       "importance": "secondary"
     },
     {
       "name": "层归一化",
       "type": "term",
-      "role": "subject",
+      "role": "attribute",
       "importance": "secondary"
     },
     {
       "name": "编码器",
       "type": "term",
-      "role": "subject",
-      "importance": "secondary"
+      "role": "attribute",
+      "importance": "context"
     },
     {
       "name": "解码器",
       "type": "term",
-      "role": "subject",
-      "importance": "secondary"
+      "role": "attribute",
+      "importance": "context"
     },
     {
       "name": "预训练",
@@ -93,13 +93,19 @@
     {
       "name": "GPT",
       "type": "term",
-      "role": "subject",
+      "role": "object",
       "importance": "context"
     },
     {
       "name": "BERT",
       "type": "term",
-      "role": "subject",
+      "role": "object",
+      "importance": "context"
+    },
+    {
+      "name": "Token",
+      "type": "term",
+      "role": "object",
       "importance": "context"
     }
   ],
@@ -108,109 +114,94 @@
       "type": "hierarchy",
       "source": "大语言模型",
       "target": "Transformer",
-      "description": "大语言模型基于Transformer架构",
+      "description": "大语言模型的核心架构是Transformer",
       "quantifier": null
     },
     {
       "type": "hierarchy",
       "source": "Transformer",
       "target": "自注意力机制",
-      "description": "Transformer的核心组件是自注意力机制",
-      "quantifier": null
-    },
-    {
-      "type": "hierarchy",
-      "source": "自注意力机制",
-      "target": "多头注意力",
-      "description": "多头注意力是自注意力的扩展",
+      "description": "自注意力机制是Transformer的核心组件",
       "quantifier": null
     },
     {
       "type": "hierarchy",
       "source": "Transformer",
       "target": "前馈神经网络",
-      "description": "Transformer包含前馈神经网络层",
+      "description": "前馈神经网络位于自注意力层之后",
       "quantifier": null
     },
     {
       "type": "hierarchy",
       "source": "Transformer",
       "target": "词嵌入",
-      "description": "输入通过词嵌入转换为向量",
+      "description": "词嵌入将离散的词汇映射为向量",
       "quantifier": null
     },
     {
       "type": "hierarchy",
       "source": "Transformer",
       "target": "位置编码",
-      "description": "位置编码注入位置信息",
+      "description": "位置编码为模型提供词序信息",
       "quantifier": null
     },
     {
       "type": "hierarchy",
       "source": "Transformer",
       "target": "残差连接",
-      "description": "残差连接避免梯度消失",
+      "description": "残差连接帮助梯度流动，防止退化",
       "quantifier": null
     },
     {
       "type": "hierarchy",
       "source": "Transformer",
       "target": "层归一化",
-      "description": "层归一化稳定训练",
+      "description": "层归一化稳定训练过程",
       "quantifier": null
     },
     {
       "type": "hierarchy",
       "source": "Transformer",
       "target": "编码器",
-      "description": "Transformer包含编码器堆叠",
+      "description": "编码器负责理解输入序列",
       "quantifier": null
     },
     {
       "type": "hierarchy",
       "source": "Transformer",
       "target": "解码器",
-      "description": "Transformer包含解码器堆叠",
+      "description": "解码器负责生成输出序列",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "预训练",
       "target": "微调",
-      "description": "先预训练得到基础模型，再微调适应任务",
+      "description": "模型先进行预训练，再针对任务微调",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "微调",
       "target": "RLHF",
-      "description": "微调后可进一步用RLHF优化对齐",
+      "description": "RLHF进一步优化模型与人类偏好对齐",
       "quantifier": null
     },
     {
-      "type": "hierarchy",
-      "source": "大语言模型",
-      "target": "GPT",
-      "description": "GPT是典型的自回归大语言模型",
-      "quantifier": null
-    },
-    {
-      "type": "hierarchy",
-      "source": "大语言模型",
-      "target": "BERT",
-      "description": "BERT是典型的编码器类大语言模型",
+      "type": "causality",
+      "source": "自注意力机制",
+      "target": "大语言模型",
+      "description": "自注意力机制使模型能捕获长距离依赖，是大语言模型强大能力的关键",
       "quantifier": null
     }
   ],
   "content_summary": {
     "title": "大语言模型的基本原理",
     "key_points": [
-      "大语言模型的核心是Transformer架构，它利用自注意力机制高效处理长序列文本。",
-      "自注意力机制通过计算序列中每个位置与其他位置的注意力权重来捕捉依赖关系。",
-      "Transformer由编码器和解码器组成，每个模块包含多头注意力、前馈神经网络、残差连接和层归一化。",
-      "模型通过预训练在大规模语料上学习语言表示，再通过微调和RLHF适应特定任务。",
-      "大语言模型如GPT和BERT在自然语言处理任务中取得了突破性进展。"
+      "大语言模型基于Transformer架构，通过自注意力机制处理输入序列，实现上下文理解。",
+      "预训练阶段使用海量文本数据训练模型学习语言规律，微调阶段针对特定任务调整参数以提升性能。",
+      "RLHF（基于人类反馈的强化学习）进一步优化模型输出，使其更符合人类偏好。",
+      "位置编码和词嵌入将离散的词汇转化为向量表示，使模型能处理序列顺序信息。"
     ],
     "target_audience": "general",
     "language": "zh"
@@ -218,35 +209,36 @@
   "knowledge_gap": {
     "needs_external_knowledge": true,
     "search_queries": [
-      "大语言模型基本原理",
-      "Transformer架构详解",
-      "自注意力机制说明"
+      "大语言模型 基本原理 Transformer 自注意力机制",
+      "大语言模型 训练流程 预训练 微调 RLHF",
+      "大语言模型 组件 词嵌入 位置编码"
     ],
-    "fallback_knowledge": "大语言模型是基于Transformer的深度学习模型，通过自注意力机制处理序列数据，包含预训练和微调阶段。"
+    "fallback_knowledge": "大语言模型主要基于Transformer架构，由自注意力层、前馈神经网络、残差连接和层归一化组成。训练分为预训练、微调和RLHF三个阶段。"
   },
   "chart_type": {
     "recommended": "concept_map",
     "alternatives": [
-      "architecture_diagram"
+      "architecture_diagram",
+      "flowchart"
     ],
     "type_confidence": 0.9
   },
-  "knowledge_supplement": "## 大语言模型核心概念\n\n### transformer_components:\n  - **Input Embedding**: 将输入token映射为稠密向量\n  - **Positional Encoding**: 为序列添加位置信息\n  - **Multi-Head Self-Attention**: 同时关注输入序列中不同位置的关系\n  - **Feed-Forward Network**: 对每个位置的表示进行非线性变换\n  - **Layer Normalization**: 稳定训练，加速收敛\n  - **Residual Connection**: 跳跃连接，缓解梯度消失\n### training_stages:\n  - **{'stage': '预训练 (Pre-training)', 'description': '在大规模语料上学习语言模式，预测下一个token'}**: 在大规模语料上学习语言模式，预测下一个token\n  - **{'stage': '监督微调 (SFT)', 'description': '在人工标注的指令数据上微调，学会遵循指令'}**: 在人工标注的指令数据上微调，学会遵循指令\n  - **{'stage': 'RLHF', 'description': '基于人类反馈的强化学习，对齐人类偏好'}**: 基于人类反馈的强化学习，对齐人类偏好\n### inference_flow: 输入文本 → Tokenization → Embedding → N层Transformer Block → 输出概率分布 → 采样/贪心解码 → 生成文本\n\n## 大语言模型核心概念\n\n### transformer_components:\n  - **Input Embedding**: 将输入token映射为稠密向量\n  - **Positional Encoding**: 为序列添加位置信息\n  - **Multi-Head Self-Attention**: 同时关注输入序列中不同位置的关系\n  - **Feed-Forward Network**: 对每个位置的表示进行非线性变换\n  - **Layer Normalization**: 稳定训练，加速收敛\n  - **Residual Connection**: 跳跃连接，缓解梯度消失\n### training_stages:\n  - **{'stage': '预训练 (Pre-training)', 'description': '在大规模语料上学习语言模式，预测下一个token'}**: 在大规模语料上学习语言模式，预测下一个token\n  - **{'stage': '监督微调 (SFT)', 'description': '在人工标注的指令数据上微调，学会遵循指令'}**: 在人工标注的指令数据上微调，学会遵循指令\n  - **{'stage': 'RLHF', 'description': '基于人类反馈的强化学习，对齐人类偏好'}**: 基于人类反馈的强化学习，对齐人类偏好\n### inference_flow: 输入文本 → Tokenization → Embedding → N层Transformer Block → 输出概率分布 → 采样/贪心解码 → 生成文本",
+  "knowledge_supplement": "## 大语言模型核心概念\n\n### transformer_components:\n  - **Input Embedding**: 将输入token映射为稠密向量\n  - **Positional Encoding**: 为序列添加位置信息\n  - **Multi-Head Self-Attention**: 同时关注输入序列中不同位置的关系\n  - **Feed-Forward Network**: 对每个位置的表示进行非线性变换\n  - **Layer Normalization**: 稳定训练，加速收敛\n  - **Residual Connection**: 跳跃连接，缓解梯度消失\n### training_stages:\n  - **{'stage': '预训练 (Pre-training)', 'description': '在大规模语料上学习语言模式，预测下一个token'}**: 在大规模语料上学习语言模式，预测下一个token\n  - **{'stage': '监督微调 (SFT)', 'description': '在人工标注的指令数据上微调，学会遵循指令'}**: 在人工标注的指令数据上微调，学会遵循指令\n  - **{'stage': 'RLHF', 'description': '基于人类反馈的强化学习，对齐人类偏好'}**: 基于人类反馈的强化学习，对齐人类偏好\n### inference_flow: 输入文本 → Tokenization → Embedding → N层Transformer Block → 输出概率分布 → 采样/贪心解码 → 生成文本\n\n## 大语言模型核心概念\n\n### transformer_components:\n  - **Input Embedding**: 将输入token映射为稠密向量\n  - **Positional Encoding**: 为序列添加位置信息\n  - **Multi-Head Self-Attention**: 同时关注输入序列中不同位置的关系\n  - **Feed-Forward Network**: 对每个位置的表示进行非线性变换\n  - **Layer Normalization**: 稳定训练，加速收敛\n  - **Residual Connection**: 跳跃连接，缓解梯度消失\n### training_stages:\n  - **{'stage': '预训练 (Pre-training)', 'description': '在大规模语料上学习语言模式，预测下一个token'}**: 在大规模语料上学习语言模式，预测下一个token\n  - **{'stage': '监督微调 (SFT)', 'description': '在人工标注的指令数据上微调，学会遵循指令'}**: 在人工标注的指令数据上微调，学会遵循指令\n  - **{'stage': 'RLHF', 'description': '基于人类反馈的强化学习，对齐人类偏好'}**: 基于人类反馈的强化学习，对齐人类偏好\n### inference_flow: 输入文本 → Tokenization → Embedding → N层Transformer Block → 输出概率分布 → 采样/贪心解码 → 生成文本\n\n## 大语言模型核心概念\n\n### transformer_components:\n  - **Input Embedding**: 将输入token映射为稠密向量\n  - **Positional Encoding**: 为序列添加位置信息\n  - **Multi-Head Self-Attention**: 同时关注输入序列中不同位置的关系\n  - **Feed-Forward Network**: 对每个位置的表示进行非线性变换\n  - **Layer Normalization**: 稳定训练，加速收敛\n  - **Residual Connection**: 跳跃连接，缓解梯度消失\n### training_stages:\n  - **{'stage': '预训练 (Pre-training)', 'description': '在大规模语料上学习语言模式，预测下一个token'}**: 在大规模语料上学习语言模式，预测下一个token\n  - **{'stage': '监督微调 (SFT)', 'description': '在人工标注的指令数据上微调，学会遵循指令'}**: 在人工标注的指令数据上微调，学会遵循指令\n  - **{'stage': 'RLHF', 'description': '基于人类反馈的强化学习，对齐人类偏好'}**: 基于人类反馈的强化学习，对齐人类偏好\n### inference_flow: 输入文本 → Tokenization → Embedding → N层Transformer Block → 输出概率分布 → 采样/贪心解码 → 生成文本",
   "knowledge_sources": [
     {
-      "query": "大语言模型基本原理",
+      "query": "大语言模型 基本原理 Transformer 自注意力机制",
       "source": "fallback_db",
       "reliability": "high"
     },
     {
-      "query": "Transformer架构详解",
+      "query": "大语言模型 训练流程 预训练 微调 RLHF",
       "source": "fallback_db",
       "reliability": "high"
     },
     {
-      "query": "自注意力机制说明",
-      "source": "none",
-      "reliability": "unavailable"
+      "query": "大语言模型 组件 词嵌入 位置编码",
+      "source": "fallback_db",
+      "reliability": "high"
     }
   ]
 }

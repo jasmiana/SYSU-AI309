@@ -5,6 +5,8 @@
   "ground_truth_entities": [
     {"name": "大语言模型", "type": "term", "role": "subject", "importance": "primary"},
     {"name": "Transformer", "type": "term", "role": "subject", "importance": "primary"},
+    {"name": "分词", "type": "term", "role": "subject", "importance": "secondary"},
+    {"name": "Token", "type": "term", "role": "subject", "importance": "secondary"},
     {"name": "自注意力机制", "type": "term", "role": "subject", "importance": "secondary"},
     {"name": "多头注意力", "type": "term", "role": "subject", "importance": "secondary"},
     {"name": "前馈神经网络", "type": "term", "role": "subject", "importance": "secondary"},

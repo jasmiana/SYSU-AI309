@@ -11,7 +11,7 @@ for d in sorted(outputs.iterdir()):
         continue
 
     # Validate SVG
-    svg_files = sorted(d.glob("*v2_final.svg"))
+    svg_files = sorted(d.glob("*v3_final.svg"))
     svg_status = "no SVG found"
     svg_size = 0
     elements = {}

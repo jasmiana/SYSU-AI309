@@ -2,8 +2,8 @@
   "intent": {
     "primary_type": "process_flow",
     "secondary_type": null,
-    "confidence": 0.95,
-    "reasoning": "用户明确要求'绘制SVG流程图'，并给出了从咖啡豆到咖啡的完整生产链的五个步骤，因此主要类型为流程展示。"
+    "confidence": 1.0,
+    "reasoning": "用户明确要求绘制SVG流程图展示完整生产链，步骤已列出（种植、采摘、烘焙、研磨、冲煮），属于典型的流程展示。"
   },
   "entities": [
     {
@@ -21,31 +21,31 @@
     {
       "name": "种植",
       "type": "term",
-      "role": "subject",
+      "role": "object",
       "importance": "primary"
     },
     {
       "name": "采摘",
       "type": "term",
-      "role": "subject",
+      "role": "object",
       "importance": "primary"
     },
     {
       "name": "烘焙",
       "type": "term",
-      "role": "subject",
+      "role": "object",
       "importance": "primary"
     },
     {
       "name": "研磨",
       "type": "term",
-      "role": "subject",
+      "role": "object",
       "importance": "primary"
     },
     {
       "name": "冲煮",
       "type": "term",
-      "role": "subject",
+      "role": "object",
       "importance": "primary"
     },
     {
@@ -65,86 +65,60 @@
       "type": "term",
       "role": "object",
       "importance": "secondary"
-    },
-    {
-      "name": "咖啡树",
-      "type": "term",
-      "role": "object",
-      "importance": "context"
-    },
-    {
-      "name": "咖啡果",
-      "type": "term",
-      "role": "object",
-      "importance": "context"
     }
   ],
   "relations": [
     {
       "type": "sequence",
+      "source": "咖啡豆",
+      "target": "种植",
+      "description": "咖啡豆从种植开始",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
       "source": "种植",
       "target": "采摘",
-      "description": "咖啡种植后，果实成熟进行采摘",
+      "description": "种植后进入采摘阶段",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "采摘",
       "target": "烘焙",
-      "description": "采摘后的咖啡豆（生豆）进行烘焙",
+      "description": "采摘后得到生豆，再烘焙成熟豆",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "烘焙",
       "target": "研磨",
-      "description": "烘焙后的熟豆研磨成咖啡粉",
+      "description": "熟豆被研磨成咖啡粉",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "研磨",
       "target": "冲煮",
-      "description": "咖啡粉通过冲煮得到最终咖啡饮品",
+      "description": "咖啡粉通过冲煮制成咖啡",
       "quantifier": null
     },
     {
       "type": "sequence",
-      "source": "咖啡豆",
-      "target": "生豆",
-      "description": "咖啡豆初始形态为生豆",
-      "quantifier": null
-    },
-    {
-      "type": "sequence",
-      "source": "生豆",
-      "target": "熟豆",
-      "description": "生豆经过烘焙成为熟豆",
-      "quantifier": null
-    },
-    {
-      "type": "sequence",
-      "source": "熟豆",
-      "target": "咖啡粉",
-      "description": "熟豆研磨成咖啡粉",
-      "quantifier": null
-    },
-    {
-      "type": "sequence",
-      "source": "咖啡粉",
+      "source": "冲煮",
       "target": "咖啡",
-      "description": "咖啡粉冲煮后得到咖啡饮品",
+      "description": "最终得到咖啡饮品",
       "quantifier": null
     }
   ],
   "content_summary": {
-    "title": "从咖啡豆到咖啡的完整生产链流程图",
+    "title": "从咖啡豆到咖啡的完整生产链",
     "key_points": [
-      "种植环节：咖啡树生长并结出咖啡果，果实内含咖啡豆。",
-      "采摘环节：成熟咖啡果被手工或机械采摘，取出咖啡豆（生豆）。",
-      "烘焙环节：生豆在高温下烘焙，产生香气和风味，颜色变深成为熟豆。",
-      "研磨环节：熟豆被研磨成细粉，增加萃取面积。",
-      "冲煮环节：咖啡粉与热水接触，通过萃取得到一杯香浓咖啡。"
+      "种植阶段：咖啡豆在适宜气候和海拔下种植，需要精心管理。",
+      "采摘阶段：成熟的咖啡果经手工或机械采摘后，去除果肉得到生豆。",
+      "烘焙阶段：生豆通过加热烘焙，发生化学反应，产生风味物质，颜色加深成熟豆。",
+      "研磨阶段：熟豆被研磨成不同粗细的咖啡粉，影响萃取效果。",
+      "冲煮阶段：咖啡粉与热水接触，通过过滤或浸泡方式萃取，最终形成一杯咖啡。"
     ],
     "target_audience": "general",
     "language": "zh"
@@ -159,6 +133,6 @@
     "alternatives": [
       "process_diagram"
     ],
-    "type_confidence": 0.98
+    "type_confidence": 1.0
   }
 }

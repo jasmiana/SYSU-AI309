@@ -471,27 +471,27 @@ outputs/
 │   ├── 01_content_ir.json          (含 knowledge_supplement)
 │   ├── 02_layout_ir.json
 │   ├── 03_review_r{1,2}_ir.json
-│   └── sample1_llm_principles_v2_final.svg
+│   └── sample1_llm_principles_v3_final.svg
 ├── sample2_word_embedding/
 │   ├── 01_content_ir.json          (含词向量范式 knowledge)
 │   ├── 02_layout_ir.json
 │   ├── 03_review_r1_ir.json
-│   └── sample2_word_embedding_v2_final.svg
+│   └── sample2_word_embedding_v3_final.svg
 ├── sample3_sysu_history/
 │   ├── 01_content_ir.json          (含 SYSU 12 节点 knowledge)
 │   ├── 02_layout_ir.json
 │   ├── 03_review_r1_ir.json
-│   └── sample3_sysu_history_v2_final.svg
+│   └── sample3_sysu_history_v3_final.svg
 ├── sample4_coffee_chain/
 │   ├── 01_content_ir.json          (knowledge_gap=false)
 │   ├── 02_layout_ir.json
 │   ├── 03_review_r1_ir.json
-│   └── sample4_coffee_chain_v2_final.svg
+│   └── sample4_coffee_chain_v3_final.svg
 ├── sample5_video_comparison/
 │   ├── 01_content_ir.json          (knowledge_gap=false)
 │   ├── 02_layout_ir.json
 │   ├── 03_review_r1_ir.json
-│   └── sample5_video_comparison_v2_final.svg
+│   └── sample5_video_comparison_v3_final.svg
 ├── presentation.pptx               (PPT 导出)
 ├── _logs/*/trace.json
 src/knowledge/fallback_db.json      (本地知识库)

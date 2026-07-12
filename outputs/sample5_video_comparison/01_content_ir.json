@@ -3,7 +3,7 @@
     "primary_type": "data_comparison",
     "secondary_type": null,
     "confidence": 0.95,
-    "reasoning": "用户明确要求对比数据，给出了三个平台的相对数量关系，属于数据对比类型。"
+    "reasoning": "用户明确要求对比三个平台的视频数量倍数关系，属于数据对比类型。"
   },
   "entities": [
     {
@@ -15,26 +15,26 @@
     {
       "name": "TikTok",
       "type": "organization",
-      "role": "object",
+      "role": "subject",
       "importance": "primary"
     },
     {
       "name": "Kuaishou",
       "type": "organization",
-      "role": "object",
+      "role": "subject",
       "importance": "primary"
     },
     {
       "name": "10",
       "type": "number",
       "role": "attribute",
-      "importance": "primary"
+      "importance": "secondary"
     },
     {
       "name": "2",
       "type": "number",
       "role": "attribute",
-      "importance": "primary"
+      "importance": "secondary"
     }
   ],
   "relations": [
@@ -54,26 +54,26 @@
     }
   ],
   "content_summary": {
-    "title": "短视频平台视频数量对比",
+    "title": "视频平台视频数量对比：YouTube vs TikTok vs Kuaishou",
     "key_points": [
-      "YouTube的视频数量是TikTok的10倍，规模优势明显。",
-      "TikTok的视频数量是Kuaishou的2倍，位居中游。",
-      "在三大平台中，Kuaishou的视频数量最少。",
-      "数据反映了不同平台的内容生态差异和用户活跃度。",
-      "此对比基于公开数据估算，实际数值可能有所浮动。"
+      "YouTube的视频数量是TikTok的10倍。",
+      "TikTok的视频数量是快手（Kuaishou）的2倍。",
+      "三者形成明显的视频数量层级：YouTube > TikTok > Kuaishou。",
+      "这一对比揭示了主流视频分享平台之间的规模差异。"
     ],
     "target_audience": "general",
-    "language": "zh"
+    "language": "en"
   },
   "knowledge_gap": {
     "needs_external_knowledge": false,
     "search_queries": [],
-    "fallback_knowledge": null
+    "fallback_knowledge": "根据用户提供的倍数关系，无需补充外部绝对数值。"
   },
   "chart_type": {
     "recommended": "comparison_chart",
     "alternatives": [
-      "bar_chart"
+      "bar_chart",
+      "horizontal_bar_chart"
     ],
     "type_confidence": 0.9
   }

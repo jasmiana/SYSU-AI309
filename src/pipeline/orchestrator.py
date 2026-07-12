@@ -324,7 +324,7 @@ class Pipeline:
             "layout_ir": layout_ir,
             "review_ir": final_review,
             "svg_path": str(
-                save_svg(sample_name, final_svg, version="v2_final")
+                save_svg(sample_name, final_svg, version="v3_final")
             ),
             "trace_path": str(trace_path),
             "duration_s": round(total_duration, 2),

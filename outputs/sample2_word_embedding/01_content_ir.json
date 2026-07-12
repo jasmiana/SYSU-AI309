@@ -1,9 +1,9 @@
 {
   "intent": {
     "primary_type": "concept_explanation",
-    "secondary_type": "popular_science",
-    "confidence": 0.95,
-    "reasoning": "用户明确要求‘通俗易懂地解释词向量基本概念’，属于概念解释，且强调通俗易懂，因此同时标注科普类型。"
+    "secondary_type": "科普",
+    "confidence": 0.9,
+    "reasoning": "用户明确要求'通俗易懂地解释词向量的基本概念'，属于概念解释类且面向大众科普"
   },
   "entities": [
     {
@@ -15,7 +15,7 @@
     {
       "name": "Word Embedding",
       "type": "term",
-      "role": "object",
+      "role": "subject",
       "importance": "primary"
     },
     {
@@ -31,22 +31,22 @@
       "importance": "secondary"
     },
     {
-      "name": "语义相似度",
-      "type": "term",
-      "role": "attribute",
-      "importance": "secondary"
-    },
-    {
       "name": "向量空间",
       "type": "term",
       "role": "attribute",
       "importance": "secondary"
     },
     {
-      "name": "维度",
+      "name": "语义相似度",
       "type": "term",
       "role": "attribute",
-      "importance": "context"
+      "importance": "secondary"
+    },
+    {
+      "name": "Word2Vec",
+      "type": "term",
+      "role": "object",
+      "importance": "primary"
     },
     {
       "name": "CBOW",
@@ -61,12 +61,6 @@
       "importance": "secondary"
     },
     {
-      "name": "Word2Vec",
-      "type": "term",
-      "role": "object",
-      "importance": "primary"
-    },
-    {
       "name": "GloVe",
       "type": "term",
       "role": "object",
@@ -76,119 +70,91 @@
       "name": "FastText",
       "type": "term",
       "role": "object",
-      "importance": "secondary"
-    },
-    {
-      "name": "嵌入层",
-      "type": "term",
-      "role": "attribute",
       "importance": "context"
     },
     {
-      "name": "神经网络",
-      "type": "term",
-      "role": "attribute",
-      "importance": "context"
-    },
-    {
-      "name": "词嵌入矩阵",
+      "name": "共现矩阵",
       "type": "term",
       "role": "object",
       "importance": "secondary"
     },
     {
-      "name": "预训练",
+      "name": "余弦相似度",
       "type": "term",
       "role": "attribute",
-      "importance": "context"
+      "importance": "secondary"
     },
     {
       "name": "稠密向量",
       "type": "term",
       "role": "attribute",
       "importance": "secondary"
+    },
+    {
+      "name": "稀疏向量",
+      "type": "term",
+      "role": "attribute",
+      "importance": "context"
     }
   ],
   "relations": [
     {
       "type": "hierarchy",
-      "source": "词向量",
-      "target": "Word Embedding",
-      "description": "词向量即Word Embedding的中文名称",
-      "quantifier": null
-    },
-    {
-      "type": "hierarchy",
-      "source": "词向量",
-      "target": "分布式表示",
-      "description": "词向量的本质是分布式表示，将词语映射为稠密向量",
+      "source": "分布式表示",
+      "target": "词向量",
+      "description": "词向量是分布式表示的一种具体实现",
       "quantifier": null
     },
     {
       "type": "comparison",
-      "source": "独热编码",
-      "target": "分布式表示",
-      "description": "独热编码是稀疏高维表示，分布式表示（词向量）是低维稠密且能捕捉语义关系",
-      "quantifier": null
-    },
-    {
-      "type": "sequence",
-      "source": "独热编码",
-      "target": "词向量",
-      "description": "从独热编码发展到词向量，解决了语义鸿沟问题",
+      "source": "词向量",
+      "target": "独热编码",
+      "description": "词向量是稠密向量，独热编码是稀疏向量，前者维度更低且能表示语义",
       "quantifier": null
     },
     {
       "type": "hierarchy",
       "source": "Word2Vec",
       "target": "CBOW",
-      "description": "CBOW是Word2Vec的一种训练模型",
+      "description": "CBOW是Word2Vec的一种训练模型，根据上下文预测目标词",
       "quantifier": null
     },
     {
       "type": "hierarchy",
       "source": "Word2Vec",
       "target": "Skip-gram",
-      "description": "Skip-gram是Word2Vec的另一种训练模型",
+      "description": "Skip-gram是Word2Vec的另一种训练模型，根据目标词预测上下文",
+      "quantifier": null
+    },
+    {
+      "type": "comparison",
+      "source": "Word2Vec",
+      "target": "GloVe",
+      "description": "Word2Vec基于局部上下文窗口，GloVe基于全局共现矩阵",
       "quantifier": null
     },
     {
       "type": "causality",
       "source": "词向量",
       "target": "语义相似度",
-      "description": "词向量通过向量空间距离计算词语间的语义相似度",
+      "description": "词向量能够通过向量距离计算语义相似度",
       "quantifier": null
     },
     {
       "type": "hierarchy",
-      "source": "词向量",
-      "target": "词嵌入矩阵",
-      "description": "词向量通常以词嵌入矩阵的形式存储和查找",
-      "quantifier": null
-    },
-    {
-      "type": "hierarchy",
-      "source": "嵌入层",
-      "target": "词向量",
-      "description": "嵌入层是神经网络中实现词向量映射的模块",
-      "quantifier": null
-    },
-    {
-      "type": "hierarchy",
-      "source": "预训练",
-      "target": "词向量",
-      "description": "词向量可以通过预训练方式在大规模语料上学习得到",
+      "source": "语义相似度",
+      "target": "余弦相似度",
+      "description": "余弦相似度是度量词向量语义相似度的常用方法",
       "quantifier": null
     }
   ],
   "content_summary": {
-    "title": "词向量（Word Embedding）基本概念通俗解释",
+    "title": "词向量（Word Embedding）基本概念解析",
     "key_points": [
-      "词向量将每个单词映射为固定长度的稠密向量，向量中的数值代表了词语的语义特征。",
-      "与传统的独热编码相比，词向量维度更低（通常几十到几百维），且能通过向量距离反映词语相似度。",
-      "Word2Vec是训练词向量的经典方法，包含CBOW（根据上下文预测当前词）和Skip-gram（根据当前词预测上下文）两种模型。",
-      "词向量可预先在大规模语料上训练得到，广泛应用于文本分类、情感分析、机器翻译等NLP任务。",
-      "主流词向量模型还包括GloVe（基于全局词共现统计）和FastText（考虑子词信息），各有优势。"
+      "词向量是一种将单词映射为稠密实数向量的技术，能有效捕捉单词的语义和句法信息。",
+      "相比传统的独热编码（高维稀疏向量），词向量维度更低、表达力更强，且能通过余弦相似度计算词之间的语义相似度。",
+      "主流的词向量训练方法包括基于局部上下文的Word2Vec（含CBOW和Skip-gram两种模型）和基于全局共现矩阵的GloVe。",
+      "词向量是自然语言处理的基础工具，广泛应用于机器翻译、情感分析、文本分类等任务。"
     ],
     "target_audience": "general",
     "language": "zh"
@@ -196,34 +162,34 @@
   "knowledge_gap": {
     "needs_external_knowledge": true,
     "search_queries": [
-      "词向量典型维度范围 50-300",
-      "Word2Vec CBOW Skip-gram 具体原理对比",
-      "GloVe 和 FastText 词向量区别"
+      "词向量基本原理",
+      "Word Embedding概念解释",
+      "Word2Vec CBOW Skip-gram区别"
     ],
-    "fallback_knowledge": "词向量通常将词汇映射到50-300维的向量空间；Word2Vec由Google提出；GloVe由Stanford提出；FastText由Facebook提出。"
+    "fallback_knowledge": null
   },
   "chart_type": {
     "recommended": "concept_map",
     "alternatives": [
-      "comparison_chart",
-      "architecture_diagram"
+      "architecture_diagram",
+      "comparison_chart"
     ],
     "type_confidence": 0.9
   },
   "knowledge_supplement": "## 词向量可视化设计范式\n\n### 2d_projection: 将高维词向量通过t-SNE或PCA降维至2D平面，语义相似的词在空间中靠近\n视觉元素:\n  - 坐标轴（x/y表示降维后的两个主成分维度）\n  - 彩色散点（每个点代表一个词，颜色按语义类别编码）\n  - 词标签（点在散点旁标注对应词语）\n  - 聚类区域（虚线或半透明色块标注语义类别）\n### analogy_demo: 展示 king - man + woman ≈ queen 的经典词向量类比\n视觉元素:\n  - 左侧：king 和 man 的词向量（箭头从 man 指向 king，标注 '+royal'）\n  - 右侧：woman 和 queen 的词向量（箭头从 woman 指向 queen）\n  - 中间：两个箭头平行，展示语义关系的可迁移性\n  - 底部：公式 king - man + woman = queen\n### semantic_space: 2D坐标平面展示词的语义空间，相似词聚在一起\n\n推荐布局:\n在SVG中采用三区域垂直布局：上部=什么是词向量（文字+数字向量示意图[0.2, 0.8, -0.3, ...]），中部=语义空间散点图（2D坐标平面，彩色词点+聚类色块），下部=类比展示（king-man+woman=queen 矢量图）。配色使用柔和蓝紫渐变，目标受众为不了解NLP的大众。\n\n## 词向量可视化设计范式\n\n### 2d_projection: 将高维词向量通过t-SNE或PCA降维至2D平面，语义相似的词在空间中靠近\n视觉元素:\n  - 坐标轴（x/y表示降维后的两个主成分维度）\n  - 彩色散点（每个点代表一个词，颜色按语义类别编码）\n  - 词标签（点在散点旁标注对应词语）\n  - 聚类区域（虚线或半透明色块标注语义类别）\n### analogy_demo: 展示 king - man + woman ≈ queen 的经典词向量类比\n视觉元素:\n  - 左侧：king 和 man 的词向量（箭头从 man 指向 king，标注 '+royal'）\n  - 右侧：woman 和 queen 的词向量（箭头从 woman 指向 queen）\n  - 中间：两个箭头平行，展示语义关系的可迁移性\n  - 底部：公式 king - man + woman = queen\n### semantic_space: 2D坐标平面展示词的语义空间，相似词聚在一起\n\n推荐布局:\n在SVG中采用三区域垂直布局：上部=什么是词向量（文字+数字向量示意图[0.2, 0.8, -0.3, ...]），中部=语义空间散点图（2D坐标平面，彩色词点+聚类色块），下部=类比展示（king-man+woman=queen 矢量图）。配色使用柔和蓝紫渐变，目标受众为不了解NLP的大众。\n\n## 词向量可视化设计范式\n\n### 2d_projection: 将高维词向量通过t-SNE或PCA降维至2D平面，语义相似的词在空间中靠近\n视觉元素:\n  - 坐标轴（x/y表示降维后的两个主成分维度）\n  - 彩色散点（每个点代表一个词，颜色按语义类别编码）\n  - 词标签（点在散点旁标注对应词语）\n  - 聚类区域（虚线或半透明色块标注语义类别）\n### analogy_demo: 展示 king - man + woman ≈ queen 的经典词向量类比\n视觉元素:\n  - 左侧：king 和 man 的词向量（箭头从 man 指向 king，标注 '+royal'）\n  - 右侧：woman 和 queen 的词向量（箭头从 woman 指向 queen）\n  - 中间：两个箭头平行，展示语义关系的可迁移性\n  - 底部：公式 king - man + woman = queen\n### semantic_space: 2D坐标平面展示词的语义空间，相似词聚在一起\n\n推荐布局:\n在SVG中采用三区域垂直布局：上部=什么是词向量（文字+数字向量示意图[0.2, 0.8, -0.3, ...]），中部=语义空间散点图（2D坐标平面，彩色词点+聚类色块），下部=类比展示（king-man+woman=queen 矢量图）。配色使用柔和蓝紫渐变，目标受众为不了解NLP的大众。",
   "knowledge_sources": [
     {
-      "query": "词向量典型维度范围 50-300",
+      "query": "词向量基本原理",
       "source": "fallback_db",
       "reliability": "high"
     },
     {
-      "query": "Word2Vec CBOW Skip-gram 具体原理对比",
+      "query": "Word Embedding概念解释",
       "source": "fallback_db",
       "reliability": "high"
     },
     {
-      "query": "GloVe 和 FastText 词向量区别",
+      "query": "Word2Vec CBOW Skip-gram区别",
       "source": "fallback_db",
       "reliability": "high"
     }

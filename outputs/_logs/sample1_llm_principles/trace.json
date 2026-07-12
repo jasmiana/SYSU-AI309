@@ -1,11 +1,11 @@
 {
   "sample": "sample1_llm_principles",
-  "start_time": "2026-07-11T15:07:31.217044",
-  "end_time": "2026-07-11T15:10:39.252034",
-  "total_duration_s": 188.03499,
+  "start_time": "2026-07-12T17:02:33.640859",
+  "end_time": "2026-07-12T17:05:59.302603",
+  "total_duration_s": 205.661744,
   "events": [
     {
-      "timestamp": "2026-07-11T15:07:31.217044",
+      "timestamp": "2026-07-12T17:02:33.640859",
       "event": "agent_start",
       "agent": "Agent1:ContentAnalyzer",
       "input_summary": {
@@ -13,10 +13,10 @@
       }
     },
     {
-      "timestamp": "2026-07-11T15:07:54.119620",
+      "timestamp": "2026-07-12T17:02:52.139835",
       "event": "agent_output",
       "agent": "Agent1:ContentAnalyzer",
-      "duration_ms": 22902.6,
+      "duration_ms": 18495.5,
       "output_summary": {
         "intent": {
           "primary_type": "concept_expl...",
@@ -57,14 +57,14 @@
             "type": "hie...",
             "source": "Tra...",
             "target": "自注意...",
-            "description": "Tra...",
+            "description": "自注意...",
             "quantifier": null
           },
           {
             "type": "hie...",
-            "source": "自注意...",
-            "target": "多头注...",
-            "description": "多头注...",
+            "source": "Tra...",
+            "target": "前馈神...",
+            "description": "前馈神...",
             "quantifier": null
           },
           "..."
@@ -73,8 +73,8 @@
           "title": "大语言模型的基本原理",
           "key_points": [
             "大语言...",
-            "自注意...",
-            "Tra...",
+            "预训练...",
+            "RLH...",
             "..."
           ],
           "target_audience": "general",
@@ -84,53 +84,54 @@
           "needs_external_knowledge": true,
           "search_queries": [
             "大语言...",
-            "Tra...",
-            "自注意..."
+            "大语言...",
+            "大语言..."
           ],
-          "fallback_knowledge": "大语言模型是基于Tran..."
+          "fallback_knowledge": "大语言模型主要基于Tra..."
         },
         "chart_type": {
           "recommended": "concept_map",
           "alternatives": [
-            "arc..."
+            "arc...",
+            "flo..."
           ],
           "type_confidence": 0.9
         }
       }
     },
     {
-      "timestamp": "2026-07-11T15:07:54.119620",
+      "timestamp": "2026-07-12T17:02:52.139835",
       "event": "agent_start",
       "agent": "KnowledgeRetriever",
       "input_summary": {
         "queries": [
-          "大语言模型基本原理",
-          "Transformer架...",
-          "自注意力机制说明"
+          "大语言模型 基本原理 T...",
+          "大语言模型 训练流程 预...",
+          "大语言模型 组件 词嵌入..."
         ]
       }
     },
     {
-      "timestamp": "2026-07-11T15:07:54.119620",
+      "timestamp": "2026-07-12T17:02:52.144908",
       "event": "agent_output",
       "agent": "KnowledgeRetriever",
-      "duration_ms": 0.0,
+      "duration_ms": 5.1,
       "output_summary": {
         "found": true,
         "results": 3
       }
     },
     {
-      "timestamp": "2026-07-11T15:07:54.119620",
+      "timestamp": "2026-07-12T17:02:52.144908",
       "event": "agent_start",
       "agent": "Agent2:LayoutPlanner",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-11T15:08:25.499105",
+      "timestamp": "2026-07-12T17:03:50.150482",
       "event": "agent_output",
       "agent": "Agent2:LayoutPlanner",
-      "duration_ms": 31379.5,
+      "duration_ms": 58005.6,
       "output_summary": {
         "chart_type": "concept_map",
         "canvas": {
@@ -152,7 +153,7 @@
             "#27...",
             "..."
           ],
-          "rationale": "科技蓝紫配色适合技术概念..."
+          "rationale": "技术概念适合用冷静可靠的..."
         },
         "typography": {
           "title_size": 32,
@@ -162,8 +163,8 @@
           "font_family": "system-ui, '..."
         },
         "layout_grid": {
-          "columns": 1,
-          "rows": 5,
+          "columns": 4,
+          "rows": 12,
           "gutter": 20
         },
         "sections": [
@@ -172,36 +173,36 @@
             "type": "tit...",
             "position": {
               "x_pct": 0,
-              "y_pct": 0,
+              "y_pct": 2,
               "width_pct": 100,
               "height_pct": 10
             },
             "visual_weight": "pri...",
-            "purpose": "展示主..."
+            "purpose": "放置主..."
           },
           {
-            "id": "con...",
-            "type": "con...",
+            "id": "tra...",
+            "type": "dia...",
             "position": {
               "x_pct": 0,
-              "y_pct": 10,
+              "y_pct": 14,
               "width_pct": 100,
               "height_pct": 45
             },
             "visual_weight": "pri...",
-            "purpose": "展示大..."
+            "purpose": "核心架..."
           },
           {
             "id": "tra...",
-            "type": "tim...",
+            "type": "flo...",
             "position": {
               "x_pct": 0,
-              "y_pct": 55,
-              "width_pct": 100,
-              "height_pct": 20
+              "y_pct": 61,
+              "width_pct": 48,
+              "height_pct": 22
             },
             "visual_weight": "sec...",
-            "purpose": "展示训..."
+            "purpose": "训练流..."
           },
           "..."
         ],
@@ -214,120 +215,120 @@
             "color_key": "tex...",
             "importance": "pri...",
             "size_hint": {
-              "min_width": 400,
-              "min_height": 60,
+              "min_width": 300,
+              "min_height": 40,
               "aspect_ratio": null
             },
-            "content_hint": "居中显..."
+            "content_hint": "主标题..."
           },
           {
-            "id": "cen...",
-            "type": "ell...",
+            "id": "llm...",
+            "type": "rou...",
             "label": "大语言...",
-            "parent_section": "con...",
+            "parent_section": "tra...",
             "color_key": "pri...",
             "importance": "pri...",
             "size_hint": {
               "min_width": 160,
-              "min_height": 80,
-              "aspect_ratio": 2
+              "min_height": 60,
+              "aspect_ratio": 2.5
             },
-            "content_hint": "中心椭..."
+            "content_hint": "中心节..."
           },
           {
-            "id": "tra...",
+            "id": "inp...",
             "type": "rou...",
-            "label": "Tra...",
-            "parent_section": "con...",
+            "label": "Inp...",
+            "parent_section": "tra...",
             "color_key": "sec...",
             "importance": "sec...",
             "size_hint": {
               "min_width": 120,
               "min_height": 50,
-              "aspect_ratio": 2.4
+              "aspect_ratio": null
             },
-            "content_hint": "位于中..."
+            "content_hint": "将离散..."
           },
           "..."
         ],
         "connections": [
           {
-            "id": "con...",
+            "id": "c_l...",
             "type": "arr...",
-            "from_element": "cen...",
-            "to_element": "tra...",
+            "from_element": "llm...",
+            "to_element": "inp...",
             "direction": "top...",
-            "label": "基于",
-            "line_style": "sol..."
-          },
-          {
-            "id": "con...",
-            "type": "arr...",
-            "from_element": "tra...",
-            "to_element": "sel...",
-            "direction": "lef...",
             "label": "包含",
             "line_style": "sol..."
           },
           {
-            "id": "con...",
+            "id": "c_l...",
             "type": "arr...",
-            "from_element": "sel...",
-            "to_element": "mul...",
+            "from_element": "llm...",
+            "to_element": "pos...",
             "direction": "top...",
-            "label": "扩展",
+            "label": "包含",
+            "line_style": "sol..."
+          },
+          {
+            "id": "c_l...",
+            "type": "arr...",
+            "from_element": "llm...",
+            "to_element": "mul...",
+            "direction": "lef...",
+            "label": "包含",
             "line_style": "sol..."
           },
           "..."
         ],
-        "design_notes": "整体采用概念图布局，中心突出大语言模型，周围围绕Transformer架构关键组件，使用不同颜色区分..."
+        "design_notes": "整体采用清晰的信息层级：顶部标题居中；中间是核心概念辐射图，将'大语言模型'置于中心，周围均匀分布六..."
       }
     },
     {
-      "timestamp": "2026-07-11T15:08:25.501072",
+      "timestamp": "2026-07-12T17:03:50.150482",
       "event": "agent_start",
       "agent": "Agent3:SVGCoder (round 1)",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-11T15:10:24.685750",
+      "timestamp": "2026-07-12T17:05:40.017004",
       "event": "agent_output",
       "agent": "Agent3:SVGCoder",
-      "duration_ms": 119184.7,
+      "duration_ms": 109866.5,
       "output_summary": {
-        "svg_length": 10388
+        "svg_length": 12486
       }
     },
     {
-      "timestamp": "2026-07-11T15:10:24.688822",
+      "timestamp": "2026-07-12T17:05:40.017004",
       "event": "agent_start",
       "agent": "RenderingValidator",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-11T15:10:24.688822",
+      "timestamp": "2026-07-12T17:05:40.352055",
       "event": "agent_output",
       "agent": "RenderingValidator",
-      "duration_ms": 0.0,
+      "duration_ms": 335.1,
       "output_summary": {
         "xml_valid": true,
-        "all_pass": true
+        "all_pass": false
       }
     },
     {
-      "timestamp": "2026-07-11T15:10:24.688822",
+      "timestamp": "2026-07-12T17:05:40.352055",
       "event": "agent_start",
       "agent": "Agent4:QualityReviewer (round 1)",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-11T15:10:39.243752",
+      "timestamp": "2026-07-12T17:05:59.302603",
       "event": "agent_output",
       "agent": "Agent4:QualityReviewer",
-      "duration_ms": 14554.9,
+      "duration_ms": 18950.5,
       "output_summary": {
         "pass": true,
-        "score": 8.5,
+        "score": 9,
         "needs_regen": false
       }
     }
