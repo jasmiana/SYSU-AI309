@@ -1,91 +1,178 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1350" width="800" height="1350">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100" width="800" height="1100">
   <defs>
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#6F4E37" flood-opacity="0.08"/>
-    </filter>
-    <marker id="arrow" markerWidth="12" markerHeight="8" refX="10" refY="4" orient="auto">
-      <polygon points="0 0, 12 4, 0 8" fill="#D4A574"/>
-    </marker>
+    <!-- 标题栏渐变色 -->
     <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#6F4E37"/>
-      <stop offset="100%" stop-color="#8B6349"/>
+      <stop offset="100%" stop-color="#4A3426"/>
     </linearGradient>
+    
+    <!-- 卡片阴影 -->
+    <filter id="shadow" x="-5%" y="-5%" width="120%" height="120%">
+      <feDropShadow dx="3" dy="5" stdDeviation="4" flood-color="#6F4E37" flood-opacity="0.12"/>
+    </filter>
+    
+    <!-- 标题栏阴影 -->
+    <filter id="headerShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.15"/>
+    </filter>
+
+    <!-- 箭头定义 -->
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#C8A04D" />
+    </marker>
   </defs>
 
-  <!-- 背景 -->
-  <rect width="800" height="1350" fill="#FFF8F0" />
+  <!-- 背景色 -->
+  <rect width="800" height="1100" fill="#FFF8F0" />
 
-  <!-- 标题区域 -->
-  <rect x="0" y="0" width="800" height="160" fill="url(#headerGrad)" />
-  <text x="400" y="75" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="36" font-weight="bold" fill="#FFFFFF" text-anchor="middle" dominant-baseline="middle">从咖啡豆到咖啡的完整生产链</text>
-  <text x="400" y="125" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="22" font-weight="normal" fill="#F5E6D3" text-anchor="middle" dominant-baseline="middle">探索咖啡从种子到杯子的奇妙旅程</text>
+  <!-- 背景装饰：咖啡豆图案 -->
+  <g fill="#E8D5C4" opacity="0.6">
+    <ellipse cx="80" cy="300" rx="20" ry="10" transform="rotate(-30 80 300)" />
+    <ellipse cx="720" cy="450" rx="25" ry="12" transform="rotate(45 720 450)" />
+    <ellipse cx="100" cy="700" rx="15" ry="8" transform="rotate(-15 100 700)" />
+    <ellipse cx="700" cy="850" rx="22" ry="11" transform="rotate(60 700 850)" />
+    <ellipse cx="50" cy="1000" rx="18" ry="9" transform="rotate(-45 50 1000)" />
+    <ellipse cx="750" cy="200" rx="12" ry="6" transform="rotate(30 750 200)" />
+    <ellipse cx="60" cy="550" rx="10" ry="5" transform="rotate(-60 60 550)" />
+    <ellipse cx="740" cy="650" rx="18" ry="9" transform="rotate(15 740 650)" />
+  </g>
+
+  <!-- 标题栏区 -->
+  <g filter="url(#headerShadow)">
+    <rect x="0" y="0" width="800" height="100" fill="url(#headerGrad)" />
+    <!-- 标题栏装饰咖啡豆 -->
+    <ellipse cx="100" cy="50" rx="15" ry="10" transform="rotate(-40 100 50)" fill="#C8A04D" />
+    <ellipse cx="130" cy="60" rx="10" ry="6" transform="rotate(20 130 60)" fill="#F5E6CA" />
+    <ellipse cx="680" cy="40" rx="18" ry="12" transform="rotate(50 680 40)" fill="#C8A04D" />
+    <ellipse cx="710" cy="70" rx="12" ry="8" transform="rotate(-20 710 70)" fill="#F5E6CA" />
+    <text x="400" y="55" text-anchor="middle" fill="#FFFFFF" font-size="28" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">从咖啡豆到一杯咖啡的生产链</text>
+  </g>
+
+  <!-- 副标题 -->
+  <text x="400" y="130" text-anchor="middle" fill="#6F4E37" font-size="18" font-weight="600" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">从种子到杯子，探索咖啡的奇妙旅程 ☕️</text>
+
+  <!-- 连接线（箭头） -->
+  <g stroke="#C8A04D" stroke-width="3" marker-end="url(#arrow)">
+    <line x1="430" y1="210" x2="430" y2="235" />
+    <line x1="430" y1="310" x2="430" y2="335" />
+    <line x1="430" y1="410" x2="430" y2="435" />
+    <line x1="430" y1="510" x2="430" y2="535" />
+    <line x1="430" y1="610" x2="430" y2="635" />
+    <line x1="430" y1="710" x2="430" y2="735" />
+    <line x1="430" y1="810" x2="430" y2="835" />
+    <line x1="430" y1="910" x2="430" y2="935" />
+  </g>
 
   <!-- 步骤 1：种植 -->
-  <g transform="translate(60, 220)">
-    <rect x="0" y="0" width="680" height="140" rx="16" fill="#FFFFFF" filter="url(#shadow)" stroke="#E8D5C4" stroke-width="2"/>
-    <rect x="20" y="20" width="100" height="100" rx="12" fill="#FFF8F0" stroke="#D4A574" stroke-width="1"/>
-    <text x="70" y="70" font-family="sans-serif" font-size="48" text-anchor="middle" dominant-baseline="central">🌱</text>
-    <text x="140" y="45" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#6F4E37">种植阶段</text>
-    <text x="140" y="85" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="16" fill="#2C3E50">在适宜气候和海拔下种植，需要精心管理。</text>
+  <g>
+    <circle cx="180" cy="175" r="22" fill="#C8A04D"/>
+    <text x="180" y="182" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">1</text>
+    <rect x="220" y="140" width="420" height="70" rx="12" fill="#FFFFFF" stroke="#E8D5C4" stroke-width="1" filter="url(#shadow)"/>
+    <text x="245" y="170" fill="#6F4E37" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">种植</text>
+    <text x="245" y="195" fill="#5C4033" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">咖啡树种植约 3-4 年才能结果 🍒</text>
+    <!-- 趣味标签 -->
+    <rect x="650" y="155" width="130" height="30" rx="15" fill="#F5E6CA"/>
+    <text x="715" y="176" text-anchor="middle" fill="#6F4E37" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">🌱 高海拔种植</text>
   </g>
-
-  <!-- 箭头 1 -->
-  <line x1="400" y1="365" x2="400" y2="395" stroke="#D4A574" stroke-width="4" marker-end="url(#arrow)"/>
-  <rect x="360" y="370" width="80" height="24" rx="12" fill="#FFF8F0" stroke="#D4A574" stroke-width="1"/>
-  <text x="400" y="382" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#6F4E37" text-anchor="middle" dominant-baseline="central">咖啡果</text>
 
   <!-- 步骤 2：采摘 -->
-  <g transform="translate(60, 410)">
-    <rect x="0" y="0" width="680" height="140" rx="16" fill="#FFFFFF" filter="url(#shadow)" stroke="#E8D5C4" stroke-width="2"/>
-    <rect x="20" y="20" width="100" height="100" rx="12" fill="#FFF8F0" stroke="#D4A574" stroke-width="1"/>
-    <text x="70" y="70" font-family="sans-serif" font-size="48" text-anchor="middle" dominant-baseline="central">🍒</text>
-    <text x="140" y="45" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#6F4E37">采摘阶段</text>
-    <text x="140" y="85" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="16" fill="#2C3E50">成熟的咖啡果经手工或机械采摘后，去除果肉得到生豆。</text>
+  <g>
+    <circle cx="180" cy="275" r="22" fill="#C8A04D"/>
+    <text x="180" y="282" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">2</text>
+    <rect x="220" y="240" width="420" height="70" rx="12" fill="#FFFFFF" stroke="#E8D5C4" stroke-width="1" filter="url(#shadow)"/>
+    <text x="245" y="270" fill="#6F4E37" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">采摘</text>
+    <text x="245" y="295" fill="#5C4033" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">采摘后立即处理以获得咖啡豆 🚜</text>
+    <!-- 趣味标签 -->
+    <rect x="650" y="255" width="130" height="30" rx="15" fill="#F5E6CA"/>
+    <text x="715" y="276" text-anchor="middle" fill="#6F4E37" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">🍒 手工采摘</text>
   </g>
 
-  <!-- 箭头 2 -->
-  <line x1="400" y1="555" x2="400" y2="585" stroke="#D4A574" stroke-width="4" marker-end="url(#arrow)"/>
-  <rect x="360" y="560" width="80" height="24" rx="12" fill="#FFF8F0" stroke="#D4A574" stroke-width="1"/>
-  <text x="400" y="572" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#6F4E37" text-anchor="middle" dominant-baseline="central">生豆</text>
-
-  <!-- 步骤 3：烘焙 -->
-  <g transform="translate(60, 600)">
-    <rect x="0" y="0" width="680" height="140" rx="16" fill="#FFFFFF" filter="url(#shadow)" stroke="#E8D5C4" stroke-width="2"/>
-    <rect x="20" y="20" width="100" height="100" rx="12" fill="#FFF8F0" stroke="#D4A574" stroke-width="1"/>
-    <text x="70" y="70" font-family="sans-serif" font-size="48" text-anchor="middle" dominant-baseline="central">🔥</text>
-    <text x="140" y="45" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#6F4E37">烘焙阶段</text>
-    <text x="140" y="85" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="16" fill="#2C3E50">生豆通过加热烘焙，产生化学反应，颜色加深成熟豆。</text>
+  <!-- 步骤 3：咖啡豆 -->
+  <g>
+    <circle cx="180" cy="375" r="22" fill="#C8A04D"/>
+    <text x="180" y="382" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">3</text>
+    <rect x="220" y="340" width="420" height="70" rx="12" fill="#FFFFFF" stroke="#E8D5C4" stroke-width="1" filter="url(#shadow)"/>
+    <text x="245" y="370" fill="#6F4E37" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">咖啡豆</text>
+    <text x="245" y="395" fill="#5C4033" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">咖啡生豆需经烘焙处理 🔄</text>
+    <!-- 趣味标签 -->
+    <rect x="650" y="355" width="130" height="30" rx="15" fill="#F5E6CA"/>
+    <text x="715" y="376" text-anchor="middle" fill="#6F4E37" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">🫘 生豆储存</text>
   </g>
 
-  <!-- 箭头 3 -->
-  <line x1="400" y1="745" x2="400" y2="775" stroke="#D4A574" stroke-width="4" marker-end="url(#arrow)"/>
-  <rect x="360" y="750" width="80" height="24" rx="12" fill="#FFF8F0" stroke="#D4A574" stroke-width="1"/>
-  <text x="400" y="762" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#6F4E37" text-anchor="middle" dominant-baseline="central">熟豆</text>
-
-  <!-- 步骤 4：研磨 -->
-  <g transform="translate(60, 790)">
-    <rect x="0" y="0" width="680" height="140" rx="16" fill="#FFFFFF" filter="url(#shadow)" stroke="#E8D5C4" stroke-width="2"/>
-    <rect x="20" y="20" width="100" height="100" rx="12" fill="#FFF8F0" stroke="#D4A574" stroke-width="1"/>
-    <text x="70" y="70" font-family="sans-serif" font-size="48" text-anchor="middle" dominant-baseline="central">⚙️</text>
-    <text x="140" y="45" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#6F4E37">研磨阶段</text>
-    <text x="140" y="85" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="16" fill="#2C3E50">熟豆被研磨成不同粗细的咖啡粉，影响萃取效果。</text>
+  <!-- 步骤 4：烘焙 -->
+  <g>
+    <circle cx="180" cy="475" r="22" fill="#C8A04D"/>
+    <text x="180" y="482" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">4</text>
+    <rect x="220" y="440" width="420" height="70" rx="12" fill="#FFFFFF" stroke="#E8D5C4" stroke-width="1" filter="url(#shadow)"/>
+    <text x="245" y="470" fill="#6F4E37" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">烘焙</text>
+    <text x="245" y="495" fill="#5C4033" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">180-240°C 烘焙，浅烘酸/深烘苦 ☕️</text>
+    <!-- 趣味标签 -->
+    <rect x="650" y="455" width="130" height="30" rx="15" fill="#F5E6CA"/>
+    <text x="715" y="476" text-anchor="middle" fill="#6F4E37" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">🔥 浅中深烘焙</text>
   </g>
 
-  <!-- 箭头 4 -->
-  <line x1="400" y1="935" x2="400" y2="965" stroke="#D4A574" stroke-width="4" marker-end="url(#arrow)"/>
-  <rect x="360" y="940" width="80" height="24" rx="12" fill="#FFF8F0" stroke="#D4A574" stroke-width="1"/>
-  <text x="400" y="952" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#6F4E37" text-anchor="middle" dominant-baseline="central">咖啡粉</text>
-
-  <!-- 步骤 5：冲煮 -->
-  <g transform="translate(60, 980)">
-    <rect x="0" y="0" width="680" height="140" rx="16" fill="#FFFFFF" filter="url(#shadow)" stroke="#E8D5C4" stroke-width="2"/>
-    <rect x="20" y="20" width="100" height="100" rx="12" fill="#FFF8F0" stroke="#D4A574" stroke-width="1"/>
-    <text x="70" y="70" font-family="sans-serif" font-size="48" text-anchor="middle" dominant-baseline="central">☕️</text>
-    <text x="140" y="45" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#6F4E37">冲煮阶段</text>
-    <text x="140" y="85" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="16" fill="#2C3E50">咖啡粉与热水接触，通过过滤或浸泡方式萃取，形成一杯咖啡。</text>
+  <!-- 步骤 5：熟豆 -->
+  <g>
+    <circle cx="180" cy="575" r="22" fill="#C8A04D"/>
+    <text x="180" y="582" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">5</text>
+    <rect x="220" y="540" width="420" height="70" rx="12" fill="#FFFFFF" stroke="#E8D5C4" stroke-width="1" filter="url(#shadow)"/>
+    <text x="245" y="570" fill="#6F4E37" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">熟豆</text>
+    <text x="245" y="595" fill="#5C4033" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">烘焙后咖啡豆香气释放完毕 ✨</text>
+    <!-- 趣味标签 -->
+    <rect x="650" y="555" width="130" height="30" rx="15" fill="#F5E6CA"/>
+    <text x="715" y="576" text-anchor="middle" fill="#6F4E37" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">✨ 养豆期</text>
   </g>
 
-  <!-- 页脚区域 -->
-  <rect x="0" y="1150" width="800" height="200" fill="#F5E6D3" />
-  <text x="400" y="1250" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" fill="#6F4E37" text-anchor="middle" dominant-baseline="middle">数据来源：咖啡行业协会 | 设计制作：可视化布局规划器</text>
+  <!-- 步骤 6：研磨 -->
+  <g>
+    <circle cx="180" cy="675" r="22" fill="#C8A04D"/>
+    <text x="180" y="682" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">6</text>
+    <rect x="220" y="640" width="420" height="70" rx="12" fill="#FFFFFF" stroke="#E8D5C4" stroke-width="1" filter="url(#shadow)"/>
+    <text x="245" y="670" fill="#6F4E37" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">研磨</text>
+    <text x="245" y="695" fill="#5C4033" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">粗细度需匹配冲煮方式（手冲中粗、意式细粉）⚙️</text>
+    <!-- 趣味标签 -->
+    <rect x="650" y="655" width="130" height="30" rx="15" fill="#F5E6CA"/>
+    <text x="715" y="676" text-anchor="middle" fill="#6F4E37" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">⚙️ 现磨现煮</text>
+  </g>
+
+  <!-- 步骤 7：咖啡粉 -->
+  <g>
+    <circle cx="180" cy="775" r="22" fill="#C8A04D"/>
+    <text x="180" y="782" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">7</text>
+    <rect x="220" y="740" width="420" height="70" rx="12" fill="#FFFFFF" stroke="#E8D5C4" stroke-width="1" filter="url(#shadow)"/>
+    <text x="245" y="770" fill="#6F4E37" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">咖啡粉</text>
+    <text x="245" y="795" fill="#5C4033" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">新鲜研磨风味最佳 🌟</text>
+    <!-- 趣味标签 -->
+    <rect x="650" y="755" width="130" height="30" rx="15" fill="#F5E6CA"/>
+    <text x="715" y="776" text-anchor="middle" fill="#6F4E37" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">📦 密封保存</text>
+  </g>
+
+  <!-- 步骤 8：冲煮 -->
+  <g>
+    <circle cx="180" cy="875" r="22" fill="#C8A04D"/>
+    <text x="180" y="882" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">8</text>
+    <rect x="220" y="840" width="420" height="70" rx="12" fill="#FFFFFF" stroke="#E8D5C4" stroke-width="1" filter="url(#shadow)"/>
+    <text x="245" y="870" fill="#6F4E37" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">冲煮</text>
+    <text x="245" y="895" fill="#5C4033" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">热水萃取，常见：手冲、法压、意式浓缩 🔥</text>
+    <!-- 趣味标签 -->
+    <rect x="650" y="855" width="130" height="30" rx="15" fill="#F5E6CA"/>
+    <text x="715" y="876" text-anchor="middle" fill="#6F4E37" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">💧 水温 90-96°C</text>
+  </g>
+
+  <!-- 步骤 9：咖啡 -->
+  <g>
+    <circle cx="180" cy="975" r="22" fill="#C8A04D"/>
+    <text x="180" y="982" text-anchor="middle" fill="#FFFFFF" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">9</text>
+    <rect x="220" y="940" width="420" height="70" rx="12" fill="#FFFFFF" stroke="#E8D5C4" stroke-width="1" filter="url(#shadow)"/>
+    <text x="245" y="970" fill="#6F4E37" font-size="18" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">咖啡</text>
+    <text x="245" y="995" fill="#5C4033" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">一杯香醇咖啡完成，尽情享用吧 😊</text>
+    <!-- 趣味标签 -->
+    <rect x="650" y="955" width="130" height="30" rx="15" fill="#F5E6CA"/>
+    <text x="715" y="976" text-anchor="middle" fill="#6F4E37" font-size="12" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">☕️ 享用时刻</text>
+  </g>
+
+  <!-- 页脚区 -->
+  <rect x="0" y="1040" width="800" height="60" fill="#6F4E37" />
+  <text x="400" y="1075" text-anchor="middle" fill="#FFFFFF" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">☕️ 每一杯好咖啡，都来自用心对待每个环节 ☕️</text>
+
 </svg>

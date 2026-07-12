@@ -13,8 +13,9 @@ for d in sorted(outputs.iterdir()):
     # Validate SVG
     svg_files = sorted(d.glob("*v3_final.svg"))
     svg_status = "no SVG found"
+    svg_short = "NO_SVG"
     svg_size = 0
-    elements = {}
+    elements: dict[str, int] | None = None
     for svg in svg_files:
         try:
             tree = ET.parse(str(svg))
@@ -29,8 +30,10 @@ for d in sorted(outputs.iterdir()):
             svg_size = svg.stat().st_size / 1024
             vb = root.get("viewBox", "N/A")
             svg_status = f"VALID, {svg_size:.1f}KB, viewBox={vb}"
+            svg_short = "VALID"
         except ET.ParseError as e:
             svg_status = f"PARSE ERROR: {e}"
+            svg_short = "PARSE_ERR"
 
     # Read metadata
     meta_files = sorted(d.glob("metadata_*.json"))
@@ -54,6 +57,7 @@ for d in sorted(outputs.iterdir()):
     results.append({
         "name": d.name,
         "svg": svg_status,
+        "svg_short": svg_short,
         "score": meta.get("final_score", "?"),
         "passed": meta.get("passed", False),
         "rounds": meta.get("refinement_rounds", 0),
@@ -71,7 +75,8 @@ print(f"{'Sample':<25} {'SVG':<10} {'Score':<6} {'Pass':<6} {'Rnd':<4} {'Dur':<8
 print("-" * 70)
 for r in results:
     dur_str = f"{r['duration']:.0f}s" if r["duration"] else "?"
-    print(f"{r['name']:<25} {'VALID':<10} {r['score']:<6} {str(r['passed']):<6} {r['rounds']:<4} {dur_str:<8} {r['intent']:<22} {r['chart']}")
+    svg_col = r.get("svg_short", "?")
+    print(f"{r['name']:<25} {svg_col:<10} {r['score']:<6} {str(r['passed']):<6} {r['rounds']:<4} {dur_str:<8} {r['intent']:<22} {r['chart']}")
 
 print("-" * 70)
 avg_score = sum(r["score"] for r in results if isinstance(r["score"], (int, float))) / max(len(results), 1)
@@ -79,4 +84,5 @@ pass_count = sum(1 for r in results if r["passed"])
 print(f"Average score: {avg_score:.1f}, Passed: {pass_count}/{len(results)}")
 
 for r in results:
-    print(f"\n{r['name']}: {r['svg']}, key_points={r['key_points_count']}, elements={r['elements']}")
+    elems = r["elements"] or {}
+    print(f"\n{r['name']}: {r['svg']}, key_points={r['key_points_count']}, elements={elems}")

@@ -32,7 +32,7 @@ class Pipeline:
     2. Agent 2 (LayoutPlanner) — proportional layout, color scheme, typography
     3. Agent 3 (SVGCoder) — SVG XML generation
     4. Rendering validation (deterministic checks)
-    5. Agent 4 (QualityReviewer) — 6-dimension review
+    5. Agent 4 (QualityReviewer) — 7-dimension review
     6. If not passed: Agent 3 regenerates with Agent 4 feedback (up to 2 rounds)
     """
 

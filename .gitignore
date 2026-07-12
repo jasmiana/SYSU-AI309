@@ -2,6 +2,11 @@
 
 *.pdf
 *.pyc
+*.aux
+*.log
+*.out
+*.gz
+*.png
 
 *\__pycache__
 \.pytest_cache

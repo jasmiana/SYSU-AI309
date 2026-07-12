@@ -2,8 +2,8 @@
   "intent": {
     "primary_type": "concept_explanation",
     "secondary_type": "科普",
-    "confidence": 0.9,
-    "reasoning": "用户明确要求'通俗易懂地解释词向量的基本概念'，属于概念解释类且面向大众科普"
+    "confidence": 0.85,
+    "reasoning": "用户要求用通俗易懂的方式解释词向量基本概念，属于概念解释和科普混合类型"
   },
   "entities": [
     {
@@ -13,15 +13,9 @@
       "importance": "primary"
     },
     {
-      "name": "Word Embedding",
-      "type": "term",
-      "role": "subject",
-      "importance": "primary"
-    },
-    {
       "name": "分布式表示",
       "type": "term",
-      "role": "attribute",
+      "role": "object",
       "importance": "primary"
     },
     {
@@ -31,15 +25,9 @@
       "importance": "secondary"
     },
     {
-      "name": "向量空间",
-      "type": "term",
-      "role": "attribute",
-      "importance": "secondary"
-    },
-    {
       "name": "语义相似度",
       "type": "term",
-      "role": "attribute",
+      "role": "object",
       "importance": "secondary"
     },
     {
@@ -64,7 +52,7 @@
       "name": "GloVe",
       "type": "term",
       "role": "object",
-      "importance": "secondary"
+      "importance": "context"
     },
     {
       "name": "FastText",
@@ -73,35 +61,29 @@
       "importance": "context"
     },
     {
-      "name": "共现矩阵",
+      "name": "余弦相似度",
       "type": "term",
       "role": "object",
       "importance": "secondary"
     },
     {
-      "name": "余弦相似度",
+      "name": "词类比",
       "type": "term",
-      "role": "attribute",
-      "importance": "secondary"
+      "role": "object",
+      "importance": "context"
     },
     {
-      "name": "稠密向量",
+      "name": "向量空间",
       "type": "term",
-      "role": "attribute",
-      "importance": "secondary"
-    },
-    {
-      "name": "稀疏向量",
-      "type": "term",
-      "role": "attribute",
+      "role": "object",
       "importance": "context"
     }
   ],
   "relations": [
     {
       "type": "hierarchy",
-      "source": "分布式表示",
-      "target": "词向量",
+      "source": "词向量",
+      "target": "分布式表示",
       "description": "词向量是分布式表示的一种具体实现",
       "quantifier": null
     },
@@ -109,52 +91,66 @@
       "type": "comparison",
       "source": "词向量",
       "target": "独热编码",
-      "description": "词向量是稠密向量，独热编码是稀疏向量，前者维度更低且能表示语义",
+      "description": "词向量相比独热编码更稠密、维度更低，且能表达语义相似度",
+      "quantifier": null
+    },
+    {
+      "type": "causality",
+      "source": "语义相似度",
+      "target": "余弦相似度",
+      "description": "通常使用余弦相似度计算词向量间的语义相似度",
       "quantifier": null
     },
     {
       "type": "hierarchy",
       "source": "Word2Vec",
       "target": "CBOW",
-      "description": "CBOW是Word2Vec的一种训练模型，根据上下文预测目标词",
+      "description": "CBOW是Word2Vec的两种模型之一",
       "quantifier": null
     },
     {
       "type": "hierarchy",
       "source": "Word2Vec",
       "target": "Skip-gram",
-      "description": "Skip-gram是Word2Vec的另一种训练模型，根据目标词预测上下文",
+      "description": "Skip-gram是Word2Vec的两种模型之一",
       "quantifier": null
     },
     {
-      "type": "comparison",
-      "source": "Word2Vec",
-      "target": "GloVe",
-      "description": "Word2Vec基于局部上下文窗口，GloVe基于全局共现矩阵",
-      "quantifier": null
-    },
-    {
-      "type": "causality",
+      "type": "sequence",
       "source": "词向量",
-      "target": "语义相似度",
-      "description": "词向量能够通过向量距离计算语义相似度",
+      "target": "Word2Vec",
+      "description": "词向量可通过Word2Vec等算法训练获得",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "词向量",
+      "target": "GloVe",
+      "description": "词向量也可通过GloVe算法训练获得",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "词向量",
+      "target": "FastText",
+      "description": "词向量也可通过FastText算法训练获得",
       "quantifier": null
     },
     {
       "type": "hierarchy",
-      "source": "语义相似度",
-      "target": "余弦相似度",
-      "description": "余弦相似度是度量词向量语义相似度的常用方法",
+      "source": "分布式表示",
+      "target": "向量空间",
+      "description": "分布式表示将词语映射到连续的向量空间中",
       "quantifier": null
     }
   ],
   "content_summary": {
-    "title": "词向量（Word Embedding）基本概念解析",
+    "title": "词向量（Word Embedding）通俗解释",
     "key_points": [
-      "词向量是一种将单词映射为稠密实数向量的技术，能有效捕捉单词的语义和句法信息。",
-      "相比传统的独热编码（高维稀疏向量），词向量维度更低、表达力更强，且能通过余弦相似度计算词之间的语义相似度。",
-      "主流的词向量训练方法包括基于局部上下文的Word2Vec（含CBOW和Skip-gram两种模型）和基于全局共现矩阵的GloVe。",
-      "词向量是自然语言处理的基础工具，广泛应用于机器翻译、情感分析、文本分类等任务。"
+      "词向量是一种将词汇映射到实数向量空间的分布式表示技术，能够捕捉词语的语义和句法信息。",
+      "与传统的独热编码相比，词向量维度更低、更稠密，且能够通过向量间的距离衡量词与词之间的语义相似度。",
+      "常见的词向量训练算法包括Word2Vec（含CBOW和Skip-gram两种模型）、GloVe和FastText。",
+      "词向量广泛应用于自然语言处理任务，如机器翻译、情感分析和信息检索，是深度学习时代的基础技术之一。"
     ],
     "target_audience": "general",
     "language": "zh"
@@ -162,9 +158,9 @@
   "knowledge_gap": {
     "needs_external_knowledge": true,
     "search_queries": [
-      "词向量基本原理",
-      "Word Embedding概念解释",
-      "Word2Vec CBOW Skip-gram区别"
+      "词向量通俗解释",
+      "Word Embedding 概念 举例 图解",
+      "分布式表示 语义相似度 举例"
     ],
     "fallback_knowledge": null
   },
@@ -174,24 +170,24 @@
       "architecture_diagram",
       "comparison_chart"
     ],
-    "type_confidence": 0.9
+    "type_confidence": 0.8
   },
-  "knowledge_supplement": "## 词向量可视化设计范式\n\n### 2d_projection: 将高维词向量通过t-SNE或PCA降维至2D平面，语义相似的词在空间中靠近\n视觉元素:\n  - 坐标轴（x/y表示降维后的两个主成分维度）\n  - 彩色散点（每个点代表一个词，颜色按语义类别编码）\n  - 词标签（点在散点旁标注对应词语）\n  - 聚类区域（虚线或半透明色块标注语义类别）\n### analogy_demo: 展示 king - man + woman ≈ queen 的经典词向量类比\n视觉元素:\n  - 左侧：king 和 man 的词向量（箭头从 man 指向 king，标注 '+royal'）\n  - 右侧：woman 和 queen 的词向量（箭头从 woman 指向 queen）\n  - 中间：两个箭头平行，展示语义关系的可迁移性\n  - 底部：公式 king - man + woman = queen\n### semantic_space: 2D坐标平面展示词的语义空间，相似词聚在一起\n\n推荐布局:\n在SVG中采用三区域垂直布局：上部=什么是词向量（文字+数字向量示意图[0.2, 0.8, -0.3, ...]），中部=语义空间散点图（2D坐标平面，彩色词点+聚类色块），下部=类比展示（king-man+woman=queen 矢量图）。配色使用柔和蓝紫渐变，目标受众为不了解NLP的大众。\n\n## 词向量可视化设计范式\n\n### 2d_projection: 将高维词向量通过t-SNE或PCA降维至2D平面，语义相似的词在空间中靠近\n视觉元素:\n  - 坐标轴（x/y表示降维后的两个主成分维度）\n  - 彩色散点（每个点代表一个词，颜色按语义类别编码）\n  - 词标签（点在散点旁标注对应词语）\n  - 聚类区域（虚线或半透明色块标注语义类别）\n### analogy_demo: 展示 king - man + woman ≈ queen 的经典词向量类比\n视觉元素:\n  - 左侧：king 和 man 的词向量（箭头从 man 指向 king，标注 '+royal'）\n  - 右侧：woman 和 queen 的词向量（箭头从 woman 指向 queen）\n  - 中间：两个箭头平行，展示语义关系的可迁移性\n  - 底部：公式 king - man + woman = queen\n### semantic_space: 2D坐标平面展示词的语义空间，相似词聚在一起\n\n推荐布局:\n在SVG中采用三区域垂直布局：上部=什么是词向量（文字+数字向量示意图[0.2, 0.8, -0.3, ...]），中部=语义空间散点图（2D坐标平面，彩色词点+聚类色块），下部=类比展示（king-man+woman=queen 矢量图）。配色使用柔和蓝紫渐变，目标受众为不了解NLP的大众。\n\n## 词向量可视化设计范式\n\n### 2d_projection: 将高维词向量通过t-SNE或PCA降维至2D平面，语义相似的词在空间中靠近\n视觉元素:\n  - 坐标轴（x/y表示降维后的两个主成分维度）\n  - 彩色散点（每个点代表一个词，颜色按语义类别编码）\n  - 词标签（点在散点旁标注对应词语）\n  - 聚类区域（虚线或半透明色块标注语义类别）\n### analogy_demo: 展示 king - man + woman ≈ queen 的经典词向量类比\n视觉元素:\n  - 左侧：king 和 man 的词向量（箭头从 man 指向 king，标注 '+royal'）\n  - 右侧：woman 和 queen 的词向量（箭头从 woman 指向 queen）\n  - 中间：两个箭头平行，展示语义关系的可迁移性\n  - 底部：公式 king - man + woman = queen\n### semantic_space: 2D坐标平面展示词的语义空间，相似词聚在一起\n\n推荐布局:\n在SVG中采用三区域垂直布局：上部=什么是词向量（文字+数字向量示意图[0.2, 0.8, -0.3, ...]），中部=语义空间散点图（2D坐标平面，彩色词点+聚类色块），下部=类比展示（king-man+woman=queen 矢量图）。配色使用柔和蓝紫渐变，目标受众为不了解NLP的大众。",
+  "knowledge_supplement": "## 词向量可视化设计范式\n\n### 2d_projection: 将高维词向量通过t-SNE或PCA降维至2D平面，语义相似的词在空间中靠近\n视觉元素:\n  - 坐标轴（x/y表示降维后的两个主成分维度）\n  - 彩色散点（每个点代表一个词，颜色按语义类别编码）\n  - 词标签（点在散点旁标注对应词语）\n  - 聚类区域（虚线或半透明色块标注语义类别）\n### analogy_demo: 展示 king - man + woman ≈ queen 的经典词向量类比\n视觉元素:\n  - 左侧：king 和 man 的词向量（箭头从 man 指向 king，标注 '+royal'）\n  - 右侧：woman 和 queen 的词向量（箭头从 woman 指向 queen）\n  - 中间：两个箭头平行，展示语义关系的可迁移性\n  - 底部：公式 king - man + woman = queen\n### semantic_space: 2D坐标平面展示词的语义空间，相似词聚在一起\n\n推荐布局:\n在SVG中采用三区域垂直布局：上部=什么是词向量（文字+数字向量示意图[0.2, 0.8, -0.3, ...]），中部=语义空间散点图（2D坐标平面，彩色词点+聚类色块），下部=类比展示（king-man+woman=queen 矢量图）。配色使用柔和蓝紫渐变，目标受众为不了解NLP的大众。\n\n## 词向量可视化设计范式\n\n### 2d_projection: 将高维词向量通过t-SNE或PCA降维至2D平面，语义相似的词在空间中靠近\n视觉元素:\n  - 坐标轴（x/y表示降维后的两个主成分维度）\n  - 彩色散点（每个点代表一个词，颜色按语义类别编码）\n  - 词标签（点在散点旁标注对应词语）\n  - 聚类区域（虚线或半透明色块标注语义类别）\n### analogy_demo: 展示 king - man + woman ≈ queen 的经典词向量类比\n视觉元素:\n  - 左侧：king 和 man 的词向量（箭头从 man 指向 king，标注 '+royal'）\n  - 右侧：woman 和 queen 的词向量（箭头从 woman 指向 queen）\n  - 中间：两个箭头平行，展示语义关系的可迁移性\n  - 底部：公式 king - man + woman = queen\n### semantic_space: 2D坐标平面展示词的语义空间，相似词聚在一起\n\n推荐布局:\n在SVG中采用三区域垂直布局：上部=什么是词向量（文字+数字向量示意图[0.2, 0.8, -0.3, ...]），中部=语义空间散点图（2D坐标平面，彩色词点+聚类色块），下部=类比展示（king-man+woman=queen 矢量图）。配色使用柔和蓝紫渐变，目标受众为不了解NLP的大众。",
   "knowledge_sources": [
     {
-      "query": "词向量基本原理",
+      "query": "词向量通俗解释",
       "source": "fallback_db",
       "reliability": "high"
     },
     {
-      "query": "Word Embedding概念解释",
+      "query": "Word Embedding 概念 举例 图解",
       "source": "fallback_db",
       "reliability": "high"
     },
     {
-      "query": "Word2Vec CBOW Skip-gram区别",
-      "source": "fallback_db",
-      "reliability": "high"
+      "query": "分布式表示 语义相似度 举例",
+      "source": "none",
+      "reliability": "unavailable"
     }
   ]
 }

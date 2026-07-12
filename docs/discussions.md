@@ -1,6 +1,6 @@
 # 讨论：Baseline vs Multi-Agent — 视觉质量的反直觉差距及其启示
 
-> 本文基于 baseline（deepseek-v4-flash, 单次直出）与 multi-agent（deepseek-v4-pro, 4 Agent + 知识检索 + 渲染验证 + 反馈闭环）的实际 SVG 输出对比，分析为何更简单的系统在视觉美感上反而显著优于更复杂的系统，并提出在不牺牲量化评估能力前提下的优化方案。
+> 本文基于 baseline（deepseek-v4-flash, thinking disabled, 单次直出）与 multi-agent（deepseek-v4-flash, thinking enabled, 4 Agent + 知识检索 + 渲染验证 + 反馈闭环）的实际 SVG 输出对比，分析为何更简单的系统在视觉美感上反而显著优于更复杂的系统，并提出在不牺牲量化评估能力前提下的优化方案。
 
 ---
 
@@ -151,7 +151,7 @@ Baseline 没有审核者、没有通过线、没有"够好就行"——模型在
 
 ```
 deepseek-v4-flash + 无 thinking + 精简 prompt  → 更美的 SVG
-deepseek-v4-pro  + thinking   + 多 Agent 协同  → 更正确的 SVG
+deepseek-v4-flash + thinking   + 多 Agent 协同  → 更正确的 SVG
 ```
 
 **更强的模型 + 更强的推理 + 更复杂的架构并没有产生更好的视觉输出。** 这说明对于视觉创意生成这类"整体性任务"，架构复杂度本身可能成为负担——分解、标准化、评估的每一步都在系统性地压制创意自由度。这不是任何一个 Agent 的"错误"，而是**架构设计本身的取舍**：用创意换可控性、用灵性换可审查性。
@@ -405,4 +405,7 @@ Agent 1 → Agent 2 ──┤
 ---
 
 > **撰写日期**: 2026-07-11
+> **最后更新**: 2026-07-12（模型引用修正 + A+B+D 验证结果引用）
 > **相关文件**: `baseline.py`, `outputs_baseline/`, `docs/results.md`, `docs/changelog.md`
+>
+> **重要修正 (2026-07-12)**: 此前本文及关联文档中将 multi-agent 系统标注为 "deepseek-v4-pro"。经核查 `.env` 配置，实际运行始终使用 `deepseek-v4-flash`。Baseline 与 multi-agent 使用**相同模型**，视觉质量差距完全归因于架构设计（而非模型能力差异）——这进一步强化了 §3 中的根因分析。方案 A+B+D 已实施（2026-07-11），热修复（标题溢出/XML 安全/Agent 4 盲区）已实施（2026-07-12），验证运行结果见 `docs/results.md` §1-6。

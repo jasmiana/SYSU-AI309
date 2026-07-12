@@ -1,0 +1,29 @@
+{
+  "sample_name": "sample1_llm_principles",
+  "user_prompt": "绘制白色背景的SVG信息图解释大语言模型的基本原理",
+  "total_duration_s": 200.35,
+  "agent1_duration_ms": 22235.4,
+  "agent2_duration_ms": 32116.6,
+  "refinement_rounds": 1,
+  "final_score": 9.5,
+  "passed": true,
+  "svg_size_chars": 16423,
+  "content_ir_summary": {
+    "intent": "concept_explanation",
+    "confidence": 0.95,
+    "chart_type": "architecture_diagram",
+    "entities_count": 16,
+    "relations_count": 14
+  },
+  "refinement_history": [
+    {
+      "round": 1,
+      "svg_path": "D:\\日常\\大学用\\大三下\\NLP\\project3\\outputs\\sample1_llm_principles\\sample1_llm_principles_v1_r1.svg",
+      "overall_score": 9.5,
+      "pass": true,
+      "needs_regeneration": false,
+      "suggestion_count": 3
+    }
+  ],
+  "generated_at": "2026-07-12T20:23:15.415835"
+}

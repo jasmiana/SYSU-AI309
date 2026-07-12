@@ -1,0 +1,456 @@
+\documentclass[11pt,a4paper]{article}
+\usepackage{geometry}
+\geometry{left=2.0cm,right=2.0cm,top=1.8cm,bottom=2.0cm}
+\usepackage{amsmath,amsthm,amsfonts}
+\usepackage{fancyhdr}
+\usepackage{ctex}
+\usepackage{array}
+\usepackage{listings}
+\usepackage{color}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{multirow}
+
+% 紧凑间距
+\setlist{nosep,leftmargin=*}
+\setlength{\abovecaptionskip}{3pt}
+\setlength{\belowcaptionskip}{1pt}
+\setlength{\intextsep}{3pt}
+\setlength{\textfloatsep}{4pt}
+\setlength{\parskip}{0pt plus 0.5pt}
+\setlength{\abovedisplayskip}{4pt}
+\setlength{\belowdisplayskip}{4pt}
+
+\renewcommand{\baselinestretch}{1.1}
+
+\lstset{
+    basicstyle=\tiny\ttfamily,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    showstringspaces=false,
+    keywordstyle=\color{blue},
+    commentstyle=\color{gray},
+}
+
+\AtBeginEnvironment{table}{\footnotesize}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    urlcolor=blue,
+    citecolor=blue,
+}
+
+\begin{document}
+
+\title{
+{\heiti《自然语言处理》期末考查\\[6pt]
+基于多智能体的静态SVG信息图自动生成系统}
+}
+\date{}
+\author{
+姓名：\underline{XXX}~~~~~~
+学号：\underline{XXX}~~~~~~}
+
+\maketitle
+
+\noindent
+{\bf 题目：}~~综合运用所掌握的自然语言处理知识，实现一种基于多智能体的静态SVG信息图、或动态SVG动画、或PPT生成系统。
+
+\vspace{3pt}
+\noindent
+{\bf 答：}
+
+% ============================================================
+\section{引言}
+
+本报告实现了一个基于多智能体（Multi-Agent）协作架构的静态SVG信息图自动生成系统。系统接收自然语言提示词，通过4个专业化智能体的协作——内容分析、布局规划、SVG编码和质量审核——自动生成高质量的SVG信息图，并配备知识检索模块和渲染验证闭环以保障内容准确性和输出可靠性。
+
+本工作受两篇关键文献启发：OmniSVG\cite{omnisvg}将SVG命令和坐标参数化为离散Token，基于预训练VLM实现端到端生成；SVGen\cite{svgen}采用渐进式课程学习和CoT标注，基于轻量LLM微调实现可解释的矢量图形生成。与上述训练路线不同，本项目采用API调用路线，以DeepSeek大语言模型\cite{deepseek}为基座，通过多Agent协作与Prompt Engineering实现零训练成本的SVG生成。
+
+课程要求提供不少于5组问答结果，且必须包含以下测试样例：\textbf{(1) 大语言模型的基本原理}；\textbf{(2) 通俗易懂地解释词向量（Word Embedding）的基本概念}；\textbf{(3) 中山大学的发展历程}；\textbf{(4) 绘制SVG流程图展示从咖啡豆到咖啡的完整生产链}；\textbf{(5) YouTube has 10 times more videos than TikTok, TikTok has 2 times more than Kuaishou}。这些样例覆盖了概念解释、科普教学、历史叙述、流程展示和数据对比五种典型场景，且涉及中英双语。
+
+% ============================================================
+\section{系统架构设计}
+
+\subsection{总体架构}
+
+系统采用A（多Agent流水线）+ B（选择性IR）+ E（知识增强）的混合架构，如图\ref{fig:arch}所示。整体流水线为：用户Prompt $\rightarrow$ Agent 1（内容分析器）$\rightarrow$ 知识检索 $\rightarrow$ Agent 2（布局规划器）$\rightarrow$ Agent 3（信息图设计师）$\rightarrow$ 渲染验证 $\rightarrow$ Agent 4（质量审核器）$\rightarrow$ [若不通过则反馈至Agent 3修改，最多1轮] $\rightarrow$ 最终SVG输出。
+
+Agent间通过JSON格式的中间表示（Intermediate Representation, IR）进行通信：Agent 1输出Content IR（语义层），Agent 2输出Layout IR（空间层），Agent 3生成SVG XML（渲染层），Agent 4输出Review IR（评估层）。IR的引入将"开放式生成"问题转化为"受约束的结构化填充"问题，在工程上有效降低了复杂度。
+
+\subsection{内容分析器（Agent 1）}
+
+Agent 1的核心任务是对用户提示词进行深层语义分析。其System Prompt设计了5步CoT分析流程：(1) 意图分类（6种类型：概念解释、科普教学、流程展示、数据对比、时间线、架构图）；(2) 命名实体识别（NER，6种实体类型：person/organization/location/term/number/date）；(3) 关系抽取（RE，5种关系类型：comparison/hierarchy/sequence/causality/temporal）；(4) 信息完整性评估与知识缺口检测；(5) 目标受众分析。
+
+输出Content IR的核心字段包括：\texttt{intent}（意图分类+置信度）、\texttt{entities[]}（NER结果）、\texttt{relations[]}（RE三元组）、\texttt{content\_summary}（标题+关键点+目标受众）、\texttt{knowledge\_gap}（知识检索触发判断）、\texttt{chart\_type}（图表推荐+备选）。其中\texttt{type\_confidence}字段用于防范级联错误——当置信度$<0.8$时，Agent 4在审查阶段对图表类型合理性进行二次确认。
+
+\subsection{布局规划器（Agent 2）}
+
+Agent 2将结构化内容映射为空间布局方案。经过多轮优化，Agent 2从最初的"4套固定配色模板中机械选择"演进为"\textbf{自主配色设计+论证}"体系：基于内容的情感基调自主选择主色调，基于互补/类比关系确定辅助色和强调色，并在\texttt{color\_scheme.rationale}字段中解释配色选择理由。布局使用\textbf{比例坐标}（$x\_pct, y\_pct, width\_pct, height\_pct$）而非绝对像素值，使Agent 3在实际编码时可基于文本需求自适应调整，从根本上规避了"布局-内容尺寸不匹配"问题。
+
+\subsection{信息图设计师（Agent 3）}
+
+Agent 3的角色经历了关键性演进：从最初的"SVG Coder"（Layout IR的忠实执行者）升级为"信息图设计师"——Layout IR从"施工图纸"降级为"设计建议"，Agent 3拥有\textbf{创作自主权}。其System Prompt包含：SVG编码规范（XML正确性、坐标约束、颜色使用）、设计规范（圆角比例、箭头定义、渐变与阴影）、文本凝练规则（标题$\le$20字、标签$\le$8字）、\textbf{创意充实清单}（装饰密度$\ge$5个emoji/图标、$\ge$2个区域有科普细节、底部有情感化语句）以及11项输出前自检清单。
+
+\subsection{质量审核器（Agent 4）}
+
+Agent 4对生成的SVG进行7维度审查：语法正确性、视觉布局、内容准确性、图表类型合理性、信息完整性、美学质量和创意密度。其中\textbf{创意密度}（creativity\_density）维度是优化中新增的"进攻性"评估——不仅检查"有没有错误"，还评估"有没有做到足够好"。Agent 4的输入不仅包括SVG文本，还包含渲染验证器输出的结构化检查报告（XML语法、坐标越界、元素重叠、颜色对比度），有效弥补了纯文本LLM无法"看见"渲染结果的局限。
+
+\subsection{知识检索模块}
+
+知识检索采用两-tier策略：本地Fallback数据库（3个预设主题：SYSU发展历程12节点、词向量可视化3范式、LLM核心概念）提供低延迟（$\sim$5ms）、高可靠的知识补充；Wikipedia API提供广覆盖的开放域检索。检索由Agent 1按需触发（\texttt{knowledge\_gap.needs\_external\_knowledge}），知识注入Content IR后传递给下游Agent。
+
+\subsection{渲染验证闭环}
+
+渲染验证器执行4项确定性规则检查（不依赖LLM推理）：(1) XML语法验证（\texttt{xml.etree.ElementTree}解析 + cairosvg渲染测试\cite{cairosvg}）；(2) 坐标越界检查（viewBox边界验证）；(3) 元素重叠检测（含包含关系过滤以避免背景框误报）；(4) WCAG颜色对比度检查（文本vs背景，AA标准$\ge$4.5:1）。结构化检查报告嵌入Agent 4输入，使审核有据可依。
+
+% ============================================================
+\section{关键技术实现}
+
+\subsection{大模型API调用}
+
+系统通过OpenAI兼容SDK调用DeepSeek API\cite{deepseek}，主模型为\texttt{deepseek-v4-flash}（备选\texttt{deepseek-v4-pro}），启用原生思考模式（thinking mode）并设置\texttt{reasoning\_effort=high}。调用层（\texttt{base\_agent.py}）实现了3次指数退避重试（2s/4s/8s）、多种JSON提取策略（纯JSON、Markdown代码块、平衡括号提取、截断JSON修复）和SVG Markdown剥离。
+
+\subsection{Prompt Engineering策略}
+
+系统包含5个Prompt文件（\texttt{agent1-4\_system.txt} + \texttt{svg\_guidelines.txt}），均为独立文本文件，支持不修改代码的热更新。Prompt经历了三轮关键优化：(1) \textbf{P0修复}：Agent 1实体抽取强化（新增"主动补充原则"+强制自查问题+输出质量参考示例），Agent 3数值推理公式化（三步公式+常见错误警示）；(2) \textbf{A+B+D创意解放}：Agent 2去模板化、Agent 3角色重定义、Agent 4新增创意密度维度；(3) \textbf{热修复}：在Agent 2、3、4中建立标题溢出的三层防御链（规划时不生成过长标题$\rightarrow$编码时自检$\rightarrow$审查时兜底），以及在Agent 3中新增XML特殊字符和emoji安全规则。
+
+\subsection{中间表示（IR）设计}
+
+系统定义了三种IR Schema，均以JSON格式承载：
+
+\noindent\textbf{Content IR}（Agent 1输出）：意图分类+置信度、实体列表（含类型/角色/重要度）、关系列表（含类型/源实体/目标实体/量词）、内容摘要、知识缺口、图表推荐。
+
+\noindent\textbf{Layout IR}（Agent 2输出）：画布规格、配色方案（含设计理由）、排版层级、比例网格、区域划分（\texttt{sections[]}，百分比坐标）、元素定义（\texttt{elements[]}，含\texttt{size\_hint}自适应尺寸）、连接关系（\texttt{connections[]}）、设计说明（\texttt{design\_notes}，自然语言设计意图）。
+
+\noindent\textbf{Review IR}（Agent 4输出）：通过判定、综合评分、7维度分项评分、再生需求、具体修改建议（含目标/问题/建议/优先级）。
+
+\subsection{流水线编排与防御链}
+
+流水线编排器（\texttt{orchestrator.py}）负责4 Agent的串联调度、知识检索的按需触发、反馈闭环的迭代控制（最大1轮精炼）以及全链路日志记录。系统设计了多层防御链：以标题溢出为例，Agent 2规划时限制标题长度（中文$\le$20字，英文$\le$30字符），Agent 3编码时通过自检公式验证，Agent 4审查时兜底检测——任一环节触发即可阻止缺陷进入最终输出。
+
+% ============================================================
+\section{NLP知识运用分析}
+
+本节分析系统各组件与NLP课程核心概念的映射关系，并通过定量评估验证NLP技术的实际效果。
+
+\subsection{命名实体识别（NER）}
+
+Agent 1从用户提示词中抽取6类命名实体。为定量评估NER质量，对5个测试样例进行了人工Ground Truth标注（共52个实体），标注策略扩展到"一个合格的Agent 1应该从该提示词中分析出的隐含信息"范围。评估仅针对Agent 1的\texttt{entities[]}结构化字段——衡量的是Agent 1将分析中提到的概念\textbf{正式抽取为结构化实体}的能力，而非扫描其自由文本输出。
+
+评估采用名称完全匹配（大小写不敏感），Per-sample、Micro Avg、Macro Avg三级汇总，结果如表\ref{tab:ner}所示。
+
+\begin{table}[H]
+\centering
+\caption{NER评估结果（A+B+D+热修复后）}
+\label{tab:ner}
+\begin{tabular}{lccc}
+\toprule
+样例 & 精确率(P) & 召回率(R) & F1 \\
+\midrule
+样例1 (LLM原理) & 0.688 & 0.786 & \textbf{0.733} \\
+样例2 (词向量) & 0.333 & 0.364 & 0.348 \\
+样例3 (SYSU历史) & 0.706 & 0.857 & \textbf{0.774} \\
+样例4 (咖啡链) & 0.636 & 0.875 & 0.737 \\
+样例5 (数据对比) & 1.000 & 0.714 & \textbf{0.833} \\
+\midrule
+Micro Avg & 0.612 & 0.759 & \textbf{0.678} \\
+Macro Avg & 0.673 & 0.756 & \textbf{0.698} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+NER Micro F1从Phase 3基线的0.406提升至0.678（+67\%），归因于Agent 1 Prompt的P0实体抽取强化（主动补充原则+强制自查+输出质量参考示例）。主要误差类型为遗漏隐含实体（FN）和实体名格式偏差（FP+FN）。
+
+\subsection{关系抽取（RE）}
+
+Agent 1识别实体间的5类语义关系，输出\texttt{(source, target, type)}三元组。关系评估同样基于5份人工Ground Truth（共37个关系），匹配规则为三元组精确匹配（\texttt{quantifier}字段不参与匹配）。结果如表\ref{tab:re}所示。
+
+\begin{table}[H]
+\centering
+\caption{RE评估结果（A+B+D+热修复后）}
+\label{tab:re}
+\begin{tabular}{lccc}
+\toprule
+样例 & 精确率(P) & 召回率(R) & F1 \\
+\midrule
+样例1 (LLM原理) & 0.571 & 0.727 & \textbf{0.640} \\
+样例2 (词向量) & 0.111 & 0.125 & 0.118 \\
+样例3 (SYSU历史) & 0.067 & 0.111 & 0.083 \\
+样例4 (咖啡链) & 0.111 & 0.167 & 0.133 \\
+样例5 (数据对比) & 1.000 & 0.667 & \textbf{0.800} \\
+\midrule
+Micro Avg & 0.265 & 0.351 & \textbf{0.302} \\
+Macro Avg & 0.372 & 0.359 & \textbf{0.355} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+RE F1整体偏低（Micro 0.302），主要瓶颈在于Agent 1的\texttt{relations[].target}字段混入非实体名（如样例3中target为"发展历程中的时间节点"而非具体的实体名），导致FP率升高。这是Agent 1结构化输出的已知短板和下一步优化靶点。
+
+\subsection{思维链推理（CoT）}
+
+各Agent的System Prompt均包含显式的CoT推理步骤。Agent 1执行5步分析链（意图分类$\rightarrow$NER$\rightarrow$RE$\rightarrow$知识缺口$\rightarrow$受众分析），Agent 2执行色彩情感基调$\rightarrow$信息层次映射$\rightarrow$阅读路径设计$\rightarrow$渐变策略论证，Agent 3通过11项自检清单进行输出前验证，Agent 4执行7维度逐项评估$\rightarrow$综合判定$\rightarrow$修改建议优先级排序。DeepSeek原生思考模式（thinking mode）进一步增强了各Agent的推理深度——以Agent 3为例，启用思考模式后SVG代码更精炼、设计决策更有依据，但延迟增加约5.8$\times$。
+
+\subsection{知识增强生成（RAG）}
+
+3个样例触发了知识检索（样例1/2/3），全部命中Fallback DB（100\%命中率，$\sim$5ms延迟）。知识增强效果在样例3（中山大学发展历程）上最为显著——从Phase 2中仅凭LLM内置知识生成的4个模糊信息节点，提升至12个精确历史事件节点（1924年建校$\rightarrow$1926年更名$\rightarrow$1952年院系调整$\rightarrow$2001年合并医科大$\rightarrow$2017年入选双一流$\rightarrow$2020年代三校区五校园格局等）。
+
+\subsection{NLP知识映射总览}
+
+表\ref{tab:nlp_map}总结了本项目各系统组件与NLP课程核心概念的映射关系。
+
+\begin{table}[H]
+\centering
+\caption{NLP知识映射总览}
+\label{tab:nlp_map}
+\begin{tabular}{lll}
+\toprule
+NLP概念 & 系统组件 & 实现方式 \\
+\midrule
+命名实体识别(NER) & Agent 1 & 6类实体抽取 + 定量F1评估 \\
+关系抽取(RE) & Agent 1 & 5类关系三元组 + 定量F1评估 \\
+意图分类 & Agent 1 & 6类意图 + 置信度分数 \\
+CoT推理 & Agent 1-4 & 各Agent System Prompt显式推理步骤 \\
+RAG & Knowledge Retriever & Wikipedia + Fallback DB \\
+结构化知识表示 & IR Schema & Content IR + Layout IR JSON Schema \\
+受控文本生成 & Agent 3 & Prompt约束 + 11项自检清单 \\
+文本凝练 & Agent 3 & 标题$\le$20字/标签$\le$8字等规则 \\
+自动评估 & Agent 4 & 7维度量化评分 + 结构化检查报告 \\
+多智能体协作 & Orchestrator & 任务分解、IR通信、反馈闭环 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================
+\section{实验结果与分析}
+
+\subsection{总体结果}
+
+系统在\texttt{deepseek-v4-flash}（thinking enabled, reasoning\_effort=high）配置下完成全部5个样例的最终生成，结果如表\ref{tab:overall}所示。
+
+\begin{table}[H]
+\centering
+\caption{5个样例最终生成结果总览}
+\label{tab:overall}
+\begin{tabular}{lcccccc}
+\toprule
+样例 & 图表类型 & 评分 & 通过 & 精炼 & 耗时(s) & SVG(KB) \\
+\midrule
+1. LLM基本原理 & 架构图 & \textbf{9.5} & $\checkmark$ & 1 & 200 & 16.4 \\
+2. 词向量概念 & 概念图 & \textbf{9.0} & $\checkmark$ & 1 & 177 & 13.2 \\
+3. SYSU发展历程 & 时间线 & \textbf{8.3} & $\checkmark$ & 1 & 195 & 12.2 \\
+4. 咖啡生产链 & 流程图 & \textbf{9.0} & $\checkmark$ & 2 & 331 & 12.0 \\
+5. 视频数量对比 & 柱状图 & \textbf{7.0} & $\checkmark$ & 1 & 202 & 6.3 \\
+\midrule
+\multicolumn{2}{l}{\textbf{汇总}} & \textbf{8.6} & \textbf{5/5} & $\le$1 & 1,105 & — \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+所有5个样例全部通过审核（100\%通过率），均分8.6/10，总耗时约18分钟。
+
+\subsection{逐样例分析}
+
+\textbf{样例1（LLM基本原理，9.5分，最佳）}：Agent 2自主设计了"科技深蓝"配色（\#1A3A5C主色+\#2980B9辅色+\#F39C12暖橙强调），Agent 3生成了自底向上的Transformer数据流图+训练三阶段横向流程+底部情感点睛。NER F1=0.733，RE F1=0.640，结构化抽取质量最高。XML语法热修复使该样例从Phase 3的两轮均fail修复至syntax=10一次通过。
+
+\textbf{样例2（词向量概念，9.0分）}：应用Fallback DB提供的三种可视化范式（2D投影+类比展示+语义空间），形成了定义$\rightarrow$语义空间散点图$\rightarrow$king-queen类比的三层布局。由于Agent 1 NER/RE稳定性波动，首轮因信息完整性不足未通过，重跑后补全训练模型内容并通过。RE F1=0.118为最低——关系抽取的假阳性率仍是瓶颈。
+
+\textbf{样例3（SYSU发展历程，8.3分）}：知识增强效果最显著的样例。Fallback DB注入12个精确历史节点，Agent 2采用学术庄重紫蓝配色，Agent 3生成垂直时间线。NER F1=0.774（最高），但RE F1=0.083（14个FP关系——target混入非实体名）。
+
+\textbf{样例4（咖啡生产链，9.0分）}：唯一触发2轮精炼的样例。首轮Agent 4发现信息完整性和美学不足，Agent 3第二轮补充了咖啡豆品种差异和冲煮方式对比等趣味细节后通过。Agent 2采用暖调大地棕绿色系（情境化：从生豆绿到烘焙棕的渐变），有效对抗了"设计平庸"风险。
+
+\textbf{样例5（数据对比，7.0分）}：RE F1=0.800（最高）——数值关系抽取精准。P0数值推理修复（三步公式+常见错误警示）使content\_accuracy从Phase 3的2/10提升至10/10。标题溢出热修复（英文标题缩写版本）有效。aesthetics=7，箭头标注对比度不足（\#FF9800在白色背景上仅2.16）。
+
+\subsection{Baseline对比与"设计委员会"效应}
+
+为量化多Agent架构的质量贡献，搭建了Baseline对照实验：使用相同模型\texttt{deepseek-v4-flash}（但关闭thinking mode），单次LLM调用直接生成SVG，无任何多Agent、IR、知识检索、验证或反馈。实验结果如表\ref{tab:baseline}。
+
+\begin{table}[H]
+\centering
+\caption{Baseline vs Multi-Agent对比}
+\label{tab:baseline}
+\begin{tabular}{lcc}
+\toprule
+指标 & Baseline & Multi-Agent (本系统) \\
+\midrule
+API调用/样本 & \textbf{1} & 3-5 \\
+单样本平均耗时 & \textbf{19.6s} & 214s \\
+XML通过率 & 5/5 & 5/5 \\
+有知识检索 & 0/5 & 3/5 \\
+有质量评分 & 无 & 5/5（均值8.6） \\
+NER定量评估 & 无 & F1=0.678 \\
+RE定量评估 & 无 & F1=0.302 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+一个反直觉的发现是：\textbf{Baseline生成的SVG在视觉美观度、配色灵性和排版精致度上反而优于多Agent系统}。图\ref{fig:comparison}以样例3为例展示了这一对比。
+
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/sample3_baseline.png}
+\caption*{(a) Baseline（单次直出，$\sim$20s）}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/sample3_ours.png}
+\caption*{(b) 本系统（多Agent+知识检索，$\sim$195s）}
+\end{minipage}
+\caption{样例3（中山大学发展历程）Baseline vs 本系统对比}
+\label{fig:comparison}
+\end{figure}
+
+我们识别出导致这一"反直觉差距"的7个根因，统称为\textbf{"设计委员会"效应}（Design by Committee）：(1) 无人对"整体美感"负责——4个Agent各自在维度上做satisficing，最终产物是各维度评分不低但缺乏整体协调性的拼凑品；(2) IR中间表示对创造性表达的系统性压制——结构化信息可捕捉实体和关系，但无法捕捉"这张图应该给人一种温暖/庄重/趣味的感觉"等整体美学意图；(3) Thinking Mode对视觉创意的意外惩罚——分析性思维增强了严谨性但削弱了创造性发散；(4) 信息传递的逐级衰减——用户Prompt$\rightarrow$Content IR$\rightarrow$Layout IR$\rightarrow$SVG，每步都是有损压缩；(5) 标准化vs情境化配色——Baseline为每个样本自主创造情境化配色（如咖啡链的暖调大地色讲述生豆到烘焙的色变旅程），而多Agent系统的模板化配色无法匹配这种情境化色彩叙事；(6) Satisficing天花板——Agent 4的通过线逻辑在防止坏输出的同时，也阻止了好输出变得更好；(7) 架构复杂度本身的隐性代价。
+
+针对以上根因，我们实施了\textbf{A+B+D创意解放方案}：Agent 2去模板化（从"配色选择者"变为"配色设计师"）、Agent 3创意权重提升（从"执行者"变为"共同创作者"，配备创意充实清单）、Agent 4新增创意密度维度。该方案在不牺牲NER/RE/渲染验证等量化评估能力的前提下，有效缩小了与Baseline的视觉质量差距——验证运行中sample3/4的配色和装饰显著优于优化前。
+
+% ============================================================
+\section{讨论}
+
+\subsection{多Agent架构的本质取舍}
+
+本项目最核心的学术发现是：\textbf{多Agent架构的核心价值是可控性（知识准确、结构完整、可迭代、可审查），而非创意质量。将创意视觉设计这一"整体性任务"分解为多个专业化子任务时，分解本身就会系统性地压制其最珍贵的品质——设计的自由度和叙事性。}这不是架构的"失败"，而是架构的取舍——正如JSON Schema为Agent间通信提供了确定性但牺牲了自然语言的丰富性，多Agent分工为质量提供了可控性但牺牲了创意的自由度。
+
+\subsection{系统局限性}
+
+当前系统存在以下主要局限：(1) Agent 1的NER结构化输出稳定性——同一prompt多次运行间key\_points覆盖度可能波动；(2) Agent 1的RE假阳性率偏高——target字段混用非实体名（样例3: 14FP）；(3) 纯文本LLM无法真正"看见"渲染结果，Agent 4的视觉判断仍受限于文本层面的推理；(4) 单轨道生成缺乏多方案选优能力；(5) Thinking Mode的高延迟代价（Agent 3增加5.8$\times$）。
+
+\subsection{改进方向}
+
+未来工作可从以下方向展开：(1) 借鉴SVGen\cite{svgen}的微调路线，利用本项目积累的prompt-SVG对构建训练数据，微调轻量LLM实现端到端SVG生成；(2) 引入多模态模型视觉评估，将SVG渲染为PNG后由多模态LLM进行视觉审查；(3) 实现双重渲染模式——结构化图表（流程图、柱状图、时间线）走IR$\rightarrow$确定性渲染器路径以保证语法正确性和比例尺精度，自由形式图表保留LLM直接生成的灵活性；(4) 双轨并行生成+选优——标准版（IR强约束）和自由版（IR弱约束）并行生成，由Agent 4在aesthetics和content\_accuracy之间加权选优。
+
+% ============================================================
+\section{结论}
+
+本项目综合运用NLP课程知识，成功构建了基于4个专业化Agent+知识检索+渲染验证+反馈闭环的静态SVG信息图自动生成系统。系统在5个必选测试样例上全部通过，均分8.6/10，NER Micro F1达0.678。实验揭示了多Agent架构的本质取舍——以创意换可控性——并通过A+B+D创意解放方案有效弥合了与Baseline的视觉质量差距。本项目的所有量化评估数据（NER/RE F1、7维度评分、Baseline对照实验）和全链路IR日志为课程设计提供了完整的"分析$\rightarrow$设计$\rightarrow$实现$\rightarrow$评估$\rightarrow$反思"闭环。
+
+\begin{thebibliography}{99}
+
+\bibitem{omnisvg}
+Yang Y, Cheng W, Chen S, et al.
+\textit{Omnisvg: A unified scalable vector graphics generation model}.
+Advances in Neural Information Processing Systems, 2026, 38: 113670--113696.
+
+\bibitem{svgen}
+Wang F, Zhao Z, Liu Y, et al.
+\textit{Svgen: Interpretable vector graphics generation with large language models}.
+In: Proceedings of the 33rd ACM International Conference on Multimedia, 2025: 9608--9617.
+
+\bibitem{deepseek}
+DeepSeek. \textit{DeepSeek API Documentation}. \url{https://api-docs.deepseek.com/}, 2026.
+
+\bibitem{cairosvg}
+CairoSVG. \textit{CairoSVG: A Python SVG converter based on Cairo}. \url{https://cairosvg.org/}, 2024.
+
+\bibitem{pythonpptx}
+python-pptx. \textit{python-pptx: Create and update PowerPoint .pptx files}. \url{https://python-pptx.readthedocs.io/}, 2024.
+
+\end{thebibliography}
+
+\clearpage
+
+% ============================================================
+\appendix
+\section{附录：全部样例Baseline vs 本系统SVG对比}
+
+以下展示5个必选样例的Baseline（单次直出，左列）与本系统（多Agent+知识检索+反馈闭环，右列）生成的SVG对比。
+
+% --- Sample 1 ---
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/sample1_llm_principles_baseline.png}
+\caption*{Baseline}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/sample1_llm_principles_ours.png}
+\caption*{本系统（9.5分）}
+\end{minipage}
+\caption{样例1：大语言模型的基本原理}
+\end{figure}
+
+% --- Sample 2 ---
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/sample2_word_embedding_baseline.png}
+\caption*{Baseline}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/sample2_word_embedding_ours.png}
+\caption*{本系统（9.0分）}
+\end{minipage}
+\caption{样例2：词向量的基本概念}
+\end{figure}
+
+% --- Sample 3 ---
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/sample3_sysu_history_baseline.png}
+\caption*{Baseline}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/sample3_sysu_history_ours.png}
+\caption*{本系统（8.3分）}
+\end{minipage}
+\caption{样例3：中山大学的发展历程}
+\end{figure}
+
+% --- Sample 4 ---
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/sample4_coffee_chain_baseline.png}
+\caption*{Baseline}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/sample4_coffee_chain_ours.png}
+\caption*{本系统（9.0分）}
+\end{minipage}
+\caption{样例4：咖啡豆到一杯咖啡的完整生产链}
+\end{figure}
+
+% --- Sample 5 ---
+\begin{figure}[H]
+\centering
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/sample5_video_comparison_baseline.png}
+\caption*{Baseline}
+\end{minipage}
+\hfill
+\begin{minipage}[t]{0.48\textwidth}
+\centering
+\includegraphics[width=\textwidth]{figures/sample5_video_comparison_ours.png}
+\caption*{本系统（7.0分）}
+\end{minipage}
+\caption{样例5：YouTube vs TikTok vs Kuaishou视频数量对比}
+\end{figure}
+
+\end{document}

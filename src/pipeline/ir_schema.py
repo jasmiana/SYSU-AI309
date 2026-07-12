@@ -133,6 +133,7 @@ REVIEW_IR_SCHEMA: dict[str, Any] = {
         "chart_type_appropriateness": {"score": "float", "pass": "boolean", "issues": ["string"]},
         "information_completeness": {"score": "float", "pass": "boolean", "issues": ["string"]},
         "aesthetics": {"score": "float", "pass": "boolean", "issues": ["string"]},
+        "creativity_density": {"score": "float", "pass": "boolean", "issues": ["string"]},
     },
     "needs_regeneration": "boolean",
     "regeneration_focus": ["string"],

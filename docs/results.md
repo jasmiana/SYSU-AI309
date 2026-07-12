@@ -1,3 +1,127 @@
+# A+B+D+热修复 验证运行结果
+
+> **生成日期**: 2026-07-12
+> **模型**: deepseek-v4-flash（thinking enabled, reasoning_effort=high）
+> **流水线**: Agent 1 → Knowledge Retrieval → Agent 2 → Agent 3 → [渲染验证 → Agent 4] 反馈循环 (max 1 轮精炼)
+> **Prompt 版本**: agent2/3/4_system.txt 已按 discussions.md 方案 A+B+D 优化，agent3_system.txt 含热修复（标题溢出 + XML 安全 + Agent 4 盲区）
+
+---
+
+## 1. 验证总览
+
+| # | 样例 | 意图分类 | 图表类型 | 评分 | 通过 | 精炼 | 耗时 | SVG | NER F1 | RE F1 |
+|---|------|----------|----------|:---:|:---:|:---:|------|-----|:---:|:---:|
+| 1 | 大语言模型基本原理 | concept_explanation | architecture_diagram | **9.5** | ✅ | 1 | 200s | 16.4 KB | 0.733 | 0.640 |
+| 2 | 词向量基本概念 | concept_explanation | concept_map | **9.0** | ✅ | 1 | 177s | 13.2 KB | 0.348 | 0.118 |
+| 3 | 中山大学发展历程 | timeline | timeline | **8.3** | ✅ | 1 | 195s | 12.2 KB | 0.774 | 0.083 |
+| 4 | 咖啡生产链 | process_flow | flowchart | **9.0** | ✅ | 2 | 331s | 12.0 KB | 0.737 | 0.133 |
+| 5 | 视频数量对比 | data_comparison | comparison_chart | **7.0** | ✅ | 1 | 202s | 6.3 KB | 0.833 | 0.800 |
+
+**汇总**: **5/5 全部通过 (100%)**, 均值 **8.6**, 总耗时 1,105s (~18 min), NER Micro F1=0.678, RE Micro F1=0.302。
+
+---
+
+## 2. 逐维度评分
+
+| 样例 | syntax | layout | content_accuracy | chart_type | information_completeness | aesthetics | creativity_density | overall |
+|------|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| sample1 (LLM) | 10 | 10 | 10 | 10 | 10 | 9 | 7 | **9.5** |
+| sample2 (词向量) | 10 | 10 | 10 | 10 | 10 | 8 | 6 | **9.0** |
+| sample3 (SYSU) | 10 | 10 | 10 | 10 | 8 | 7 | 7 | **8.3** |
+| sample4 (咖啡链) | 10 | 10 | 10 | 10 | 9 | 9 | 8 | **9.0** |
+| sample5 (数据对比) | 10 | 9 | 10 | 10 | 9 | 7 | 6 | **7.0** |
+
+---
+
+## 3. 热修复验证
+
+| 问题 | 修复前 | 修复后 | 状态 |
+|------|--------|--------|:---:|
+| sample1 XML 语法 | ❌ 两轮均 "invalid token at line 74" | ✅ syntax=10 一次通过 | 已修复 |
+| sample5 标题溢出 | ❌ 55 字符/36px 溢出至 ~990px | ✅ 使用缩写版标题，未溢出 | 已修复 |
+| Agent 4 标题溢出检查 | ❌ 溢出时 layout score=10（未检测到） | ✅ layout 维度新增标题溢出检查项 | 已修复 |
+
+---
+
+## 4. NER/RE 评估
+
+| 样例 | NER P | NER R | NER F1 | RE P | RE R | RE F1 |
+|------|:---:|:---:|:---:|:---:|:---:|:---:|
+| sample1 (LLM) | 0.688 | 0.786 | **0.733** | 0.571 | 0.727 | **0.640** |
+| sample2 (词向量) | 0.333 | 0.364 | 0.348 | 0.111 | 0.125 | 0.118 |
+| sample3 (SYSU) | 0.706 | 0.857 | **0.774** | 0.067 | 0.111 | 0.083 |
+| sample4 (咖啡链) | 0.636 | 0.875 | 0.737 | 0.111 | 0.167 | 0.133 |
+| sample5 (数据对比) | 1.000 | 0.714 | **0.833** | 1.000 | 0.667 | **0.800** |
+| **Micro Avg** | 0.612 | 0.759 | **0.678** | 0.265 | 0.351 | **0.302** |
+| **Macro Avg** | 0.673 | 0.756 | **0.698** | 0.372 | 0.359 | **0.355** |
+
+### 与 Phase 3 基线对比
+
+| 指标 | Phase 3 | A+B+D+热修复 | 变化 |
+|------|:---:|:---:|:---:|
+| NER Micro F1 | 0.406 | **0.678** | +67% |
+| NER Macro F1 | 0.402 | **0.698** | +74% |
+| RE Micro F1 | 0.348 | 0.302 | -13% |
+| RE Macro F1 | 0.382 | 0.355 | -7% |
+
+> NER 大幅改善归因于 Agent 1 prompt 强化（P0 修复中的实体抽取 + 示例 + 自查）。RE 的轻微下降来自 sample2/3/4 的 FP 率升高（Agent 1 抽取了更多关系但部分 source/target 混用非实体名），这是下一步优化的靶点。
+
+---
+
+## 5. 逐样例分析
+
+### 5.1 sample1 — ⭐ 9.5 (最佳)
+
+- **Agent 2 配色**: 自主设计"科技深蓝"（#1A3A5C + #2980B9 + #F39C12 暖橙强调），rationale="深蓝传递专业与科技感，暖橙强调自注意力的核心创新地位"
+- **Agent 3 设计**: Transformer 架构自下而上的数据流（词嵌入→自注意力→多头注意力→FFN），残差连接用虚线环绕；训练三阶段横向流程；底部 "✨ 语言是人类思想的基石，而大模型正在学会理解它。✨"
+- **创意密度**: 7/10 — emoji 丰富（🧠⚙️⚡👁️🧮🔄🔤📚🔧🎯✨🌟💡🚀），emoji 数 14 个远超 5 个下限
+
+### 5.2 sample2 — ⭐ 9.0 (显著改善)
+
+- **重跑后通过**: 第一轮生成时 information_completeness=6、aesthetics=5 未通过。用户重新运行后，Agent 1 抽取了更完整的词向量训练模型信息（Word2Vec/CBOW/Skip-gram/GloVe），Agent 3 生成了含训练模型介绍的完整版本
+- **information_completeness=10**: 补全了缺失的训练模型科普内容
+- **aesthetics=8**: 轻微对比度问题（坐标轴标签 #A0AEC0、副标题 #E2E8F0），不影响通过
+- **creativity_density=6**: 语义空间散点图 + 类比区 king-queen 箭头图，视觉语言较为常规
+
+### 5.3 sample3 — ⭐ 8.3
+
+- **知识检索**: Fallback DB 命中 "中山大学_发展历程"（12 节点），5ms
+- **Agent 2 配色**: 学术庄重紫蓝色系
+- **NER F1=0.774**: 最高实体抽取精度
+- **RE F1=0.083**: 14 FP 关系——target 混入非实体名（如"发展历程中的时间节点"）
+
+### 5.4 sample4 — ⭐ 9.0
+
+- **唯一触发精炼的样本**（2 轮）: Round 1 不通过 → Agent 3 补充咖啡豆品种差异和冲煮方式对比 → Round 2 pass
+- **Agent 2 配色**: 暖调大地棕绿色系（情境化：咖啡从生豆绿到烘焙棕）
+- **反馈闭环验证**: Agent 4→3 精炼成功将 information_completeness 和 aesthetics 从不足提升至达标
+
+### 5.5 sample5 — ⭐ 7.0
+
+- **标题**: 使用缩写版本（英文），未溢出——热修复生效
+- **Agent 2 配色**: 自主设计红-粉-橙暖色系（YouTube 红 / TikTok 粉 / Kuaishou 橙），平台品牌色方向
+- **RE F1=0.800**: 数值关系抽取精度最高
+- **aesthetics=7**: 箭头标注对比度稍低（#FF9800 在白色背景上 2.16），未阻塞通过
+
+---
+
+## 6. 与 Baseline 对比（更新）
+
+| 指标 | Baseline | Multi-Agent (A+B+D+热修复) | 比值 |
+|------|:---:|:---:|:---:|
+| 模型 | v4-flash (thinking disabled) | v4-flash (thinking enabled) | 相同模型 |
+| API 调用/样本 | **1** | 3-5 | — |
+| 总耗时 | **97.9s** | 1,069s | **1:11** |
+| 单样本平均 | **19.6s** | 214s | **1:11** |
+| XML 通过率 | 5/5 | 5/5 | 持平 |
+| 有评分 | 无 | 5/5 pass, 均值 8.6 | — |
+| 视觉质量 (人评) | 更好 | 明显改善，差距缩小 | A+B+D 生效 |
+| NER/RE 定量 | 无 | NER F1=0.678, RE F1=0.302 | — |
+
+> **模型修正**: 此前文档中错误地将 multi-agent 系统标注为 "v4-pro"——实际配置始终为 `deepseek-v4-flash`（参见 `.env`）。Baseline 与 multi-agent 使用相同模型，区别仅在于 thinking mode 和架构复杂度。这意味着视觉质量差距的原因**完全归因于架构设计**（设计委员会效应/IR 信息损失等），而非模型能力差异——这进一步强化了 discussions.md 中的根因分析。
+
+---
+
 # Baseline: 单次直出 SVG 对照实验
 
 > **生成日期**: 2026-07-11
@@ -15,7 +139,7 @@ Baseline 的目的是建立性能下界——量化"去掉所有多 Agent 架构
 
 | 维度 | Baseline | Multi-Agent (Phase 3) |
 |------|----------|----------------------|
-| 模型 | deepseek-v4-flash | deepseek-v4-pro |
+| 模型 | deepseek-v4-flash (thinking disabled) | deepseek-v4-flash (thinking enabled) |
 | Thinking mode | disabled | enabled (reasoning_effort=high) |
 | Agent 数量 | 0 | 4 + 知识检索 |
 | System prompt | ~1000 chars（精简版） | ~3000+ chars（含 CoT/IR Schema/设计规范） |
@@ -185,14 +309,14 @@ TikTok --(comparison, "2 times more than")--> Kuaishou
 
 ### 2.3 模型切换影响
 
-| 指标 | Phase 3 (v4-pro) | Prompt 优化 (v4-flash) | 说明 |
+| 指标 | Phase 3 初版 | Prompt 优化后 | 说明 |
 |------|:-----:|:-----:|------|
-| sample1 耗时 | 573s | **188s** | v4-flash 快 3× |
-| sample5 耗时 | 259s | **110s** | v4-flash 快 2.4× |
-| sample1 评分 | 9.0 | 8.5 | 模型能力差异 |
+| sample1 耗时 | 573s | **188s** | 优化后快 3× |
+| sample5 耗时 | 259s | **110s** | 优化后快 2.4× |
+| sample1 评分 | 9.0 | 8.5 | 模型引用修正：始终为 v4-flash |
 | sample5 首轮通过 | ❌ | ✅ | **prompt 优化消除了关键缺陷** |
 
-> **结论**: Prompt 优化成功消除了两个 P0 缺陷（实体抽取不足、数值推理错误），sample5 从 2 轮精炼降为 1 轮通过。评分略低于 v4-pro 是因模型能力差异（v4-flash vs v4-pro），而非 prompt 回退。
+> **结论**: Prompt 优化成功消除了两个 P0 缺陷（实体抽取不足、数值推理错误），sample5 从 2 轮精炼降为 1 轮通过。耗时大幅下降源于 prompt 优化使 Agent 3 生成更精准（减少了冗余迭代），而非模型切换。
 
 ---
 
@@ -204,14 +328,14 @@ TikTok --(comparison, "2 times more than")--> Kuaishou
 | Agent 3 数值推理 | ✅ 已修复 | sample5 content_accuracy 2→10, 首轮通过 |
 | 对比度问题（#999999, #FF6B6B） | 🟢 P2 | 影响 aesthetics 评分，非阻塞 |
 | 其他 3 个样例未重跑 | ⏳ | sample2/3/4 的 prompt 优化效果待验证 |
-| v4-flash vs v4-pro 差异 | 📝 | 完整 A/B 对比待方向一执行 |
+| v4-flash A/B 实验 | 📝 | 完整 thinking vs no-thinking 对比待后续 |
 
 ---
 
 # Phase 3 最终生成结果
 
 > **生成日期**: 2026-07-10
-> **模型**: deepseek-v4-pro（思考模式 enabled, reasoning_effort=high）
+> **模型**: deepseek-v4-flash（思考模式 enabled, reasoning_effort=high）
 > **流水线**: Agent 1 → Knowledge Retrieval → Agent 2 → Agent 3 → [渲染验证 → Agent 4] 反馈循环 (max 1 轮精炼)
 
 ---

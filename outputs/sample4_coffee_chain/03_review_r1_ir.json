@@ -1,6 +1,6 @@
 {
-  "pass": true,
-  "overall_score": 9.5,
+  "pass": false,
+  "overall_score": 6,
   "dimensions": {
     "syntax": {
       "score": 10,
@@ -8,12 +8,15 @@
       "issues": []
     },
     "layout": {
-      "score": 10,
-      "pass": true,
-      "issues": []
+      "score": 5,
+      "pass": false,
+      "issues": [
+        "步骤1的连接线 y1=-10, y2=-50 超出 viewBox 高度 1100（越界）",
+        "结构化报告显示 2 个 out-of-bounds 元素"
+      ]
     },
     "content_accuracy": {
-      "score": 10,
+      "score": 9,
       "pass": true,
       "issues": []
     },
@@ -23,34 +26,50 @@
       "issues": []
     },
     "information_completeness": {
-      "score": 10,
-      "pass": true,
-      "issues": []
-    },
-    "aesthetics": {
       "score": 8,
       "pass": true,
       "issues": [
-        "结构化检查报告指出两处低对比度（副标题 #F5E6D3 在标题渐变背景上、白色文字在白色背景上），但实际视觉上副标题背景为深棕色渐变，对比度足够；白色文字在白色背景不存在，可能为工具误判。建议确认或忽略。",
-        "颜色数量适中，但节点图标与背景色略接近，可略微提升图标容器轮廓对比度。"
+        "冲煮步骤中未列出常见冲煮方式（手冲、法压、意式浓缩等），与 Content IR 要求略有差距"
+      ]
+    },
+    "aesthetics": {
+      "score": 7,
+      "pass": true,
+      "issues": [
+        "结构化报告提及 2 个低对比度问题，虽视觉上不显著，但建议检查并优化"
+      ]
+    },
+    "creativity_density": {
+      "score": 6,
+      "pass": true,
+      "issues": [
+        "装饰元素丰富，但配色全程一致，缺乏与步骤主题联动的色彩变化"
       ]
     }
   },
-  "needs_regeneration": false,
-  "regeneration_focus": [],
+  "needs_regeneration": true,
+  "regeneration_focus": [
+    "layout"
+  ],
   "specific_suggestions": [
     {
-      "target": "全局配色",
-      "issue": "图标容器背景 #FFF8F0 与边框 #D4A574 对比不够鲜明，可能影响可视性",
-      "suggestion": "可将图标容器背景改为更浅的米白色（如 #FFFFFF）并增加边框宽度至2px，或使用更深的边框颜色（如 #6F4E37）",
-      "priority": "low"
+      "target": "步骤1的连接线（line在 translate(0,140) 内）",
+      "issue": "该 line 的 y1 和 y2 为负值，超出 viewBox 顶部，导致越界",
+      "suggestion": "将连接线整体下移，例如将 y1 改为 10，y2 改为 30；同时调整步骤1的起始 y 偏移，确保所有元素在 viewBox 内",
+      "priority": "critical"
     },
     {
-      "target": "页脚文字",
-      "issue": "页脚文字颜色 #6F4E37 在 #F5E6D3 背景上对比度约3.5:1，WCAG AA 标准下正常文本需4.5:1",
-      "suggestion": "可将页脚文字颜色改为更深的棕色（如 #4A2C2A）或提高背景亮度，以增强可读性",
+      "target": "冲煮步骤描述文字",
+      "issue": "未列举常见冲煮方式（手冲、法压、意式浓缩等），信息略不完整",
+      "suggestion": "在冲煮步骤描述中增加一句：'常见方式：手冲、法压、意式浓缩等'",
+      "priority": "medium"
+    },
+    {
+      "target": "全局对比度",
+      "issue": "结构化报告检测到两处低对比度（#F5E6CA 和 #FFFFFF 在白色背景上），虽然代码中背景不全是白色，但建议复查所有浅色文字确保可读性",
+      "suggestion": "使用深色文字在浅色背景上，或确保文字背景色与文字颜色对比度符合 WCAG AA 标准（至少 4.5:1）",
       "priority": "medium"
     }
   ],
-  "summary": "SVG 整体质量优秀，语法、布局、内容、图表类型、信息完整性均无问题，通过审查。仅美学上可进行微调：提升图标容器边框对比度，并优化页脚文字对比度以符合可访问性标准。"
+  "summary": "主要问题：步骤1的连接线 y 坐标超出 viewBox 顶部，需将连接线及步骤整体下移以消除越界。次要建议：补充冲煮常见方式、复查对比度。其他维度通过，修正布局后可通过。"
 }

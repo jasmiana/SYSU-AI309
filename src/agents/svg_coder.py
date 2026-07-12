@@ -59,7 +59,7 @@ class SVGCoder(BaseAgent):
 
         # -- Layout IR integration --------------------------
         if layout_ir:
-            parts.append(f"\n## 布局规范（来自 Layout Planner）\n")
+            parts.append(f"\n## 设计框架（来自 Layout Planner — 作为参考，你可在此基础上自由发挥）\n")
             parts.append(f"- 图表类型: {layout_ir.get('chart_type', 'unknown')}")
             canvas = layout_ir.get("canvas", {})
             parts.append(

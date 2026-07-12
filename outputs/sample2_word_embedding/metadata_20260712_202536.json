@@ -1,0 +1,29 @@
+{
+  "sample_name": "sample2_word_embedding",
+  "user_prompt": "绘制白色背景的SVG信息图，通俗易懂地解释词向量（Word Embedding）的基本概念",
+  "total_duration_s": 141.03,
+  "agent1_duration_ms": 19658.9,
+  "agent2_duration_ms": 39079.1,
+  "refinement_rounds": 1,
+  "final_score": 6.9,
+  "passed": false,
+  "svg_size_chars": 13899,
+  "content_ir_summary": {
+    "intent": "concept_explanation",
+    "confidence": 0.95,
+    "chart_type": "concept_map",
+    "entities_count": 18,
+    "relations_count": 9
+  },
+  "refinement_history": [
+    {
+      "round": 1,
+      "svg_path": "D:\\日常\\大学用\\大三下\\NLP\\project3\\outputs\\sample2_word_embedding\\sample2_word_embedding_v1_r1.svg",
+      "overall_score": 6.9,
+      "pass": false,
+      "needs_regeneration": false,
+      "suggestion_count": 4
+    }
+  ],
+  "generated_at": "2026-07-12T20:25:36.453632"
+}

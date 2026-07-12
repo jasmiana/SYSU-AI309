@@ -1,11 +1,11 @@
 {
   "sample": "sample2_word_embedding",
-  "start_time": "2026-07-12T17:05:59.307967",
-  "end_time": "2026-07-12T17:08:35.625629",
-  "total_duration_s": 156.317662,
+  "start_time": "2026-07-12T21:24:25.597527",
+  "end_time": "2026-07-12T21:27:22.847635",
+  "total_duration_s": 177.250108,
   "events": [
     {
-      "timestamp": "2026-07-12T17:05:59.307967",
+      "timestamp": "2026-07-12T21:24:25.597527",
       "event": "agent_start",
       "agent": "Agent1:ContentAnalyzer",
       "input_summary": {
@@ -13,16 +13,16 @@
       }
     },
     {
-      "timestamp": "2026-07-12T17:06:17.071505",
+      "timestamp": "2026-07-12T21:24:43.204409",
       "event": "agent_output",
       "agent": "Agent1:ContentAnalyzer",
-      "duration_ms": 17763.5,
+      "duration_ms": 17606.9,
       "output_summary": {
         "intent": {
           "primary_type": "concept_expl...",
           "secondary_type": "科普",
-          "confidence": 0.9,
-          "reasoning": "用户明确要求'通俗易懂地..."
+          "confidence": 0.85,
+          "reasoning": "用户要求用通俗易懂的方式..."
         },
         "entities": [
           {
@@ -32,24 +32,24 @@
             "importance": "pri..."
           },
           {
-            "name": "Wor...",
+            "name": "分布式...",
             "type": "ter...",
-            "role": "sub...",
+            "role": "obj...",
             "importance": "pri..."
           },
           {
-            "name": "分布式...",
+            "name": "独热编...",
             "type": "ter...",
-            "role": "att...",
-            "importance": "pri..."
+            "role": "obj...",
+            "importance": "sec..."
           },
           "..."
         ],
         "relations": [
           {
             "type": "hie...",
-            "source": "分布式...",
-            "target": "词向量",
+            "source": "词向量",
+            "target": "分布式...",
             "description": "词向量...",
             "quantifier": null
           },
@@ -61,10 +61,10 @@
             "quantifier": null
           },
           {
-            "type": "hie...",
-            "source": "Wor...",
-            "target": "CBO...",
-            "description": "CBO...",
+            "type": "cau...",
+            "source": "语义相...",
+            "target": "余弦相...",
+            "description": "通常使...",
             "quantifier": null
           },
           "..."
@@ -73,8 +73,8 @@
           "title": "词向量（Word Emb...",
           "key_points": [
             "词向量...",
-            "相比传...",
-            "主流的...",
+            "与传统...",
+            "常见的...",
             "..."
           ],
           "target_audience": "general",
@@ -85,7 +85,7 @@
           "search_queries": [
             "词向量...",
             "Wor...",
-            "Wor..."
+            "分布式..."
           ],
           "fallback_knowledge": null
         },
@@ -95,99 +95,99 @@
             "arc...",
             "com..."
           ],
-          "type_confidence": 0.9
+          "type_confidence": 0.8
         }
       }
     },
     {
-      "timestamp": "2026-07-12T17:06:17.073040",
+      "timestamp": "2026-07-12T21:24:43.207343",
       "event": "agent_start",
       "agent": "KnowledgeRetriever",
       "input_summary": {
         "queries": [
-          "词向量基本原理",
+          "词向量通俗解释",
           "Word Embeddi...",
-          "Word2Vec CBO..."
+          "分布式表示 语义相似度 ..."
         ]
       }
     },
     {
-      "timestamp": "2026-07-12T17:06:17.074426",
+      "timestamp": "2026-07-12T21:24:43.210774",
       "event": "agent_output",
       "agent": "KnowledgeRetriever",
-      "duration_ms": 1.4,
+      "duration_ms": 2.4,
       "output_summary": {
         "found": true,
         "results": 3
       }
     },
     {
-      "timestamp": "2026-07-12T17:06:17.074426",
+      "timestamp": "2026-07-12T21:24:43.213036",
       "event": "agent_start",
       "agent": "Agent2:LayoutPlanner",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-12T17:06:44.384235",
+      "timestamp": "2026-07-12T21:25:46.306719",
       "event": "agent_output",
       "agent": "Agent2:LayoutPlanner",
-      "duration_ms": 27307.3,
+      "duration_ms": 63093.7,
       "output_summary": {
         "chart_type": "concept_map",
         "canvas": {
           "width": 800,
           "height": 1200,
-          "background": "#F4F6FF"
+          "background": "#F5F7FA"
         },
         "color_scheme": {
-          "name": "柔和蓝紫渐变",
-          "primary": "#6C63FF",
-          "secondary": "#9B8EFF",
-          "accent": "#FF6584",
-          "background": "#F4F6FF",
-          "text_primary": "#2C2C54",
-          "text_secondary": "#6D6D8A",
+          "name": "科技蓝紫",
+          "primary": "#4A90D9",
+          "secondary": "#7B68EE",
+          "accent": "#FF6B6B",
+          "background": "#F5F7FA",
+          "text_primary": "#2C3E50",
+          "text_secondary": "#7F8C8D",
           "palette": [
-            "#6C...",
-            "#9B...",
+            "#4A...",
+            "#7B...",
             "#FF...",
             "..."
           ],
-          "rationale": "选用蓝紫渐变表达科技与柔..."
+          "rationale": "选择蓝色为主色调，因为词..."
         },
         "typography": {
           "title_size": 32,
           "heading_size": 22,
-          "body_size": 16,
-          "label_size": 14,
+          "body_size": 15,
+          "label_size": 13,
           "font_family": "system-ui, '..."
         },
         "layout_grid": {
-          "columns": 3,
-          "rows": 5,
-          "gutter": 20
+          "columns": 12,
+          "rows": 12,
+          "gutter": 16
         },
         "sections": [
           {
             "id": "tit...",
             "type": "tit...",
             "position": {
-              "x_pct": 5,
-              "y_pct": 2,
-              "width_pct": 90,
-              "height_pct": 8
+              "x_pct": 0,
+              "y_pct": 0,
+              "width_pct": 100,
+              "height_pct": 10
             },
             "visual_weight": "pri...",
             "purpose": "展示主..."
           },
           {
-            "id": "con...",
+            "id": "int...",
             "type": "con...",
             "position": {
-              "x_pct": 5,
-              "y_pct": 12,
-              "width_pct": 90,
-              "height_pct": 22
+              "x_pct": 0,
+              "y_pct": 10,
+              "width_pct": 100,
+              "height_pct": 20
             },
             "visual_weight": "pri...",
             "purpose": "解释词..."
@@ -196,58 +196,55 @@
             "id": "sem...",
             "type": "dia...",
             "position": {
-              "x_pct": 5,
-              "y_pct": 36,
-              "width_pct": 90,
-              "height_pct": 32
+              "x_pct": 0,
+              "y_pct": 30,
+              "width_pct": 100,
+              "height_pct": 40
             },
             "visual_weight": "pri...",
-            "purpose": "展示2..."
+            "purpose": "2D语..."
           },
           "..."
         ],
         "elements": [
           {
-            "id": "mai...",
+            "id": "tit...",
             "type": "tex...",
-            "label": "词向量...",
             "parent_section": "tit...",
             "color_key": "tex...",
             "importance": "pri...",
             "size_hint": {
               "min_width": 600,
-              "min_height": 40,
+              "min_height": 50,
               "aspect_ratio": null
             },
             "content_hint": "主标题..."
           },
           {
-            "id": "int...",
+            "id": "sub...",
             "type": "tex...",
-            "label": "词向量...",
-            "parent_section": "con...",
+            "parent_section": "tit...",
             "color_key": "tex...",
-            "importance": "pri...",
-            "size_hint": {
-              "min_width": 400,
-              "min_height": 80,
-              "aspect_ratio": null
-            },
-            "content_hint": "左侧放..."
-          },
-          {
-            "id": "vec...",
-            "type": "rou...",
-            "label": "示例向...",
-            "parent_section": "con...",
-            "color_key": "sec...",
             "importance": "sec...",
             "size_hint": {
-              "min_width": 200,
-              "min_height": 60,
+              "min_width": 400,
+              "min_height": 30,
               "aspect_ratio": null
             },
-            "content_hint": "在文字..."
+            "content_hint": "副标题..."
+          },
+          {
+            "id": "int...",
+            "type": "tex...",
+            "parent_section": "int...",
+            "color_key": "tex...",
+            "importance": "sec...",
+            "size_hint": {
+              "min_width": 600,
+              "min_height": 30,
+              "aspect_ratio": null
+            },
+            "content_hint": "小节标..."
           },
           "..."
         ],
@@ -255,8 +252,8 @@
           {
             "id": "con...",
             "type": "arr...",
-            "from_element": "man...",
-            "to_element": "kin...",
+            "from_element": "lab...",
+            "to_element": "lab...",
             "direction": "lef...",
             "label": "+ro...",
             "line_style": "sol..."
@@ -264,71 +261,61 @@
           {
             "id": "con...",
             "type": "arr...",
-            "from_element": "wom...",
-            "to_element": "que...",
+            "from_element": "lab...",
+            "to_element": "lab...",
             "direction": "lef...",
             "label": "+ro...",
             "line_style": "sol..."
-          },
-          {
-            "id": "con...",
-            "type": "das...",
-            "from_element": "int...",
-            "to_element": "sca...",
-            "direction": "top...",
-            "label": "降维可...",
-            "line_style": "das..."
-          },
-          "..."
+          }
         ],
-        "design_notes": "整体采用柔和蓝紫渐变背景，各内容区使用轻微圆角和阴影增加层次感。标题区字体加粗，使用渐变色标题（#6..."
+        "design_notes": "整体风格现代清晰，使用蓝紫配色营造科技感与亲和力。标题区域采用从左到右的水平渐变背景（从#4A90D..."
       }
     },
     {
-      "timestamp": "2026-07-12T17:06:44.385740",
+      "timestamp": "2026-07-12T21:25:46.309642",
       "event": "agent_start",
       "agent": "Agent3:SVGCoder (round 1)",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-12T17:08:12.576483",
+      "timestamp": "2026-07-12T21:26:59.077234",
       "event": "agent_output",
       "agent": "Agent3:SVGCoder",
-      "duration_ms": 88190.7,
+      "duration_ms": 72767.6,
       "output_summary": {
-        "svg_length": 13541
+        "svg_length": 13222
       }
     },
     {
-      "timestamp": "2026-07-12T17:08:12.581887",
+      "timestamp": "2026-07-12T21:26:59.079179",
       "event": "agent_start",
       "agent": "RenderingValidator",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-12T17:08:12.848214",
+      "timestamp": "2026-07-12T21:26:59.711197",
       "event": "agent_output",
       "agent": "RenderingValidator",
-      "duration_ms": 266.3,
+      "duration_ms": 632.0,
       "output_summary": {
         "xml_valid": true,
         "all_pass": false
       }
     },
     {
-      "timestamp": "2026-07-12T17:08:12.848214",
+      "timestamp": "2026-07-12T21:26:59.711197",
       "event": "agent_start",
       "agent": "Agent4:QualityReviewer (round 1)",
       "input_summary": {}
     },
     {
-      "timestamp": "2026-07-12T17:08:35.622800",
+      "timestamp": "2026-07-12T21:27:22.842492",
       "event": "agent_output",
       "agent": "Agent4:QualityReviewer",
-      "duration_ms": 22774.6,
+      "duration_ms": 23130.3,
       "output_summary": {
         "pass": true,
-        "score": 9.0,
+        "score": 9,
         "needs_regen": false
       }
     }

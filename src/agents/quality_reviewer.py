@@ -11,7 +11,7 @@ logger = logging.getLogger(__name__)
 
 
 class QualityReviewer(BaseAgent):
-    """Agent 4: Reviews generated SVG across 6 dimensions.
+    """Agent 4: Reviews generated SVG across 7 dimensions.
 
     Provides structured feedback with:
     - Per-dimension scores and issues

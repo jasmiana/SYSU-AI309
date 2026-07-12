@@ -1,143 +1,191 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1120" width="800" height="1120">
-    <defs>
-        <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-            <stop offset="0%" stop-color="#8E44AD"/>
-            <stop offset="100%" stop-color="#2C3E50"/>
-        </linearGradient>
-        <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
-            <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.1"/>
-        </filter>
-        <filter id="tlShadow" x="-2%" y="-2%" width="104%" height="104%">
-            <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#000000" flood-opacity="0.05"/>
-        </filter>
-        <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
-            <feDropShadow dx="0" dy="2" stdDeviation="6" flood-color="#000000" flood-opacity="0.08"/>
-        </filter>
-    </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1450" width="100%" height="100%">
+  <defs>
+    <!-- 页眉渐变色 -->
+    <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#A31F34"/>
+      <stop offset="100%" stop-color="#D4AF37"/>
+    </linearGradient>
 
-    <!-- 主背景 -->
-    <rect width="800" height="1120" fill="#FDFEFE"/>
-
-    <!-- 标题部分 -->
-    <rect x="40" y="22" width="720" height="80" rx="12" fill="url(#headerGrad)" filter="url(#shadow)"/>
-    <path d="M 40 22 L 40 102" stroke="#E74C3C" stroke-width="4" opacity="0.8"/>
-    <text x="400" y="72" text-anchor="middle" fill="#FFFFFF" font-size="32" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">中山大学发展历程</text>
-
-    <!-- 装饰分隔线 -->
-    <rect x="40" y="110" width="720" height="2" fill="#8E44AD" opacity="0.3"/>
-
-    <!-- 概述部分 -->
-    <rect x="40" y="122" width="720" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
-    <text x="60" y="150" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">中山大学由孙中山先生于1924年创办，是中国南方最著名的高等学府之一。历经百年发展，学校从单一校区扩展为广州、珠海、深圳三校区五校园的宏大格局。</text>
-    <text x="60" y="175" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">2001年与原中山医科大学合并后学科门类更加齐全，2017年入选国家“双一流”建设高校A类。2024年迎来百年华诞。</text>
-
-    <!-- 时间线部分 -->
-    <rect x="40" y="222" width="720" height="850" rx="12" fill="#F4F6F7" filter="url(#tlShadow)"/>
+    <!-- 卡片阴影 -->
+    <filter id="cardShadow" x="-5%" y="-5%" width="120%" height="120%">
+      <feDropShadow dx="2" dy="4" stdDeviation="6" flood-color="#000000" flood-opacity="0.1"/>
+    </filter>
     
-    <!-- 背景水印 -->
-    <text x="760" y="600" fill="#2C3E50" font-size="120" font-weight="bold" opacity="0.03" transform="rotate(-90 760 600)" font-family="sans-serif">100 YEARS</text>
+    <!-- 里程碑辉光效果 -->
+    <filter id="milestoneGlow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="3" result="blur1"/>
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur2"/>
+      <feMerge>
+        <feMergeNode in="blur2"/>
+        <feMergeNode in="blur1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
 
-    <!-- 时间线主轴 -->
-    <line x1="120" y1="262" x2="120" y2="1052" stroke="#2C3E50" stroke-width="4"/>
-    <rect x="110" y="262" width="20" height="790" fill="#8E44AD" opacity="0.05"/>
+    <!-- 时间轴线装饰渐变 -->
+    <linearGradient id="axisGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#A31F34" stop-opacity="0.8"/>
+      <stop offset="50%" stop-color="#A31F34" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#A31F34" stop-opacity="0.2"/>
+    </linearGradient>
+  </defs>
 
-    <!-- 事件 1：1924（关键节点） -->
-    <line x1="120" y1="262" x2="160" y2="262" stroke="#E74C3C" stroke-width="3" stroke-dasharray="4,2"/>
-    <circle cx="160" cy="262" r="10" fill="#E74C3C" filter="url(#shadow)"/>
-    <circle cx="160" cy="262" r="14" fill="#E74C3C" opacity="0.2"/>
-    <rect x="172" y="252" width="62" height="24" rx="4" fill="#E74C3C" opacity="0.1"/>
-    <text x="178" y="269" fill="#E74C3C" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">1924</text>
-    <text x="245" y="269" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">国立广东大学创立，孙中山先生亲手创办</text>
+  <!-- 全局背景 -->
+  <rect width="800" height="1450" fill="#FDF7F0"/>
 
-    <!-- 事件 2：1926 -->
-    <line x1="120" y1="332" x2="160" y2="332" stroke="#8E44AD" stroke-width="2" stroke-dasharray="4,2"/>
-    <circle cx="160" cy="332" r="8" fill="#8E44AD"/>
-    <circle cx="160" cy="332" r="12" fill="#8E44AD" opacity="0.15"/>
-    <rect x="172" y="322" width="62" height="24" rx="4" fill="#8E44AD" opacity="0.1"/>
-    <text x="178" y="339" fill="#8E44AD" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">1926</text>
-    <text x="245" y="339" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">更名为国立中山大学，以纪念孙中山先生</text>
+  <!-- 顶部装饰线 -->
+  <rect x="0" y="0" width="800" height="8" fill="url(#headerGrad)"/>
 
-    <!-- 事件 3：1930 -->
-    <line x1="120" y1="402" x2="160" y2="402" stroke="#8E44AD" stroke-width="2" stroke-dasharray="4,2"/>
-    <circle cx="160" cy="402" r="8" fill="#8E44AD"/>
-    <circle cx="160" cy="402" r="12" fill="#8E44AD" opacity="0.15"/>
-    <rect x="172" y="392" width="62" height="24" rx="4" fill="#8E44AD" opacity="0.1"/>
-    <text x="178" y="409" fill="#8E44AD" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">1930</text>
-    <text x="245" y="409" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">发展为文理工医农法多学科综合大学</text>
+  <!-- ================= 标题区域 ================= -->
+  <g id="title_section">
+    <rect x="0" y="8" width="800" height="112" fill="url(#headerGrad)" opacity="0.95"/>
+    <!-- 装饰性几何图案 -->
+    <polygon points="0,120 30,8 60,120" fill="#FFFFFF" opacity="0.1"/>
+    <polygon points="740,8 800,8 800,60" fill="#FFFFFF" opacity="0.1"/>
+    <circle cx="680" cy="60" r="40" fill="none" stroke="#FFFFFF" stroke-width="1" opacity="0.2"/>
+    
+    <text x="400" y="58" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold" fill="#FFFFFF">中山大学发展历程</text>
+    <text x="400" y="95" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="18" font-weight="normal" fill="#FFF3E0" letter-spacing="2">1924 — 2024 · 百年创校 薪火相传</text>
+  </g>
 
-    <!-- 事件 4：1952（关键节点） -->
-    <line x1="120" y1="472" x2="160" y2="472" stroke="#E74C3C" stroke-width="3" stroke-dasharray="4,2"/>
-    <circle cx="160" cy="472" r="10" fill="#E74C3C" filter="url(#shadow)"/>
-    <circle cx="160" cy="472" r="14" fill="#E74C3C" opacity="0.2"/>
-    <rect x="172" y="462" width="62" height="24" rx="4" fill="#E74C3C" opacity="0.1"/>
-    <text x="178" y="479" fill="#E74C3C" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">1952</text>
-    <text x="245" y="479" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">全国院系调整，成为文理科综合大学</text>
+  <!-- ================= 时间线区域 ================= -->
+  <g id="timeline_body">
+    <!-- 时间线主轴线 -->
+    <line x1="400" y1="150" x2="400" y2="1330" stroke="url(#axisGrad)" stroke-width="4" stroke-linecap="round"/>
+    
+    <!-- 轴线上的装饰性刻度标记 -->
+    <g stroke="#D4AF37" stroke-width="1" opacity="0.5">
+      <line x1="390" y1="200" x2="410" y2="200"/>
+      <line x1="390" y1="320" x2="410" y2="320"/>
+      <line x1="390" y1="440" x2="410" y2="440"/>
+      <line x1="390" y1="920" x2="410" y2="920"/>
+      <line x1="390" y1="1280" x2="410" y2="1280"/>
+    </g>
 
-    <!-- 事件 5：1980 -->
-    <line x1="120" y1="542" x2="160" y2="542" stroke="#8E44AD" stroke-width="2" stroke-dasharray="4,2"/>
-    <circle cx="160" cy="542" r="8" fill="#8E44AD"/>
-    <circle cx="160" cy="542" r="12" fill="#8E44AD" opacity="0.15"/>
-    <rect x="172" y="532" width="62" height="24" rx="4" fill="#8E44AD" opacity="0.1"/>
-    <text x="178" y="549" fill="#8E44AD" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">1980</text>
-    <text x="245" y="549" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">改革开放后迅速发展，扩大办学规模</text>
+    <!-- 1. 1924年：左侧（里程碑） -->
+    <g id="event_1924">
+      <!-- 连接线 -->
+      <line x1="340" y1="200" x2="385" y2="200" stroke="#A31F34" stroke-width="2"/>
+      <!-- 节点外圈辉光 -->
+      <circle cx="400" cy="200" r="16" fill="#F28C28" opacity="0.3"/>
+      <!-- 节点 -->
+      <circle cx="400" cy="200" r="12" fill="#F28C28" stroke="#FFFFFF" stroke-width="3" filter="url(#milestoneGlow)"/>
+      <!-- 卡片 -->
+      <rect x="60" y="160" width="280" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="75" y="190" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#A31F34">1924</text>
+      <text x="310" y="195" font-size="22" text-anchor="end">🏛️</text>
+      <text x="75" y="215" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">孙中山先生创办国立广东大学</text>
+      <text x="75" y="233" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">初创校舍位于广州文明路，开启伟业。</text>
+    </g>
 
-    <!-- 事件 6：2000 -->
-    <line x1="120" y1="612" x2="160" y2="612" stroke="#8E44AD" stroke-width="2" stroke-dasharray="4,2"/>
-    <circle cx="160" cy="612" r="8" fill="#8E44AD"/>
-    <circle cx="160" cy="612" r="12" fill="#8E44AD" opacity="0.15"/>
-    <rect x="172" y="602" width="62" height="24" rx="4" fill="#8E44AD" opacity="0.1"/>
-    <text x="178" y="619" fill="#8E44AD" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">2000</text>
-    <text x="245" y="619" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">珠海校区正式启用，拓展办学空间</text>
+    <!-- 2. 1926年：右侧 -->
+    <g id="event_1926">
+      <line x1="415" y1="320" x2="460" y2="320" stroke="#A31F34" stroke-width="2"/>
+      <circle cx="400" cy="320" r="8" fill="#D4AF37" stroke="#FFFFFF" stroke-width="2"/>
+      <rect x="460" y="280" width="280" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="475" y="310" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#A31F34">1926</text>
+      <text x="715" y="315" font-size="22" text-anchor="end">✍️</text>
+      <text x="475" y="335" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">更名为国立中山大学</text>
+      <text x="475" y="353" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">为纪念孙中山先生，广东大学正式更名。</text>
+    </g>
 
-    <!-- 事件 7：2001（关键节点） -->
-    <line x1="120" y1="682" x2="160" y2="682" stroke="#E74C3C" stroke-width="3" stroke-dasharray="4,2"/>
-    <circle cx="160" cy="682" r="10" fill="#E74C3C" filter="url(#shadow)"/>
-    <circle cx="160" cy="682" r="14" fill="#E74C3C" opacity="0.2"/>
-    <rect x="172" y="672" width="62" height="24" rx="4" fill="#E74C3C" opacity="0.1"/>
-    <text x="178" y="689" fill="#E74C3C" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">2001</text>
-    <text x="245" y="689" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">与原中山医科大学合并，组建新的中山大学</text>
+    <!-- 3. 1930年：左侧 -->
+    <g id="event_1930">
+      <line x1="340" y1="440" x2="385" y2="440" stroke="#A31F34" stroke-width="2"/>
+      <circle cx="400" cy="440" r="8" fill="#D4AF37" stroke="#FFFFFF" stroke-width="2"/>
+      <rect x="60" y="400" width="280" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="75" y="430" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#A31F34">1930</text>
+      <text x="310" y="435" font-size="22" text-anchor="end">📚</text>
+      <text x="75" y="455" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">发展为多学科综合大学</text>
+      <text x="75" y="473" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">文、理、工、医、农、法多学科全面发展。</text>
+    </g>
 
-    <!-- 事件 8：2004 -->
-    <line x1="120" y1="752" x2="160" y2="752" stroke="#8E44AD" stroke-width="2" stroke-dasharray="4,2"/>
-    <circle cx="160" cy="752" r="8" fill="#8E44AD"/>
-    <circle cx="160" cy="752" r="12" fill="#8E44AD" opacity="0.15"/>
-    <rect x="172" y="742" width="62" height="24" rx="4" fill="#8E44AD" opacity="0.1"/>
-    <text x="178" y="759" fill="#8E44AD" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">2004</text>
-    <text x="245" y="759" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">广州东校区（大学城校区）启用</text>
+    <!-- 4. 1952年：右侧 -->
+    <g id="event_1952">
+      <line x1="415" y1="560" x2="460" y2="560" stroke="#A31F34" stroke-width="2"/>
+      <circle cx="400" cy="560" r="8" fill="#D4AF37" stroke="#FFFFFF" stroke-width="2"/>
+      <rect x="460" y="520" width="280" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="475" y="550" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#A31F34">1952</text>
+      <text x="715" y="555" font-size="22" text-anchor="end">🔬</text>
+      <text x="475" y="575" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">全国院系调整</text>
+      <text x="475" y="593" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">工、农、医等学院分出，成为文理科大学。</text>
+    </g>
 
-    <!-- 事件 9：2015 -->
-    <line x1="120" y1="822" x2="160" y2="822" stroke="#8E44AD" stroke-width="2" stroke-dasharray="4,2"/>
-    <circle cx="160" cy="822" r="8" fill="#8E44AD"/>
-    <circle cx="160" cy="822" r="12" fill="#8E44AD" opacity="0.15"/>
-    <rect x="172" y="812" width="62" height="24" rx="4" fill="#8E44AD" opacity="0.1"/>
-    <text x="178" y="829" fill="#8E44AD" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">2015</text>
-    <text x="245" y="829" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">深圳校区启动建设，布局粤港澳大湾区</text>
+    <!-- 5. 1980年：左侧 -->
+    <g id="event_1980">
+      <line x1="340" y1="680" x2="385" y2="680" stroke="#A31F34" stroke-width="2"/>
+      <circle cx="400" cy="680" r="8" fill="#D4AF37" stroke="#FFFFFF" stroke-width="2"/>
+      <rect x="60" y="640" width="280" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="75" y="670" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#A31F34">1980</text>
+      <text x="310" y="675" font-size="22" text-anchor="end">🌱</text>
+      <text x="75" y="695" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">改革开放焕新生</text>
+      <text x="75" y="713" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">复办港澳同胞资助专业，办学规模迅速扩大。</text>
+    </g>
 
-    <!-- 事件 10：2017（关键节点） -->
-    <line x1="120" y1="892" x2="160" y2="892" stroke="#E74C3C" stroke-width="3" stroke-dasharray="4,2"/>
-    <circle cx="160" cy="892" r="10" fill="#E74C3C" filter="url(#shadow)"/>
-    <circle cx="160" cy="892" r="14" fill="#E74C3C" opacity="0.2"/>
-    <rect x="172" y="882" width="62" height="24" rx="4" fill="#E74C3C" opacity="0.1"/>
-    <text x="178" y="899" fill="#E74C3C" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">2017</text>
-    <text x="245" y="899" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">入选国家“双一流”建设高校（A类）</text>
+    <!-- 6. 1999年：右侧 -->
+    <g id="event_1999">
+      <line x1="415" y1="800" x2="460" y2="800" stroke="#A31F34" stroke-width="2"/>
+      <circle cx="400" cy="800" r="8" fill="#D4AF37" stroke="#FFFFFF" stroke-width="2"/>
+      <rect x="460" y="760" width="280" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="475" y="790" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#A31F34">1999</text>
+      <text x="715" y="795" font-size="22" text-anchor="end">🌉</text>
+      <text x="475" y="815" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">珠海校区正式启用</text>
+      <text x="475" y="833" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">拓展办学空间，奠定多校区发展格局。</text>
+    </g>
 
-    <!-- 事件 11：2022 -->
-    <line x1="120" y1="962" x2="160" y2="962" stroke="#8E44AD" stroke-width="2" stroke-dasharray="4,2"/>
-    <circle cx="160" cy="962" r="8" fill="#8E44AD"/>
-    <circle cx="160" cy="962" r="12" fill="#8E44AD" opacity="0.15"/>
-    <rect x="172" y="952" width="62" height="24" rx="4" fill="#8E44AD" opacity="0.1"/>
-    <text x="178" y="969" fill="#8E44AD" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">2022</text>
-    <text x="245" y="969" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">11个学科入选第二轮“双一流”建设名单</text>
+    <!-- 7. 2001年：左侧（里程碑） -->
+    <g id="event_2001">
+      <line x1="340" y1="920" x2="385" y2="920" stroke="#A31F34" stroke-width="2"/>
+      <circle cx="400" cy="920" r="16" fill="#F28C28" opacity="0.3"/>
+      <circle cx="400" cy="920" r="12" fill="#F28C28" stroke="#FFFFFF" stroke-width="3" filter="url(#milestoneGlow)"/>
+      <rect x="60" y="880" width="280" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="75" y="910" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#A31F34">2001</text>
+      <text x="310" y="915" font-size="22" text-anchor="end">🚀</text>
+      <text x="75" y="935" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">与原中山医科大学合并</text>
+      <text x="75" y="953" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">组建新的中山大学，学科门类更齐全，实力大增。</text>
+    </g>
 
-    <!-- 事件 12：2024（关键节点） -->
-    <line x1="120" y1="1032" x2="160" y2="1032" stroke="#E74C3C" stroke-width="3" stroke-dasharray="4,2"/>
-    <circle cx="160" cy="1032" r="10" fill="#E74C3C" filter="url(#shadow)"/>
-    <circle cx="160" cy="1032" r="14" fill="#E74C3C" opacity="0.2"/>
-    <rect x="172" y="1022" width="62" height="24" rx="4" fill="#E74C3C" opacity="0.1"/>
-    <text x="178" y="1039" fill="#E74C3C" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">2024</text>
-    <text x="245" y="1039" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">形成三校区五校园办学格局，百年校庆</text>
+    <!-- 8. 2015年：右侧 -->
+    <g id="event_2015">
+      <line x1="415" y1="1040" x2="460" y2="1040" stroke="#A31F34" stroke-width="2"/>
+      <circle cx="400" cy="1040" r="8" fill="#D4AF37" stroke="#FFFFFF" stroke-width="2"/>
+      <rect x="460" y="1000" width="280" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="475" y="1030" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#A31F34">2015</text>
+      <text x="715" y="1035" font-size="22" text-anchor="end">🏗️</text>
+      <text x="475" y="1055" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">深圳校区启动建设</text>
+      <text x="475" y="1073" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">布局粤港澳大湾区，服务国家创新战略。</text>
+    </g>
 
-    <!-- 页脚部分 -->
-    <rect x="40" y="1072" width="720" height="36" rx="6" fill="#2C3E50"/>
-    <text x="400" y="1095" text-anchor="middle" fill="#FFFFFF" font-size="12" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">数据来源：中山大学官网 | 百年校庆：2024</text>
+    <!-- 9. 2017年：左侧 -->
+    <g id="event_2017">
+      <line x1="340" y1="1160" x2="385" y2="1160" stroke="#A31F34" stroke-width="2"/>
+      <circle cx="400" cy="1160" r="8" fill="#D4AF37" stroke="#FFFFFF" stroke-width="2"/>
+      <rect x="60" y="1120" width="280" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="75" y="1150" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#A31F34">2017</text>
+      <text x="310" y="1155" font-size="22" text-anchor="end">⭐</text>
+      <text x="75" y="1175" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">入选国家“双一流”建设高校</text>
+      <text x="75" y="1193" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">11个学科入选第二轮“双一流”建设名单。</text>
+    </g>
+
+    <!-- 10. 2024年：右侧（里程碑） -->
+    <g id="event_2024">
+      <line x1="415" y1="1280" x2="460" y2="1280" stroke="#A31F34" stroke-width="2"/>
+      <circle cx="400" cy="1280" r="16" fill="#F28C28" opacity="0.3"/>
+      <circle cx="400" cy="1280" r="12" fill="#F28C28" stroke="#FFFFFF" stroke-width="3" filter="url(#milestoneGlow)"/>
+      <rect x="460" y="1240" width="280" height="80" rx="8" fill="#FFFFFF" filter="url(#cardShadow)"/>
+      <text x="475" y="1270" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="24" font-weight="bold" fill="#A31F34">2024</text>
+      <text x="715" y="1275" font-size="22" text-anchor="end">🎓</text>
+      <text x="475" y="1295" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#2C3E50">百年校庆，未来已来</text>
+      <text x="475" y="1313" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">三校区五校园格局，迈向世界一流大学。</text>
+    </g>
+  </g>
+
+  <!-- ================= 页脚区域 ================= -->
+  <g id="footer_section">
+    <rect x="0" y="1380" width="800" height="70" fill="#FDF7F0"/>
+    <line x1="200" y1="1380" x2="600" y2="1380" stroke="#D4AF37" stroke-width="2" opacity="0.6"/>
+    <text x="400" y="1415" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="medium" fill="#A31F34" letter-spacing="1">博学之，审问之，慎思之，明辨之，笃行之。—— 孙中山</text>
+    <text x="400" y="1437" text-anchor="middle" font-family="system-ui, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">数据来源：中山大学官方网站 &amp; 历史档案</text>
+  </g>
+
 </svg>

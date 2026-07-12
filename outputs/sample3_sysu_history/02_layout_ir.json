@@ -2,35 +2,36 @@
   "chart_type": "timeline",
   "canvas": {
     "width": 800,
-    "height": 1100,
-    "background": "#FDFEFE"
+    "height": 1300,
+    "background": "#FDF7F0"
   },
   "color_scheme": {
-    "name": "学术稳重",
-    "primary": "#8E44AD",
-    "secondary": "#2C3E50",
-    "accent": "#E74C3C",
-    "background": "#FDFEFE",
-    "text_primary": "#2C3E50",
-    "text_secondary": "#7F8C8D",
+    "name": "百年校庆·红金",
+    "primary": "#A31F34",
+    "secondary": "#D4AF37",
+    "accent": "#F28C28",
+    "background": "#FDF7F0",
+    "text_primary": "#1A1A2E",
+    "text_secondary": "#4A4A4A",
     "palette": [
-      "#8E44AD",
-      "#2C3E50",
-      "#E74C3C",
-      "#F39C12",
-      "#27AE60"
+      "#A31F34",
+      "#D4AF37",
+      "#F28C28",
+      "#2E86AB",
+      "#3A7D44",
+      "#8B5E3C"
     ],
-    "rationale": "中山大学百年历史厚重，紫色彰显学术权威与稳重，红色强调关键里程碑（1924创立、2001合并、2017双一流），深灰提供结构对比，整体契合教育历史主题。"
+    "rationale": "选择中山大学标志性的红色为主色调，体现学校的历史底蕴和精神传承；搭配金色作为辅助色，象征百年名校的辉煌成就与学术荣誉。整体暖色调营造庄重而充满活力的氛围，红色用于时间轴线与关键节点，金色强化年份数字的可读性，强调色橙色聚焦于创立、合并、百年等里程碑事件。"
   },
   "typography": {
     "title_size": 32,
     "heading_size": 20,
     "body_size": 14,
-    "label_size": 14,
+    "label_size": 16,
     "font_family": "system-ui, 'Microsoft YaHei', sans-serif"
   },
   "layout_grid": {
-    "columns": 1,
+    "columns": 2,
     "rows": 12,
     "gutter": 20
   },
@@ -39,113 +40,115 @@
       "id": "title_section",
       "type": "title",
       "position": {
-        "x_pct": 10,
-        "y_pct": 2,
-        "width_pct": 80,
-        "height_pct": 10
+        "x_pct": 0,
+        "y_pct": 0,
+        "width_pct": 100,
+        "height_pct": 12
       },
       "visual_weight": "primary",
-      "purpose": "展示主标题：中山大学发展历程"
+      "purpose": "展示主标题和副标题，承载百年校庆氛围"
     },
     {
-      "id": "overview_section",
-      "type": "content_block",
+      "id": "timeline_body",
+      "type": "timeline",
       "position": {
-        "x_pct": 10,
+        "x_pct": 0,
         "y_pct": 12,
-        "width_pct": 80,
-        "height_pct": 8
-      },
-      "visual_weight": "secondary",
-      "purpose": "展示学校百年历程概述"
-    },
-    {
-      "id": "timeline_section",
-      "type": "diagram",
-      "position": {
-        "x_pct": 5,
-        "y_pct": 22,
-        "width_pct": 90,
-        "height_pct": 68
+        "width_pct": 100,
+        "height_pct": 83
       },
       "visual_weight": "primary",
-      "purpose": "垂直时间轴，展示1924-2024年发展历程"
+      "purpose": "垂直时间轴线及所有事件节点的载体"
     },
     {
       "id": "footer_section",
       "type": "footer",
       "position": {
-        "x_pct": 10,
-        "y_pct": 92,
-        "width_pct": 80,
-        "height_pct": 6
+        "x_pct": 0,
+        "y_pct": 95,
+        "width_pct": 100,
+        "height_pct": 5
       },
       "visual_weight": "tertiary",
-      "purpose": "标注数据来源"
+      "purpose": "显示注释、数据来源或版权信息"
     }
   ],
   "elements": [
     {
-      "id": "title",
+      "id": "title_bg",
+      "type": "rect",
+      "label": "",
+      "parent_section": "title_section",
+      "color_key": "primary",
+      "importance": "primary",
+      "size_hint": {
+        "min_width": 800,
+        "min_height": 100,
+        "aspect_ratio": null
+      },
+      "content_hint": "渐变背景：从左到右 #A31F34 → #D4AF37"
+    },
+    {
+      "id": "title_text",
       "type": "text_block",
       "label": "中山大学发展历程",
       "parent_section": "title_section",
-      "color_key": "text_primary",
+      "color_key": "secondary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 300,
-        "min_height": 40,
+        "min_width": 560,
+        "min_height": 45,
         "aspect_ratio": null
       },
-      "content_hint": "中山大学发展历程 (主标题，居中显示)"
+      "content_hint": "主标题：字体白色，居中，字号32px，加粗"
     },
     {
-      "id": "overview",
+      "id": "subtitle_text",
       "type": "text_block",
-      "label": "概述",
-      "parent_section": "overview_section",
-      "color_key": "text_secondary",
+      "label": "1924 — 2024 · 百年创校 薪火相传",
+      "parent_section": "title_section",
+      "color_key": "background",
       "importance": "secondary",
       "size_hint": {
         "min_width": 400,
-        "min_height": 30,
+        "min_height": 25,
         "aspect_ratio": null
       },
-      "content_hint": "由孙中山先生于1924年创办，历经百年，现为三校区五校园格局，2024年百年校庆。"
-    },
-    {
-      "id": "timeline_bg",
-      "type": "rounded_rect",
-      "label": null,
-      "parent_section": "timeline_section",
-      "color_key": "background",
-      "importance": "tertiary",
-      "size_hint": {
-        "min_width": 600,
-        "min_height": 680,
-        "aspect_ratio": null
-      },
-      "content_hint": "时间线区域浅灰色背景，圆角矩形"
+      "content_hint": "副标题：字号16px，居中，不透明度0.9"
     },
     {
       "id": "timeline_axis",
-      "type": "rect",
-      "label": null,
-      "parent_section": "timeline_section",
+      "type": "line",
+      "label": "",
+      "parent_section": "timeline_body",
       "color_key": "primary",
       "importance": "primary",
       "size_hint": {
-        "min_width": 6,
-        "min_height": 680,
+        "min_width": 3,
+        "min_height": 900,
         "aspect_ratio": null
       },
-      "content_hint": "垂直主轴线，紫色，连接所有时间节点"
+      "content_hint": "垂直轴线，x_pct=50%，从y=14%到y=92%，线宽3px，实线"
     },
     {
-      "id": "circle_0",
+      "id": "event_1924_card",
+      "type": "rounded_rect",
+      "label": "1924",
+      "parent_section": "timeline_body",
+      "color_key": "primary",
+      "importance": "primary",
+      "size_hint": {
+        "min_width": 280,
+        "min_height": 60,
+        "aspect_ratio": null
+      },
+      "content_hint": "卡片圆角8px，背景白色带浅阴影，左侧对齐。标题'1924'用金色大字显示，下方描述'孙中山先生于广州创办国立广东大学'"
+    },
+    {
+      "id": "event_1924_dot",
       "type": "circle",
-      "label": null,
-      "parent_section": "timeline_section",
+      "label": "",
+      "parent_section": "timeline_body",
       "color_key": "accent",
       "importance": "primary",
       "size_hint": {
@@ -153,167 +156,167 @@
         "min_height": 16,
         "aspect_ratio": 1
       },
-      "content_hint": "1924年里程碑节点，红色强调"
+      "content_hint": "时间轴上的节点，位于x_pct=50%，与卡片垂直居中对齐。强调色标志里程碑"
     },
     {
-      "id": "text_0",
-      "type": "text_block",
-      "label": "1924: 国立广东大学创立，孙中山先生亲手创办",
-      "parent_section": "timeline_section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 240,
-        "min_height": 20,
-        "aspect_ratio": null
-      },
-      "content_hint": "1924年事件描述"
-    },
-    {
-      "id": "circle_1",
-      "type": "circle",
-      "label": null,
-      "parent_section": "timeline_section",
+      "id": "event_1926_card",
+      "type": "rounded_rect",
+      "label": "1926",
+      "parent_section": "timeline_body",
       "color_key": "primary",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 16,
-        "min_height": 16,
-        "aspect_ratio": 1
-      },
-      "content_hint": "1926年节点"
-    },
-    {
-      "id": "text_1",
-      "type": "text_block",
-      "label": "1926: 更名为国立中山大学，以纪念孙中山先生",
-      "parent_section": "timeline_section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 240,
-        "min_height": 20,
+        "min_width": 280,
+        "min_height": 60,
         "aspect_ratio": null
       },
-      "content_hint": "1926年事件描述"
+      "content_hint": "卡片靠右对齐，x_pct=55%。标题'1926'，描述'更名为国立中山大学以纪念孙中山先生'"
     },
     {
-      "id": "circle_2",
+      "id": "event_1926_dot",
       "type": "circle",
-      "label": null,
-      "parent_section": "timeline_section",
+      "label": "",
+      "parent_section": "timeline_body",
+      "color_key": "secondary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 12,
+        "min_height": 12,
+        "aspect_ratio": 1
+      },
+      "content_hint": "金色圆点节点"
+    },
+    {
+      "id": "event_1930_card",
+      "type": "rounded_rect",
+      "label": "1930",
+      "parent_section": "timeline_body",
+      "color_key": "primary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 280,
+        "min_height": 60,
+        "aspect_ratio": null
+      },
+      "content_hint": "左侧卡片，描述'发展为文理工医农法多学科综合大学'"
+    },
+    {
+      "id": "event_1930_dot",
+      "type": "circle",
+      "label": "",
+      "parent_section": "timeline_body",
+      "color_key": "secondary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 10,
+        "min_height": 10,
+        "aspect_ratio": 1
+      },
+      "content_hint": "标准节点"
+    },
+    {
+      "id": "event_1952_card",
+      "type": "rounded_rect",
+      "label": "1952",
+      "parent_section": "timeline_body",
       "color_key": "primary",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 16,
-        "min_height": 16,
-        "aspect_ratio": 1
-      },
-      "content_hint": "1930年节点"
-    },
-    {
-      "id": "text_2",
-      "type": "text_block",
-      "label": "1930: 发展为文理工医农法多学科综合大学",
-      "parent_section": "timeline_section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 240,
-        "min_height": 20,
+        "min_width": 280,
+        "min_height": 60,
         "aspect_ratio": null
       },
-      "content_hint": "1930年事件描述"
+      "content_hint": "右侧卡片，描述'全国院系调整，中山大学拆分为文理科综合大学'"
     },
     {
-      "id": "circle_3",
+      "id": "event_1952_dot",
       "type": "circle",
-      "label": null,
-      "parent_section": "timeline_section",
+      "label": "",
+      "parent_section": "timeline_body",
+      "color_key": "secondary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 12,
+        "min_height": 12,
+        "aspect_ratio": 1
+      },
+      "content_hint": "标准节点"
+    },
+    {
+      "id": "event_1980_card",
+      "type": "rounded_rect",
+      "label": "1980",
+      "parent_section": "timeline_body",
       "color_key": "primary",
-      "importance": "secondary",
+      "importance": "tertiary",
       "size_hint": {
-        "min_width": 16,
-        "min_height": 16,
-        "aspect_ratio": 1
-      },
-      "content_hint": "1952年节点"
-    },
-    {
-      "id": "text_3",
-      "type": "text_block",
-      "label": "1952: 全国院系调整，成为文理科综合大学",
-      "parent_section": "timeline_section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 240,
-        "min_height": 20,
+        "min_width": 280,
+        "min_height": 60,
         "aspect_ratio": null
       },
-      "content_hint": "1952年事件描述"
+      "content_hint": "左侧卡片，描述'改革开放后迅速发展，扩大办学规模'"
     },
     {
-      "id": "circle_4",
+      "id": "event_1980_dot",
       "type": "circle",
-      "label": null,
-      "parent_section": "timeline_section",
+      "label": "",
+      "parent_section": "timeline_body",
+      "color_key": "secondary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 10,
+        "min_height": 10,
+        "aspect_ratio": 1
+      },
+      "content_hint": "标准节点"
+    },
+    {
+      "id": "event_2000_card",
+      "type": "rounded_rect",
+      "label": "2000",
+      "parent_section": "timeline_body",
       "color_key": "primary",
-      "importance": "secondary",
+      "importance": "tertiary",
       "size_hint": {
-        "min_width": 16,
-        "min_height": 16,
-        "aspect_ratio": 1
-      },
-      "content_hint": "1980年节点"
-    },
-    {
-      "id": "text_4",
-      "type": "text_block",
-      "label": "1980: 改革开放后迅速发展，扩大办学规模",
-      "parent_section": "timeline_section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 240,
-        "min_height": 20,
+        "min_width": 280,
+        "min_height": 60,
         "aspect_ratio": null
       },
-      "content_hint": "1980年事件描述"
+      "content_hint": "右侧卡片，描述'珠海校区正式启用，拓展办学空间'"
     },
     {
-      "id": "circle_5",
+      "id": "event_2000_dot",
       "type": "circle",
-      "label": null,
-      "parent_section": "timeline_section",
-      "color_key": "primary",
-      "importance": "secondary",
+      "label": "",
+      "parent_section": "timeline_body",
+      "color_key": "secondary",
+      "importance": "tertiary",
       "size_hint": {
-        "min_width": 16,
-        "min_height": 16,
+        "min_width": 10,
+        "min_height": 10,
         "aspect_ratio": 1
       },
-      "content_hint": "2000年节点"
+      "content_hint": "标准节点"
     },
     {
-      "id": "text_5",
-      "type": "text_block",
-      "label": "2000: 珠海校区正式启用，拓展办学空间",
-      "parent_section": "timeline_section",
-      "color_key": "text_primary",
-      "importance": "secondary",
+      "id": "event_2001_card",
+      "type": "rounded_rect",
+      "label": "2001",
+      "parent_section": "timeline_body",
+      "color_key": "accent",
+      "importance": "primary",
       "size_hint": {
-        "min_width": 240,
-        "min_height": 20,
+        "min_width": 280,
+        "min_height": 60,
         "aspect_ratio": null
       },
-      "content_hint": "2000年事件描述"
+      "content_hint": "左侧卡片（里程碑），边框/标签用橙色强调。描述'与原中山医科大学合并，组建新的中山大学'"
     },
     {
-      "id": "circle_6",
+      "id": "event_2001_dot",
       "type": "circle",
-      "label": null,
-      "parent_section": "timeline_section",
+      "label": "",
+      "parent_section": "timeline_body",
       "color_key": "accent",
       "importance": "primary",
       "size_hint": {
@@ -321,83 +324,139 @@
         "min_height": 16,
         "aspect_ratio": 1
       },
-      "content_hint": "2001年里程碑节点，红色强调"
+      "content_hint": "橙色强调节点"
     },
     {
-      "id": "text_6",
-      "type": "text_block",
-      "label": "2001: 与原中山医科大学合并，组建新的中山大学",
-      "parent_section": "timeline_section",
-      "color_key": "text_primary",
-      "importance": "secondary",
+      "id": "event_2004_card",
+      "type": "rounded_rect",
+      "label": "2004",
+      "parent_section": "timeline_body",
+      "color_key": "primary",
+      "importance": "tertiary",
       "size_hint": {
-        "min_width": 240,
-        "min_height": 20,
+        "min_width": 280,
+        "min_height": 60,
         "aspect_ratio": null
       },
-      "content_hint": "2001年事件描述"
+      "content_hint": "右侧卡片，描述'广州东校区（大学城校区）启用'"
     },
     {
-      "id": "circle_7",
+      "id": "event_2004_dot",
       "type": "circle",
-      "label": null,
-      "parent_section": "timeline_section",
+      "label": "",
+      "parent_section": "timeline_body",
+      "color_key": "secondary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 10,
+        "min_height": 10,
+        "aspect_ratio": 1
+      },
+      "content_hint": "标准节点"
+    },
+    {
+      "id": "event_2015_card",
+      "type": "rounded_rect",
+      "label": "2015",
+      "parent_section": "timeline_body",
       "color_key": "primary",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 16,
-        "min_height": 16,
-        "aspect_ratio": 1
-      },
-      "content_hint": "2004年节点"
-    },
-    {
-      "id": "text_7",
-      "type": "text_block",
-      "label": "2004: 广州东校区（大学城校区）启用",
-      "parent_section": "timeline_section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 240,
-        "min_height": 20,
+        "min_width": 280,
+        "min_height": 60,
         "aspect_ratio": null
       },
-      "content_hint": "2004年事件描述"
+      "content_hint": "左侧卡片，描述'深圳校区启动建设，布局粤港澳大湾区'"
     },
     {
-      "id": "circle_8",
+      "id": "event_2015_dot",
       "type": "circle",
-      "label": null,
-      "parent_section": "timeline_section",
+      "label": "",
+      "parent_section": "timeline_body",
+      "color_key": "secondary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 12,
+        "min_height": 12,
+        "aspect_ratio": 1
+      },
+      "content_hint": "标准节点"
+    },
+    {
+      "id": "event_2017_card",
+      "type": "rounded_rect",
+      "label": "2017",
+      "parent_section": "timeline_body",
       "color_key": "primary",
       "importance": "secondary",
       "size_hint": {
-        "min_width": 16,
-        "min_height": 16,
-        "aspect_ratio": 1
-      },
-      "content_hint": "2015年节点"
-    },
-    {
-      "id": "text_8",
-      "type": "text_block",
-      "label": "2015: 深圳校区启动建设，布局粤港澳大湾区",
-      "parent_section": "timeline_section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 240,
-        "min_height": 20,
+        "min_width": 280,
+        "min_height": 60,
         "aspect_ratio": null
       },
-      "content_hint": "2015年事件描述"
+      "content_hint": "右侧卡片，描述'入选国家“双一流”建设高校（A类）'"
     },
     {
-      "id": "circle_9",
+      "id": "event_2017_dot",
       "type": "circle",
-      "label": null,
-      "parent_section": "timeline_section",
+      "label": "",
+      "parent_section": "timeline_body",
+      "color_key": "secondary",
+      "importance": "secondary",
+      "size_hint": {
+        "min_width": 12,
+        "min_height": 12,
+        "aspect_ratio": 1
+      },
+      "content_hint": "标准节点"
+    },
+    {
+      "id": "event_2022_card",
+      "type": "rounded_rect",
+      "label": "2022",
+      "parent_section": "timeline_body",
+      "color_key": "primary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 280,
+        "min_height": 60,
+        "aspect_ratio": null
+      },
+      "content_hint": "左侧卡片，描述'11个学科入选第二轮“双一流”建设名单'"
+    },
+    {
+      "id": "event_2022_dot",
+      "type": "circle",
+      "label": "",
+      "parent_section": "timeline_body",
+      "color_key": "secondary",
+      "importance": "tertiary",
+      "size_hint": {
+        "min_width": 10,
+        "min_height": 10,
+        "aspect_ratio": 1
+      },
+      "content_hint": "标准节点"
+    },
+    {
+      "id": "event_2024_card",
+      "type": "rounded_rect",
+      "label": "2024",
+      "parent_section": "timeline_body",
+      "color_key": "accent",
+      "importance": "primary",
+      "size_hint": {
+        "min_width": 280,
+        "min_height": 60,
+        "aspect_ratio": null
+      },
+      "content_hint": "右侧卡片（里程碑），橙色强调。描述'形成三校区五校园办学格局，喜迎百年校庆'"
+    },
+    {
+      "id": "event_2024_dot",
+      "type": "circle",
+      "label": "",
+      "parent_section": "timeline_body",
       "color_key": "accent",
       "importance": "primary",
       "size_hint": {
@@ -405,202 +464,132 @@
         "min_height": 16,
         "aspect_ratio": 1
       },
-      "content_hint": "2017年里程碑节点，红色强调"
-    },
-    {
-      "id": "text_9",
-      "type": "text_block",
-      "label": "2017: 入选国家'双一流'建设高校（A类）",
-      "parent_section": "timeline_section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 240,
-        "min_height": 20,
-        "aspect_ratio": null
-      },
-      "content_hint": "2017年事件描述"
-    },
-    {
-      "id": "circle_10",
-      "type": "circle",
-      "label": null,
-      "parent_section": "timeline_section",
-      "color_key": "primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 16,
-        "min_height": 16,
-        "aspect_ratio": 1
-      },
-      "content_hint": "2022年节点"
-    },
-    {
-      "id": "text_10",
-      "type": "text_block",
-      "label": "2022: 11个学科入选第二轮'双一流'建设名单",
-      "parent_section": "timeline_section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 240,
-        "min_height": 20,
-        "aspect_ratio": null
-      },
-      "content_hint": "2022年事件描述"
-    },
-    {
-      "id": "circle_11",
-      "type": "circle",
-      "label": null,
-      "parent_section": "timeline_section",
-      "color_key": "primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 16,
-        "min_height": 16,
-        "aspect_ratio": 1
-      },
-      "content_hint": "2024年节点"
-    },
-    {
-      "id": "text_11",
-      "type": "text_block",
-      "label": "2024: 形成三校区五校园办学格局，百年校庆",
-      "parent_section": "timeline_section",
-      "color_key": "text_primary",
-      "importance": "secondary",
-      "size_hint": {
-        "min_width": 240,
-        "min_height": 20,
-        "aspect_ratio": null
-      },
-      "content_hint": "2024年事件描述"
+      "content_hint": "橙色强调节点"
     },
     {
       "id": "footer_text",
       "type": "text_block",
-      "label": "数据来源：中山大学官网，手工整理",
+      "label": "数据来源：中山大学官网 & 手工整理",
       "parent_section": "footer_section",
       "color_key": "text_secondary",
       "importance": "tertiary",
       "size_hint": {
-        "min_width": 200,
+        "min_width": 300,
         "min_height": 20,
         "aspect_ratio": null
       },
-      "content_hint": "页脚注释，小字居中"
+      "content_hint": "居中显示，字号11px，灰色"
     }
   ],
   "connections": [
     {
-      "id": "conn_0",
+      "id": "conn_1924",
       "type": "line",
-      "from_element": "timeline_axis",
-      "to_element": "circle_0",
+      "from_element": "event_1924_dot",
+      "to_element": "event_1924_card",
       "direction": "left-to-right",
       "label": null,
-      "line_style": "dashed"
+      "line_style": "solid"
     },
     {
-      "id": "conn_1",
+      "id": "conn_1926",
       "type": "line",
-      "from_element": "timeline_axis",
-      "to_element": "circle_1",
-      "direction": "left-to-right",
+      "from_element": "event_1926_dot",
+      "to_element": "event_1926_card",
+      "direction": "right-to-left",
       "label": null,
-      "line_style": "dashed"
+      "line_style": "solid"
     },
     {
-      "id": "conn_2",
+      "id": "conn_1930",
       "type": "line",
-      "from_element": "timeline_axis",
-      "to_element": "circle_2",
+      "from_element": "event_1930_dot",
+      "to_element": "event_1930_card",
       "direction": "left-to-right",
       "label": null,
-      "line_style": "dashed"
+      "line_style": "solid"
     },
     {
-      "id": "conn_3",
+      "id": "conn_1952",
       "type": "line",
-      "from_element": "timeline_axis",
-      "to_element": "circle_3",
-      "direction": "left-to-right",
+      "from_element": "event_1952_dot",
+      "to_element": "event_1952_card",
+      "direction": "right-to-left",
       "label": null,
-      "line_style": "dashed"
+      "line_style": "solid"
     },
     {
-      "id": "conn_4",
+      "id": "conn_1980",
       "type": "line",
-      "from_element": "timeline_axis",
-      "to_element": "circle_4",
+      "from_element": "event_1980_dot",
+      "to_element": "event_1980_card",
       "direction": "left-to-right",
       "label": null,
-      "line_style": "dashed"
+      "line_style": "solid"
     },
     {
-      "id": "conn_5",
+      "id": "conn_2000",
       "type": "line",
-      "from_element": "timeline_axis",
-      "to_element": "circle_5",
-      "direction": "left-to-right",
+      "from_element": "event_2000_dot",
+      "to_element": "event_2000_card",
+      "direction": "right-to-left",
       "label": null,
-      "line_style": "dashed"
+      "line_style": "solid"
     },
     {
-      "id": "conn_6",
+      "id": "conn_2001",
       "type": "line",
-      "from_element": "timeline_axis",
-      "to_element": "circle_6",
+      "from_element": "event_2001_dot",
+      "to_element": "event_2001_card",
       "direction": "left-to-right",
       "label": null,
-      "line_style": "dashed"
+      "line_style": "solid"
     },
     {
-      "id": "conn_7",
+      "id": "conn_2004",
       "type": "line",
-      "from_element": "timeline_axis",
-      "to_element": "circle_7",
-      "direction": "left-to-right",
+      "from_element": "event_2004_dot",
+      "to_element": "event_2004_card",
+      "direction": "right-to-left",
       "label": null,
-      "line_style": "dashed"
+      "line_style": "solid"
     },
     {
-      "id": "conn_8",
+      "id": "conn_2015",
       "type": "line",
-      "from_element": "timeline_axis",
-      "to_element": "circle_8",
+      "from_element": "event_2015_dot",
+      "to_element": "event_2015_card",
       "direction": "left-to-right",
       "label": null,
-      "line_style": "dashed"
+      "line_style": "solid"
     },
     {
-      "id": "conn_9",
+      "id": "conn_2017",
       "type": "line",
-      "from_element": "timeline_axis",
-      "to_element": "circle_9",
-      "direction": "left-to-right",
+      "from_element": "event_2017_dot",
+      "to_element": "event_2017_card",
+      "direction": "right-to-left",
       "label": null,
-      "line_style": "dashed"
+      "line_style": "solid"
     },
     {
-      "id": "conn_10",
+      "id": "conn_2022",
       "type": "line",
-      "from_element": "timeline_axis",
-      "to_element": "circle_10",
+      "from_element": "event_2022_dot",
+      "to_element": "event_2022_card",
       "direction": "left-to-right",
       "label": null,
-      "line_style": "dashed"
+      "line_style": "solid"
     },
     {
-      "id": "conn_11",
+      "id": "conn_2024",
       "type": "line",
-      "from_element": "timeline_axis",
-      "to_element": "circle_11",
-      "direction": "left-to-right",
+      "from_element": "event_2024_dot",
+      "to_element": "event_2024_card",
+      "direction": "right-to-left",
       "label": null,
-      "line_style": "dashed"
+      "line_style": "solid"
     }
   ],
-  "design_notes": "时间线采用垂直布局，主轴线位于左侧（约15%位置），节点圆点在轴线右侧约5%处，用虚线连接。三个关键节点（1924、2001、2017）使用红色圆点（accent颜色）突出显示，其余为紫色。事件描述文本块在圆点右侧，左对齐。标题居中，概述置于标题下方，字体大小递减。整体配色为学术稳重风格，背景浅灰白色，营造清晰、庄重的阅读体验。时间线背景为浅灰色圆角矩形，与页面边缘保持适当留白。"
+  "design_notes": "采用垂直时间轴布局，事件卡片交替出现在轴线两侧形成“之”字形动线，增强视觉节奏感。时间轴线使用中山红（#A31F34），节点采用圆形（常规节点金色，里程碑节点橙色放大）。标题区使用从左到右的红到金水平渐变，象征历史延续与辉煌。卡片背景白色带细微阴影，左上角年份用较大字号（20px）突出显示。1924、2001、2024三个里程碑节点通过橙色强调色和更大圆点吸引注意力。整体背景米色营造温暖、历史感。确保所有卡片与节点之间有清晰的连接线（水平实线）。底部添加数据来源脚注。"
 }

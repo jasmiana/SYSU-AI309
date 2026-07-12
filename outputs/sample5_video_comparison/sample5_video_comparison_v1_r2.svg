@@ -1,84 +1,124 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1000" width="800" height="1000">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1060" width="800" height="1060">
   <defs>
-    <!-- 箭头定义 -->
-    <marker id="arrowRed" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto">
-      <path d="M 0 0 L 10 5 L 0 10 z" fill="#D32F2F"/>
-    </marker>
-    <!-- 柱子投影滤镜 -->
-    <filter id="shadow" x="-5%" y="-5%" width="110%" height="110%">
-      <feDropShadow dx="2" dy="4" stdDeviation="4" flood-color="#000000" flood-opacity="0.15"/>
-    </filter>
-    <!-- 页面顶部渐变 -->
+    <!-- 标题渐变 -->
     <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#4A90D9"/>
-      <stop offset="100%" stop-color="#7B68EE"/>
+      <stop offset="0%" stop-color="#1A5276"/>
+      <stop offset="100%" stop-color="#2C3E50"/>
     </linearGradient>
+    
+    <!-- 卡片阴影 -->
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="110%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1A5276" flood-opacity="0.08"/>
+    </filter>
+
+    <!-- 箭头标记 -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="10" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#95A5A6"/>
+    </marker>
   </defs>
 
-  <!-- 背景 -->
-  <rect x="0" y="0" width="800" height="1000" fill="#F8F9FF"/>
+  <!-- 全局背景 -->
+  <rect x="0" y="0" width="800" height="1060" fill="#F4F6F9"/>
 
-  <!-- 顶部标题栏 -->
+  <!-- 装饰性背景元素 -->
+  <circle cx="80" cy="120" r="40" fill="#1A5276" opacity="0.04"/>
+  <circle cx="720" cy="880" r="60" fill="#E74C3C" opacity="0.04"/>
+  <circle cx="40" cy="980" r="25" fill="#8E44AD" opacity="0.04"/>
+  <circle cx="760" cy="140" r="20" fill="#F39C12" opacity="0.04"/>
+
+  <!-- 1. 标题区域 -->
   <rect x="0" y="0" width="800" height="90" fill="url(#headerGrad)"/>
-  <text x="400" y="55" text-anchor="middle" fill="#FFFFFF" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold">
-    视频平台内容库规模对比：YouTube、TikTok、快手
-  </text>
+  <text x="400" y="52" text-anchor="middle" fill="#FFFFFF" font-size="32" font-weight="bold" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">视频数量对比：YouTube vs TikTok vs Kuaishou</text>
+  <text x="400" y="76" text-anchor="middle" fill="#BDC3C7" font-size="14" font-family="system-ui, -apple-system, sans-serif">数据对比信息图</text>
+  
+  <!-- 标题装饰：播放按钮图标 -->
+  <polygon points="730,35 745,45 730,55" fill="#FFFFFF" opacity="0.2"/>
+  <circle cx="730" cy="45" r="18" fill="none" stroke="#FFFFFF" stroke-width="1.5" opacity="0.2"/>
 
-  <!-- 图表区域（Y轴范围：170 ~ 750，实际绘图高度580） -->
-  <g transform="translate(0, 0)">
-    
-    <!-- Y轴网格线 -->
-    <line x1="100" y1="175" x2="700" y2="175" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
-    <line x1="100" y1="320" x2="700" y2="320" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
-    <line x1="100" y1="460" x2="700" y2="460" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
-    <line x1="100" y1="605" x2="700" y2="605" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
+  <!-- 数据说明 -->
+  <text x="400" y="115" text-anchor="middle" fill="#7F8C8D" font-size="13" font-family="system-ui, -apple-system, sans-serif">数据基于相对倍数（基准 = Kuaishou 1x）</text>
 
-    <!-- Y轴 -->
-    <line x1="100" y1="170" x2="100" y2="750" stroke="#2C3E50" stroke-width="2"/>
-    <text x="80" y="755" text-anchor="end" fill="#7F8C8D" font-family="system-ui, -apple-system, sans-serif" font-size="14">0x</text>
-    <text x="80" y="610" text-anchor="end" fill="#7F8C8D" font-family="system-ui, -apple-system, sans-serif" font-size="14">5x</text>
-    <text x="80" y="465" text-anchor="end" fill="#7F8C8D" font-family="system-ui, -apple-system, sans-serif" font-size="14">10x</text>
-    <text x="80" y="320" text-anchor="end" fill="#7F8C8D" font-family="system-ui, -apple-system, sans-serif" font-size="14">15x</text>
-    <text x="80" y="175" text-anchor="end" fill="#2C3E50" font-family="system-ui, -apple-system, sans-serif" font-size="14" font-weight="bold">20x</text>
+  <!-- 2. 图表区域背景 -->
+  <rect x="50" y="130" width="700" height="740" rx="12" fill="#FFFFFF" filter="url(#cardShadow)"/>
 
-    <!-- Y轴标签 -->
-    <text x="40" y="460" text-anchor="middle" fill="#7F8C8D" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="15" transform="rotate(-90, 40, 460)">视频数量相对规模</text>
+  <!-- 3. 坐标轴 -->
+  <!-- Y轴 -->
+  <line x1="100" y1="160" x2="100" y2="850" stroke="#BDC3C7" stroke-width="2"/>
+  <!-- X轴 -->
+  <line x1="100" y1="850" x2="720" y2="850" stroke="#BDC3C7" stroke-width="2"/>
 
-    <!-- X轴 -->
-    <line x1="100" y1="750" x2="700" y2="750" stroke="#2C3E50" stroke-width="2"/>
+  <!-- Y轴刻度 -->
+  <!-- 0 -->
+  <line x1="90" y1="850" x2="110" y2="850" stroke="#BDC3C7" stroke-width="2"/>
+  <text x="85" y="854" text-anchor="end" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, sans-serif">0</text>
+  <!-- 5 -->
+  <line x1="90" y1="710" x2="110" y2="710" stroke="#BDC3C7" stroke-width="2"/>
+  <text x="85" y="714" text-anchor="end" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, sans-serif">5</text>
+  <!-- 10 -->
+  <line x1="90" y1="570" x2="110" y2="570" stroke="#BDC3C7" stroke-width="2"/>
+  <text x="85" y="574" text-anchor="end" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, sans-serif">10</text>
+  <!-- 15 -->
+  <line x1="90" y1="430" x2="110" y2="430" stroke="#BDC3C7" stroke-width="2"/>
+  <text x="85" y="434" text-anchor="end" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, sans-serif">15</text>
+  <!-- 20 -->
+  <line x1="90" y1="290" x2="110" y2="290" stroke="#BDC3C7" stroke-width="2"/>
+  <text x="85" y="294" text-anchor="end" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, sans-serif">20</text>
+  <!-- 25 -->
+  <line x1="90" y1="150" x2="110" y2="150" stroke="#BDC3C7" stroke-width="2"/>
+  <text x="85" y="154" text-anchor="end" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, sans-serif">25</text>
 
-    <!-- 柱子：YouTube（20x，高度580） -->
-    <rect x="175" y="170" width="100" height="580" rx="4" fill="#4A90D9" filter="url(#shadow)"/>
-    <text x="225" y="160" text-anchor="middle" fill="#2C3E50" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold">20x</text>
-    <text x="225" y="785" text-anchor="middle" fill="#2C3E50" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold">YouTube</text>
+  <!-- 4. 柱状图 -->
+  <!-- YouTube（红色）：20 -->
+  <rect x="150" y="290" width="120" height="560" rx="4" fill="#E74C3C"/>
+  <!-- TikTok（紫色）：2 -->
+  <rect x="330" y="794" width="120" height="56" rx="4" fill="#8E44AD"/>
+  <!-- Kuaishou（橙色）：1 -->
+  <rect x="510" y="822" width="120" height="28" rx="4" fill="#F39C12"/>
 
-    <!-- 柱子：TikTok（2x，高度58） -->
-    <rect x="350" y="692" width="100" height="58" rx="4" fill="#7B68EE" filter="url(#shadow)"/>
-    <text x="400" y="682" text-anchor="middle" fill="#2C3E50" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold">2x</text>
-    <text x="400" y="785" text-anchor="middle" fill="#2C3E50" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold">TikTok</text>
+  <!-- 5. 数据标签 -->
+  <!-- YouTube -->
+  <text x="210" y="278" text-anchor="middle" fill="#C0392B" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">20</text>
+  <!-- TikTok -->
+  <text x="390" y="782" text-anchor="middle" fill="#6C3483" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">2</text>
+  <!-- Kuaishou（带背景矩形） -->
+  <rect x="550" y="808" width="40" height="24" rx="4" fill="#FFF3E0"/>
+  <text x="570" y="826" text-anchor="middle" fill="#D35400" font-size="16" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">1</text>
 
-    <!-- 柱子：快手（1x，高度29） -->
-    <rect x="525" y="721" width="100" height="29" rx="4" fill="#27AE60" filter="url(#shadow)"/>
-    <text x="575" y="711" text-anchor="middle" fill="#2C3E50" font-family="system-ui, -apple-system, sans-serif" font-size="18" font-weight="bold">1x</text>
-    <text x="575" y="785" text-anchor="middle" fill="#2C3E50" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold">快手</text>
+  <!-- 6. 连线标签（倍数关系） -->
+  <!-- 箭头 1：YouTube -> TikTok（10x） -->
+  <line x1="270" y1="540" x2="325" y2="540" stroke="#95A5A6" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+  <rect x="280" y="520" width="40" height="20" rx="4" fill="#F4F6F9"/>
+  <text x="300" y="535" text-anchor="middle" fill="#8E44AD" font-size="14" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">10x</text>
 
-    <!-- 比较箭头与标签（使用高对比度色 #D32F2F） -->
-    <!-- YouTube -> TikTok -->
-    <line x1="285" y1="431" x2="340" y2="431" stroke="#D32F2F" stroke-width="2.5" marker-end="url(#arrowRed)"/>
-    <text x="312" y="421" text-anchor="middle" fill="#D32F2F" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="bold">10 times more</text>
+  <!-- 箭头 2：TikTok -> Kuaishou（2x） -->
+  <line x1="450" y1="808" x2="505" y2="808" stroke="#95A5A6" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowhead)"/>
+  <rect x="460" y="798" width="34" height="20" rx="4" fill="#F4F6F9"/>
+  <text x="477" y="813" text-anchor="middle" fill="#F39C12" font-size="14" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">2x</text>
 
-    <!-- TikTok -> 快手 -->
-    <line x1="460" y1="706" x2="520" y2="706" stroke="#D32F2F" stroke-width="2.5" marker-end="url(#arrowRed)"/>
-    <text x="490" y="696" text-anchor="middle" fill="#D32F2F" font-family="system-ui, -apple-system, sans-serif" font-size="15" font-weight="bold">2 times more</text>
+  <!-- 7. X轴平台标签 -->
+  <text x="210" y="878" text-anchor="middle" fill="#2C3E50" font-size="15" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">YouTube</text>
+  <text x="390" y="878" text-anchor="middle" fill="#2C3E50" font-size="15" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">TikTok</text>
+  <text x="570" y="878" text-anchor="middle" fill="#2C3E50" font-size="15" font-weight="bold" font-family="system-ui, -apple-system, sans-serif">Kuaishou</text>
 
+  <!-- 8. 图例 -->
+  <g transform="translate(0, 900)">
+    <!-- YouTube -->
+    <rect x="230" y="10" width="16" height="16" rx="3" fill="#E74C3C"/>
+    <text x="252" y="22" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, sans-serif">YouTube</text>
+    <!-- TikTok -->
+    <rect x="350" y="10" width="16" height="16" rx="3" fill="#8E44AD"/>
+    <text x="372" y="22" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, sans-serif">TikTok</text>
+    <!-- Kuaishou -->
+    <rect x="470" y="10" width="16" height="16" rx="3" fill="#F39C12"/>
+    <text x="492" y="22" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, sans-serif">Kuaishou</text>
   </g>
 
-  <!-- 底部信息栏 -->
-  <rect x="0" y="900" width="800" height="100" fill="#F0F4FF"/>
-  <text x="400" y="940" text-anchor="middle" fill="#95A5A6" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="13">
-    数据来源：各平台官方数据估算。以快手为基准（1x）展示相对规模。
-  </text>
-  <text x="400" y="965" text-anchor="middle" fill="#95A5A6" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="13">
-    比例关系：YouTube（20x）是 TikTok（2x）的 10 倍，TikTok（2x）是快手（1x）的 2 倍。
-  </text>
+  <!-- 9. 趣味知识卡片 -->
+  <rect x="80" y="940" width="640" height="60" rx="8" fill="#FFFFFF" filter="url(#cardShadow)" stroke="#E8E8E8" stroke-width="1"/>
+  <text x="100" y="962" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">📌 趣味小知识：YouTube 每分钟上传超过500小时视频，</text>
+  <text x="112" y="982" fill="#2C3E50" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">TikTok 紧随其后，快手则专注于下沉市场。</text>
+
+  <!-- 10. 点睛语 -->
+  <text x="400" y="1035" text-anchor="middle" fill="#7F8C8D" font-size="14" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif">💡 数据的河流汇聚成海，每一帧都是时代的缩影。</text>
+
 </svg>

@@ -1,188 +1,230 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 1100" width="800" height="1100">
   <defs>
-    <!-- 标题渐变 -->
+    <!-- 渐变 -->
     <linearGradient id="headerGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-      <stop offset="0%" stop-color="#4A90D9"/>
-      <stop offset="100%" stop-color="#7B68EE"/>
+      <stop offset="0%" stop-color="#1A3A5C"/>
+      <stop offset="50%" stop-color="#2980B9"/>
+      <stop offset="100%" stop-color="#1A3A5C"/>
     </linearGradient>
-
-    <!-- 中心节点阴影 -->
-    <filter id="centerShadow" x="-10%" y="-10%" width="120%" height="130%">
-      <feDropShadow dx="0" dy="5" stdDeviation="10" flood-color="#4A90D9" flood-opacity="0.25"/>
+    <linearGradient id="cardGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#F5F7FA"/>
+    </linearGradient>
+    
+    <!-- 投影阴影 -->
+    <filter id="cardShadow" x="-5%" y="-5%" width="120%" height="120%">
+      <feDropShadow dx="0" dy="8" stdDeviation="12" flood-color="#1A3A5C" flood-opacity="0.08"/>
+    </filter>
+    <filter id="nodeShadow" x="-10%" y="-10%" width="130%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#1A3A5C" flood-opacity="0.15"/>
+    </filter>
+    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
     </filter>
 
-    <!-- 卡片阴影 -->
-    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%">
-      <feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="#000000" flood-opacity="0.08"/>
-    </filter>
+    <!-- 箭头定义 -->
+    <marker id="arrowUp" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2980B9"/>
+    </marker>
+    <marker id="arrowRight" markerWidth="10" markerHeight="10" refX="5" refY="5" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#7F8C8D"/>
+    </marker>
+    <marker id="arrowDash" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+      <path d="M 0 0 L 8 4 L 0 8 z" fill="#F39C12"/>
+    </marker>
 
-    <!-- 箭头标记 -->
-    <marker id="arrowBlue" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-      <polygon points="0 0, 10 4, 0 8" fill="#4A90D9"/>
-    </marker>
-    <marker id="arrowPurple" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-      <polygon points="0 0, 10 4, 0 8" fill="#7B68EE"/>
-    </marker>
-    <marker id="arrowRed" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-      <polygon points="0 0, 10 4, 0 8" fill="#FF6B6B"/>
-    </marker>
-    <marker id="arrowGray" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto">
-      <polygon points="0 0, 10 4, 0 8" fill="#888888"/>
-    </marker>
+    <!-- 背景纹理图案 -->
+    <pattern id="dotPattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.5" fill="#FFFFFF" fill-opacity="0.4"/>
+    </pattern>
   </defs>
 
-  <style>
-    text { font-family: system-ui, -apple-system, 'Microsoft YaHei', sans-serif; }
-    .title-text { font-size: 32px; font-weight: 700; fill: #FFFFFF; text-anchor: middle; }
-    .section-title { font-size: 20px; font-weight: 600; text-anchor: start; }
-    .node-title { font-size: 15px; font-weight: 600; fill: #2C3E50; }
-    .node-sub { font-size: 12px; fill: #555555; }
-    .center-main { font-size: 26px; font-weight: 700; fill: #FFFFFF; text-anchor: middle; }
-    .center-sub { font-size: 14px; fill: #FFFFFF; text-anchor: middle; opacity: 0.92; }
-    .cap-text { font-size: 14px; font-weight: 500; fill: #C0392B; }
-    .comp-label { font-size: 12px; font-weight: 500; fill: #2C3E50; text-anchor: middle; }
-    .flow-text { font-size: 13px; font-weight: 500; fill: #2C3E50; }
-  </style>
+  <!-- 全局背景 -->
+  <rect width="800" height="1100" fill="#F5F7FA"/>
+  <rect y="0" width="800" height="100" fill="url(#headerGrad)"/>
+  <rect y="0" width="800" height="100" fill="url(#dotPattern)"/>
 
-  <!-- 背景 -->
-  <rect x="0" y="0" width="800" height="1100" fill="#F8F9FF"/>
+  <!-- ================= 标题区域 ================= -->
+  <text x="400" y="55" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="32" font-weight="bold" fill="#FFFFFF" letter-spacing="2">
+    🧠 大语言模型基本原理
+  </text>
+  <text x="400" y="85" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="normal" fill="#FFFFFF" fill-opacity="0.8">
+    基于 Transformer 架构的深度学习模型
+  </text>
 
-  <!-- 标题栏 -->
-  <rect x="0" y="0" width="800" height="80" fill="url(#headerGrad)"/>
-  <text x="400" y="50" class="title-text">大语言模型基本原理</text>
+  <!-- ================= 架构区域（第1区） ================= -->
+  <g transform="translate(40, 130)">
+    <!-- 架构图背景卡片 -->
+    <rect x="0" y="0" width="720" height="560" rx="16" fill="url(#cardGrad)" filter="url(#cardShadow)" stroke="#E0E6ED" stroke-width="1"/>
+    
+    <!-- 架构图标题 -->
+    <text x="360" y="40" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="22" font-weight="600" fill="#1A3A5C">
+      ⚙️ Transformer 架构核心
+    </text>
+    <line x1="240" y1="55" x2="480" y2="55" stroke="#2980B9" stroke-width="2" stroke-opacity="0.5"/>
 
-  <!-- ========== 中心节点 ========== -->
-  <rect x="230" y="100" width="340" height="140" rx="14" fill="#4A90D9" filter="url(#centerShadow)"/>
-  <text x="400" y="142" class="center-main">大语言模型</text>
-  <text x="400" y="175" class="center-sub">基于Transformer · 自注意力机制</text>
-  <text x="400" y="198" class="center-sub">参数规模：数十亿至数万亿</text>
-  <text x="400" y="221" class="center-sub" style="font-size:12px; opacity:0.75;">涌现能力 · 上下文学习 · 多任务适应</text>
+    <!-- 趣味细节：自注意力说明 -->
+    <g transform="translate(540, 100)">
+      <rect x="0" y="0" width="160" height="70" rx="8" fill="#FFF9E6" stroke="#F39C12" stroke-width="1" stroke-dasharray="4,2"/>
+      <text x="80" y="25" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="12" font-weight="bold" fill="#D35400">💡 核心创新</text>
+      <text x="80" y="45" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="11" fill="#7F8C8D">并行计算序列中</text>
+      <text x="80" y="60" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="11" fill="#7F8C8D">所有词对间的关联权重</text>
+    </g>
 
-  <!-- 中心节点到4个区域的连接线 -->
-  <polyline points="305,240 305,252 210,252 210,265" fill="none" stroke="#4A90D9" stroke-width="2" marker-end="url(#arrowBlue)"/>
-  <polyline points="495,240 495,252 590,252 590,265" fill="none" stroke="#7B68EE" stroke-width="2" marker-end="url(#arrowPurple)"/>
-  <polyline points="275,240 275,650 210,650 210,665" fill="none" stroke="#4A90D9" stroke-width="2" marker-end="url(#arrowBlue)"/>
-  <polyline points="525,240 525,650 590,650 590,665" fill="none" stroke="#FF6B6B" stroke-width="2" marker-end="url(#arrowRed)"/>
+    <!-- 第1层：词嵌入 + 位置编码 -->
+    <g transform="translate(240, 480)">
+      <rect x="0" y="0" width="240" height="65" rx="10" fill="#2980B9" filter="url(#nodeShadow)"/>
+      <text x="120" y="28" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="15" font-weight="600" fill="#FFFFFF">
+        🔤 词嵌入 + 位置编码
+      </text>
+      <text x="120" y="50" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="11" fill="#FFFFFF" fill-opacity="0.9">
+        将词语映射为向量，并注入位置信息
+      </text>
+    </g>
+    <!-- 箭头：嵌入 -> 注意力 -->
+    <line x1="360" y1="480" x2="360" y2="418" stroke="#2980B9" stroke-width="3" marker-end="url(#arrowUp)"/>
 
-  <!-- ========== 训练阶段区域（左下） ========== -->
-  <rect x="35" y="265" width="355" height="340" rx="10" fill="#F0F4FF" stroke="#D0DAF0" stroke-width="1"/>
-  <text x="60" y="295" class="section-title" fill="#4A90D9">训练阶段</text>
+    <!-- 第2层：自注意力机制（强调色-暖橙色） -->
+    <g transform="translate(220, 350)">
+      <rect x="0" y="0" width="280" height="70" rx="10" fill="#F39C12" filter="url(#nodeShadow)"/>
+      <text x="140" y="30" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="16" font-weight="bold" fill="#FFFFFF">
+        ⚡ 自注意力机制
+      </text>
+      <text x="140" y="52" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="12" fill="#FFFFFF" fill-opacity="0.95">
+        捕捉长距离语义依赖关系
+      </text>
+    </g>
+    <!-- 箭头：注意力 -> MHA -->
+    <line x1="360" y1="350" x2="360" y2="288" stroke="#2980B9" stroke-width="3" marker-end="url(#arrowUp)"/>
 
-  <!-- 训练节点1：预训练 -->
-  <rect x="60" y="312" width="305" height="52" rx="8" fill="#FFFFFF" stroke="#4A90D9" stroke-width="1.5" filter="url(#cardShadow)"/>
-  <text x="75" y="335" class="node-title">预训练 (Pre-training)</text>
-  <text x="75" y="354" class="node-sub">在大规模语料上预测下一个token</text>
+    <!-- 第3层：多头注意力 -->
+    <g transform="translate(240, 220)">
+      <rect x="0" y="0" width="240" height="65" rx="10" fill="#2980B9" filter="url(#nodeShadow)"/>
+      <text x="120" y="28" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="15" font-weight="600" fill="#FFFFFF">
+        👁️ 多头注意力
+      </text>
+      <text x="120" y="50" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="11" fill="#FFFFFF" fill-opacity="0.9">
+        从不同子空间并行学习关联特征
+      </text>
+    </g>
+    <!-- 箭头：MHA -> FFN -->
+    <line x1="360" y1="220" x2="360" y2="158" stroke="#2980B9" stroke-width="3" marker-end="url(#arrowUp)"/>
 
-  <!-- 箭头1→2 -->
-  <line x1="212.5" y1="364" x2="212.5" y2="380" stroke="#888888" stroke-width="1.8" marker-end="url(#arrowGray)"/>
+    <!-- 第4层：前馈神经网络 -->
+    <g transform="translate(240, 90)">
+      <rect x="0" y="0" width="240" height="65" rx="10" fill="#2980B9" filter="url(#nodeShadow)"/>
+      <text x="120" y="28" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="15" font-weight="600" fill="#FFFFFF">
+        🧮 前馈神经网络
+      </text>
+      <text x="120" y="50" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="11" fill="#FFFFFF" fill-opacity="0.9">
+        非线性变换，进一步提取高层特征
+      </text>
+    </g>
 
-  <!-- 训练节点2：SFT -->
-  <rect x="60" y="382" width="305" height="52" rx="8" fill="#FFFFFF" stroke="#4A90D9" stroke-width="1.5" filter="url(#cardShadow)"/>
-  <text x="75" y="405" class="node-title">监督微调 (SFT)</text>
-  <text x="75" y="424" class="node-sub">在指令数据上微调，学会遵循指令</text>
+    <!-- 残差连接 & 层归一化（侧边环绕） -->
+    <g transform="translate(660, 90)">
+      <rect x="0" y="0" width="40" height="455" rx="8" fill="#1A3A5C" filter="url(#nodeShadow)"/>
+      <text x="20" y="230" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="bold" fill="#FFFFFF" transform="rotate(-90, 20, 230)">
+        🔄 残差连接 & 层归一化
+      </text>
+    </g>
+    <!-- 连接 FFN 到残差块的箭头 -->
+    <line x1="480" y1="122" x2="640" y2="122" stroke="#F39C12" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowDash)"/>
+    <line x1="480" y1="252" x2="640" y2="252" stroke="#F39C12" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowDash)"/>
+    <line x1="480" y1="382" x2="640" y2="382" stroke="#F39C12" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowDash)"/>
+    
+    <!-- 残差块返回到 FFN/MHA/嵌入层的下行箭头 -->
+    <path d="M 680 545 L 680 560 L 360 560 L 360 545" fill="none" stroke="#F39C12" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#arrowDash)"/>
+    
+    <!-- 架构图底部说明 -->
+    <text x="360" y="540" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">
+      ⬆️ 数据自下而上流动 ｜ 虚线表示残差连接的回传路径
+    </text>
+  </g>
 
-  <!-- 箭头2→3 -->
-  <line x1="212.5" y1="434" x2="212.5" y2="450" stroke="#888888" stroke-width="1.8" marker-end="url(#arrowGray)"/>
+  <!-- ================= 流程区域（第2区） ================= -->
+  <g transform="translate(40, 720)">
+    <!-- 流程背景卡片 -->
+    <rect x="0" y="0" width="720" height="220" rx="16" fill="url(#cardGrad)" filter="url(#cardShadow)" stroke="#E0E6ED" stroke-width="1"/>
+    
+    <!-- 流程标题 -->
+    <text x="360" y="35" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="22" font-weight="600" fill="#1A3A5C">
+      🚀 训练生命周期
+    </text>
+    <line x1="260" y1="50" x2="460" y2="50" stroke="#2980B9" stroke-width="2" stroke-opacity="0.5"/>
 
-  <!-- 训练节点3：RLHF -->
-  <rect x="60" y="452" width="305" height="52" rx="8" fill="#FFFFFF" stroke="#4A90D9" stroke-width="1.5" filter="url(#cardShadow)"/>
-  <text x="75" y="475" class="node-title">RLHF</text>
-  <text x="75" y="494" class="node-sub">基于人类反馈的强化学习，对齐偏好</text>
+    <!-- 趣味细节：流程说明 -->
+    <g transform="translate(30, 70)">
+      <text x="0" y="0" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="12" fill="#7F8C8D">
+        💡 从通用知识学习到特定任务适配，最终与人类偏好对齐
+      </text>
+    </g>
 
-  <!-- 训练区域装饰说明 -->
-  <text x="60" y="535" style="font-size:12px; fill:#7F8C8D;">三个阶段逐步提升模型的指令遵循能力</text>
-  <text x="60" y="555" style="font-size:12px; fill:#7F8C8D;">和生成质量，最终对齐人类偏好</text>
+    <!-- 节点1：预训练 -->
+    <g transform="translate(60, 90)">
+      <rect x="0" y="0" width="170" height="80" rx="10" fill="#1A3A5C" filter="url(#nodeShadow)"/>
+      <text x="85" y="30" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="15" font-weight="bold" fill="#FFFFFF">
+        📚 预训练
+      </text>
+      <text x="85" y="50" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="12" fill="#FFFFFF" fill-opacity="0.9">
+        海量无标注文本
+      </text>
+      <text x="85" y="68" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="11" fill="#FFFFFF" fill-opacity="0.7">
+        （学习通用知识）
+      </text>
+    </g>
+    <!-- 箭头：预训练 -> 微调 -->
+    <line x1="230" y1="130" x2="290" y2="130" stroke="#7F8C8D" stroke-width="3" marker-end="url(#arrowRight)"/>
+    <text x="260" y="120" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="20" fill="#7F8C8D" font-weight="bold">→</text>
 
-  <!-- ========== 推理流程区域（右下） ========== -->
-  <rect x="410" y="265" width="355" height="390" rx="10" fill="#F6F4FF" stroke="#DCD6F8" stroke-width="1"/>
-  <text x="435" y="295" class="section-title" fill="#7B68EE">推理流程</text>
+    <!-- 节点2：微调 -->
+    <g transform="translate(295, 90)">
+      <rect x="0" y="0" width="170" height="80" rx="10" fill="#2980B9" filter="url(#nodeShadow)"/>
+      <text x="85" y="30" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="15" font-weight="bold" fill="#FFFFFF">
+        🔧 微调
+      </text>
+      <text x="85" y="50" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="12" fill="#FFFFFF" fill-opacity="0.9">
+        特定任务标注数据
+      </text>
+      <text x="85" y="68" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="11" fill="#FFFFFF" fill-opacity="0.7">
+        （适配下游任务）
+      </text>
+    </g>
+    <!-- 箭头：微调 -> RLHF -->
+    <line x1="465" y1="130" x2="525" y2="130" stroke="#7F8C8D" stroke-width="3" marker-end="url(#arrowRight)"/>
+    <text x="495" y="120" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="20" fill="#7F8C8D" font-weight="bold">→</text>
 
-  <!-- 推理节点1：输入文本 -->
-  <rect x="435" y="312" width="305" height="36" rx="6" fill="#FFFFFF" stroke="#7B68EE" stroke-width="1.3" filter="url(#cardShadow)"/>
-  <text x="450" y="335" class="flow-text">① 输入文本</text>
+    <!-- 节点3：RLHF（强调色-暖橙色） -->
+    <g transform="translate(530, 90)">
+      <rect x="0" y="0" width="160" height="80" rx="10" fill="#F39C12" filter="url(#nodeShadow)"/>
+      <text x="80" y="30" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="15" font-weight="bold" fill="#FFFFFF">
+        🎯 RLHF
+      </text>
+      <text x="80" y="50" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="12" fill="#FFFFFF" fill-opacity="0.95">
+        人类反馈强化学习
+      </text>
+      <text x="80" y="68" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="11" fill="#FFFFFF" fill-opacity="0.8">
+        （对齐人类偏好）
+      </text>
+    </g>
+  </g>
 
-  <line x1="587.5" y1="348" x2="587.5" y2="358" stroke="#7B68EE" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
+  <!-- ================= 页脚区域（第3区） ================= -->
+  <!-- 架构分类信息 -->
+  <g transform="translate(40, 970)">
+    <rect x="0" y="0" width="720" height="45" rx="8" fill="#FFFFFF" filter="url(#cardShadow)" stroke="#E0E6ED" stroke-width="1"/>
+    <text x="360" y="28" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="14" font-weight="500" fill="#1A3A5C">
+      🌟 典型代表：GPT（仅解码器）｜BERT（仅编码器）｜T5（编码器-解码器）
+    </text>
+  </g>
 
-  <!-- 推理节点2：提示词设计（新增） -->
-  <rect x="435" y="360" width="305" height="36" rx="6" fill="#FFF8F8" stroke="#FF6B6B" stroke-width="1.5" filter="url(#cardShadow)"/>
-  <text x="450" y="383" class="flow-text">② 提示词设计 (Prompt Design)</text>
+  <!-- 结尾点睛之笔 -->
+  <text x="400" y="1050" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="15" font-weight="500" fill="#2980B9" letter-spacing="1">
+    ✨ 语言是人类思想的基石，而大模型正在学会理解它。✨
+  </text>
+  <text x="400" y="1080" text-anchor="middle" font-family="system-ui, -apple-system, 'Microsoft YaHei', sans-serif" font-size="11" fill="#7F8C8D">
+    信息图：大语言模型核心原理架构
+  </text>
 
-  <line x1="587.5" y1="396" x2="587.5" y2="406" stroke="#7B68EE" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
-
-  <!-- 推理节点3：Tokenization -->
-  <rect x="435" y="408" width="305" height="36" rx="6" fill="#FFFFFF" stroke="#7B68EE" stroke-width="1.3" filter="url(#cardShadow)"/>
-  <text x="450" y="431" class="flow-text">③ Tokenization (分词)</text>
-
-  <line x1="587.5" y1="444" x2="587.5" y2="454" stroke="#7B68EE" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
-
-  <!-- 推理节点4：Embedding -->
-  <rect x="435" y="456" width="305" height="36" rx="6" fill="#FFFFFF" stroke="#7B68EE" stroke-width="1.3" filter="url(#cardShadow)"/>
-  <text x="450" y="479" class="flow-text">④ Embedding (向量化)</text>
-
-  <line x1="587.5" y1="492" x2="587.5" y2="502" stroke="#7B68EE" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
-
-  <!-- 推理节点5：N×Transformer Block -->
-  <rect x="435" y="504" width="305" height="36" rx="6" fill="#FFFFFF" stroke="#7B68EE" stroke-width="1.3" filter="url(#cardShadow)"/>
-  <text x="450" y="527" class="flow-text">⑤ N×Transformer Block</text>
-
-  <line x1="587.5" y1="540" x2="587.5" y2="550" stroke="#7B68EE" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
-
-  <!-- 推理节点6：输出概率分布 -->
-  <rect x="435" y="552" width="305" height="36" rx="6" fill="#FFFFFF" stroke="#7B68EE" stroke-width="1.3" filter="url(#cardShadow)"/>
-  <text x="450" y="575" class="flow-text">⑥ 输出概率分布</text>
-
-  <line x1="587.5" y1="588" x2="587.5" y2="598" stroke="#7B68EE" stroke-width="1.5" marker-end="url(#arrowPurple)"/>
-
-  <!-- 推理节点7：采样/解码 -->
-  <rect x="435" y="600" width="305" height="36" rx="6" fill="#FFFFFF" stroke="#7B68EE" stroke-width="1.3" filter="url(#cardShadow)"/>
-  <text x="450" y="623" class="flow-text">⑦ 采样/解码 → 生成文本</text>
-
-  <!-- 推理区域底部说明 -->
-  <text x="435" y="650" style="font-size:11px; fill:#888;">每个步骤输出词表上的概率分布，通过采样产生连贯文本</text>
-
-  <!-- ========== Transformer组件区域（左下方） ========== -->
-  <rect x="35" y="665" width="355" height="205" rx="10" fill="#F0F4FF" stroke="#D0DAF0" stroke-width="1"/>
-  <text x="60" y="695" class="section-title" fill="#4A90D9">Transformer核心组件</text>
-
-  <!-- 两列三行布局 -->
-  <!-- 左列 -->
-  <rect x="55" y="712" width="158" height="40" rx="6" fill="#E8F0FE" stroke="#4A90D9" stroke-width="1"/>
-  <text x="134" y="737" class="comp-label">Input Embedding</text>
-
-  <rect x="55" y="762" width="158" height="40" rx="6" fill="#E8F0FE" stroke="#4A90D9" stroke-width="1"/>
-  <text x="134" y="787" class="comp-label">Multi-Head Attention</text>
-
-  <rect x="55" y="812" width="158" height="40" rx="6" fill="#E8F0FE" stroke="#4A90D9" stroke-width="1"/>
-  <text x="134" y="837" class="comp-label">Layer Normalization</text>
-
-  <!-- 右列 -->
-  <rect x="222" y="712" width="158" height="40" rx="6" fill="#E8F0FE" stroke="#4A90D9" stroke-width="1"/>
-  <text x="301" y="737" class="comp-label">Positional Encoding</text>
-
-  <rect x="222" y="762" width="158" height="40" rx="6" fill="#E8F0FE" stroke="#4A90D9" stroke-width="1"/>
-  <text x="301" y="787" class="comp-label">Feed-Forward Network</text>
-
-  <rect x="222" y="812" width="158" height="40" rx="6" fill="#E8F0FE" stroke="#4A90D9" stroke-width="1"/>
-  <text x="301" y="837" class="comp-label">Residual Connection</text>
-
-  <!-- ========== 模型能力区域（右下方） ========== -->
-  <rect x="410" y="665" width="355" height="205" rx="10" fill="#FFF5F5" stroke="#F5D5D5" stroke-width="1"/>
-  <text x="435" y="695" class="section-title" fill="#FF6B6B">模型能力</text>
-
-  <!-- 能力卡片 -->
-  <rect x="435" y="712" width="305" height="42" rx="8" fill="#FFFFFF" stroke="#FF6B6B" stroke-width="1.3" filter="url(#cardShadow)"/>
-  <circle cx="455" cy="733" r="6" fill="#FF6B6B"/>
-  <text x="468" y="738" class="cap-text">涌现能力 (Emergence)</text>
-
-  <rect x="435" y="764" width="305" height="42" rx="8" fill="#FFFFFF" stroke="#FF6B6B" stroke-width="1.3" filter="url(#cardShadow)"/>
-  <circle cx="455" cy="785" r="6" fill="#FF6B6B"/>
-  <text x="468" y="790" class="cap-text">上下文学习 (In-Context Learning)</text>
-
-  <rect x="435" y="816" width="305" height="42" rx="8" fill="#FFFFFF" stroke="#FF6B6B" stroke-width="1.3" filter="url(#cardShadow)"/>
-  <circle cx="455" cy="837" r="6" fill="#FF6B6B"/>
-  <text x="468" y="841" class="cap-text" style="font-size:13px;">文本生成 · 翻译 · 问答 · 推理</text>
-
-  <!-- 底部装饰线 -->
-  <line x1="200" y1="900" x2="600" y2="900" stroke="#E0E0E0" stroke-width="1" stroke-dasharray="4,4"/>
-  <text x="400" y="925" style="font-size:11px; fill:#AAAAAA; text-anchor:middle;">大语言模型基本原理 · 概念图</text>
 </svg>

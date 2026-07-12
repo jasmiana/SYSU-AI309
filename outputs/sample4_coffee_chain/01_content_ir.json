@@ -3,23 +3,23 @@
     "primary_type": "process_flow",
     "secondary_type": null,
     "confidence": 1.0,
-    "reasoning": "用户明确要求绘制SVG流程图展示完整生产链，步骤已列出（种植、采摘、烘焙、研磨、冲煮），属于典型的流程展示。"
+    "reasoning": "用户明确要求绘制流程图展示生产链，并给出了具体步骤"
   },
   "entities": [
     {
-      "name": "咖啡豆",
-      "type": "term",
-      "role": "object",
-      "importance": "primary"
-    },
-    {
-      "name": "咖啡",
-      "type": "term",
-      "role": "object",
-      "importance": "primary"
-    },
-    {
       "name": "种植",
+      "type": "term",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "咖啡树",
+      "type": "term",
+      "role": "object",
+      "importance": "primary"
+    },
+    {
+      "name": "咖啡果",
       "type": "term",
       "role": "object",
       "importance": "primary"
@@ -27,32 +27,20 @@
     {
       "name": "采摘",
       "type": "term",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "咖啡豆",
+      "type": "term",
       "role": "object",
       "importance": "primary"
     },
     {
       "name": "烘焙",
       "type": "term",
-      "role": "object",
+      "role": "subject",
       "importance": "primary"
-    },
-    {
-      "name": "研磨",
-      "type": "term",
-      "role": "object",
-      "importance": "primary"
-    },
-    {
-      "name": "冲煮",
-      "type": "term",
-      "role": "object",
-      "importance": "primary"
-    },
-    {
-      "name": "生豆",
-      "type": "term",
-      "role": "object",
-      "importance": "secondary"
     },
     {
       "name": "熟豆",
@@ -61,64 +49,103 @@
       "importance": "secondary"
     },
     {
+      "name": "研磨",
+      "type": "term",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
       "name": "咖啡粉",
       "type": "term",
       "role": "object",
-      "importance": "secondary"
+      "importance": "primary"
+    },
+    {
+      "name": "冲煮",
+      "type": "term",
+      "role": "subject",
+      "importance": "primary"
+    },
+    {
+      "name": "咖啡",
+      "type": "term",
+      "role": "object",
+      "importance": "primary"
     }
   ],
   "relations": [
     {
       "type": "sequence",
-      "source": "咖啡豆",
-      "target": "种植",
-      "description": "咖啡豆从种植开始",
+      "source": "种植",
+      "target": "咖啡果",
+      "description": "种植咖啡树，结果得到咖啡果",
       "quantifier": null
     },
     {
       "type": "sequence",
-      "source": "种植",
+      "source": "咖啡果",
       "target": "采摘",
-      "description": "种植后进入采摘阶段",
+      "description": "采摘成熟的咖啡果",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "采摘",
+      "target": "咖啡豆",
+      "description": "从咖啡果中取出咖啡豆",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "咖啡豆",
       "target": "烘焙",
-      "description": "采摘后得到生豆，再烘焙成熟豆",
+      "description": "烘焙生咖啡豆",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "烘焙",
+      "target": "熟豆",
+      "description": "烘焙得到熟咖啡豆",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "熟豆",
       "target": "研磨",
-      "description": "熟豆被研磨成咖啡粉",
+      "description": "研磨熟咖啡豆",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "研磨",
+      "target": "咖啡粉",
+      "description": "研磨得到咖啡粉",
+      "quantifier": null
+    },
+    {
+      "type": "sequence",
+      "source": "咖啡粉",
       "target": "冲煮",
-      "description": "咖啡粉通过冲煮制成咖啡",
+      "description": "用热水冲煮咖啡粉",
       "quantifier": null
     },
     {
       "type": "sequence",
       "source": "冲煮",
       "target": "咖啡",
-      "description": "最终得到咖啡饮品",
+      "description": "冲煮得到一杯咖啡",
       "quantifier": null
     }
   ],
   "content_summary": {
-    "title": "从咖啡豆到咖啡的完整生产链",
+    "title": "从咖啡豆到一杯咖啡的生产链",
     "key_points": [
-      "种植阶段：咖啡豆在适宜气候和海拔下种植，需要精心管理。",
-      "采摘阶段：成熟的咖啡果经手工或机械采摘后，去除果肉得到生豆。",
-      "烘焙阶段：生豆通过加热烘焙，发生化学反应，产生风味物质，颜色加深成熟豆。",
-      "研磨阶段：熟豆被研磨成不同粗细的咖啡粉，影响萃取效果。",
-      "冲煮阶段：咖啡粉与热水接触，通过过滤或浸泡方式萃取，最终形成一杯咖啡。"
+      "种植咖啡树大约需要3-4年才能结果，采摘的咖啡果需立即处理以获得咖啡豆。",
+      "咖啡豆烘焙温度通常在180-240°C，根据烘焙度不同影响风味。",
+      "研磨咖啡豆的粗细度需匹配冲煮方式，如手冲用中粗粉，意式用细粉。",
+      "冲煮时热水与咖啡粉接触萃取，常见方式有手冲、法压、意式浓缩等。",
+      "从采摘到冲煮，每个环节都影响最终咖啡的品质和口感。"
     ],
     "target_audience": "general",
     "language": "zh"
@@ -126,7 +153,7 @@
   "knowledge_gap": {
     "needs_external_knowledge": false,
     "search_queries": [],
-    "fallback_knowledge": null
+    "fallback_knowledge": "以上信息基于咖啡生产的一般常识，具体参数如烘焙温度等可能有变"
   },
   "chart_type": {
     "recommended": "flowchart",
